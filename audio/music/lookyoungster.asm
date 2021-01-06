@@ -1,307 +1,296 @@
-Music_LookYoungster: ; f66c3
-	dbw $80, Music_LookYoungster_Ch1
-	dbw $01, Music_LookYoungster_Ch2
-	dbw $02, Music_LookYoungster_Ch3
-; f66cc
+Music_LookYoungster:
+	channel_count 3
+	channel 1, Music_LookYoungster_Ch1
+	channel 2, Music_LookYoungster_Ch2
+	channel 3, Music_LookYoungster_Ch3
 
-Music_LookYoungster_Ch1: ; f66cc
+Music_LookYoungster_Ch1:
 	tempo 118
-	volume $77
-	stereopanning $f
-	dutycycle $3
-	notetype $c, $a3
+	volume 7, 7
+	stereo_panning FALSE, TRUE
+	duty_cycle 3
+	note_type 12, 10, 3
 	octave 3
 	note G_, 1
 	note G#, 1
 	note A_, 1
 	note A#, 1
-	intensity $3e
+	volume_envelope 3, -6
 	note B_, 16
-	intensity $c3
+	volume_envelope 12, 3
 	octave 4
 	note C_, 1
-	note __, 3
+	rest 3
 	note C_, 4
-	note __, 2
+	rest 2
 	note C_, 6
-	intensity $b3
-Music_LookYoungster_branch_f66ea: ; f66ea
-	note __, 2
+	volume_envelope 11, 3
+.mainloop:
+	rest 2
 	octave 3
 	note G_, 1
-	note __, 1
+	rest 1
 	note B_, 1
-	note __, 1
+	rest 1
 	note G_, 1
-	note __, 1
+	rest 1
 	octave 4
 	note D_, 1
-	note __, 1
+	rest 1
 	note C_, 1
-	note __, 3
+	rest 3
 	note C_, 1
-	note __, 1
-	note __, 16
-	note __, 2
+	rest 1
+	rest 16
+	rest 2
 	octave 3
 	note G_, 1
-	note __, 1
+	rest 1
 	note B_, 1
-	note __, 1
+	rest 1
 	note G_, 1
-	note __, 1
+	rest 1
 	octave 4
 	note D_, 1
-	note __, 1
+	rest 1
 	note C_, 1
-	note __, 3
+	rest 3
 	note C_, 1
-	note __, 1
-	note __, 16
-	loopchannel 0, Music_LookYoungster_branch_f66ea
-; f670e
+	rest 1
+	rest 16
+	sound_loop 0, .mainloop
 
+	sound_ret ; unused
 
-INCBIN "baserom.gbc", $f670e, $f670f - $f670e
-
-
-Music_LookYoungster_Ch2: ; f670f
-	stereopanning $f0
-	vibrato $12, $26
-	dutycycle $1
-	notetype $c, $a3
+Music_LookYoungster_Ch2:
+	stereo_panning TRUE, FALSE
+	vibrato 18, 2, 6
+	duty_cycle 1
+	note_type 12, 10, 3
 	octave 3
 	note B_, 1
 	octave 4
 	note C_, 1
 	note C#, 1
 	note D_, 1
-	intensity $3e
-	notetype $c, $2e
+	volume_envelope 3, -6
+	note_type 12, 2, -6
 	note G_, 16
-	notetype $c, $b3
-	intensity $c3
+	note_type 12, 11, 3
+	volume_envelope 12, 3
 	note F_, 1
-	note __, 3
+	rest 3
 	note F_, 4
-	note __, 2
+	rest 2
 	note F#, 6
-Music_LookYoungster_branch_f672f: ; f672f
-	dutycycle $3
-	intensity $b3
-	note __, 2
+.mainloop:
+	duty_cycle 3
+	volume_envelope 11, 3
+	rest 2
 	octave 3
 	note B_, 1
-	note __, 1
+	rest 1
 	octave 4
 	note D_, 1
-	note __, 1
+	rest 1
 	octave 3
 	note B_, 1
-	note __, 1
+	rest 1
 	octave 4
 	note G_, 1
-	note __, 1
+	rest 1
 	note F_, 1
-	note __, 3
+	rest 3
 	note F_, 1
-	note __, 1
-	intensity $97
-	dutycycle $2
+	rest 1
+	volume_envelope 9, 7
+	duty_cycle 2
 	note D#, 1
 	note F_, 1
 	note D#, 1
 	note D_, 1
 	note C_, 1
-	note __, 1
+	rest 1
 	octave 3
 	note G#, 1
-	note __, 3
+	rest 3
 	note F_, 1
-	note __, 1
+	rest 1
 	note G_, 1
-	note __, 1
+	rest 1
 	note G#, 1
-	note __, 1
-	dutycycle $3
-	intensity $b3
-	note __, 2
+	rest 1
+	duty_cycle 3
+	volume_envelope 11, 3
+	rest 2
 	note B_, 1
-	note __, 1
+	rest 1
 	octave 4
 	note D_, 1
-	note __, 1
+	rest 1
 	octave 3
 	note B_, 1
-	note __, 1
+	rest 1
 	octave 4
 	note G_, 1
-	note __, 1
+	rest 1
 	note F_, 1
-	note __, 3
+	rest 3
 	note F_, 1
-	note __, 1
-	dutycycle $2
-	intensity $97
+	rest 1
+	duty_cycle 2
+	volume_envelope 9, 7
 	note G#, 1
 	note A#, 1
 	note G#, 1
 	note G_, 1
 	note F_, 1
-	note __, 1
+	rest 1
 	note C_, 1
-	note __, 3
+	rest 3
 	octave 3
 	note G#, 1
-	note __, 1
+	rest 1
 	note A#, 1
-	note __, 1
+	rest 1
 	octave 4
 	note C_, 1
-	note __, 1
-	loopchannel 0, Music_LookYoungster_branch_f672f
-; f6783
+	rest 1
+	sound_loop 0, .mainloop
 
+	sound_ret ; unused
 
-INCBIN "baserom.gbc", $f6783, $f6784 - $f6783
-
-
-Music_LookYoungster_Ch3: ; f6784
-	stereopanning $ff
-	vibrato $2, $24
-	notetype $c, $25
-	note __, 4
+Music_LookYoungster_Ch3:
+	stereo_panning TRUE, TRUE
+	vibrato 2, 2, 4
+	note_type 12, 2, 5
+	rest 4
 	octave 2
 	note G_, 1
-	note __, 1
+	rest 1
 	octave 3
 	note G_, 1
-	note __, 1
+	rest 1
 	octave 2
 	note G_, 1
-	note __, 1
+	rest 1
 	octave 3
 	note G_, 1
-	note __, 1
+	rest 1
 	octave 2
 	note G_, 1
-	note __, 1
+	rest 1
 	octave 3
 	note G_, 1
-	note __, 1
-	intensity $15
+	rest 1
+	volume_envelope 1, 5
 	octave 2
 	note G_, 1
-	note __, 1
+	rest 1
 	octave 3
 	note G_, 1
-	note __, 1
+	rest 1
 	note D_, 1
-	note __, 3
+	rest 3
 	note D_, 4
-	note __, 2
+	rest 2
 	note G#, 6
-	intensity $25
-Music_LookYoungster_branch_f67ae: ; f67ae
+	volume_envelope 2, 5
+.mainloop:
 	octave 2
 	note G_, 1
-	note __, 1
+	rest 1
 	octave 3
 	note G_, 1
-	note __, 1
+	rest 1
 	octave 2
 	note G_, 1
-	note __, 1
+	rest 1
 	octave 3
 	note G_, 1
-	note __, 1
+	rest 1
 	octave 2
 	note G_, 1
-	note __, 1
+	rest 1
 	octave 3
 	note G_, 1
-	note __, 1
+	rest 1
 	octave 2
 	note G_, 1
-	note __, 1
+	rest 1
 	octave 3
 	note G_, 1
-	note __, 1
-	octave 2
-	note F_, 1
-	note __, 1
-	octave 3
-	note D#, 1
-	note __, 1
+	rest 1
 	octave 2
 	note F_, 1
-	note __, 1
+	rest 1
 	octave 3
 	note D#, 1
-	note __, 1
+	rest 1
 	octave 2
 	note F_, 1
-	note __, 1
+	rest 1
 	octave 3
 	note D#, 1
-	note __, 1
+	rest 1
 	octave 2
 	note F_, 1
-	note __, 1
+	rest 1
 	octave 3
 	note D#, 1
-	note __, 1
+	rest 1
 	octave 2
-	note G_, 1
-	note __, 1
-	octave 3
-	note G_, 1
-	note __, 1
-	octave 2
-	note G_, 1
-	note __, 1
-	octave 3
-	note G_, 1
-	note __, 1
-	octave 2
-	note G_, 1
-	note __, 1
-	octave 3
-	note G_, 1
-	note __, 1
-	octave 2
-	note G_, 1
-	note __, 1
-	octave 3
-	note G_, 1
-	note __, 1
-	octave 2
-	note G#, 1
-	note __, 1
+	note F_, 1
+	rest 1
 	octave 3
 	note D#, 1
-	note __, 1
+	rest 1
 	octave 2
-	note G#, 1
-	note __, 1
-	octave 3
-	note D#, 1
-	note __, 1
-	octave 2
-	note G#, 1
-	note __, 1
-	octave 3
-	note D#, 1
-	note __, 1
 	note G_, 1
-	note __, 1
+	rest 1
+	octave 3
+	note G_, 1
+	rest 1
+	octave 2
+	note G_, 1
+	rest 1
+	octave 3
+	note G_, 1
+	rest 1
+	octave 2
+	note G_, 1
+	rest 1
+	octave 3
+	note G_, 1
+	rest 1
+	octave 2
+	note G_, 1
+	rest 1
+	octave 3
+	note G_, 1
+	rest 1
+	octave 2
 	note G#, 1
-	note __, 1
-	loopchannel 0, Music_LookYoungster_branch_f67ae
-; f6810
+	rest 1
+	octave 3
+	note D#, 1
+	rest 1
+	octave 2
+	note G#, 1
+	rest 1
+	octave 3
+	note D#, 1
+	rest 1
+	octave 2
+	note G#, 1
+	rest 1
+	octave 3
+	note D#, 1
+	rest 1
+	note G_, 1
+	rest 1
+	note G#, 1
+	rest 1
+	sound_loop 0, .mainloop
 
-
-INCBIN "baserom.gbc", $f6810, $f6811 - $f6810
-
-
-
+	sound_ret ; unused

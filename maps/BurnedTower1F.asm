@@ -1,21 +1,23 @@
-	const_def 2 ; object constants
+	object_const_def
 	const BURNEDTOWER1F_FIREBREATHER_DICK
-	const BURNEDTOWER1F_MORTY
-	const BURNEDTOWER1F_POKE_BALL
-	const BURNEDTOWER1F_EUSINE
+	const BURNEDTOWER1F_FIREBREATHER_NED
+	const BURNEDTOWER1F_ROCK1
+	const BURNEDTOWER1F_ROCK2
 	const BURNEDTOWER1F_SILVER
 	const BURNEDTOWER1F_FIREBREATHER_DICK_ASHES
+	const BURNEDTOWER1F_POKE_BALL1
+	const BURNEDTOWER1F_POKE_BALL2
 
 BurnedTower1F_MapScripts:
-	db 3 ; scene scripts
+	def_scene_scripts
 	scene_script .RivalScene ; SCENE_DEFAULT
 	scene_script .DummyScene1 ; SCENE_BURNEDTOWER1F_RIVAL_BATTLE
 	scene_script .DummyScene2 ; SCENE_BURNEDTOWER1F_NOTHING
 
-	db 0 ; callbacks
+	def_callbacks
 
 .RivalScene:
-	priorityjump .Rival
+	prioritysjump .Rival
 	end
 
 .DummyScene1:
@@ -51,7 +53,7 @@ BurnedTower1F_MapScripts:
 	startbattle
 	dontrestartmapmusic
 	reloadmapafterbattle
-	jump .returnfrombattle
+	sjump .returnfrombattle
 
 .totodile
 	winlosstext BurnedTowerSilver_WinText, BurnedTowerSilver_LossText
@@ -60,7 +62,7 @@ BurnedTower1F_MapScripts:
 	startbattle
 	dontrestartmapmusic
 	reloadmapafterbattle
-	jump .returnfrombattle
+	sjump .returnfrombattle
 
 .chikorita
 	winlosstext BurnedTowerSilver_WinText, BurnedTowerSilver_LossText
@@ -69,7 +71,7 @@ BurnedTower1F_MapScripts:
 	startbattle
 	dontrestartmapmusic
 	reloadmapafterbattle
-	jump .returnfrombattle
+	sjump .returnfrombattle
 
 .returnfrombattle
 	playmusic MUSIC_RIVAL_AFTER
@@ -96,7 +98,7 @@ FirebreatherDickFight:
 	writetext FirebreatherDickBeforeText
 	waitbutton
 	closetext
-	winlosstext FirebreatherDickBattleWinText, -1
+	winlosstext FirebreatherDickBeatenText, -1
 	setlasttalked BURNEDTOWER1F_FIREBREATHER_DICK
 	loadtrainer FIREBREATHER, DICK
 	startbattle
@@ -116,24 +118,24 @@ FirebreatherDickFight:
 FirebreatherDickPostBattle:
 	faceplayer
 	opentext
-	writetext BurnedTower1FEusineText
+	writetext FirebreatherDickAfterText
 	waitbutton
 	closetext
 	end
 
 TrainerFirebreatherNed:
-	trainer FIREBREATHER, NED, EVENT_BEAT_FIREBREATHER_NED, BurnedTower1FMortyText, Text2, 0, .LossScript
+	trainer FIREBREATHER, NED, EVENT_BEAT_FIREBREATHER_NED, FirebreatherNedSeenText, FirebreatherNedBeatenText, 0, .Script
 
-.LossScript
+.Script
 	endifjustbattled
 	opentext
-	writetext Text3
+	writetext FirebreatherNedAfterText
 	waitbutton
 	closetext
 	end
 
 BurnedTower1FRock:
-	jumpstd smashrock
+	jumpstd SmashRockScript
 
 BurnedTower1FHiddenEther:
 	hiddenitem ETHER, EVENT_BURNED_TOWER_1F_HIDDEN_ETHER
@@ -232,12 +234,12 @@ FirebreatherDickBeforeText:
 	line "by looking!"
 	done
 
-FirebreatherDickBattleWinText:
+FirebreatherDickBeatenText:
 	text "I burned down to"
 	line "white ashes…"
 	done
 
-BurnedTower1FEusineText:
+FirebreatherDickAfterText:
 	text "I was so into my"
 	line "training that I"
 
@@ -245,7 +247,7 @@ BurnedTower1FEusineText:
 	line "hole."
 	done
 
-BurnedTower1FMortyText:
+FirebreatherNedSeenText:
 	text "My soul is on"
 	line "fire. I'll show"
 
@@ -253,12 +255,12 @@ BurnedTower1FMortyText:
 	line "burns!"
 	done
 
-Text2:
+FirebreatherNedBeatenText:
 	text "Still not hot"
 	line "enough…"
 	done
 
-Text3:
+FirebreatherNedAfterText:
 	text "In the past, there"
 	line "were these #MON"
 
@@ -277,7 +279,7 @@ Text3:
 BurnedTower1F_MapEvents:
 	db 0, 0 ; filler
 
-	db 14 ; warp events
+	def_warp_events
 	warp_event  9, 15, ECRUTEAK_CITY, 13
 	warp_event 10, 15, ECRUTEAK_CITY, 13
 	warp_event  5,  4, BURNED_TOWER_B1F, 1
@@ -293,18 +295,18 @@ BurnedTower1F_MapEvents:
 	warp_event 15, 14, BURNED_TOWER_B1F, 5
 	warp_event  7, 15, BURNED_TOWER_B1F, 6
 
-	db 1 ; coord events
+	def_coord_events
 	coord_event 8,  1, SCENE_BURNEDTOWER1F_RIVAL_BATTLE, FirebreatherDickFight
 
-	db 1 ; bg events
+	def_bg_events
 	bg_event  8,  7, BGEVENT_ITEM, BurnedTower1FHiddenEther
 
-	db 8 ; object events
+	def_object_events
 	object_event 8, 3, SPRITE_FISHER, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, PAL_NPC_RED, OBJECTTYPE_SCRIPT, 0, FirebreatherDickPostBattle, EVENT_BURNED_TOWER_FIREBREATHER_DICK_NORMAL
 	object_event 16, 8, SPRITE_FISHER, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_RED, OBJECTTYPE_TRAINER, 3, TrainerFirebreatherNed, -1
 	object_event 4, 3, SPRITE_ROCK, SPRITEMOVEDATA_SMASHABLE_ROCK, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, BurnedTower1FRock, -1
 	object_event 16, 13, SPRITE_ROCK, SPRITEMOVEDATA_SMASHABLE_ROCK, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, BurnedTower1FRock, -1
-	object_event 9, 12, SPRITE_SILVER, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, 0, OBJECTTYPE_TRAINER, 3, $2812, EVENT_RIVAL_BURNED_TOWER
-	object_event 8, 2, SPRITE_FISHER, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, PAL_NPC_SILVER, OBJECTTYPE_SCRIPT, 0, $4ef6, EVENT_BURNED_TOWER_FIREBREATHER_DICK_ASHES
+	object_event 9, 12, SPRITE_SILVER, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, 0, OBJECTTYPE_TRAINER, 3, ObjectEvent, EVENT_RIVAL_BURNED_TOWER
+	object_event 8, 2, SPRITE_FISHER, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, PAL_NPC_SILVER, OBJECTTYPE_SCRIPT, 0, FirebreatherDickPostBattle, EVENT_BURNED_TOWER_FIREBREATHER_DICK_ASHES
 	object_event 15, 2, SPRITE_POKE_BALL, SPRITEMOVEDATA_STILL, 0, 0, -1, -1, 0, OBJECTTYPE_ITEMBALL, 0, BurnedTower1FBurnHeal, EVENT_BURNED_TOWER_1F_X_SPEED
 	object_event 7, 5, SPRITE_POKE_BALL, SPRITEMOVEDATA_STILL, 0, 0, -1, -1, 0, OBJECTTYPE_ITEMBALL, 0, BurnedTower1FXSpeed, EVENT_BURNED_TOWER_1F_BURN_HEAL

@@ -1,4 +1,4 @@
-	const_def 2 ; object constants
+	object_const_def
 	const ILEXFOREST_FARFETCHD1
 	const ILEXFOREST_FARFETCHD2
 	const ILEXFOREST_FARFETCHD3
@@ -9,19 +9,15 @@
 	const ILEXFOREST_FARFETCHD8
 	const ILEXFOREST_FARFETCHD9
 	const ILEXFOREST_FARFETCHD10
-	const ILEXFOREST_YOUNGSTER1
+	const ILEXFOREST_YOUNGSTER
 	const ILEXFOREST_BLACK_BELT
 	const ILEXFOREST_ROCKER
-	const ILEXFOREST_POKE_BALL1
-	const ILEXFOREST_YOUNGSTER2
-	const ILEXFOREST_POKE_BALL2
-	const ILEXFOREST_POKE_BALL3
-	const ILEXFOREST_POKE_BALL4
+	const ILEXFOREST_POKE_BALL
 
 IlexForest_MapScripts:
-	db 0 ; scene scripts
+	def_scene_scripts
 
-	db 0 ; callbacks
+	def_callbacks
 
 IlexForestCharcoalApprenticeScript:
 	faceplayer
@@ -43,7 +39,7 @@ FarfetchdPosition1:
 	faceplayer
 	opentext
 	writetext Text_ItsTheMissingPokemon
-	buttonsound
+	promptbutton
 	writetext Text_Kwaaaa
 	cry FARFETCH_D
 	waitbutton
@@ -243,7 +239,7 @@ FarfetchdCryAndCheckFacing:
 	cry FARFETCH_D
 	waitbutton
 	closetext
-	checkcode VAR_FACING
+	readvar VAR_FACING
 	end
 
 IlexForestCharcoalMasterScript:
@@ -252,13 +248,13 @@ IlexForestCharcoalMasterScript:
 	checkevent EVENT_GOT_HM01_CUT
 	iftrue .AlreadyGotCut
 	writetext Text_CharcoalMasterIntro
-	buttonsound
+	promptbutton
 	verbosegiveitem HM_CUT
 	setevent EVENT_GOT_HM01_CUT
 	writetext Text_CharcoalMasterOutro
 	waitbutton
 	closetext
-	setevent EVENT_ILEX_FOREST_FARFETCHD10
+	setevent EVENT_ILEX_FOREST_FARFETCHD_10
 	setevent EVENT_ILEX_FOREST_APPRENTICE
 	setevent EVENT_ILEX_FOREST_CHARCOAL_MASTER
 	clearevent EVENT_CHARCOAL_KILN_FARFETCH_D
@@ -278,7 +274,7 @@ IlexForestHeadbuttGuyScript:
 	checkevent EVENT_GOT_TM02_HEADBUTT
 	iftrue .AlreadyGotHeadbutt
 	writetext Text_HeadbuttIntro
-	buttonsound
+	promptbutton
 	verbosegiveitem TM_HEADBUTT
 	iffalse .BagFull
 	setevent EVENT_GOT_TM02_HEADBUTT
@@ -301,9 +297,8 @@ IlexForestHiddenSuperPotion:
 IlexForestHiddenFullHeal:
 	hiddenitem FULL_HEAL, EVENT_ILEX_FOREST_HIDDEN_FULL_HEAL
 
-IlexForestBoulder:
-; unused
-	jumpstd strengthboulder
+IlexForestBoulder: ; unreferenced
+	jumpstd StrengthBoulderScript
 
 IlexForestSignpost:
 	jumptext IlexForestSignpostText
@@ -664,31 +659,31 @@ Text_IlexForestShrine:
 IlexForest_MapEvents:
 	db 0, 0 ; filler
 
-	db 3 ; warp events
+	def_warp_events
 	warp_event  1,  5, ROUTE_34_ILEX_FOREST_GATE, 3
 	warp_event  3, 42, ILEX_FOREST_AZALEA_GATE, 1
 	warp_event  3, 43, ILEX_FOREST_AZALEA_GATE, 2
 
-	db 0 ; coord events
+	def_coord_events
 
-	db 5 ; bg events
+	def_bg_events
 	bg_event  3, 17, BGEVENT_READ, IlexForestSignpost
 	bg_event 27,  1, BGEVENT_ITEM, IlexForestHiddenEther
 	bg_event 17,  7, BGEVENT_ITEM, IlexForestHiddenSuperPotion
 	bg_event  9, 17, BGEVENT_ITEM, IlexForestHiddenFullHeal
 	bg_event  8, 22, BGEVENT_READ, IlexForestShrineScript
 
-	db 14 ; object events
-	object_event 14, 31, SPRITE_BIRD, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, PAL_NPC_BROWN, OBJECTTYPE_SCRIPT, 0, FarfetchdPosition1, EVENT_ILEX_FOREST_FARFETCHD1
-	object_event 15, 25, SPRITE_BIRD, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, PAL_NPC_BROWN, OBJECTTYPE_SCRIPT, 0, FarfetchdPosition2, EVENT_ILEX_FOREST_FARFETCHD2
-	object_event 20, 24, SPRITE_BIRD, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, PAL_NPC_BROWN, OBJECTTYPE_SCRIPT, 0, FarfetchdPosition3, EVENT_ILEX_FOREST_FARFETCHD3
-	object_event 29, 22, SPRITE_BIRD, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, PAL_NPC_BROWN, OBJECTTYPE_SCRIPT, 0, FarfetchdPosition4, EVENT_ILEX_FOREST_FARFETCHD4
-	object_event 28, 31, SPRITE_BIRD, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, PAL_NPC_BROWN, OBJECTTYPE_SCRIPT, 0, FarfetchdPosition5, EVENT_ILEX_FOREST_FARFETCHD5
-	object_event 24, 35, SPRITE_BIRD, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, PAL_NPC_BROWN, OBJECTTYPE_SCRIPT, 0, FarfetchdPosition6, EVENT_ILEX_FOREST_FARFETCHD6
-	object_event 22, 31, SPRITE_BIRD, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, PAL_NPC_BROWN, OBJECTTYPE_SCRIPT, 0, FarfetchdPosition7, EVENT_ILEX_FOREST_FARFETCHD7
-	object_event 15, 29, SPRITE_BIRD, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, PAL_NPC_BROWN, OBJECTTYPE_SCRIPT, 0, FarfetchdPosition8, EVENT_ILEX_FOREST_FARFETCHD8
-	object_event 10, 35, SPRITE_BIRD, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, PAL_NPC_BROWN, OBJECTTYPE_SCRIPT, 0, FarfetchdPosition9, EVENT_ILEX_FOREST_FARFETCHD9
- 	object_event 6, 28, SPRITE_BIRD, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, PAL_NPC_BROWN, OBJECTTYPE_SCRIPT, 0, FarfetchdPosition10, EVENT_ILEX_FOREST_FARFETCHD10
+	def_object_events
+	object_event 14, 31, SPRITE_BIRD, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, PAL_NPC_BROWN, OBJECTTYPE_SCRIPT, 0, FarfetchdPosition1, EVENT_ILEX_FOREST_FARFETCHD_1
+	object_event 15, 25, SPRITE_BIRD, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, PAL_NPC_BROWN, OBJECTTYPE_SCRIPT, 0, FarfetchdPosition2, EVENT_ILEX_FOREST_FARFETCHD_2
+	object_event 20, 24, SPRITE_BIRD, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, PAL_NPC_BROWN, OBJECTTYPE_SCRIPT, 0, FarfetchdPosition3, EVENT_ILEX_FOREST_FARFETCHD_3
+	object_event 29, 22, SPRITE_BIRD, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, PAL_NPC_BROWN, OBJECTTYPE_SCRIPT, 0, FarfetchdPosition4, EVENT_ILEX_FOREST_FARFETCHD_4
+	object_event 28, 31, SPRITE_BIRD, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, PAL_NPC_BROWN, OBJECTTYPE_SCRIPT, 0, FarfetchdPosition5, EVENT_ILEX_FOREST_FARFETCHD_5
+	object_event 24, 35, SPRITE_BIRD, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, PAL_NPC_BROWN, OBJECTTYPE_SCRIPT, 0, FarfetchdPosition6, EVENT_ILEX_FOREST_FARFETCHD_6
+	object_event 22, 31, SPRITE_BIRD, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, PAL_NPC_BROWN, OBJECTTYPE_SCRIPT, 0, FarfetchdPosition7, EVENT_ILEX_FOREST_FARFETCHD_7
+	object_event 15, 29, SPRITE_BIRD, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, PAL_NPC_BROWN, OBJECTTYPE_SCRIPT, 0, FarfetchdPosition8, EVENT_ILEX_FOREST_FARFETCHD_8
+	object_event 10, 35, SPRITE_BIRD, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, PAL_NPC_BROWN, OBJECTTYPE_SCRIPT, 0, FarfetchdPosition9, EVENT_ILEX_FOREST_FARFETCHD_9
+ 	object_event 6, 28, SPRITE_BIRD, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, PAL_NPC_BROWN, OBJECTTYPE_SCRIPT, 0, FarfetchdPosition10, EVENT_ILEX_FOREST_FARFETCHD_10
         object_event  7, 28, SPRITE_YOUNGSTER, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_GREEN, OBJECTTYPE_SCRIPT, 0, IlexForestCharcoalApprenticeScript, EVENT_ILEX_FOREST_APPRENTICE
         object_event  5, 28, SPRITE_BLACK_BELT, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, IlexForestCharcoalMasterScript, EVENT_ILEX_FOREST_CHARCOAL_MASTER
         object_event 15, 14, SPRITE_ROCKER, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, IlexForestHeadbuttGuyScript, -1

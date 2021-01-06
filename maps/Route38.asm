@@ -1,16 +1,15 @@
-	const_def 2 ; object constants
+	object_const_def
 	const ROUTE38_STANDING_YOUNGSTER1
 	const ROUTE38_LASS
 	const ROUTE38_STANDING_YOUNGSTER2
-	const ROUTE38_BUENA1
+	const ROUTE38_BEAUTY
 	const ROUTE38_SAILOR
 	const ROUTE38_FRUIT_TREE
-	const ROUTE38_BUENA2
 
 Route38_MapScripts:
-	db 0 ; scene scripts
+	def_scene_scripts
 
-	db 0 ; callbacks
+	def_callbacks
 
 TrainerBirdKeeperToby:
 	trainer BIRD_KEEPER, TOBY, EVENT_BEAT_BIRD_KEEPER_TOBY, BirdKeeperTobySeenText, BirdKeeperTobyBeatenText, 0, .Script
@@ -46,11 +45,11 @@ TrainerLassDana1:
 	iftrue .NumberAccepted
 	checkevent EVENT_DANA_ASKED_FOR_PHONE_NUMBER
 	iftrue .SecondTimeAsking
-	writetext UnknownText_0x1a20ec
-	buttonsound
+	writetext LassDanaMoomooMilkText
+	promptbutton
 	setevent EVENT_DANA_ASKED_FOR_PHONE_NUMBER
 	scall .AskNumber1F
-	jump .AskForPhoneNumber
+	sjump .AskForPhoneNumber
 
 .SecondTimeAsking:
 	scall .AskNumber2F
@@ -58,9 +57,9 @@ TrainerLassDana1:
 	askforphonenumber PHONE_LASS_DANA
 	ifequal PHONE_CONTACTS_FULL, .PhoneFull
 	ifequal PHONE_CONTACT_REFUSED, .DeclinedPhoneNumber
-	trainertotext LASS, DANA1, MEM_BUFFER_0
+	gettrainername STRING_BUFFER_3, LASS, DANA1
 	scall .RegisteredPhoneNumber
-	jump .NumberAccepted
+	sjump .NumberAccepted
 
 .DanaRematch:
 	scall .Rematch
@@ -90,31 +89,31 @@ TrainerLassDana1:
 	end
 
 .AskNumber1F:
-	jumpstd asknumber1f
+	jumpstd AskNumber1FScript
 	end
 
 .AskNumber2F:
-	jumpstd asknumber2f
+	jumpstd AskNumber2FScript
 	end
 
 .RegisteredPhoneNumber:
-	jumpstd registerednumberf
+	jumpstd RegisteredNumberFScript
 	end
 
 .NumberAccepted:
-	jumpstd numberacceptedf
+	jumpstd NumberAcceptedFScript
 	end
 
 .DeclinedPhoneNumber:
-	jumpstd numberdeclinedf
+	jumpstd NumberDeclinedFScript
 	end
 
 .PhoneFull:
-	jumpstd phonefullf
+	jumpstd PhoneFullFScript
 	end
 
 .Rematch:
-	jumpstd rematchf
+	jumpstd RematchFScript
 	end
 
 TrainerSchoolboyChad1:
@@ -129,11 +128,11 @@ TrainerSchoolboyChad1:
 	iftrue .HaveChadsNumber
 	checkevent EVENT_CHAD_ASKED_FOR_PHONE_NUMBER
 	iftrue .SecondTimeAsking
-	writetext UnknownText_0x1a200e
-	buttonsound
+	writetext SchoolboyChadSoManyTestsText
+	promptbutton
 	setevent EVENT_CHAD_ASKED_FOR_PHONE_NUMBER
 	scall .AskPhoneNumber1
-	jump .AskToRegisterNumber
+	sjump .AskToRegisterNumber
 
 .SecondTimeAsking:
 	scall .AskPhoneNumber2
@@ -141,9 +140,9 @@ TrainerSchoolboyChad1:
 	askforphonenumber PHONE_SCHOOLBOY_CHAD
 	ifequal PHONE_CONTACTS_FULL, .PhoneFull
 	ifequal PHONE_CONTACT_REFUSED, .SaidNo
-	trainertotext SCHOOLBOY, CHAD1, MEM_BUFFER_0
+	gettrainername STRING_BUFFER_3, SCHOOLBOY, CHAD1
 	scall .RegisteredChad
-	jump .HaveChadsNumber
+	sjump .HaveChadsNumber
 
 .ChadRematch:
 	scall .Rematch
@@ -173,31 +172,31 @@ TrainerSchoolboyChad1:
 	end
 
 .AskPhoneNumber1:
-	jumpstd asknumber1m
+	jumpstd AskNumber1MScript
 	end
 
 .AskPhoneNumber2:
-	jumpstd asknumber2m
+	jumpstd AskNumber2MScript
 	end
 
 .RegisteredChad:
-	jumpstd registerednumberm
+	jumpstd RegisteredNumberMScript
 	end
 
 .HaveChadsNumber:
-	jumpstd numberacceptedm
+	jumpstd NumberAcceptedMScript
 	end
 
 .SaidNo:
-	jumpstd numberdeclinedm
+	jumpstd NumberDeclinedMScript
 	end
 
 .PhoneFull:
-	jumpstd phonefullm
+	jumpstd PhoneFullMScript
 	end
 
 .Rematch:
-	jumpstd rematchm
+	jumpstd RematchMScript
 	end
 
 TrainerBeautyValerie:
@@ -250,7 +249,7 @@ SchoolboyChad1BeatenText:
 	line "enough, I guess."
 	done
 
-UnknownText_0x1a200e:
+SchoolboyChadSoManyTestsText:
 	text "I have to take so"
 	line "many tests, I"
 
@@ -275,7 +274,7 @@ LassDana1BeatenText:
 	line "battle that way."
 	done
 
-UnknownText_0x1a20ec:
+LassDanaMoomooMilkText:
 	text "I know something"
 	line "good!"
 
@@ -350,20 +349,20 @@ Route38TrainerTipsText:
 Route38_MapEvents:
 	db 0, 0 ; filler
 
-	db 2 ; warp events
+	def_warp_events
 	warp_event 35,  8, ROUTE_38_ECRUTEAK_GATE, 1
 	warp_event 35,  9, ROUTE_38_ECRUTEAK_GATE, 2
 
-	db 0 ; coord events
+	def_coord_events
 
-	db 2 ; bg events
+	def_bg_events
 	bg_event 33,  7, BGEVENT_READ, Route38Sign
 	bg_event  5, 13, BGEVENT_READ, Route38TrainerTips
 
-	db 6 ; object events
+	def_object_events
 	object_event  4,  1, SPRITE_YOUNGSTER, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, PAL_NPC_BLUE, OBJECTTYPE_TRAINER, 3, TrainerSchoolboyChad1, -1
 	object_event 15,  3, SPRITE_LASS, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, PAL_NPC_BLUE, OBJECTTYPE_TRAINER, 2, TrainerLassDana1, -1
 	object_event 15, 10, SPRITE_YOUNGSTER, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, PAL_NPC_BLUE, OBJECTTYPE_TRAINER, 2, TrainerBirdKeeperToby, -1
-	object_event  9,  6, SPRITE_BUENA, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_BLUE, OBJECTTYPE_TRAINER, 2, TrainerBeautyValerie, -1
+	object_event  9,  6, SPRITE_BEAUTY, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_BLUE, OBJECTTYPE_TRAINER, 2, TrainerBeautyValerie, -1
 	object_event 25,  5, SPRITE_SAILOR, SPRITEMOVEDATA_SPINCLOCKWISE, 0, 0, -1, -1, PAL_NPC_BLUE, OBJECTTYPE_TRAINER, 2, TrainerSailorHarry, -1
 	object_event 12, 10, SPRITE_FRUIT_TREE, SPRITEMOVEDATA_STILL, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, Route38FruitTree, -1

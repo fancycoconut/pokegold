@@ -1,19 +1,18 @@
-	const_def 2 ; object constants
+	object_const_def
 	const ROUTE39_SAILOR
 	const ROUTE39_POKEFAN_M
-	const ROUTE39_POKEFAN_F1
+	const ROUTE39_POKEFAN_F
 	const ROUTE39_MILTANK1
 	const ROUTE39_MILTANK2
 	const ROUTE39_MILTANK3
 	const ROUTE39_MILTANK4
 	const ROUTE39_PSYCHIC_NORMAN
 	const ROUTE39_FRUIT_TREE
-	const ROUTE39_POKEFAN_F2
 
 Route39_MapScripts:
-	db 0 ; scene scripts
+	def_scene_scripts
 
-	db 0 ; callbacks
+	def_callbacks
 
 Route39Miltank:
 	opentext
@@ -36,10 +35,10 @@ TrainerPokefanmDerek:
 	checkevent EVENT_DEREK_ASKED_FOR_PHONE_NUMBER
 	iftrue .AskedAlready
 	writetext PokefanMDerekText_NotBragging
-	buttonsound
+	promptbutton
 	setevent EVENT_DEREK_ASKED_FOR_PHONE_NUMBER
 	scall .AskNumber1
-	jump .AskForNumber
+	sjump .AskForNumber
 
 .AskedAlready:
 	scall .AskNumber2
@@ -47,9 +46,9 @@ TrainerPokefanmDerek:
 	askforphonenumber PHONE_POKEFANM_DEREK
 	ifequal PHONE_CONTACTS_FULL, .PhoneFull
 	ifequal PHONE_CONTACT_REFUSED, .NumberDeclined
-	trainertotext POKEFANM, DEREK1, MEM_BUFFER_0
+	gettrainername STRING_BUFFER_3, POKEFANM, DEREK1
 	scall .RegisteredNumber
-	jump .NumberAccepted
+	sjump .NumberAccepted
 
 .WantsBattle:
 	scall .Rematch
@@ -79,31 +78,31 @@ TrainerPokefanmDerek:
 	end
 
 .AskNumber1:
-	jumpstd asknumber1m
+	jumpstd AskNumber1MScript
 	end
 
 .AskNumber2:
-	jumpstd asknumber2m
+	jumpstd AskNumber2MScript
 	end
 
 .RegisteredNumber:
-	jumpstd registerednumberm
+	jumpstd RegisteredNumberMScript
 	end
 
 .NumberAccepted:
-	jumpstd numberacceptedm
+	jumpstd NumberAcceptedMScript
 	end
 
 .NumberDeclined:
-	jumpstd numberdeclinedm
+	jumpstd NumberDeclinedMScript
 	end
 
 .PhoneFull:
-	jumpstd phonefullm
+	jumpstd PhoneFullMScript
 	end
 
 .Rematch:
-	jumpstd rematchm
+	jumpstd RematchMScript
 	end
 
 TrainerPokefanfRuth:
@@ -278,19 +277,19 @@ Route39TrainerTipsText:
 Route39_MapEvents:
 	db 0, 0 ; filler
 
-	db 2 ; warp events
+	def_warp_events
 	warp_event  1,  3, ROUTE_39_BARN, 1
 	warp_event  5,  3, ROUTE_39_FARMHOUSE, 1
 
-	db 0 ; coord events
+	def_coord_events
 
-	db 4 ; bg events
+	def_bg_events
 	bg_event  5, 31, BGEVENT_READ, Route39TrainerTips
 	bg_event  9,  5, BGEVENT_READ, MoomooFarmSign
 	bg_event 15,  7, BGEVENT_READ, Route39Sign
 	bg_event  5, 13, BGEVENT_ITEM, Route39HiddenNugget
 
-	db 9 ; object events
+	def_object_events
 	object_event 13, 29, SPRITE_SAILOR, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, PAL_NPC_BLUE, OBJECTTYPE_TRAINER, 5, TrainerSailorEugene, -1
 	object_event 11, 19, SPRITE_POKEFAN_M, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, PAL_NPC_RED, OBJECTTYPE_TRAINER, 4, TrainerPokefanmDerek, -1
 	object_event 13, 22, SPRITE_POKEFAN_F, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, PAL_NPC_RED, OBJECTTYPE_TRAINER, 5, TrainerPokefanfRuth, -1

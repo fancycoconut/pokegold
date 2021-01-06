@@ -1,33 +1,32 @@
-	const_def 2 ; object constants
+	object_const_def
 	const CIANWOODPOKECENTER1F_NURSE
 	const CIANWOODPOKECENTER1F_LASS
-	const CIANWOODPOKECENTER1F_GYM_GUY
-	const CIANWOODPOKECENTER1F_SUPER_NERD
+	const CIANWOODPOKECENTER1F_GYM_GUIDE
 
 CianwoodPokecenter1F_MapScripts:
-	db 0 ; scene scripts
+	def_scene_scripts
 
-	db 0 ; callbacks
+	def_callbacks
 
 CianwoodPokecenter1FNurseScript:
-	jumpstd pokecenternurse
+	jumpstd PokecenterNurseScript
 
 CianwoodPokecenter1FLassScript:
 	jumptextfaceplayer CianwoodPokecenter1FLassText
 
-CianwoodGymGuyScript:
+CianwoodGymGuideScript:
 	faceplayer
 	checkevent EVENT_BEAT_CHUCK
-	iftrue .CianwoodGymGuyWinScript
+	iftrue .CianwoodGymGuideWinScript
 	opentext
-	writetext CianwoodGymGuyText
+	writetext CianwoodGymGuideText
 	waitbutton
 	closetext
 	end
 
-.CianwoodGymGuyWinScript:
+.CianwoodGymGuideWinScript:
 	opentext
-	writetext CianwoodGymGuyWinText
+	writetext CianwoodGymGuideWinText
 	waitbutton
 	closetext
 	end
@@ -41,7 +40,7 @@ CianwoodPokecenter1FLassText:
 	cont "rare #MON."
 	done
 
-CianwoodGymGuyText:
+CianwoodGymGuideText:
 	text "The #MON GYM"
 	line "trainers here are"
 	cont "macho bullies."
@@ -67,7 +66,7 @@ CianwoodGymGuyText:
 	line "physical strength."
 	done
 
-CianwoodGymGuyWinText:
+CianwoodGymGuideWinText:
 	text "<PLAYER>! You won!"
 	line "I could tell by"
 	cont "looking at you!"
@@ -76,16 +75,16 @@ CianwoodGymGuyWinText:
 CianwoodPokecenter1F_MapEvents:
 	db 0, 0 ; filler
 
-	db 3 ; warp events
+	def_warp_events
 	warp_event  3,  7, CIANWOOD_CITY, 3
 	warp_event  4,  7, CIANWOOD_CITY, 3
 	warp_event  0,  7, POKECENTER_2F, 1
 
-	db 0 ; coord events
+	def_coord_events
 
-	db 0 ; bg events
+	def_bg_events
 
-	db 3 ; object events
+	def_object_events
 	object_event  3,  1, SPRITE_NURSE, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, CianwoodPokecenter1FNurseScript, -1
 	object_event  1,  5, SPRITE_LASS, SPRITEMOVEDATA_WALK_UP_DOWN, 0, 1, -1, -1, PAL_NPC_GREEN, OBJECTTYPE_SCRIPT, 0, CianwoodPokecenter1FLassScript, -1
-	object_event  5,  3, SPRITE_GYM_GUY, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_RED, OBJECTTYPE_SCRIPT, 0, CianwoodGymGuyScript, -1
+	object_event  5,  3, SPRITE_GYM_GUIDE, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_RED, OBJECTTYPE_SCRIPT, 0, CianwoodGymGuideScript, -1

@@ -1,51 +1,45 @@
-	const_def 2 ; object constants
+	object_const_def
 	const DRAGONSDENB1F_POKE_BALL1
 	const DRAGONSDENB1F_CLAIR
 	const DRAGONSDENB1F_SILVER
-	const DRAGONSDENB1F_COOLTRAINER_M
-	const DRAGONSDENB1F_COOLTRAINER_F
-	const DRAGONSDENB1F_TWIN1
-	const DRAGONSDENB1F_TWIN2
-	const DRAGONSDENB1F_POKE_BALL2
-	const DRAGONSDENB1F_POKE_BALL3
 
 DragonsDenB1F_MapScripts:
-	db 0 ; scene scripts
+	def_scene_scripts
 
-	db 1 ; callbacks
+	def_callbacks
 	callback MAPCALLBACK_NEWMAP, .CheckSilver
 
 .CheckSilver:
 	checkevent EVENT_BEAT_RIVAL_IN_MT_MOON
 	iftrue .CheckDay
 	disappear DRAGONSDENB1F_SILVER
-	return
+	endcallback
 
 .CheckDay:
-	checkcode VAR_WEEKDAY
+	readvar VAR_WEEKDAY
 	ifequal TUESDAY, .AppearSilver
 	ifequal THURSDAY, .AppearSilver
 	disappear DRAGONSDENB1F_SILVER
-	return
+	endcallback
 
 .AppearSilver:
 	appear DRAGONSDENB1F_SILVER
-	return
+	endcallback
 
 DragonsDenB1FDragonFangScript:
 	giveitem DRAGON_FANG
 	iffalse .BagFullDragonFang
 	disappear DRAGONSDENB1F_POKE_BALL1
 	opentext
-	itemtotext DRAGON_FANG, MEM_BUFFER_0
+	getitemname STRING_BUFFER_3, DRAGON_FANG
 	writetext Text_FoundDragonFang
 	playsound SFX_ITEM
 	waitsfx
 	itemnotify
 	closetext
-	checkcode VAR_FACING
+	readvar VAR_FACING
 	ifequal RIGHT, .next
-	jump .next2
+	sjump .next2
 .next
 	moveobject DRAGONSDENB1F_CLAIR, 34, 21
 .next2
@@ -54,7 +48,7 @@ DragonsDenB1FDragonFangScript:
 	turnobject PLAYER, DOWN
 	opentext
 	writetext ClairText_GiveDragonbreathDragonDen
-	buttonsound
+	promptbutton
 	waitsfx
 	writetext DragonShrinePlayerReceivedRisingBadgeText
 	playsound SFX_GET_BADGE
@@ -62,15 +56,15 @@ DragonsDenB1FDragonFangScript:
 	setflag ENGINE_RISINGBADGE
 	specialphonecall SPECIALCALL_MASTERBALL
 	writetext DragonShrineRisingBadgeExplanationText
-	buttonsound
+	promptbutton
 	verbosegiveitem TM_DRAGONBREATH, 1
 	iffalse .ClairLastText
 	setevent EVENT_GOT_TM24_DRAGONBREATH
 	writetext ClairText_DescribeDragonbreathDragonDen
-	buttonsound
-	jump .ClairLastText
+	promptbutton
+	sjump .ClairLastText
 .ClairLastText
-	writetext ClairText_WhatsTheMatterDragonDen
+	writetext ClairText_CollectedAllBadges
 	waitbutton
 	closetext
 	applymovement DRAGONSDENB1F_CLAIR, MovementDragonsDen_ClairWalksAway
@@ -79,9 +73,9 @@ DragonsDenB1FDragonFangScript:
 
 .BagFullDragonFang:
 	opentext
-	itemtotext DRAGON_FANG, MEM_BUFFER_0
+	getitemname STRING_BUFFER_3, DRAGON_FANG
 	writetext Text_FoundDragonFang
-	buttonsound
+	promptbutton
 	writetext Text_NoRoomForDragonFang
 	waitbutton
 	closetext
@@ -167,7 +161,7 @@ DragonShrineRisingBadgeExplanationText:
 	line "have this TM."
 	done
 
-NotifyReceiveDragonbreath:
+Text_ReceivedTM24: ; unreferenced
 	text "<PLAYER> received"
 	line "TM24."
 	done
@@ -185,7 +179,7 @@ ClairText_DescribeDragonbreathDragonDen:
 	cont "to take it."
 	done
 
-ClairText_WhatsTheMatterDragonDen:
+ClairText_CollectedAllBadges:
 	text "So, you've col-"
 	line "lected all the"
 	cont "BADGES."
@@ -259,7 +253,7 @@ SilverText_Training2:
 Text_FoundDragonFang:
 	text "<PLAYER> found a"
 	line "@"
-	text_from_ram wStringBuffer3
+	text_ram wStringBuffer3
 	text "!"
 	done
 
@@ -272,18 +266,18 @@ Text_NoRoomForDragonFang:
 DragonsDenB1F_MapEvents:
 	db 0, 0 ; filler
 
-	db 1 ; warp events
+	def_warp_events
 	warp_event 20,  3, DRAGONS_DEN_1F, 3
 
-	db 0 ; coord events
+	def_coord_events
 
-	db 4 ; bg events
+	def_bg_events
 	bg_event 18, 24, BGEVENT_READ, DragonShrineSignpost
 	bg_event 31,  4, BGEVENT_ITEM, DragonsDenB1FHiddenRevive
 	bg_event 21, 17, BGEVENT_ITEM, DragonsDenB1FHiddenMaxPotion
 	bg_event 31, 15, BGEVENT_ITEM, DragonsDenB1FHiddenMaxElixer
 
-	db 3 ; object events
+	def_object_events
 	object_event 35, 16, SPRITE_POKE_BALL, SPRITEMOVEDATA_STILL, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, DragonsDenB1FDragonFangScript, EVENT_DRAGONS_DEN_B1F_DRAGON_FANG
 	object_event 35, 22, SPRITE_CLAIR, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, PAL_NPC_BLUE, OBJECTTYPE_SCRIPT, 0, ObjectEvent, EVENT_DRAGONS_DEN_CLAIR
 	object_event 20, 23, SPRITE_SILVER, SPRITEMOVEDATA_WANDER, 2, 2, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, DragonsDenB1FSilverScript, EVENT_RIVAL_DRAGONS_DEN

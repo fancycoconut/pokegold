@@ -1,16 +1,15 @@
-	const_def 2 ; object constants
+	object_const_def
 	const ECRUTEAKGYM_MORTY
 	const ECRUTEAKGYM_SAGE1
 	const ECRUTEAKGYM_SAGE2
 	const ECRUTEAKGYM_GRANNY1
 	const ECRUTEAKGYM_GRANNY2
-	const ECRUTEAKGYM_GYM_GUY
-	const ECRUTEAKGYM_GRAMPS
+	const ECRUTEAKGYM_GYM_GUIDE
 
 EcruteakGym_MapScripts:
-	db 0 ; scene scripts
+	def_scene_scripts
 
-	db 0 ; callbacks
+	def_callbacks
 
 EcruteakGymMortyScript:
 	faceplayer
@@ -30,7 +29,7 @@ EcruteakGymMortyScript:
 	playsound SFX_GET_BADGE
 	waitsfx
 	setflag ENGINE_FOGBADGE
-	checkcode VAR_BADGES
+	readvar VAR_BADGES
 	scall EcruteakGymActivateRockets
 	setmapscene ECRUTEAK_TIN_TOWER_ENTRANCE, SCENE_FINISHED
 .FightDone:
@@ -41,7 +40,7 @@ EcruteakGymMortyScript:
 	setevent EVENT_BEAT_MEDIUM_MARTHA
 	setevent EVENT_BEAT_MEDIUM_GRACE
 	writetext MortyText_FogBadgeSpeech
-	buttonsound
+	promptbutton
 	verbosegiveitem TM_SHADOW_BALL
 	iffalse .NoRoomForShadowBall
 	setevent EVENT_GOT_TM30_SHADOW_BALL
@@ -63,10 +62,10 @@ EcruteakGymActivateRockets:
 	end
 
 .GoldenrodRockets:
-	jumpstd goldenrodrockets
+	jumpstd GoldenrodRocketsScript
 
 .RadioTowerRockets:
-	jumpstd radiotowerrockets
+	jumpstd RadioTowerRocketsScript
 
 TrainerSageJeffrey:
 	trainer SAGE, JEFFREY, EVENT_BEAT_SAGE_JEFFREY, SageJeffreySeenText, SageJeffreyBeatenText, 0, .Script
@@ -112,18 +111,18 @@ TrainerMediumGrace:
 	closetext
 	end
 
-EcruteakGymGuyScript:
+EcruteakGymGuideScript:
 	faceplayer
 	opentext
 	checkevent EVENT_BEAT_MORTY
-	iftrue .EcruteakGymGuyWinScript
-	writetext EcruteakGymGuyText
+	iftrue .EcruteakGymGuideWinScript
+	writetext EcruteakGymGuideText
 	waitbutton
 	closetext
 	end
 
-.EcruteakGymGuyWinScript:
-	writetext EcruteakGymGuyWinText
+.EcruteakGymGuideWinScript:
+	writetext EcruteakGymGuideWinText
 	waitbutton
 	closetext
 	end
@@ -131,10 +130,10 @@ EcruteakGymGuyScript:
 EcruteakGymStatue:
 	checkflag ENGINE_FOGBADGE
 	iftrue .Beaten
-	jumpstd gymstatue1
+	jumpstd GymStatue1Script
 .Beaten:
-	trainertotext MORTY, MORTY1, MEM_BUFFER_1
-	jumpstd gymstatue2
+	gettrainername STRING_BUFFER_4, MORTY, MORTY1
+	jumpstd GymStatue2Script
 
 MortyIntroText:
 	text "Good of you to"
@@ -310,7 +309,7 @@ MediumGraceAfterBattleText:
 	line "before our eyes!"
 	done
 
-EcruteakGymGuyText:
+EcruteakGymGuideText:
 	text "The trainers here"
 	line "have secret mo-"
 	cont "tives."
@@ -322,7 +321,7 @@ EcruteakGymGuyText:
 	line "ECRUTEAK."
 	done
 
-EcruteakGymGuyWinText:
+EcruteakGymGuideWinText:
 	text "Whew, <PLAYER>."
 	line "You did great!"
 
@@ -334,7 +333,7 @@ EcruteakGymGuyWinText:
 EcruteakGym_MapEvents:
 	db 0, 0 ; filler
 
-	db 33 ; warp events
+	def_warp_events
 	warp_event  4, 17, ECRUTEAK_CITY, 10
 	warp_event  5, 17, ECRUTEAK_CITY, 10
 	warp_event  4, 14, ECRUTEAK_GYM, 4
@@ -369,16 +368,16 @@ EcruteakGym_MapEvents:
 	warp_event  7, 12, ECRUTEAK_GYM, 3
 	warp_event  7, 13, ECRUTEAK_GYM, 3
 
-	db 0 ; coord events
+	def_coord_events
 
-	db 2 ; bg events
+	def_bg_events
 	bg_event  3, 15, BGEVENT_READ, EcruteakGymStatue
 	bg_event  6, 15, BGEVENT_READ, EcruteakGymStatue
 
-	db 6 ; object events
+	def_object_events
 	object_event  5,  1, SPRITE_MORTY, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_BROWN, OBJECTTYPE_SCRIPT, 0, EcruteakGymMortyScript, -1
 	object_event  2,  7, SPRITE_SAGE, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, PAL_NPC_BLUE, OBJECTTYPE_TRAINER, 1, TrainerSageJeffrey, -1
 	object_event  3, 13, SPRITE_SAGE, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, PAL_NPC_BLUE, OBJECTTYPE_TRAINER, 3, TrainerSagePing, -1
 	object_event  7,  5, SPRITE_GRANNY, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, PAL_NPC_BROWN, OBJECTTYPE_TRAINER, 1, TrainerMediumMartha, -1
 	object_event  7,  9, SPRITE_GRANNY, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, PAL_NPC_BROWN, OBJECTTYPE_TRAINER, 1, TrainerMediumGrace, -1
-	object_event  7, 15, SPRITE_GYM_GUY, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_RED, OBJECTTYPE_SCRIPT, 0, EcruteakGymGuyScript, -1
+	object_event  7, 15, SPRITE_GYM_GUIDE, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_RED, OBJECTTYPE_SCRIPT, 0, EcruteakGymGuideScript, -1

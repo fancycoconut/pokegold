@@ -1,4 +1,4 @@
-	const_def 2 ; object constants
+	object_const_def
 	const ROUTE34_YOUNGSTER1
 	const ROUTE34_YOUNGSTER2
 	const ROUTE34_YOUNGSTER3
@@ -11,12 +11,11 @@
 	const ROUTE34_COOLTRAINER_F1
 	const ROUTE34_COOLTRAINER_F2
 	const ROUTE34_COOLTRAINER_F3
-	const ROUTE34_POKE_BALL
 
 Route34_MapScripts:
-	db 0 ; scene scripts
+	def_scene_scripts
 
-	db 1 ; callbacks
+	def_callbacks
 	callback MAPCALLBACK_OBJECTS, .EggCheckCallback
 
 .EggCheckCallback:
@@ -24,32 +23,32 @@ Route34_MapScripts:
 	iftrue .PutDayCareManOutside
 	clearevent EVENT_DAY_CARE_MAN_IN_DAY_CARE
 	setevent EVENT_DAY_CARE_MAN_ON_ROUTE_34
-	jump .CheckMon1
+	sjump .CheckMon1
 
 .PutDayCareManOutside:
 	setevent EVENT_DAY_CARE_MAN_IN_DAY_CARE
 	clearevent EVENT_DAY_CARE_MAN_ON_ROUTE_34
-	jump .CheckMon1
+	sjump .CheckMon1
 
 .CheckMon1:
 	checkflag ENGINE_DAY_CARE_MAN_HAS_MON
 	iffalse .HideMon1
 	clearevent EVENT_DAY_CARE_MON_1
-	jump .CheckMon2
+	sjump .CheckMon2
 
 .HideMon1:
 	setevent EVENT_DAY_CARE_MON_1
-	jump .CheckMon2
+	sjump .CheckMon2
 
 .CheckMon2:
 	checkflag ENGINE_DAY_CARE_LADY_HAS_MON
 	iffalse .HideMon2
 	clearevent EVENT_DAY_CARE_MON_2
-	return
+	endcallback
 
 .HideMon2:
 	setevent EVENT_DAY_CARE_MON_2
-	return
+	endcallback
 
 DayCareManScript_Outside:
 	faceplayer
@@ -59,7 +58,7 @@ DayCareManScript_Outside:
 	closetext
 	ifequal TRUE, .end_fail
 	clearflag ENGINE_DAY_CARE_MAN_HAS_EGG
-	checkcode VAR_FACING
+	readvar VAR_FACING
 	ifequal RIGHT, .walk_around_player
 	applymovement ROUTE34_GRAMPS, Route34MovementData_DayCareManWalksBackInside
 	playsound SFX_ENTER_DOOR
@@ -98,10 +97,10 @@ TrainerCamperTodd1:
 	checkevent EVENT_TODD_ASKED_FOR_PHONE_NUMBER
 	iftrue .AskAgain
 	writetext CamperTodd1AfterText
-	buttonsound
+	promptbutton
 	setevent EVENT_TODD_ASKED_FOR_PHONE_NUMBER
 	scall .AskNumber
-	jump .FinishAsk
+	sjump .FinishAsk
 
 .AskAgain:
 	scall .AskNumber2
@@ -109,9 +108,9 @@ TrainerCamperTodd1:
 	askforphonenumber PHONE_CAMPER_TODD
 	ifequal PHONE_CONTACTS_FULL, .PhoneFull
 	ifequal PHONE_CONTACT_REFUSED, .NumberDeclined
-	trainertotext CAMPER, TODD1, MEM_BUFFER_0
+	gettrainername STRING_BUFFER_3, CAMPER, TODD1
 	scall .RegisteredNumber
-	jump .NumberAccepted
+	sjump .NumberAccepted
 
 .Rematch:
 	scall .RematchStd
@@ -141,31 +140,31 @@ TrainerCamperTodd1:
 	end
 
 .AskNumber:
-	jumpstd asknumber1m
+	jumpstd AskNumber1MScript
 	end
 
 .AskNumber2:
-	jumpstd asknumber2m
+	jumpstd AskNumber2MScript
 	end
 
 .RegisteredNumber:
-	jumpstd registerednumberm
+	jumpstd RegisteredNumberMScript
 	end
 
 .NumberAccepted:
-	jumpstd numberacceptedm
+	jumpstd NumberAcceptedMScript
 	end
 
 .NumberDeclined:
-	jumpstd numberdeclinedm
+	jumpstd NumberDeclinedMScript
 	end
 
 .PhoneFull:
-	jumpstd phonefullm
+	jumpstd PhoneFullMScript
 	end
 
 .RematchStd:
-	jumpstd rematchm
+	jumpstd RematchMScript
 	end
 
 TrainerPicnickerGina1:
@@ -181,10 +180,10 @@ TrainerPicnickerGina1:
 	checkevent EVENT_GINA_ASKED_FOR_PHONE_NUMBER
 	iftrue .AskAgain
 	writetext PicnickerGina1AfterText
-	buttonsound
+	promptbutton
 	setevent EVENT_GINA_ASKED_FOR_PHONE_NUMBER
 	scall .AskNumber1
-	jump .FinishAsk
+	sjump .FinishAsk
 
 .AskAgain:
 	scall .AskNumber2
@@ -192,9 +191,9 @@ TrainerPicnickerGina1:
 	askforphonenumber PHONE_PICNICKER_GINA
 	ifequal PHONE_CONTACTS_FULL, .PhoneFull
 	ifequal PHONE_CONTACT_REFUSED, .NumberDeclined
-	trainertotext PICNICKER, GINA1, MEM_BUFFER_0
+	gettrainername STRING_BUFFER_3, PICNICKER, GINA1
 	scall .RegisteredNumber
-	jump .NumberAccepted
+	sjump .NumberAccepted
 
 .Rematch:
 	scall .RematchStd
@@ -224,31 +223,31 @@ TrainerPicnickerGina1:
 	end
 
 .AskNumber1:
-	jumpstd asknumber1f
+	jumpstd AskNumber1FScript
 	end
 
 .AskNumber2:
-	jumpstd asknumber2f
+	jumpstd AskNumber2FScript
 	end
 
 .RegisteredNumber:
-	jumpstd registerednumberf
+	jumpstd RegisteredNumberFScript
 	end
 
 .NumberAccepted:
-	jumpstd numberacceptedf
+	jumpstd NumberAcceptedFScript
 	end
 
 .NumberDeclined:
-	jumpstd numberdeclinedf
+	jumpstd NumberDeclinedFScript
 	end
 
 .PhoneFull:
-	jumpstd phonefullf
+	jumpstd PhoneFullFScript
 	end
 
 .RematchStd:
-	jumpstd rematchf
+	jumpstd RematchFScript
 	end
 
 OfficerKeithScript:
@@ -362,7 +361,7 @@ TrainerCooltrainerfKate:
 	checkevent EVENT_GOT_SOFT_SAND_FROM_KATE
 	iftrue .GotSoftSand
 	writetext CooltrainerfKateOfferSoftSandText
-	buttonsound
+	promptbutton
 	verbosegiveitem SOFT_SAND
 	iffalse .BagFull
 	setevent EVENT_GOT_SOFT_SAND_FROM_KATE
@@ -373,8 +372,7 @@ TrainerCooltrainerfKate:
 	closetext
 	end
 
-Route34IlexForestSign:
-; unused
+Route34IlexForestSign: ; unreferenced
 	jumptext Route34IlexForestSignText
 
 Route34Sign:
@@ -605,7 +603,6 @@ CooltrainerfKateAfterText:
 	done
 
 Route34IlexForestSignText:
-; unused
 	text "ILEX FOREST"
 	line "Through the Gate"
 	done
@@ -642,23 +639,23 @@ DayCareSignText:
 Route34_MapEvents:
 	db 0, 0 ; filler
 
-	db 5 ; warp events
+	def_warp_events
 	warp_event 13, 37, ROUTE_34_ILEX_FOREST_GATE, 1
 	warp_event 14, 37, ROUTE_34_ILEX_FOREST_GATE, 2
 	warp_event 11, 14, DAY_CARE, 1
 	warp_event 11, 15, DAY_CARE, 2
 	warp_event 13, 15, DAY_CARE, 3
 
-	db 0 ; coord events
+	def_coord_events
 
-	db 5 ; bg events
+	def_bg_events
 	bg_event 12,  6, BGEVENT_READ, Route34Sign
 	bg_event 13, 33, BGEVENT_READ, Route34TrainerTips
 	bg_event 10, 13, BGEVENT_READ, DayCareSign
 	bg_event  8, 32, BGEVENT_ITEM, Route34HiddenRareCandy
 	bg_event 17, 19, BGEVENT_ITEM, Route34HiddenSuperPotion
 
-	db 12 ; object events
+	def_object_events
 	object_event 13,  7, SPRITE_YOUNGSTER, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, PAL_NPC_GREEN, OBJECTTYPE_TRAINER, 5, TrainerCamperTodd1, -1
 	object_event 15, 33, SPRITE_YOUNGSTER, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, PAL_NPC_BLUE, OBJECTTYPE_TRAINER, 2, TrainerYoungsterSamuel, -1
 	object_event 17, 22, SPRITE_YOUNGSTER, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_BLUE, OBJECTTYPE_TRAINER, 3, TrainerYoungsterIan, -1

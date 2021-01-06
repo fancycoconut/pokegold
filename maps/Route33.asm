@@ -1,12 +1,11 @@
-	const_def 2 ; object constants
+	object_const_def
 	const ROUTE33_POKEFAN_M
-	const ROUTE33_LASS
 	const ROUTE33_FRUIT_TREE
 
 Route33_MapScripts:
-	db 0 ; scene scripts
+	def_scene_scripts
 
-	db 0 ; callbacks
+	def_callbacks
 
 TrainerHikerAnthony:
 	trainer HIKER, ANTHONY2, EVENT_BEAT_HIKER_ANTHONY, HikerAnthony2SeenText, HikerAnthony2BeatenText, 0, .Script
@@ -21,10 +20,10 @@ TrainerHikerAnthony:
 	checkevent EVENT_ANTHONY_ASKED_FOR_PHONE_NUMBER
 	iftrue .AskAgain
 	writetext HikerAnthony2AfterText
-	buttonsound
+	promptbutton
 	setevent EVENT_ANTHONY_ASKED_FOR_PHONE_NUMBER
 	scall .AskNumber1
-	jump .AskForPhoneNumber
+	sjump .AskForPhoneNumber
 
 .AskAgain:
 	scall .AskNumber2
@@ -32,9 +31,9 @@ TrainerHikerAnthony:
 	askforphonenumber PHONE_HIKER_ANTHONY
 	ifequal PHONE_CONTACTS_FULL, .PhoneFull
 	ifequal PHONE_CONTACT_REFUSED, .NumberDeclined
-	trainertotext HIKER, ANTHONY2, MEM_BUFFER_0
+	gettrainername STRING_BUFFER_3, HIKER, ANTHONY2
 	scall .RegisteredNumber
-	jump .NumberAccepted
+	sjump .NumberAccepted
 
 .Rematch:
 	scall .RematchStd
@@ -64,31 +63,31 @@ TrainerHikerAnthony:
 	end
 
 .AskNumber1:
-	jumpstd asknumber1m
+	jumpstd AskNumber1MScript
 	end
 
 .AskNumber2:
-	jumpstd asknumber2m
+	jumpstd AskNumber2MScript
 	end
 
 .RegisteredNumber:
-	jumpstd registerednumberm
+	jumpstd RegisteredNumberMScript
 	end
 
 .NumberAccepted:
-	jumpstd numberacceptedm
+	jumpstd NumberAcceptedMScript
 	end
 
 .NumberDeclined:
-	jumpstd numberdeclinedm
+	jumpstd NumberDeclinedMScript
 	end
 
 .PhoneFull:
-	jumpstd phonefullm
+	jumpstd PhoneFullMScript
 	end
 
 .RematchStd:
-	jumpstd rematchm
+	jumpstd RematchMScript
 	end
 
 Route33Sign:
@@ -123,14 +122,14 @@ Route33SignText:
 Route33_MapEvents:
 	db 0, 0 ; filler
 
-	db 1 ; warp events
+	def_warp_events
 	warp_event 11,  9, UNION_CAVE_1F, 3
 
-	db 0 ; coord events
+	def_coord_events
 
-	db 1 ; bg events
+	def_bg_events
 	bg_event 11, 11, BGEVENT_READ, Route33Sign
 
-	db 2 ; object events
+	def_object_events
 	object_event  6, 13, SPRITE_POKEFAN_M, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, PAL_NPC_BROWN, OBJECTTYPE_TRAINER, 2, TrainerHikerAnthony, -1
 	object_event 14, 16, SPRITE_FRUIT_TREE, SPRITEMOVEDATA_STILL, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, Route33FruitTree, -1

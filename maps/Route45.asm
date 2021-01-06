@@ -1,4 +1,4 @@
-	const_def 2 ; object constants
+	object_const_def
 	const ROUTE45_POKEFAN_M1
 	const ROUTE45_POKEFAN_M2
 	const ROUTE45_POKEFAN_M3
@@ -11,12 +11,11 @@
 	const ROUTE45_POKE_BALL2
 	const ROUTE45_POKE_BALL3
 	const ROUTE45_POKE_BALL4
-	const ROUTE45_YOUNGSTER
 
 Route45_MapScripts:
-	db 0 ; scene scripts
+	def_scene_scripts
 
-	db 0 ; callbacks
+	def_callbacks
 
 TrainerBlackbeltKenji:
 	trainer BLACKBELT_T, KENJI3, EVENT_BEAT_BLACKBELT_KENJI, BlackbeltKenjiSeenText, BlackbeltKenjiBeatenText, 0, .Script
@@ -34,7 +33,7 @@ TrainerBlackbeltKenji:
 	waitbutton
 	setevent EVENT_KENJI_ASKED_FOR_PHONE_NUMBER
 	scall Route45AskNumber1M
-	jump .AskForNumber
+	sjump .AskForNumber
 
 .AskedAlready:
 	scall Route45AskNumber2M
@@ -42,9 +41,9 @@ TrainerBlackbeltKenji:
 	askforphonenumber PHONE_BLACKBELT_KENJI
 	ifequal PHONE_CONTACTS_FULL, Route45PhoneFullM
 	ifequal PHONE_CONTACT_REFUSED, Route45NumberDeclinedM
-	trainertotext BLACKBELT_T, KENJI3, MEM_BUFFER_0
+	gettrainername STRING_BUFFER_3, BLACKBELT_T, KENJI3
 	scall Route45RegisteredNumberM
-	jump Route45NumberAcceptedM
+	sjump Route45NumberAcceptedM
 
 .WantsBattle:
 	scall Route45RematchM
@@ -74,31 +73,31 @@ TrainerBlackbeltKenji:
 	end
 
 Route45AskNumber1M:
-	jumpstd asknumber1m
+	jumpstd AskNumber1MScript
 	end
 
 Route45AskNumber2M:
-	jumpstd asknumber2m
+	jumpstd AskNumber2MScript
 	end
 
 Route45RegisteredNumberM:
-	jumpstd registerednumberm
+	jumpstd RegisteredNumberMScript
 	end
 
 Route45NumberAcceptedM:
-	jumpstd numberacceptedm
+	jumpstd NumberAcceptedMScript
 	end
 
 Route45NumberDeclinedM:
-	jumpstd numberdeclinedm
+	jumpstd NumberDeclinedMScript
 	end
 
 Route45PhoneFullM:
-	jumpstd phonefullm
+	jumpstd PhoneFullMScript
 	end
 
 Route45RematchM:
-	jumpstd rematchm
+	jumpstd RematchMScript
 	end
 
 TrainerHikerErik:
@@ -136,10 +135,10 @@ TrainerHikerParry:
 	checkevent EVENT_PARRY_ASKED_FOR_PHONE_NUMBER
 	iftrue .AskedAlready
 	writetext HikerParryAfterBattleText
-	buttonsound
+	promptbutton
 	setevent EVENT_PARRY_ASKED_FOR_PHONE_NUMBER
 	scall Route45AskNumber1M
-	jump .AskForNumber
+	sjump .AskForNumber
 
 .AskedAlready:
 	scall Route45AskNumber2M
@@ -147,9 +146,9 @@ TrainerHikerParry:
 	askforphonenumber PHONE_HIKER_PARRY
 	ifequal PHONE_CONTACTS_FULL, Route45PhoneFullM
 	ifequal PHONE_CONTACT_REFUSED, Route45NumberDeclinedM
-	trainertotext HIKER, PARRY1, MEM_BUFFER_0
+	gettrainername STRING_BUFFER_3, HIKER, PARRY1
 	scall Route45RegisteredNumberM
-	jump Route45NumberAcceptedM
+	sjump Route45NumberAcceptedM
 
 .WantsBattle:
 	scall Route45RematchM
@@ -387,7 +386,7 @@ CooltrainerfKellyAfterBattleText:
 	cont "to harm #MON."
 	done
 
-Route45DummyText:
+Route45DummyText: ; unreferenced
 	text "I'm pretty good at"
 	line "#MON too."
 	done
@@ -400,16 +399,16 @@ Route45SignText:
 Route45_MapEvents:
 	db 0, 0 ; filler
 
-	db 1 ; warp events
+	def_warp_events
 	warp_event  2,  5, DARK_CAVE_BLACKTHORN_ENTRANCE, 1
 
-	db 0 ; coord events
+	def_coord_events
 
-	db 2 ; bg events
+	def_bg_events
 	bg_event 10,  4, BGEVENT_READ, Route45Sign
 	bg_event 13, 80, BGEVENT_ITEM, Route45HiddenPpUp
 
-	db 12 ; object events
+	def_object_events
 	object_event 10, 16, SPRITE_POKEFAN_M, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, PAL_NPC_BROWN, OBJECTTYPE_TRAINER, 1, TrainerHikerErik, -1
 	object_event 15, 64, SPRITE_POKEFAN_M, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, PAL_NPC_BROWN, OBJECTTYPE_TRAINER, 2, TrainerHikerMichael, -1
 	object_event  5, 28, SPRITE_POKEFAN_M, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, PAL_NPC_BROWN, OBJECTTYPE_TRAINER, 3, TrainerHikerParry, -1

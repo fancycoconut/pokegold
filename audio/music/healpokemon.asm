@@ -1,56 +1,51 @@
-Music_HealPokemon: ; f0697
-	dbw $80, Music_HealPokemon_Ch1
-	dbw $01, Music_HealPokemon_Ch2
-	dbw $02, Music_HealPokemon_Ch3
-; f06a0
+Music_HealPokemon:
+	channel_count 3
+	channel 1, Music_HealPokemon_Ch1
+	channel 2, Music_HealPokemon_Ch2
+	channel 3, Music_HealPokemon_Ch3
 
-Music_HealPokemon_Ch1: ; f06a0
+Music_HealPokemon_Ch1:
 	tempo 144
-	volume $77
-	dutycycle $2
-	tone $0001
-	notetype $c, $81
-	note __, 2
-	unknownmusic0xe0 $0, $40
+	volume 7, 7
+	duty_cycle 2
+	pitch_offset 1
+	note_type 12, 8, 1
+	rest 2
+	pitch_slide 1, 4, B_
 	note B_, 2
-	unknownmusic0xe0 $0, $55
+	pitch_slide 1, 3, E_
 	note B_, 2
-	unknownmusic0xe0 $0, $45
+	pitch_slide 1, 4, E_
 	note E_, 2
-	note __, 4
-	unknownmusic0xe0 $0, $30
+	rest 4
+	pitch_slide 1, 5, B_
 	note E_, 4
-	unknownmusic0xe0 $0, $40
+	pitch_slide 1, 4, B_
 	note B_, 4
-	endchannel
-; f06c4
+	sound_ret
 
-Music_HealPokemon_Ch2: ; f06c4
-	dutycycle $2
-	notetype $c, $c3
+Music_HealPokemon_Ch2:
+	duty_cycle 2
+	note_type 12, 12, 3
 	octave 4
 	note B_, 4
 	note B_, 4
 	note B_, 2
 	note G#, 2
-	notetype $c, $c4
+	note_type 12, 12, 4
 	octave 5
 	note E_, 8
-	endchannel
-; f06d4
+	sound_ret
 
-Music_HealPokemon_Ch3: ; f06d4
-	notetype $c, $10
+Music_HealPokemon_Ch3:
+	note_type 12, 1, 0
 	octave 4
 	note E_, 2
-	note __, 2
+	rest 2
 	note E_, 2
-	note __, 2
+	rest 2
 	note E_, 2
 	note G#, 2
 	note E_, 6
-	note __, 2
-	endchannel
-; f06e1
-
-
+	rest 2
+	sound_ret

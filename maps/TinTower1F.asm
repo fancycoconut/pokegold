@@ -1,7 +1,10 @@
-TinTower1F_MapScripts:
-	db 0 ; scene scripts
+	object_const_def
+	const TINTOWER1F_SAGE
 
-	db 0 ; callbacks
+TinTower1F_MapScripts:
+	def_scene_scripts
+
+	def_callbacks
 
 TinTowerSageScript:
 	jumptextfaceplayer TinTowerSageText
@@ -40,14 +43,14 @@ TinTowerSageText:
 TinTower1F_MapEvents:
 	db 0, 0 ; filler
 
-	db 3 ; warp events
+	def_warp_events
 	warp_event  9, 15, ECRUTEAK_CITY, 12
 	warp_event 10, 15, ECRUTEAK_CITY, 12
 	warp_event 10,  2, TIN_TOWER_2F, 2
 
-	db 0 ; coord events
+	def_coord_events
 
-	db 0 ; bg events
+	def_bg_events
 
-	db 1 ; object events
+	def_object_events
 	object_event 10,  2, SPRITE_SAGE, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, TinTowerSageScript, EVENT_TEAM_ROCKET_DISBANDED

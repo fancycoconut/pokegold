@@ -1,15 +1,15 @@
-	const_def 2 ; object constants
+	object_const_def
 	const ECRUTEAKTINTOWERENTRANCE_SAGE1
 	const ECRUTEAKTINTOWERENTRANCE_SAGE2
 	const ECRUTEAKTINTOWERENTRANCE_SAGE3
 	const ECRUTEAKTINTOWERENTRANCE_GRAMPS
 
 EcruteakTinTowerEntrance_MapScripts:
-	db 2 ; scene scripts
+	def_scene_scripts
 	scene_script .DummyScene0 ; SCENE_DEFAULT
 	scene_script .DummyScene1 ; SCENE_FINISHED
 
-	db 0 ; callbacks
+	def_callbacks
 
 .DummyScene0:
 	end
@@ -17,30 +17,30 @@ EcruteakTinTowerEntrance_MapScripts:
 .DummyScene1:
 	end
 
-EcruteakTinTowerEntrance_CoordEvent1:
-	checkevent EVENT_RANG_CLEAR_BELL_2
-	iftrue EcruteakTinTowerEntrance_CoordEventEmpty
-	applymovement ECRUTEAKTINTOWERENTRANCE_SAGE2, MovementData_0x980c7
+EcruteakTinTowerEntranceSageBlocksLeft:
+	checkevent EVENT_ECRUTEAK_TIN_TOWER_ENTRANCE_SAGE_RIGHT
+	iftrue EcruteakTinTowerEntranceAlreadyBlocked
+	applymovement ECRUTEAKTINTOWERENTRANCE_SAGE2, EcruteakTinTowerEntranceSageBlocksLeftMovement
 	moveobject ECRUTEAKTINTOWERENTRANCE_SAGE1, 4, 6
 	appear ECRUTEAKTINTOWERENTRANCE_SAGE1
 	pause 5
 	disappear ECRUTEAKTINTOWERENTRANCE_SAGE2
 	end
 
-EcruteakTinTowerEntrance_CoordEvent2:
-	checkevent EVENT_RANG_CLEAR_BELL_1
-	iftrue EcruteakTinTowerEntrance_CoordEventEmpty
-	applymovement ECRUTEAKTINTOWERENTRANCE_SAGE1, MovementData_0x980cc
+EcruteakTinTowerEntranceSageBlocksRight:
+	checkevent EVENT_ECRUTEAK_TIN_TOWER_ENTRANCE_SAGE_LEFT
+	iftrue EcruteakTinTowerEntranceAlreadyBlocked
+	applymovement ECRUTEAKTINTOWERENTRANCE_SAGE1, EcruteakTinTowerEntranceSageBlocksRightMovement
 	moveobject ECRUTEAKTINTOWERENTRANCE_SAGE2, 5, 6
 	appear ECRUTEAKTINTOWERENTRANCE_SAGE2
 	pause 5
 	disappear ECRUTEAKTINTOWERENTRANCE_SAGE1
 	end
 
-EcruteakTinTowerEntrance_CoordEventEmpty:
+EcruteakTinTowerEntranceAlreadyBlocked:
 	end
 
-EcruteakTinTowerEntranceSageScript
+EcruteakTinTowerEntranceSageScript:
 	faceplayer
 	opentext
 	checkflag ENGINE_FOGBADGE
@@ -67,7 +67,7 @@ EcruteakTinTowerEntranceWanderingSageScript:
 	end
 
 .GotRainbowWing:
-	writetext EcruteakTinTowerEntranceWanderingSageText_GotClearBell
+	writetext EcruteakTinTowerEntranceWanderingSageText_GotRainbowWing
 	waitbutton
 	closetext
 	end
@@ -75,14 +75,14 @@ EcruteakTinTowerEntranceWanderingSageScript:
 EcruteakTinTowerEntranceGrampsScript:
 	jumptextfaceplayer EcruteakTinTowerEntranceGrampsText
 
-MovementData_0x980c7:
+EcruteakTinTowerEntranceSageBlocksLeftMovement:
 	fix_facing
 	big_step LEFT
 	remove_fixed_facing
 	turn_head DOWN
 	step_end
 
-MovementData_0x980cc:
+EcruteakTinTowerEntranceSageBlocksRightMovement:
 	fix_facing
 	big_step RIGHT
 	remove_fixed_facing
@@ -122,7 +122,7 @@ EcruteakTinTowerEntranceWanderingSageText:
 	line "flying #MON."
 	done
 
-EcruteakTinTowerEntranceWanderingSageText_GotClearBell:
+EcruteakTinTowerEntranceWanderingSageText_GotRainbowWing:
 	text "The TIN TOWER"
 	line "shook! A #MON"
 
@@ -144,21 +144,21 @@ EcruteakTinTowerEntranceGrampsText:
 EcruteakTinTowerEntrance_MapEvents:
 	db 0, 0 ; filler
 
-	db 5 ; warp events
+	def_warp_events
 	warp_event  4, 17, ECRUTEAK_CITY, 3
 	warp_event  5, 17, ECRUTEAK_CITY, 3
 	warp_event  5,  3, ECRUTEAK_TIN_TOWER_ENTRANCE, 4
 	warp_event 17, 15, ECRUTEAK_TIN_TOWER_ENTRANCE, 3
-	warp_event 17,  3, WISE_TRIOS_ROOM, 3
+	warp_event 17,  3, ECRUTEAK_TIN_TOWER_BACK_ENTRANCE, 3
 
-	db 2 ; coord events
-	coord_event  4,  7, SCENE_DEFAULT, EcruteakTinTowerEntrance_CoordEvent1
-	coord_event  5,  7, SCENE_DEFAULT, EcruteakTinTowerEntrance_CoordEvent2
+	def_coord_events
+	coord_event  4,  7, SCENE_DEFAULT, EcruteakTinTowerEntranceSageBlocksLeft
+	coord_event  5,  7, SCENE_DEFAULT, EcruteakTinTowerEntranceSageBlocksRight
 
-	db 0 ; bg events
+	def_bg_events
 
-	db 4 ; object events
-	object_event  4,  6, SPRITE_SAGE, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, EcruteakTinTowerEntranceSageScript, EVENT_RANG_CLEAR_BELL_1
-	object_event  5,  6, SPRITE_SAGE, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, EcruteakTinTowerEntranceSageScript, EVENT_RANG_CLEAR_BELL_2
+	def_object_events
+	object_event  4,  6, SPRITE_SAGE, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, EcruteakTinTowerEntranceSageScript, EVENT_ECRUTEAK_TIN_TOWER_ENTRANCE_SAGE_LEFT
+	object_event  5,  6, SPRITE_SAGE, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, EcruteakTinTowerEntranceSageScript, EVENT_ECRUTEAK_TIN_TOWER_ENTRANCE_SAGE_RIGHT
 	object_event  6,  9, SPRITE_SAGE, SPRITEMOVEDATA_WANDER, 1, 1, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, EcruteakTinTowerEntranceWanderingSageScript, -1
 	object_event  3, 11, SPRITE_GRAMPS, SPRITEMOVEDATA_WANDER, 1, 1, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, EcruteakTinTowerEntranceGrampsScript, -1

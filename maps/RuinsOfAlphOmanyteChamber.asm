@@ -1,22 +1,22 @@
 RuinsOfAlphOmanyteChamber_MapScripts:
-	db 0 ; scene scripts
+	def_scene_scripts
 
-	db 1 ; callbacks
+	def_callbacks
 	callback MAPCALLBACK_TILES, .HiddenDoors
 
 .HiddenDoors:
 	checkevent EVENT_SOLVED_OMANYTE_PUZZLE
 	iffalse .FloorClosed
-	return
+	endcallback
 
 .FloorClosed:
 	changeblock 2, 2, $01 ; left floor
 	changeblock 4, 2, $02 ; right floor
-	return
+	endcallback
 
 RuinsOfAlphOmanyteChamberPuzzle:
 	refreshscreen
-	writebyte UNOWNPUZZLE_OMANYTE
+	setval UNOWNPUZZLE_OMANYTE
 	special UnownPuzzle
 	closetext
 	iftrue .PuzzleComplete
@@ -60,18 +60,18 @@ RuinsOfAlphOmanyteChamberDescriptionText:
 RuinsOfAlphOmanyteChamber_MapEvents:
 	db 0, 0 ; filler
 
-	db 4 ; warp events
+	def_warp_events
 	warp_event  3,  9, RUINS_OF_ALPH_OUTSIDE, 3
 	warp_event  4,  9, RUINS_OF_ALPH_OUTSIDE, 3
 	warp_event  3,  3, RUINS_OF_ALPH_INNER_CHAMBER, 6
 	warp_event  4,  3, RUINS_OF_ALPH_INNER_CHAMBER, 7
 
-	db 0 ; coord events
+	def_coord_events
 
-	db 4 ; bg events
+	def_bg_events
 	bg_event  2,  3, BGEVENT_READ, RuinsOfAlphOmanyteChamberAncientReplica
 	bg_event  5,  3, BGEVENT_READ, RuinsOfAlphOmanyteChamberAncientReplica
 	bg_event  3,  2, BGEVENT_UP, RuinsOfAlphOmanyteChamberPuzzle
 	bg_event  4,  2, BGEVENT_UP, RuinsOfAlphOmanyteChamberDescriptionSign
 
-	db 0 ; object events
+	def_object_events

@@ -1,20 +1,18 @@
-Music_PostCredits: ; cfce3
-	dbw $40, Music_PostCredits_Ch1
-	dbw $01, Music_PostCredits_Ch2
-; cfce9
+Music_PostCredits:
+	channel_count 2
+	channel 1, Music_PostCredits_Ch1
+	channel 2, Music_PostCredits_Ch2
 
+	db $2 ; unused
 
-INCBIN "baserom.gbc", $cfce9, $cfcea - $cfce9
-
-
-Music_PostCredits_Ch1: ; cfcea
+Music_PostCredits_Ch1:
 	tempo 271
-	volume $77
-	forceoctave $3
-	dutycycle $2
-	notetype $c, $93
-	note __, 8
-Music_PostCredits_branch_cfcf7: ; cfcf7
+	volume 7, 7
+	transpose 0, 3
+	duty_cycle 2
+	note_type 12, 9, 3
+	rest 8
+.mainloop:
 	octave 3
 	note C_, 2
 	note E_, 2
@@ -22,13 +20,13 @@ Music_PostCredits_branch_cfcf7: ; cfcf7
 	octave 4
 	note C_, 2
 	note E_, 2
-	intensity $73
+	volume_envelope 7, 3
 	note E_, 2
-	intensity $53
+	volume_envelope 5, 3
 	note E_, 2
-	intensity $43
+	volume_envelope 4, 3
 	note E_, 2
-	intensity $93
+	volume_envelope 9, 3
 	octave 2
 	note B_, 2
 	octave 3
@@ -37,13 +35,13 @@ Music_PostCredits_branch_cfcf7: ; cfcf7
 	note B_, 2
 	octave 4
 	note D_, 2
-	intensity $73
+	volume_envelope 7, 3
 	note D_, 2
-	intensity $53
+	volume_envelope 5, 3
 	note D_, 2
-	intensity $43
+	volume_envelope 4, 3
 	note D_, 2
-	intensity $93
+	volume_envelope 9, 3
 	octave 2
 	note A#, 2
 	octave 3
@@ -52,13 +50,13 @@ Music_PostCredits_branch_cfcf7: ; cfcf7
 	note A#, 2
 	octave 4
 	note D_, 2
-	intensity $73
+	volume_envelope 7, 3
 	note D_, 2
-	intensity $53
+	volume_envelope 5, 3
 	note D_, 2
-	intensity $43
+	volume_envelope 4, 3
 	note D_, 2
-	intensity $93
+	volume_envelope 9, 3
 	octave 2
 	note A_, 2
 	octave 3
@@ -67,13 +65,13 @@ Music_PostCredits_branch_cfcf7: ; cfcf7
 	note A_, 2
 	octave 4
 	note C_, 2
-	intensity $73
+	volume_envelope 7, 3
 	note C_, 2
-	intensity $53
+	volume_envelope 5, 3
 	note C_, 2
-	intensity $43
+	volume_envelope 4, 3
 	note C_, 2
-	intensity $93
+	volume_envelope 9, 3
 	octave 2
 	note G#, 2
 	octave 3
@@ -82,13 +80,13 @@ Music_PostCredits_branch_cfcf7: ; cfcf7
 	note G#, 2
 	octave 4
 	note C_, 2
-	intensity $73
+	volume_envelope 7, 3
 	note C_, 2
-	intensity $53
+	volume_envelope 5, 3
 	note C_, 2
-	intensity $43
+	volume_envelope 4, 3
 	note C_, 2
-	intensity $93
+	volume_envelope 9, 3
 	octave 2
 	note G_, 2
 	octave 3
@@ -97,13 +95,13 @@ Music_PostCredits_branch_cfcf7: ; cfcf7
 	note G_, 2
 	octave 4
 	note C_, 2
-	intensity $73
+	volume_envelope 7, 3
 	note C_, 2
-	intensity $63
+	volume_envelope 6, 3
 	note C_, 2
-	intensity $43
+	volume_envelope 4, 3
 	note C_, 2
-	intensity $93
+	volume_envelope 9, 3
 	octave 2
 	note F#, 2
 	note A_, 2
@@ -111,13 +109,13 @@ Music_PostCredits_branch_cfcf7: ; cfcf7
 	note D_, 2
 	note F#, 2
 	note A_, 2
-	intensity $73
+	volume_envelope 7, 3
 	note A_, 2
-	intensity $63
+	volume_envelope 6, 3
 	note A_, 2
-	intensity $43
+	volume_envelope 4, 3
 	note A_, 2
-	intensity $93
+	volume_envelope 9, 3
 	octave 2
 	note G_, 2
 	octave 3
@@ -125,37 +123,36 @@ Music_PostCredits_branch_cfcf7: ; cfcf7
 	note D_, 2
 	note G_, 2
 	note G_, 2
-	intensity $73
+	volume_envelope 7, 3
 	note G_, 2
-	intensity $93
+	volume_envelope 9, 3
 	note D_, 2
 	octave 2
 	note G_, 2
-	loopchannel 0, Music_PostCredits_branch_cfcf7
-; cfd8d
+	sound_loop 0, .mainloop
 
-Music_PostCredits_Ch2: ; cfd8d
-	forceoctave $3
-	dutycycle $2
-	notetype $c, $a3
+Music_PostCredits_Ch2:
+	transpose 0, 3
+	duty_cycle 2
+	note_type 12, 10, 3
 	octave 5
 	note E_, 2
-	intensity $73
+	volume_envelope 7, 3
 	note E_, 2
-	intensity $a3
+	volume_envelope 10, 3
 	note F_, 2
-	intensity $73
+	volume_envelope 7, 3
 	note F_, 2
-Music_PostCredits_branch_cfd9f: ; cfd9f
-	intensity $a3
+.mainloop:
+	volume_envelope 10, 3
 	note G_, 2
-	intensity $73
+	volume_envelope 7, 3
 	note G_, 2
-	intensity $53
+	volume_envelope 5, 3
 	note G_, 2
-	intensity $43
+	volume_envelope 4, 3
 	note G_, 2
-	intensity $93
+	volume_envelope 9, 3
 	octave 6
 	note D_, 2
 	note C_, 2
@@ -165,106 +162,104 @@ Music_PostCredits_branch_cfd9f: ; cfd9f
 	note C_, 2
 	octave 5
 	note G_, 2
-	intensity $73
+	volume_envelope 7, 3
 	note G_, 2
-	intensity $53
+	volume_envelope 5, 3
 	note G_, 2
-	intensity $43
+	volume_envelope 4, 3
 	note G_, 2
-	intensity $33
+	volume_envelope 3, 3
 	note G_, 2
-	intensity $a3
+	volume_envelope 10, 3
 	note E_, 2
-	intensity $73
+	volume_envelope 7, 3
 	note E_, 2
-	intensity $a3
+	volume_envelope 10, 3
 	note F_, 2
 	note G_, 2
-	intensity $73
+	volume_envelope 7, 3
 	note G_, 2
-	intensity $53
+	volume_envelope 5, 3
 	note G_, 2
-	intensity $43
+	volume_envelope 4, 3
 	note G_, 2
-	intensity $33
+	volume_envelope 3, 3
 	note G_, 2
-	intensity $a3
+	volume_envelope 10, 3
 	note A_, 2
-	intensity $73
+	volume_envelope 7, 3
 	note A_, 2
-	intensity $a3
+	volume_envelope 10, 3
 	note E_, 2
 	note G_, 2
-	intensity $73
+	volume_envelope 7, 3
 	note G_, 2
-	intensity $53
+	volume_envelope 5, 3
 	note G_, 2
-	intensity $a3
+	volume_envelope 10, 3
 	note F_, 2
-	intensity $73
+	volume_envelope 7, 3
 	note F_, 2
-	intensity $53
+	volume_envelope 5, 3
 	note F_, 2
-	intensity $a3
+	volume_envelope 10, 3
 	note D_, 2
 	note E_, 2
 	note F_, 2
-	intensity $73
+	volume_envelope 7, 3
 	note F_, 2
-	intensity $53
+	volume_envelope 5, 3
 	note F_, 2
-	intensity $43
+	volume_envelope 4, 3
 	note F_, 2
-	intensity $33
+	volume_envelope 3, 3
 	note F_, 2
-	intensity $a3
+	volume_envelope 10, 3
 	note G_, 2
-	intensity $73
+	volume_envelope 7, 3
 	note G_, 2
-	intensity $a3
+	volume_envelope 10, 3
 	note F_, 2
 	note E_, 2
 	note D#, 2
 	note E_, 2
 	note B_, 2
-	intensity $73
+	volume_envelope 7, 3
 	note B_, 2
-	intensity $53
+	volume_envelope 5, 3
 	note B_, 2
-	intensity $a3
+	volume_envelope 10, 3
 	note A_, 2
-	intensity $73
+	volume_envelope 7, 3
 	note A_, 2
-	intensity $a3
+	volume_envelope 10, 3
 	note D_, 2
-	intensity $73
+	volume_envelope 7, 3
 	note D_, 2
-	intensity $53
+	volume_envelope 5, 3
 	note D_, 2
-	intensity $43
+	volume_envelope 4, 3
 	note D_, 2
-	intensity $33
-	note D_, 2
-	note D_, 2
-	intensity $23
+	volume_envelope 3, 3
 	note D_, 2
 	note D_, 2
-	intensity $a3
+	volume_envelope 2, 3
+	note D_, 2
+	note D_, 2
+	volume_envelope 10, 3
 	note G_, 2
-	intensity $73
+	volume_envelope 7, 3
 	octave 4
 	note G_, 2
-	intensity $a3
+	volume_envelope 10, 3
 	octave 5
 	note D_, 2
 	note G_, 2
-	intensity $73
+	volume_envelope 7, 3
 	note G_, 2
-	intensity $53
+	volume_envelope 5, 3
 	note G_, 2
-	intensity $a3
+	volume_envelope 10, 3
 	note E_, 2
 	note F_, 2
-	loopchannel 0, Music_PostCredits_branch_cfd9f
-; cfe49
-
+	sound_loop 0, .mainloop

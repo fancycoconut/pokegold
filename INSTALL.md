@@ -1,100 +1,149 @@
-The source files are assembled into a rom using [**rgbds**](https://github.com/rednex/rgbds).
-These instructions explain how to set up the tools required to build.
+# Instructions
 
-If you run into trouble, ask on irc ([**freenode#pret**](https://kiwiirc.com/client/irc.freenode.net/?#pret)).
+These instructions explain how to set up the tools required to build **pokegold**, including [**rgbds**](https://github.com/gbdev/rgbds), which assembles the source files into a ROM.
 
-
-# NOTICE
-
-Currently building requires that you provide a base ROM for both versions. You can find the md5 for each version in [README.md](README.md) to confirm you have the right one.
-
-You will need to rename the Gold ROM to **baserom-gold.gbc** and the Silver ROM to **baserom-silver.gbc** in order to build either version.
+If you run into trouble, ask for help on IRC or Discord (see [README.md](README.md)).
 
 
-# Linux
+## Windows 10
 
-Python 2.7 is required.
+Download and install [**Windows Subsystem for Linux**](https://docs.microsoft.com/en-us/windows/wsl/install-win10). Then open the **WSL terminal**.
+
+Update WSL's software before continuing. If you chose Debian, Ubuntu, or another distribution that uses `apt-get`, then enter this command:
 
 ```bash
-sudo apt-get install make gcc bison git python
-
-git clone https://github.com/rednex/rgbds
-cd rgbds
-sudo make install
-cd ..
-
-git clone --recursive https://github.com/pret/pokegold
-cd pokegold
+apt-get update && apt-get upgrade
 ```
 
-To build **pokegold.gbc**:
+WSL has its own file system that's not accessible from Windows, but Windows files *are* accessible from WSL. So you're going to want to install pokegold within Windows. You'll have to change the **current working directory** every time you open WSL.
+
+For example, if you want to store pokegold in **C:\Users\\*\<user>*\Desktop**, enter this command:
 
 ```bash
-make gold
+cd /mnt/c/Users/<user>/Desktop
 ```
 
-To build **pokesilver.gbc**:
+(The Windows `C:\` drive is called `/mnt/c/` in WSL. Replace *\<user>* in the example path with your username.)
+
+If this works, then follow [the instructions for **Linux**](#linux) below for whatever distribution you installed for WSL.
+
+Otherwise, continue reading below for [the older Windows instructions](#windows).
+
+
+## Windows
+
+Download [**Cygwin**](http://cygwin.com/install.html): **setup-x86_64.exe** for 64-bit Windows, **setup-x86.exe** for 32-bit.
+
+Run setup and leave the default settings. At the "**Select Packages**" step, choose to install the following, all of which are in the "**Devel**" category:
+
+- `make`
+- `git`
+- `gcc-core`
+
+Double click on the text that says "**Skip**" next to each package to select the most recent version to install.
+
+Then follow the [**rgbds** instructions](https://rgbds.gbdev.io/install/windows) for Windows with Cygwin to install **rgbds 0.4.2**.
+
+**Note:** If you already have an older rgbds, you will need to update to 0.4.2. Ignore this if you have never installed rgbds before. If a version newer than 0.4.2 does not work, try downloading 0.4.2.
+
+Now open the **Cygwin terminal** and enter the following commands.
+
+Cygwin has its own file system that's within Windows, at **C:\cygwin64\home\\*\<user>***. If you don't want to store pokegold there, you'll have to change the **current working directory** every time you open Cygwin.
+
+For example, if you want to store pokegold in **C:\Users\\*\<user>*\Desktop**:
 
 ```bash
-make silver
+cd /cygdrive/c/Users/<user>/Desktop
 ```
 
-To build both ROMs:
+(The Windows `C:\` drive is called `/cygdrive/c/` in Cygwin. Replace *\<user>* in the example path with your username.)
+
+Now you're ready to [build **pokegold**](#build-pokegold).
+
+
+## macOS
+
+Install [**Homebrew**](https://brew.sh/). Follow the official instructions.
+
+Open **Terminal** and prepare to enter commands.
+
+Then follow the [**rgbds** instructions](https://rgbds.gbdev.io/install/macos) for macOS to install **rgbds 0.4.2**.
+
+Now you're ready to [build **pokegold**](#build-pokegold).
+
+
+## Linux
+
+Open **Terminal** and enter the following commands, depending on which distro you're using.
+
+### Debian or Ubuntu
+
+To install the software required for **pokegold**:
 
 ```bash
-make
+sudo apt-get install make gcc git
 ```
 
+Then follow the [**rgbds** instructions](https://rgbds.gbdev.io/install/source) to build **rgbds 0.4.2** from source.
 
-# Mac
+### OpenSUSE
 
-In **Terminal**, run:
+To install the software required for **pokegold**:
 
 ```bash
-xcode-select --install
-
-git clone https://github.com/rednex/rgbds
-cd rgbds
-sudo make install
-cd ..
-
-git clone --recursive https://github.com/pret/pokegold
-cd pokegold
+sudo zypper install make gcc git
 ```
 
-To build **pokegold.gbc**:
+Then follow the [**rgbds** instructions](https://rgbds.gbdev.io/install/source) to build **rgbds 0.4.2** from source.
+
+### Arch Linux
+
+To install the software required for **pokegold**:
 
 ```bash
-make gold
+sudo pacman -S make gcc git rgbds
 ```
 
-To build **pokesilver.gbc**:
+Then follow the [**rgbds** instructions](https://rgbds.gbdev.io/install/arch) for Arch Linux to install **rgbds 0.4.2**.
+
+If you want to compile and install **rgbds** yourself instead, then follow the [**rgbds** instructions](https://rgbds.gbdev.io/install/source) to build **rgbds 0.4.2** from source.
+
+### Termux
+
+To install the software required for **pokegold**:
 
 ```bash
-make silver
+sudo apt install make clang git sed
 ```
 
-To build both ROMs:
+To install **rgbds**:
 
 ```bash
-make
+sudo apt install rgbds
 ```
 
+If you want to compile and install **rgbds** yourself instead, then follow the [**rgbds** instructions](https://rgbds.gbdev.io/install/source) to build **rgbds 0.4.2** from source.
 
-# Windows
+### Other distros
 
-To build on Windows, install [**Cygwin**](http://cygwin.com/install.html) with the default settings.
+If your distro is not listed here, try to find the required software in its repositories:
 
-In the installer, select the following packages: `make` `git` `python`
+- `make`
+- `gcc` (or `clang`)
+- `git`
+- `rgbds`
 
-Then get the most recent version of [**rgbds**](https://github.com/rednex/rgbds/releases/).
-Extract the archive and put `rgbasm.exe`, `rgblink.exe` and `rgbfix.exe` in `C:\cygwin64\usr\local\bin`.
+If `rgbds` is not available, you'll need to follow the [**rgbds** instructions](https://rgbds.gbdev.io/install/source) to build **rgbds 0.4.2** from source.
 
-In the **Cygwin terminal**:
+Now you're ready to [build **pokegold**](#build-pokegold).
+
+
+## Build pokegold
+
+To download the **pokegold** source files:
 
 ```bash
-
-git clone --recursive https://github.com/pret/pokegold
+git clone https://github.com/pret/pokegold
 cd pokegold
 ```
 

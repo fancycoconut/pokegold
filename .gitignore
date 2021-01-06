@@ -1,26 +1,28 @@
-# generated
-*.tx
+# compiled objects
 *.o
 
-# precompiled python
-*.pyc
-*$py.class
+# compiled graphics
+*.1bpp
+*.2bpp
+*.lz
+*.gbcpal
+*.dimensions
+*.sgb.tilemap
 
-# no binaries
-*.exe
-
-# roms
+# compiled roms
 *.gbc
 *.gb
-
-# for any of the poor souls with save game files in their working directory
-*.sgm
-*.sav
-*.rtc
 
 # rgbds extras
 *.map
 *.sym
+
+# tool binaries
+*.exe
+
+# precompiled python
+*.pyc
+*$py.class
 
 # compare.sh
 baserom-gold.txt
@@ -28,16 +30,24 @@ baserom-silver.txt
 pokegold.txt
 pokesilver.txt
 
-# for vim configuration
-# url: http://www.vim.org/scripts/script.php?script_id=441
+# used_space.py
+used_space.png
+
+# save game files
+*.sgm
+*.sav
+*.rtc
+*.sn*
+*.sa*
+*.sg1
+
+# vim configuration
+# http://www.vim.org/scripts/script.php?script_id=441
 .lvimrc
-# swap files for vim
+
+# swap files for vim and gedit
 .*.swp
-# swap files for gedit
 *~
 
-# compiled graphics
-*.2bpp
-*.lz
-*.1bpp
-
+# macos files
+.DS_STORE

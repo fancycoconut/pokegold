@@ -1,29 +1,47 @@
-UpdateBGMapBuffer:: ; 1458 (0:1458)
-	ld a, [hBGMapUpdate]
+UpdateBGMapBuffer::
+; Copy [hBGMapTileCount] 16x8 tiles from wBGMapBuffer
+; to bg map addresses in wBGMapBufferPointers.
+
+; [hBGMapTileCount] must be even since this is done in pairs.
+
+; Return carry on success.
+
+	ldh a, [hBGMapUpdate]
 	and a
 	ret z
 
+; Relocate the stack pointer to wBGMapBufferPointers
 	ld [hSPBuffer], sp
-
-	ld hl, wBGMapBufferPtrs
+	ld hl, wBGMapBufferPointers
 	ld sp, hl
+
+; We can now pop the addresses of affected spots on the BG Map
 
 	ld hl, wBGMapPalBuffer
 	ld de, wBGMapBuffer
 
 .next
+; Copy a pair of 16x8 blocks (one 16x16 block)
+
 rept 2
+; Get our BG Map address
 	pop bc
-	ld a, $1
-	ld [rVBK], a
+
+; Palettes
+	ld a, 1
+	ldh [rVBK], a
+
 	ld a, [hli]
 	ld [bc], a
 	inc c
 	ld a, [hli]
 	ld [bc], a
 	dec c
-	ld a, $0
-	ld [rVBK], a
+
+; Tiles
+	ld a, 0
+	ldh [rVBK], a
+
 	ld a, [de]
 	inc de
 	ld [bc], a
@@ -33,111 +51,128 @@ rept 2
 	ld [bc], a
 endr
 
-	ld a, [hFFDE]
+; We've done 2 16x8 blocks
+	ldh a, [hBGMapTileCount]
 	dec a
 	dec a
-	ld [hFFDE], a
+	ldh [hBGMapTileCount], a
 
 	jr nz, .next
 
-	ld a, [hSPBuffer]
+; Restore the stack pointer
+	ldh a, [hSPBuffer]
 	ld l, a
-	ld a, [hSPBuffer + 1]
+	ldh a, [hSPBuffer + 1]
 	ld h, a
 	ld sp, hl
 
 	xor a
-	ld [hBGMapUpdate], a
+	ldh [hBGMapUpdate], a
 	scf
 	ret
 
 WaitTop::
-	ld a, [hBGMapMode]
+; Wait until the top third of the BG Map is being updated.
+
+	ldh a, [hBGMapMode]
 	and a
 	ret z
-	ld a, [hBGMapThird]
+
+	ldh a, [hBGMapThird]
 	and a
 	jr z, .done
+
 	call DelayFrame
 	jr WaitTop
 
 .done
 	xor a
-	ld [hBGMapMode], a
+	ldh [hBGMapMode], a
 	ret
 
-UpdateBGMap:: ; 14bb (0:14bb)
-	ld a, [hBGMapMode]
-	and a
+UpdateBGMap::
+; Update the BG Map, in thirds, from wTilemap and wAttrmap.
+
+	ldh a, [hBGMapMode]
+	and a ; 0
 	ret z
 
-	dec a
+; BG Map 0
+	dec a ; 1
 	jr z, .Tiles
-	dec a
+	dec a ; 2
 	jr z, .Attr
 
-	dec a
+; BG Map 1
+	dec a ; useless
 
-	ld a, [hBGMapAddress]
+	ldh a, [hBGMapAddress]
 	ld l, a
-	ld a, [hBGMapAddress + 1]
+	ldh a, [hBGMapAddress + 1]
 	ld h, a
 	push hl
 
-	xor a
-	ld [hBGMapAddress], a
-	ld a, $9c
-	ld [hBGMapAddress + 1], a
+	xor a ; LOW(vBGMap1)
+	ldh [hBGMapAddress], a
+	ld a, HIGH(vBGMap1)
+	ldh [hBGMapAddress + 1], a
 
-	ld a, [hBGMapMode]
+	ldh a, [hBGMapMode]
 	push af
-	cp $3
+	cp 3
 	call z, .Tiles
 	pop af
-	cp $4
+	cp 4
 	call z, .Attr
 
 	pop hl
 	ld a, l
-	ld [hBGMapAddress], a
+	ldh [hBGMapAddress], a
 	ld a, h
-	ld [hBGMapAddress + 1], a
+	ldh [hBGMapAddress + 1], a
 	ret
 
-.Attr
-	ld a, $1
-	ld [rVBK], a
+.Attr:
+	ld a, 1
+	ldh [rVBK], a
 
-	hlcoord 0, 0, wAttrMap
+	hlcoord 0, 0, wAttrmap
 	call .update
-	ld a, $0
-	ld [rVBK], a
+
+	ld a, 0
+	ldh [rVBK], a
 	ret
 
-.Tiles
+.Tiles:
 	hlcoord 0, 0
+
 .update
 	ld [hSPBuffer], sp
 
-	ld a, [hBGMapThird]
-	and a
+; Which third?
+	ldh a, [hBGMapThird]
+	and a ; 0
 	jr z, .top
-	dec a
+	dec a ; 1
 	jr z, .middle
+	; 2
 
 THIRD_HEIGHT EQU SCREEN_HEIGHT / 3
+
+; bottom
 	ld de, 2 * THIRD_HEIGHT * SCREEN_WIDTH
 	add hl, de
 	ld sp, hl
 
-	ld a, [hBGMapAddress + 1]
+	ldh a, [hBGMapAddress + 1]
 	ld h, a
-	ld a, [hBGMapAddress]
-
+	ldh a, [hBGMapAddress]
 	ld l, a
+
 	ld de, 2 * THIRD_HEIGHT * BG_MAP_WIDTH
 	add hl, de
 
+; Next time: top third
 	xor a
 	jr .start
 
@@ -146,35 +181,41 @@ THIRD_HEIGHT EQU SCREEN_HEIGHT / 3
 	add hl, de
 	ld sp, hl
 
-	ld a, [hBGMapAddress + 1]
+	ldh a, [hBGMapAddress + 1]
 	ld h, a
-	ld a, [hBGMapAddress]
+	ldh a, [hBGMapAddress]
 	ld l, a
 
 	ld de, THIRD_HEIGHT * BG_MAP_WIDTH
 	add hl, de
 
-	ld a, $2
+; Next time: bottom third
+	ld a, 2
 	jr .start
 
 .top
 	ld sp, hl
 
-	ld a, [hBGMapAddress + 1]
+	ldh a, [hBGMapAddress + 1]
 	ld h, a
-	ld a, [hBGMapAddress]
+	ldh a, [hBGMapAddress]
 	ld l, a
 
-	ld a, $1
+; Next time: middle third
+	ld a, 1
 
 .start
-	ld [hBGMapThird], a
-	ld a, SCREEN_HEIGHT / 3
+; Which third to update next time
+	ldh [hBGMapThird], a
 
-; Discrepancy between TileMap and BGMap
+; Rows of tiles in a third
+	ld a, THIRD_HEIGHT
+
+; Discrepancy between wTilemap and BGMap
 	ld bc, BG_MAP_WIDTH - (SCREEN_WIDTH - 1)
-	
+
 .row
+; Copy a row of 20 tiles
 rept SCREEN_WIDTH / 2 - 1
 	pop de
 	ld [hl], e
@@ -191,38 +232,44 @@ endr
 	dec a
 	jr nz, .row
 
-	ld a, [hSPBuffer]
+	ldh a, [hSPBuffer]
 	ld l, a
-	ld a, [hSPBuffer + 1]
+	ldh a, [hSPBuffer + 1]
 	ld h, a
 	ld sp, hl
 	ret
 
-Serve1bppRequest:: ; 1579 (0:1579)
-	ld a, [wRequested1bpp]
+Serve1bppRequest::
+	ld a, [wRequested1bppSize]
 	and a
 	ret z
 
+; Copy [wRequested1bppSize] 1bpp tiles from [wRequested1bppSource] to [wRequested1bppDest]
+
 	ld [hSPBuffer], sp
 
+; Source
 	ld hl, wRequested1bppSource
 	ld a, [hli]
 	ld h, [hl]
 	ld l, a
 	ld sp, hl
 
+; Destination
 	ld hl, wRequested1bppDest
 	ld a, [hli]
 	ld h, [hl]
 	ld l, a
 
-	ld a, [wRequested1bpp]
+; # tiles to copy
+	ld a, [wRequested1bppSize]
 	ld b, a
 
 	xor a
-	ld [wRequested1bpp], a
+	ld [wRequested1bppSize], a
 
 .next
+
 rept 3
 	pop de
 	ld [hl], e
@@ -254,32 +301,44 @@ endr
 
 	ld [wRequested1bppSource], sp
 
-	ld a, [hSPBuffer]
+	ldh a, [hSPBuffer]
 	ld l, a
-	ld a, [hSPBuffer + 1]
+	ldh a, [hSPBuffer + 1]
 	ld h, a
 	ld sp, hl
 	ret
 
-Serve2bppRequest:: ; 15d0 (0:15d0)
-	ld a, [wRequested2bpp]
+Serve2bppRequest::
+	ld a, [wRequested2bppSize]
 	and a
 	ret z
+
+; Copy [wRequested2bppSize] 2bpp tiles from [wRequested2bppSource] to [wRequested2bppDest]
+
 	ld [hSPBuffer], sp
+
+; Source
 	ld hl, wRequested2bppSource
 	ld a, [hli]
 	ld h, [hl]
 	ld l, a
 	ld sp, hl
+
+; Destination
 	ld hl, wRequested2bppDest
 	ld a, [hli]
 	ld h, [hl]
 	ld l, a
-	ld a, [wRequested2bpp]
+
+; # tiles to copy
+	ld a, [wRequested2bppSize]
 	ld b, a
+
 	xor a
-	ld [wRequested2bpp], a
+	ld [wRequested2bppSize], a
+
 .next
+
 rept 7
 	pop de
 	ld [hl], e
@@ -303,51 +362,64 @@ endr
 
 	ld [wRequested2bppSource], sp
 
-	ld a, [hSPBuffer]
+	ldh a, [hSPBuffer]
 	ld l, a
-	ld a, [hSPBuffer + 1]
+	ldh a, [hSPBuffer + 1]
 	ld h, a
 	ld sp, hl
 	ret
 
-AnimateTileset:: ; 162b (0:162b)
-	ld a, [hMapAnims]
+AnimateTileset::
+	ldh a, [hMapAnims]
 	and a
 	ret z
-	ld a, [hROMBank]
+
+	ldh a, [hROMBank]
 	push af
-	ld a, $3f
+	ld a, BANK(_AnimateTileset)
 	rst Bankswitch
-	call $4003
+
+	call _AnimateTileset
+
 	pop af
 	rst Bankswitch
 	ret
+
+Video_DummyFunction:: ; unreferenced
 	ret
+
+EnableSpriteDisplay:: ; unreferenced
 	ld hl, rLCDC
 	set 1, [hl]
 	ret
 
-Function1642:: ; 1642 (0:1642)
+FillBGMap0WithBlack::
 	nop
-	ld a, [hFF9E]
-	and a
+	ldh a, [hBlackOutBGMapThird]
+	and a ; 0
 	ret z
-	dec a
+
+	dec a ; 1
 	jr z, .one
-	dec a
+	dec a ; 2
 	jr z, .two
-	ld a, $2
-	ld [hFF9E], a
+	; 3
+
+BG_THIRD_HEIGHT EQU (BG_MAP_HEIGHT - SCREEN_HEIGHT) / 2
+
+; Black out the 18 BG Map rows right of the screen area
+	ld a, 2
+	ldh [hBlackOutBGMapThird], a
 	ld hl, hBGMapAddress
 	ld a, [hli]
 	ld h, [hl]
 	ld l, a
 	ld de, SCREEN_WIDTH
 	add hl, de
-	ld b, $12
-	ld a, $60
+	ld b, SCREEN_HEIGHT
+	ld a, "■"
 .loop1
-rept 12
+rept BG_MAP_WIDTH - SCREEN_WIDTH
 	ld [hli], a
 endr
 	add hl, de
@@ -356,24 +428,27 @@ endr
 	ret
 
 .two
-	ld a, $1
-	ld de, $240
+; Black out the top 7 BG Map rows below the screen area
+	ld a, 1
+	ld de, BG_MAP_WIDTH * SCREEN_HEIGHT
 	jr .go
 
 .one
+; Black out the bottom 7 BG Map rows below the screen area
 	xor a
-	ld de, $320
+	ld de, BG_MAP_WIDTH * (SCREEN_HEIGHT + BG_THIRD_HEIGHT)
+
 .go
-	ld [hFF9E], a
+	ldh [hBlackOutBGMapThird], a
 	ld hl, hBGMapAddress
 	ld a, [hli]
 	ld h, [hl]
 	ld l, a
 	add hl, de
-	ld b, $e
-	ld a, $60
+	ld b, BG_THIRD_HEIGHT * 2
+	ld a, "■"
 .loop2
-rept 16
+rept BG_MAP_WIDTH / 2
 	ld [hli], a
 endr
 	dec b

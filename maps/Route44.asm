@@ -1,4 +1,4 @@
-	const_def 2 ; object constants
+	object_const_def
 	const ROUTE44_FISHER1
 	const ROUTE44_FISHER2
 	const ROUTE44_YOUNGSTER1
@@ -9,12 +9,11 @@
 	const ROUTE44_FRUIT_TREE
 	const ROUTE44_POKE_BALL1
 	const ROUTE44_POKE_BALL2
-	const ROUTE44_POKE_BALL3
 
 Route44_MapScripts:
-	db 0 ; scene scripts
+	def_scene_scripts
 
-	db 0 ; callbacks
+	def_callbacks
 
 TrainerBirdKeeperVance1:
 	trainer BIRD_KEEPER, VANCE1, EVENT_BEAT_BIRD_KEEPER_VANCE, BirdKeeperVance1SeenText, BirdKeeperVance1BeatenText, 0, .Script
@@ -29,10 +28,10 @@ TrainerBirdKeeperVance1:
 	checkevent EVENT_VANCE_ASKED_FOR_PHONE_NUMBER
 	iftrue .AskedAlready
 	writetext BirdKeeperVanceLegendaryBirdsText
-	buttonsound
+	promptbutton
 	setevent EVENT_VANCE_ASKED_FOR_PHONE_NUMBER
 	scall Route44AskNumber1M
-	jump .AskForNumber
+	sjump .AskForNumber
 
 .AskedAlready:
 	scall Route44AskNumber2M
@@ -40,9 +39,9 @@ TrainerBirdKeeperVance1:
 	askforphonenumber PHONE_BIRDKEEPER_VANCE
 	ifequal PHONE_CONTACTS_FULL, Route44PhoneFullM
 	ifequal PHONE_CONTACT_REFUSED, Route44NumberDeclinedM
-	trainertotext BIRD_KEEPER, VANCE1, MEM_BUFFER_0
+	gettrainername STRING_BUFFER_3, BIRD_KEEPER, VANCE1
 	scall Route44RegisteredNumberM
-	jump Route44NumberAcceptedM
+	sjump Route44NumberAcceptedM
 
 .WantsBattle:
 	scall Route44RematchM
@@ -72,31 +71,31 @@ TrainerBirdKeeperVance1:
 	end
 
 Route44AskNumber1M:
-	jumpstd asknumber1m
+	jumpstd AskNumber1MScript
 	end
 
 Route44AskNumber2M:
-	jumpstd asknumber2m
+	jumpstd AskNumber2MScript
 	end
 
 Route44RegisteredNumberM:
-	jumpstd registerednumberm
+	jumpstd RegisteredNumberMScript
 	end
 
 Route44NumberAcceptedM:
-	jumpstd numberacceptedm
+	jumpstd NumberAcceptedMScript
 	end
 
 Route44NumberDeclinedM:
-	jumpstd numberdeclinedm
+	jumpstd NumberDeclinedMScript
 	end
 
 Route44PhoneFullM:
-	jumpstd phonefullm
+	jumpstd PhoneFullMScript
 	end
 
 Route44RematchM:
-	jumpstd rematchm
+	jumpstd RematchMScript
 	end
 
 TrainerPsychicPhil:
@@ -123,10 +122,10 @@ TrainerFisherWilton1:
 	checkevent EVENT_WILTON_ASKED_FOR_PHONE_NUMBER
 	iftrue .AskedAlready
 	writetext FisherWiltonHugePoliwagText
-	buttonsound
+	promptbutton
 	setevent EVENT_WILTON_ASKED_FOR_PHONE_NUMBER
 	scall Route44AskNumber1M
-	jump .AskForNumber
+	sjump .AskForNumber
 
 .AskedAlready:
 	scall Route44AskNumber2M
@@ -134,9 +133,9 @@ TrainerFisherWilton1:
 	askforphonenumber PHONE_FISHER_WILTON
 	ifequal PHONE_CONTACTS_FULL, Route44PhoneFullM
 	ifequal PHONE_CONTACT_REFUSED, Route44NumberDeclinedM
-	trainertotext FISHER, WILTON1, MEM_BUFFER_0
+	gettrainername STRING_BUFFER_3, FISHER, WILTON1
 	scall Route44RegisteredNumberM
-	jump Route44NumberAcceptedM
+	sjump Route44NumberAcceptedM
 
 .WantsBattle:
 	scall Route44RematchM
@@ -405,17 +404,17 @@ Route44Sign2Text:
 Route44_MapEvents:
 	db 0, 0 ; filler
 
-	db 1 ; warp events
+	def_warp_events
 	warp_event 56,  7, ICE_PATH_1F, 1
 
-	db 0 ; coord events
+	def_coord_events
 
-	db 3 ; bg events
+	def_bg_events
 	bg_event 53,  7, BGEVENT_READ, Route44Sign1
 	bg_event  6, 10, BGEVENT_READ, Route44Sign2
 	bg_event 32,  9, BGEVENT_ITEM, Route44HiddenElixer
 
-	db 10 ; object events
+	def_object_events
 	object_event 42,  5, SPRITE_FISHER, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, PAL_NPC_GREEN, OBJECTTYPE_TRAINER, 1, TrainerFisherWilton1, -1
 	object_event 19, 13, SPRITE_FISHER, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, PAL_NPC_GREEN, OBJECTTYPE_TRAINER, 1, TrainerFisherEdgar, -1
 	object_event 10,  9, SPRITE_YOUNGSTER, SPRITEMOVEDATA_SPINCLOCKWISE, 0, 0, -1, -1, PAL_NPC_BLUE, OBJECTTYPE_TRAINER, 3, TrainerPsychicPhil, -1

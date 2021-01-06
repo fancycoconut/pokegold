@@ -1,4 +1,4 @@
-	const_def 2 ; object constants
+	object_const_def
 	const ROUTE43_SUPER_NERD1
 	const ROUTE43_SUPER_NERD2
 	const ROUTE43_SUPER_NERD3
@@ -9,20 +9,20 @@
 	const ROUTE43_POKE_BALL
 
 Route43_MapScripts:
-	db 0 ; scene scripts
+	def_scene_scripts
 
-	db 1 ; callbacks
+	def_callbacks
 	callback MAPCALLBACK_NEWMAP, .CheckIfRockets
 
 .CheckIfRockets:
 	checkevent EVENT_CLEARED_ROCKET_HIDEOUT
 	iftrue .NoRockets
 	setmapscene ROUTE_43_GATE, SCENE_DEFAULT
-	return
+	endcallback
 
 .NoRockets:
 	setmapscene ROUTE_43_GATE, SCENE_FINISHED
-	return
+	endcallback
 
 TrainerCamperSpencer:
 	trainer CAMPER, SPENCER, EVENT_BEAT_CAMPER_SPENCER, CamperSpencerSeenText, CamperSpencerBeatenText, 0, .Script
@@ -59,10 +59,10 @@ TrainerPokemaniacBrent:
 	checkevent EVENT_BRENT_ASKED_FOR_PHONE_NUMBER
 	iftrue .AskedAlready
 	writetext PokemaniacBrentAfterBattleText
-	buttonsound
+	promptbutton
 	setevent EVENT_BRENT_ASKED_FOR_PHONE_NUMBER
 	scall .AskNumber1
-	jump .AskForNumber
+	sjump .AskForNumber
 
 .AskedAlready:
 	scall .AskNumber2
@@ -70,9 +70,9 @@ TrainerPokemaniacBrent:
 	askforphonenumber PHONE_POKEMANIAC_BRENT
 	ifequal PHONE_CONTACTS_FULL, .PhoneFull
 	ifequal PHONE_CONTACT_REFUSED, .NumberDeclined
-	trainertotext POKEMANIAC, BRENT1, MEM_BUFFER_0
+	gettrainername STRING_BUFFER_3, POKEMANIAC, BRENT1
 	scall .RegisteredNumber
-	jump .NumberAccepted
+	sjump .NumberAccepted
 
 .WantsBattle:
 	scall .Rematch
@@ -102,31 +102,31 @@ TrainerPokemaniacBrent:
 	end
 
 .AskNumber1:
-	jumpstd asknumber1m
+	jumpstd AskNumber1MScript
 	end
 
 .AskNumber2:
-	jumpstd asknumber2m
+	jumpstd AskNumber2MScript
 	end
 
 .RegisteredNumber:
-	jumpstd registerednumberm
+	jumpstd RegisteredNumberMScript
 	end
 
 .NumberAccepted:
-	jumpstd numberacceptedm
+	jumpstd NumberAcceptedMScript
 	end
 
 .NumberDeclined:
-	jumpstd numberdeclinedm
+	jumpstd NumberDeclinedMScript
 	end
 
 .PhoneFull:
-	jumpstd phonefullm
+	jumpstd PhoneFullMScript
 	end
 
 .Rematch:
-	jumpstd rematchm
+	jumpstd RematchMScript
 	end
 
 TrainerPokemaniacRon:
@@ -164,10 +164,10 @@ TrainerPicnickerTiffany:
 	checkevent EVENT_TIFFANY_ASKED_FOR_PHONE_NUMBER
 	iftrue .AskedAlready
 	writetext PicnickerTiffanyWantsPicnicText
-	buttonsound
+	promptbutton
 	setevent EVENT_TIFFANY_ASKED_FOR_PHONE_NUMBER
 	scall .AskNumber1
-	jump .AskForNumber
+	sjump .AskForNumber
 
 .AskedAlready:
 	scall .AskNumber2
@@ -175,9 +175,9 @@ TrainerPicnickerTiffany:
 	askforphonenumber PHONE_PICNICKER_TIFFANY
 	ifequal PHONE_CONTACTS_FULL, .PhoneFull
 	ifequal PHONE_CONTACT_REFUSED, .NumberDeclined
-	trainertotext PICNICKER, TIFFANY3, MEM_BUFFER_0
+	gettrainername STRING_BUFFER_3, PICNICKER, TIFFANY3
 	scall .RegisteredNumber
-	jump .NumberAccepted
+	sjump .NumberAccepted
 
 .WantsBattle:
 	scall .Rematch
@@ -207,31 +207,31 @@ TrainerPicnickerTiffany:
 	end
 
 .AskNumber1:
-	jumpstd asknumber1f
+	jumpstd AskNumber1FScript
 	end
 
 .AskNumber2:
-	jumpstd asknumber2f
+	jumpstd AskNumber2FScript
 	end
 
 .RegisteredNumber:
-	jumpstd registerednumberf
+	jumpstd RegisteredNumberFScript
 	end
 
 .NumberAccepted:
-	jumpstd numberacceptedf
+	jumpstd NumberAcceptedFScript
 	end
 
 .NumberDeclined:
-	jumpstd numberdeclinedf
+	jumpstd NumberDeclinedFScript
 	end
 
 .PhoneFull:
-	jumpstd phonefullf
+	jumpstd PhoneFullFScript
 	end
 
 .Rematch:
-	jumpstd rematchf
+	jumpstd RematchFScript
 	end
 
 Route43Sign1:
@@ -422,21 +422,21 @@ Route43TrainerTipsText:
 Route43_MapEvents:
 	db 0, 0 ; filler
 
-	db 5 ; warp events
+	def_warp_events
 	warp_event  9, 51, ROUTE_43_MAHOGANY_GATE, 1
 	warp_event 10, 51, ROUTE_43_MAHOGANY_GATE, 2
 	warp_event 17, 35, ROUTE_43_GATE, 3
 	warp_event 17, 31, ROUTE_43_GATE, 1
 	warp_event 18, 31, ROUTE_43_GATE, 2
 
-	db 0 ; coord events
+	def_coord_events
 
-	db 3 ; bg events
+	def_bg_events
 	bg_event 13,  3, BGEVENT_READ, Route43Sign1
 	bg_event 11, 49, BGEVENT_READ, Route43Sign2
 	bg_event 16, 38, BGEVENT_READ, Route43TrainerTips
 
-	db 8 ; object events
+	def_object_events
 	object_event 14,  6, SPRITE_SUPER_NERD, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, PAL_NPC_BLUE, OBJECTTYPE_TRAINER, 3, TrainerPokemaniacBen, -1
 	object_event 13, 20, SPRITE_SUPER_NERD, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, PAL_NPC_BLUE, OBJECTTYPE_TRAINER, 3, TrainerPokemaniacBrent, -1
 	object_event 13,  7, SPRITE_SUPER_NERD, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_BLUE, OBJECTTYPE_TRAINER, 2, TrainerPokemaniacRon, -1

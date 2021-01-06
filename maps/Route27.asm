@@ -1,4 +1,4 @@
-	const_def 2 ; object constants
+	object_const_def
 	const ROUTE27_COOLTRAINER_M1
 	const ROUTE27_COOLTRAINER_M2
 	const ROUTE27_COOLTRAINER_F1
@@ -10,11 +10,11 @@
 	const ROUTE27_FISHER
 
 Route27_MapScripts:
-	db 2 ; scene scripts
+	def_scene_scripts
 	scene_script .DummyScene0 ; SCENE_DEFAULT
 	scene_script .DummyScene1 ; SCENE_FINISHED
 
-	db 0 ; callbacks
+	def_callbacks
 
 .DummyScene0:
 	end
@@ -25,18 +25,18 @@ Route27_MapScripts:
 FirstStepIntoKantoLeftScene:
 	turnobject ROUTE27_FISHER, LEFT
 	showemote EMOTE_SHOCK, ROUTE27_FISHER, 15
-	applymovement ROUTE27_FISHER, MovementData_0x1a0a66
-	jump FirstStepIntoKantoScene_Continue
+	applymovement ROUTE27_FISHER, Route27FisherStepLeftTwiceMovement
+	sjump FirstStepIntoKantoScene_Continue
 
 FirstStepIntoKantoRightScene:
 	turnobject ROUTE27_FISHER, LEFT
 	showemote EMOTE_SHOCK, ROUTE27_FISHER, 15
-	applymovement ROUTE27_FISHER, MovementData_0x1a0a69
+	applymovement ROUTE27_FISHER, Route27FisherStepLeftOnceMovement
 FirstStepIntoKantoScene_Continue:
 	turnobject PLAYER, RIGHT
 	opentext
 	writetext Route27FisherHeyText
-	buttonsound
+	promptbutton
 	writetext Route27FisherText
 	waitbutton
 	closetext
@@ -70,10 +70,10 @@ TrainerBirdKeeperJose2:
 	checkevent EVENT_JOSE_ASKED_FOR_PHONE_NUMBER
 	iftrue .AskedAlready
 	writetext BirdKeeperJose2AfterBattleText
-	buttonsound
+	promptbutton
 	setevent EVENT_JOSE_ASKED_FOR_PHONE_NUMBER
 	scall .AskNumber1
-	jump .AskForNumber
+	sjump .AskForNumber
 
 .AskedAlready:
 	scall .AskNumber2
@@ -81,9 +81,9 @@ TrainerBirdKeeperJose2:
 	askforphonenumber PHONE_BIRDKEEPER_JOSE
 	ifequal PHONE_CONTACTS_FULL, .PhoneFull
 	ifequal PHONE_CONTACT_REFUSED, .NumberDeclined
-	trainertotext BIRD_KEEPER, JOSE2, MEM_BUFFER_0
+	gettrainername STRING_BUFFER_3, BIRD_KEEPER, JOSE2
 	scall .RegisteredNumber
-	jump .NumberAccepted
+	sjump .NumberAccepted
 
 .WantsBattle:
 	scall .Rematch
@@ -113,31 +113,31 @@ TrainerBirdKeeperJose2:
 	end
 
 .AskNumber1:
-	jumpstd asknumber1m
+	jumpstd AskNumber1MScript
 	end
 
 .AskNumber2:
-	jumpstd asknumber2m
+	jumpstd AskNumber2MScript
 	end
 
 .RegisteredNumber:
-	jumpstd registerednumberm
+	jumpstd RegisteredNumberMScript
 	end
 
 .NumberAccepted:
-	jumpstd numberacceptedm
+	jumpstd NumberAcceptedMScript
 	end
 
 .NumberDeclined:
-	jumpstd numberdeclinedm
+	jumpstd NumberDeclinedMScript
 	end
 
 .PhoneFull:
-	jumpstd phonefullm
+	jumpstd PhoneFullMScript
 	end
 
 .Rematch:
-	jumpstd rematchm
+	jumpstd RematchMScript
 	end
 
 TrainerCooltrainermBlake:
@@ -175,10 +175,10 @@ TrainerCooltrainerfReena:
 	checkevent EVENT_REENA_ASKED_FOR_PHONE_NUMBER
 	iftrue .AskedAlready
 	writetext CooltrainerfReenaAfterBattleText
-	buttonsound
+	promptbutton
 	setevent EVENT_REENA_ASKED_FOR_PHONE_NUMBER
 	scall .AskNumber1
-	jump .AskForNumber
+	sjump .AskForNumber
 
 .AskedAlready:
 	scall .AskNumber2
@@ -186,9 +186,9 @@ TrainerCooltrainerfReena:
 	askforphonenumber PHONE_COOLTRAINERF_REENA
 	ifequal PHONE_CONTACTS_FULL, .PhoneFull
 	ifequal PHONE_CONTACT_REFUSED, .NumberDeclined
-	trainertotext COOLTRAINERF, REENA1, MEM_BUFFER_0
+	gettrainername STRING_BUFFER_3, COOLTRAINERF, REENA1
 	scall .RegisteredNumber
-	jump .NumberAccepted
+	sjump .NumberAccepted
 
 .WantsBattle:
 	scall .Rematch
@@ -218,31 +218,31 @@ TrainerCooltrainerfReena:
 	end
 
 .AskNumber1:
-	jumpstd asknumber1f
+	jumpstd AskNumber1FScript
 	end
 
 .AskNumber2:
-	jumpstd asknumber2f
+	jumpstd AskNumber2FScript
 	end
 
 .RegisteredNumber:
-	jumpstd registerednumberf
+	jumpstd RegisteredNumberFScript
 	end
 
 .NumberAccepted:
-	jumpstd numberacceptedf
+	jumpstd NumberAcceptedFScript
 	end
 
 .NumberDeclined:
-	jumpstd numberdeclinedf
+	jumpstd NumberDeclinedFScript
 	end
 
 .PhoneFull:
-	jumpstd phonefullf
+	jumpstd PhoneFullFScript
 	end
 
 .Rematch:
-	jumpstd rematchf
+	jumpstd RematchFScript
 	end
 
 TrainerCooltrainerfMegan:
@@ -265,12 +265,12 @@ Route27TMSolarbeam:
 Route27RareCandy:
 	itemball RARE_CANDY
 
-MovementData_0x1a0a66:
+Route27FisherStepLeftTwiceMovement:
 	step LEFT
 	step LEFT
 	step_end
 
-MovementData_0x1a0a69:
+Route27FisherStepLeftOnceMovement:
 	step LEFT
 	step_end
 
@@ -428,19 +428,19 @@ TohjoFallsSignText:
 Route27_MapEvents:
 	db 0, 0 ; filler
 
-	db 3 ; warp events
+	def_warp_events
 	warp_event 33,  7, ROUTE_27_SANDSTORM_HOUSE, 1
 	warp_event 26,  5, TOHJO_FALLS, 1
 	warp_event 36,  5, TOHJO_FALLS, 2
 
-	db 2 ; coord events
+	def_coord_events
 	coord_event 18, 10, SCENE_DEFAULT, FirstStepIntoKantoLeftScene
 	coord_event 19, 10, SCENE_DEFAULT, FirstStepIntoKantoRightScene
 
-	db 1 ; bg events
+	def_bg_events
 	bg_event 25,  7, BGEVENT_READ, TohjoFallsSign
 
-	db 9 ; object events
+	def_object_events
 	object_event 49,  7, SPRITE_COOLTRAINER_M, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, PAL_NPC_RED, OBJECTTYPE_TRAINER, 3, TrainerCooltrainermBlake, -1
 	object_event 58,  6, SPRITE_COOLTRAINER_M, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, PAL_NPC_RED, OBJECTTYPE_TRAINER, 5, TrainerCooltrainermBrian, -1
 	object_event 72, 11, SPRITE_COOLTRAINER_F, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, PAL_NPC_RED, OBJECTTYPE_TRAINER, 5, TrainerCooltrainerfReena, -1

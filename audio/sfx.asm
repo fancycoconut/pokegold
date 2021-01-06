@@ -1,570 +1,570 @@
-Sfx_PokeballsPlacedOnTable: ; f0941
-	dbw $04, Sfx_PokeballsPlacedOnTable_Ch5
-; f0944
-
-Sfx_BallWiggle: ; f0944
-	dbw $04, Sfx_BallWiggle_Ch5
-; f0947
-
-Sfx_Potion: ; f0947
-	dbw $04, Sfx_Potion_Ch5
-; f094a
-
-Sfx_FullHeal: ; f094a
-	dbw $04, Sfx_FullHeal_Ch5
-; f094d
-
-Sfx_Menu: ; f094d
-	dbw $07, Sfx_Menu_Ch8
-; f0950
-
-Sfx_ReadText2: ; f0950
-Sfx_ReadText: ; f0950
-	dbw $04, Sfx_ReadText2_Ch5
-; f0953
-
-Sfx_Poison: ; f0953
-	dbw $04, Sfx_Poison_Ch5
-; f0956
-
-Sfx_GotSafariBalls: ; f0956
-	dbw $04, Sfx_GotSafariBalls_Ch5
-; f0959
-
-Sfx_BootPc: ; f0959
-	dbw $04, Sfx_BootPc_Ch5
-; f095c
-
-Sfx_ShutDownPc: ; f095c
-	dbw $04, Sfx_ShutDownPc_Ch5
-; f095f
-
-Sfx_ChoosePcOption: ; f095f
-	dbw $04, Sfx_ChoosePcOption_Ch5
-; f0962
-
-Sfx_EscapeRope: ; f0962
-	dbw $04, Sfx_EscapeRope_Ch5
-; f0965
-
-Sfx_PushButton: ; f0965
-	dbw $04, Sfx_PushButton_Ch5
-; f0968
-
-Sfx_SecondPartOfItemfinder: ; f0968
-	dbw $04, Sfx_SecondPartOfItemfinder_Ch5
-; f096b
-
-Sfx_WarpTo: ; f096b
-	dbw $04, Sfx_WarpTo_Ch5
-; f096e
-
-Sfx_WarpFrom: ; f096e
-	dbw $04, Sfx_WarpFrom_Ch5
-; f0971
-
-Sfx_ChangeDexMode: ; f0971
-	dbw $04, Sfx_ChangeDexMode_Ch5
-; f0974
-
-Sfx_JumpOverLedge: ; f0974
-	dbw $04, Sfx_JumpOverLedge_Ch5
-; f0977
-
-Sfx_GrassRustle: ; f0977
-	dbw $07, Sfx_GrassRustle_Ch8
-; f097a
-
-Sfx_Fly: ; f097a
-	dbw $07, Sfx_Fly_Ch8
-; f097d
-
-Sfx_Wrong: ; f097d
-	dbw $44, Sfx_Wrong_Ch5
-	dbw $05, Sfx_Wrong_Ch6
-; f0983
-
-Sfx_Squeak: ; f0983
-	dbw $04, Sfx_Squeak_Ch5
-; f0986
-
-Sfx_Strength: ; f0986
-	dbw $07, Sfx_Strength_Ch8
-; f0989
-
-Sfx_Boat: ; f0989
-	dbw $44, Sfx_Boat_Ch5
-	dbw $05, Sfx_Boat_Ch6
-; f098f
-
-Sfx_WallOpen: ; f098f
-	dbw $04, Sfx_WallOpen_Ch5
-; f0992
-
-Sfx_PlacePuzzlePieceDown: ; f0992
-	dbw $07, Sfx_PlacePuzzlePieceDown_Ch8
-; f0995
-
-Sfx_EnterDoor: ; f0995
-	dbw $07, Sfx_EnterDoor_Ch8
-; f0998
-
-Sfx_SwitchPokemon: ; f0998
-	dbw $44, Sfx_SwitchPokemon_Ch5
-	dbw $05, Sfx_SwitchPokemon_Ch6
-; f099e
-
-Sfx_Tally: ; f099e
-	dbw $44, Sfx_Tally_Ch5
-	dbw $05, Sfx_Tally_Ch6
-; f09a4
-
-Sfx_Transaction: ; f09a4
-	dbw $44, Sfx_Transaction_Ch5
-	dbw $05, Sfx_Transaction_Ch6
-; f09aa
-
-Sfx_Bump: ; f09aa
-	dbw $04, Sfx_Bump_Ch5
-; f09ad
-
-Sfx_ExitBuilding: ; f09ad
-	dbw $07, Sfx_ExitBuilding_Ch8
-; f09b0
-
-Sfx_Save: ; f09b0
-	dbw $44, Sfx_Save_Ch5
-	dbw $05, Sfx_Save_Ch6
-; f09b6
-
-Sfx_Save_Ch5: ; f09b6
-	dutycycle $2
-	sound $2, $f1, $0700
-	sound $1, $e1, $0600
-	sound $1, $e1, $0680
-	sound $1, $e1, $06c0
-	sound $2, $e1, $0700
-	sound $2, $e1, $07c0
-	sound $f, $f2, $07e0
-	endchannel
-; f09d5
-
-Sfx_Save_Ch6: ; f09d5
-	dutycycle $2
-	sound $2, $8, $0000
-	sound $2, $a1, $0701
-	sound $1, $91, $0601
-	sound $1, $91, $0681
-	sound $1, $91, $06c1
-	sound $2, $91, $0701
-	sound $2, $91, $07c1
-	sound $f, $d2, $07e1
-	endchannel
-; f09f8
-
-Sfx_Pokeflute: ; f09f8
-	dbw $06, Sfx_Pokeflute_Ch7
-; f09fb
-
-Sfx_ElevatorEnd: ; f09fb
-	dbw $04, Sfx_ElevatorEnd_Ch5
-; f09fe
-
-Sfx_ThrowBall: ; f09fe
-	dbw $44, Sfx_ThrowBall_Ch5
-	dbw $05, Sfx_ThrowBall_Ch6
-; f0a04
-
-Sfx_BallPoof: ; f0a04
-	dbw $44, Sfx_BallPoof_Ch5
-	dbw $07, Sfx_BallPoof_Ch8
-; f0a0a
-
-Sfx_Unknown3A: ; f0a0a
-	dbw $44, Sfx_Unknown3A_Ch5
-	dbw $07, Sfx_Unknown3A_Ch8
-; f0a10
-
-Sfx_Run: ; f0a10
-	dbw $07, Sfx_Run_Ch8
-; f0a13
-
-Sfx_SlotMachineStart: ; f0a13
-	dbw $44, Sfx_SlotMachineStart_Ch5
-	dbw $05, Sfx_SlotMachineStart_Ch6
-; f0a19
-
-Sfx_Call: ; f0a19
-	dbw $04, Sfx_Call_Ch5
-; f0a1c
-
-Sfx_Unknown60: ; f0a1c
-	dbw $07, Sfx_Unknown60_Ch8
-; f0a1f
-
-Sfx_Unknown61: ; f0a1f
-	dbw $07, Sfx_Unknown61_Ch8
-; f0a22
-
-Sfx_Unknown62: ; f0a22
-	dbw $07, Sfx_Unknown62_Ch8
-; f0a25
-
-Sfx_Unknown63: ; f0a25
-	dbw $07, Sfx_Unknown63_Ch8
-; f0a28
-
-Sfx_Burn: ; f0a28
-	dbw $07, Sfx_Burn_Ch8
-; f0a2b
-
-Sfx_TitleScreenEntrance: ; f0a2b
-	dbw $07, Sfx_TitleScreenEntrance_Ch8
-; f0a2e
-
-Sfx_Unknown66: ; f0a2e
-	dbw $04, Sfx_Unknown66_Ch5
-; f0a31
-
-Sfx_GetCoinFromSlots: ; f0a31
-	dbw $04, Sfx_GetCoinFromSlots_Ch5
-; f0a34
-
-Sfx_PayDay: ; f0a34
-	dbw $44, Sfx_PayDay_Ch5
-	dbw $05, Sfx_PayDay_Ch6
-; f0a3a
-
-Sfx_Metronome: ; f0a3a
-	dbw $04, Sfx_Metronome_Ch5
-; f0a3d
-
-Sfx_Peck: ; f0a3d
-	dbw $07, Sfx_Peck_Ch8
-; f0a40
-
-Sfx_Kinesis: ; f0a40
-	dbw $04, Sfx_Kinesis_Ch5
-; f0a43
-
-Sfx_Lick: ; f0a43
-	dbw $04, Sfx_Lick_Ch5
-; f0a46
-
-Sfx_Pound: ; f0a46
-	dbw $07, Sfx_Pound_Ch8
-; f0a49
-
-Sfx_MovePuzzlePiece: ; f0a49
-	dbw $07, Sfx_MovePuzzlePiece_Ch8
-; f0a4c
-
-Sfx_CometPunch: ; f0a4c
-	dbw $07, Sfx_CometPunch_Ch8
-; f0a4f
-
-Sfx_MegaPunch: ; f0a4f
-	dbw $07, Sfx_MegaPunch_Ch8
-; f0a52
-
-Sfx_Scratch: ; f0a52
-	dbw $07, Sfx_Scratch_Ch8
-; f0a55
-
-Sfx_Vicegrip: ; f0a55
-	dbw $07, Sfx_Vicegrip_Ch8
-; f0a58
-
-Sfx_RazorWind: ; f0a58
-	dbw $07, Sfx_RazorWind_Ch8
-; f0a5b
-
-Sfx_Cut: ; f0a5b
-	dbw $07, Sfx_Cut_Ch8
-; f0a5e
-
-Sfx_WingAttack: ; f0a5e
-	dbw $07, Sfx_WingAttack_Ch8
-; f0a61
-
-Sfx_Whirlwind: ; f0a61
-	dbw $07, Sfx_Whirlwind_Ch8
-; f0a64
-
-Sfx_Bind: ; f0a64
-	dbw $07, Sfx_Bind_Ch8
-; f0a67
-
-Sfx_VineWhip: ; f0a67
-	dbw $07, Sfx_VineWhip_Ch8
-; f0a6a
-
-Sfx_DoubleKick: ; f0a6a
-	dbw $07, Sfx_DoubleKick_Ch8
-; f0a6d
-
-Sfx_MegaKick: ; f0a6d
-	dbw $07, Sfx_MegaKick_Ch8
-; f0a70
-
-Sfx_Headbutt: ; f0a70
-	dbw $07, Sfx_Headbutt_Ch8
-; f0a73
-
-Sfx_HornAttack: ; f0a73
-	dbw $07, Sfx_HornAttack_Ch8
-; f0a76
-
-Sfx_Tackle: ; f0a76
-	dbw $07, Sfx_Tackle_Ch8
-; f0a79
-
-Sfx_PoisonSting: ; f0a79
-	dbw $07, Sfx_PoisonSting_Ch8
-; f0a7c
-
-Sfx_Powder: ; f0a7c
-	dbw $07, Sfx_Powder_Ch8
-; f0a7f
-
-Sfx_Doubleslap: ; f0a7f
-	dbw $07, Sfx_Doubleslap_Ch8
-; f0a82
-
-Sfx_Bite: ; f0a82
-	dbw $44, Sfx_Bite_Ch5
-	dbw $07, Sfx_Bite_Ch8
-; f0a88
-
-Sfx_JumpKick: ; f0a88
-	dbw $07, Sfx_JumpKick_Ch8
-; f0a8b
-
-Sfx_Stomp: ; f0a8b
-	dbw $07, Sfx_Stomp_Ch8
-; f0a8e
-
-Sfx_TailWhip: ; f0a8e
-	dbw $07, Sfx_TailWhip_Ch8
-; f0a91
-
-Sfx_KarateChop: ; f0a91
-	dbw $07, Sfx_KarateChop_Ch8
-; f0a94
-
-Sfx_Submission: ; f0a94
-	dbw $07, Sfx_Submission_Ch8
-; f0a97
-
-Sfx_WaterGun: ; f0a97
-	dbw $44, Sfx_WaterGun_Ch5
-	dbw $07, Sfx_WaterGun_Ch8
-; f0a9d
-
-Sfx_SwordsDance: ; f0a9d
-	dbw $07, Sfx_SwordsDance_Ch8
-; f0aa0
-
-Sfx_Thunder: ; f0aa0
-	dbw $07, Sfx_Thunder_Ch8
-; f0aa3
-
-Sfx_Supersonic: ; f0aa3
-	dbw $84, Sfx_Supersonic_Ch5
-	dbw $05, Sfx_Supersonic_Ch6
-	dbw $07, Sfx_Supersonic_Ch8
-; f0aac
-
-Sfx_Leer: ; f0aac
-	dbw $84, Sfx_Leer_Ch5
-	dbw $05, Sfx_Leer_Ch6
-	dbw $07, Sfx_Leer_Ch8
-; f0ab5
-
-Sfx_Ember: ; f0ab5
-	dbw $44, Sfx_Ember_Ch5
-	dbw $07, Sfx_Ember_Ch8
-; f0abb
-
-Sfx_Bubblebeam: ; f0abb
-	dbw $84, Sfx_Bubblebeam_Ch5
-	dbw $05, Sfx_Bubblebeam_Ch6
-	dbw $07, Sfx_Bubblebeam_Ch8
-; f0ac4
-
-Sfx_HydroPump: ; f0ac4
-	dbw $44, Sfx_HydroPump_Ch5
-	dbw $07, Sfx_HydroPump_Ch8
-; f0aca
-
-Sfx_Surf: ; f0aca
-	dbw $84, Sfx_Surf_Ch5
-	dbw $05, Sfx_Surf_Ch6
-	dbw $07, Sfx_Surf_Ch8
-; f0ad3
-
-Sfx_Psybeam: ; f0ad3
-	dbw $84, Sfx_Psybeam_Ch5
-	dbw $05, Sfx_Psybeam_Ch6
-	dbw $07, Sfx_Psybeam_Ch8
-; f0adc
-
-Sfx_Charge: ; f0adc
-	dbw $84, Sfx_Charge_Ch5
-	dbw $05, Sfx_Charge_Ch6
-	dbw $07, Sfx_Charge_Ch8
-; f0ae5
-
-Sfx_Thundershock: ; f0ae5
-	dbw $84, Sfx_Thundershock_Ch5
-	dbw $05, Sfx_Thundershock_Ch6
-	dbw $07, Sfx_Thundershock_Ch8
-; f0aee
-
-Sfx_Psychic: ; f0aee
-	dbw $84, Sfx_Psychic_Ch5
-	dbw $05, Sfx_Psychic_Ch6
-	dbw $07, Sfx_Psychic_Ch8
-; f0af7
-
-Sfx_Screech: ; f0af7
-	dbw $44, Sfx_Screech_Ch5
-	dbw $05, Sfx_Screech_Ch6
-; f0afd
-
-Sfx_BoneClub: ; f0afd
-	dbw $44, Sfx_BoneClub_Ch5
-	dbw $05, Sfx_BoneClub_Ch6
-; f0b03
-
-Sfx_Sharpen: ; f0b03
-	dbw $44, Sfx_Sharpen_Ch5
-	dbw $05, Sfx_Sharpen_Ch6
-; f0b09
-
-Sfx_EggBomb: ; f0b09
-	dbw $84, Sfx_EggBomb_Ch5
-	dbw $05, Sfx_EggBomb_Ch6
-	dbw $07, Sfx_EggBomb_Ch8
-; f0b12
-
-Sfx_Sing: ; f0b12
-	dbw $44, Sfx_Sing_Ch5
-	dbw $05, Sfx_Sing_Ch6
-; f0b18
-
-Sfx_HyperBeam: ; f0b18
-	dbw $84, Sfx_HyperBeam_Ch5
-	dbw $05, Sfx_HyperBeam_Ch6
-	dbw $07, Sfx_HyperBeam_Ch8
-; f0b21
-
-Sfx_Shine: ; f0b21
-	dbw $04, Sfx_Shine_Ch5
-; f0b24
-
-Sfx_Unknown5F: ; f0b24
-	dbw $84, Sfx_Unknown5F_Ch5
-	dbw $05, Sfx_Unknown5F_Ch6
-Sfx_Sandstorm: ; f0b2a
-	dbw $07, Sfx_Sandstorm_Ch8
-; f0b2d
-
-Sfx_HangUp: ; f0b2d
-	dbw $04, Sfx_HangUp_Ch5
-; f0b30
-
-Sfx_NoSignal: ; f0b30
-	dbw $04, Sfx_NoSignal_Ch5
-; f0b33
-
-Sfx_Elevator: ; f0b33
-	dbw $c4, Sfx_Elevator_Ch5
-	dbw $05, Sfx_Elevator_Ch6
-	dbw $06, Sfx_Elevator_Ch7
-	dbw $07, Sfx_Elevator_Ch8
-; f0b3f
-
-Sfx_DexFanfare5079: ; f0b3f
-Sfx_LevelUp: ; f0b3f
-	dbw $c4, Sfx_DexFanfare5079_Ch5
-	dbw $05, Sfx_DexFanfare5079_Ch6
-	dbw $06, Sfx_DexFanfare5079_Ch7
-	dbw $07, Sfx_DexFanfare5079_Ch8
-; f0b4b
-
-Sfx_DexFanfare5079_Ch5: ; f0b4b
-Sfx_LevelUp_Ch5: ; f0b4b
-	togglesfx
+Sfx_PokeballsPlacedOnTable:
+	channel_count 1
+	channel 5, Sfx_PokeballsPlacedOnTable_Ch5
+
+Sfx_BallWobble:
+	channel_count 1
+	channel 5, Sfx_BallWobble_Ch5
+
+Sfx_Potion:
+	channel_count 1
+	channel 5, Sfx_Potion_Ch5
+
+Sfx_FullHeal:
+	channel_count 1
+	channel 5, Sfx_FullHeal_Ch5
+
+Sfx_Menu:
+	channel_count 1
+	channel 8, Sfx_Menu_Ch8
+
+Sfx_ReadText:
+Sfx_ReadText2:
+	channel_count 1
+	channel 5, Sfx_ReadText_Ch5
+	assert Sfx_ReadText_Ch5 == Sfx_ReadText2_Ch5
+
+Sfx_Poison:
+	channel_count 1
+	channel 5, Sfx_Poison_Ch5
+
+Sfx_GotSafariBalls:
+	channel_count 1
+	channel 5, Sfx_GotSafariBalls_Ch5
+
+Sfx_BootPc:
+	channel_count 1
+	channel 5, Sfx_BootPc_Ch5
+
+Sfx_ShutDownPc:
+	channel_count 1
+	channel 5, Sfx_ShutDownPc_Ch5
+
+Sfx_ChoosePcOption:
+	channel_count 1
+	channel 5, Sfx_ChoosePcOption_Ch5
+
+Sfx_EscapeRope:
+	channel_count 1
+	channel 5, Sfx_EscapeRope_Ch5
+
+Sfx_PushButton:
+	channel_count 1
+	channel 5, Sfx_PushButton_Ch5
+
+Sfx_SecondPartOfItemfinder:
+	channel_count 1
+	channel 5, Sfx_SecondPartOfItemfinder_Ch5
+
+Sfx_WarpTo:
+	channel_count 1
+	channel 5, Sfx_WarpTo_Ch5
+
+Sfx_WarpFrom:
+	channel_count 1
+	channel 5, Sfx_WarpFrom_Ch5
+
+Sfx_ChangeDexMode:
+	channel_count 1
+	channel 5, Sfx_ChangeDexMode_Ch5
+
+Sfx_JumpOverLedge:
+	channel_count 1
+	channel 5, Sfx_JumpOverLedge_Ch5
+
+Sfx_GrassRustle:
+	channel_count 1
+	channel 8, Sfx_GrassRustle_Ch8
+
+Sfx_Fly:
+	channel_count 1
+	channel 8, Sfx_Fly_Ch8
+
+Sfx_Wrong:
+	channel_count 2
+	channel 5, Sfx_Wrong_Ch5
+	channel 6, Sfx_Wrong_Ch6
+
+Sfx_Squeak:
+	channel_count 1
+	channel 5, Sfx_Squeak_Ch5
+
+Sfx_Strength:
+	channel_count 1
+	channel 8, Sfx_Strength_Ch8
+
+Sfx_Boat:
+	channel_count 2
+	channel 5, Sfx_Boat_Ch5
+	channel 6, Sfx_Boat_Ch6
+
+Sfx_WallOpen:
+	channel_count 1
+	channel 5, Sfx_WallOpen_Ch5
+
+Sfx_PlacePuzzlePieceDown:
+	channel_count 1
+	channel 8, Sfx_PlacePuzzlePieceDown_Ch8
+
+Sfx_EnterDoor:
+	channel_count 1
+	channel 8, Sfx_EnterDoor_Ch8
+
+Sfx_SwitchPokemon:
+	channel_count 2
+	channel 5, Sfx_SwitchPokemon_Ch5
+	channel 6, Sfx_SwitchPokemon_Ch6
+
+Sfx_Tally:
+	channel_count 2
+	channel 5, Sfx_Tally_Ch5
+	channel 6, Sfx_Tally_Ch6
+
+Sfx_Transaction:
+	channel_count 2
+	channel 5, Sfx_Transaction_Ch5
+	channel 6, Sfx_Transaction_Ch6
+
+Sfx_Bump:
+	channel_count 1
+	channel 5, Sfx_Bump_Ch5
+
+Sfx_ExitBuilding:
+	channel_count 1
+	channel 8, Sfx_ExitBuilding_Ch8
+
+Sfx_Save:
+	channel_count 2
+	channel 5, Sfx_Save_Ch5
+	channel 6, Sfx_Save_Ch6
+
+Sfx_Save_Ch5:
+	duty_cycle 2
+	square_note 2, 15, 1, 1792
+	square_note 1, 14, 1, 1536
+	square_note 1, 14, 1, 1664
+	square_note 1, 14, 1, 1728
+	square_note 2, 14, 1, 1792
+	square_note 2, 14, 1, 1984
+	square_note 15, 15, 2, 2016
+	sound_ret
+
+Sfx_Save_Ch6:
+	duty_cycle 2
+	square_note 2, 0, 8, 0
+	square_note 2, 10, 1, 1793
+	square_note 1, 9, 1, 1537
+	square_note 1, 9, 1, 1665
+	square_note 1, 9, 1, 1729
+	square_note 2, 9, 1, 1793
+	square_note 2, 9, 1, 1985
+	square_note 15, 13, 2, 2017
+	sound_ret
+
+Sfx_Pokeflute:
+	channel_count 1
+	channel 7, Sfx_Pokeflute_Ch7
+
+Sfx_ElevatorEnd:
+	channel_count 1
+	channel 5, Sfx_ElevatorEnd_Ch5
+
+Sfx_ThrowBall:
+	channel_count 2
+	channel 5, Sfx_ThrowBall_Ch5
+	channel 6, Sfx_ThrowBall_Ch6
+
+Sfx_BallPoof:
+	channel_count 2
+	channel 5, Sfx_BallPoof_Ch5
+	channel 8, Sfx_BallPoof_Ch8
+
+Sfx_Unknown3A:
+	channel_count 2
+	channel 5, Sfx_Unknown3A_Ch5
+	channel 8, Sfx_Unknown3A_Ch8
+
+Sfx_Run:
+	channel_count 1
+	channel 8, Sfx_Run_Ch8
+
+Sfx_SlotMachineStart:
+	channel_count 2
+	channel 5, Sfx_SlotMachineStart_Ch5
+	channel 6, Sfx_SlotMachineStart_Ch6
+
+Sfx_Call:
+	channel_count 1
+	channel 5, Sfx_Call_Ch5
+
+Sfx_Unknown60:
+	channel_count 1
+	channel 8, Sfx_Unknown60_Ch8
+
+Sfx_Unknown61:
+	channel_count 1
+	channel 8, Sfx_Unknown61_Ch8
+
+Sfx_SwitchPockets:
+	channel_count 1
+	channel 8, Sfx_SwitchPockets_Ch8
+
+Sfx_Unknown63:
+	channel_count 1
+	channel 8, Sfx_Unknown63_Ch8
+
+Sfx_Burn:
+	channel_count 1
+	channel 8, Sfx_Burn_Ch8
+
+Sfx_TitleScreenEntrance:
+	channel_count 1
+	channel 8, Sfx_TitleScreenEntrance_Ch8
+
+Sfx_Unknown66:
+	channel_count 1
+	channel 5, Sfx_Unknown66_Ch5
+
+Sfx_GetCoinFromSlots:
+	channel_count 1
+	channel 5, Sfx_GetCoinFromSlots_Ch5
+
+Sfx_PayDay:
+	channel_count 2
+	channel 5, Sfx_PayDay_Ch5
+	channel 6, Sfx_PayDay_Ch6
+
+Sfx_Metronome:
+	channel_count 1
+	channel 5, Sfx_Metronome_Ch5
+
+Sfx_Peck:
+	channel_count 1
+	channel 8, Sfx_Peck_Ch8
+
+Sfx_Kinesis:
+	channel_count 1
+	channel 5, Sfx_Kinesis_Ch5
+
+Sfx_Lick:
+	channel_count 1
+	channel 5, Sfx_Lick_Ch5
+
+Sfx_Pound:
+	channel_count 1
+	channel 8, Sfx_Pound_Ch8
+
+Sfx_MovePuzzlePiece:
+	channel_count 1
+	channel 8, Sfx_MovePuzzlePiece_Ch8
+
+Sfx_CometPunch:
+	channel_count 1
+	channel 8, Sfx_CometPunch_Ch8
+
+Sfx_MegaPunch:
+	channel_count 1
+	channel 8, Sfx_MegaPunch_Ch8
+
+Sfx_Scratch:
+	channel_count 1
+	channel 8, Sfx_Scratch_Ch8
+
+Sfx_Vicegrip:
+	channel_count 1
+	channel 8, Sfx_Vicegrip_Ch8
+
+Sfx_RazorWind:
+	channel_count 1
+	channel 8, Sfx_RazorWind_Ch8
+
+Sfx_Cut:
+	channel_count 1
+	channel 8, Sfx_Cut_Ch8
+
+Sfx_WingAttack:
+	channel_count 1
+	channel 8, Sfx_WingAttack_Ch8
+
+Sfx_Whirlwind:
+	channel_count 1
+	channel 8, Sfx_Whirlwind_Ch8
+
+Sfx_Bind:
+	channel_count 1
+	channel 8, Sfx_Bind_Ch8
+
+Sfx_VineWhip:
+	channel_count 1
+	channel 8, Sfx_VineWhip_Ch8
+
+Sfx_DoubleKick:
+	channel_count 1
+	channel 8, Sfx_DoubleKick_Ch8
+
+Sfx_MegaKick:
+	channel_count 1
+	channel 8, Sfx_MegaKick_Ch8
+
+Sfx_Headbutt:
+	channel_count 1
+	channel 8, Sfx_Headbutt_Ch8
+
+Sfx_HornAttack:
+	channel_count 1
+	channel 8, Sfx_HornAttack_Ch8
+
+Sfx_Tackle:
+	channel_count 1
+	channel 8, Sfx_Tackle_Ch8
+
+Sfx_PoisonSting:
+	channel_count 1
+	channel 8, Sfx_PoisonSting_Ch8
+
+Sfx_Powder:
+	channel_count 1
+	channel 8, Sfx_Powder_Ch8
+
+Sfx_Doubleslap:
+	channel_count 1
+	channel 8, Sfx_Doubleslap_Ch8
+
+Sfx_Bite:
+	channel_count 2
+	channel 5, Sfx_Bite_Ch5
+	channel 8, Sfx_Bite_Ch8
+
+Sfx_JumpKick:
+	channel_count 1
+	channel 8, Sfx_JumpKick_Ch8
+
+Sfx_Stomp:
+	channel_count 1
+	channel 8, Sfx_Stomp_Ch8
+
+Sfx_TailWhip:
+	channel_count 1
+	channel 8, Sfx_TailWhip_Ch8
+
+Sfx_KarateChop:
+	channel_count 1
+	channel 8, Sfx_KarateChop_Ch8
+
+Sfx_Submission:
+	channel_count 1
+	channel 8, Sfx_Submission_Ch8
+
+Sfx_WaterGun:
+	channel_count 2
+	channel 5, Sfx_WaterGun_Ch5
+	channel 8, Sfx_WaterGun_Ch8
+
+Sfx_SwordsDance:
+	channel_count 1
+	channel 8, Sfx_SwordsDance_Ch8
+
+Sfx_Thunder:
+	channel_count 1
+	channel 8, Sfx_Thunder_Ch8
+
+Sfx_Supersonic:
+	channel_count 3
+	channel 5, Sfx_Supersonic_Ch5
+	channel 6, Sfx_Supersonic_Ch6
+	channel 8, Sfx_Supersonic_Ch8
+
+Sfx_Leer:
+	channel_count 3
+	channel 5, Sfx_Leer_Ch5
+	channel 6, Sfx_Leer_Ch6
+	channel 8, Sfx_Leer_Ch8
+
+Sfx_Ember:
+	channel_count 2
+	channel 5, Sfx_Ember_Ch5
+	channel 8, Sfx_Ember_Ch8
+
+Sfx_Bubblebeam:
+	channel_count 3
+	channel 5, Sfx_Bubblebeam_Ch5
+	channel 6, Sfx_Bubblebeam_Ch6
+	channel 8, Sfx_Bubblebeam_Ch8
+
+Sfx_HydroPump:
+	channel_count 2
+	channel 5, Sfx_HydroPump_Ch5
+	channel 8, Sfx_HydroPump_Ch8
+
+Sfx_Surf:
+	channel_count 3
+	channel 5, Sfx_Surf_Ch5
+	channel 6, Sfx_Surf_Ch6
+	channel 8, Sfx_Surf_Ch8
+
+Sfx_Psybeam:
+	channel_count 3
+	channel 5, Sfx_Psybeam_Ch5
+	channel 6, Sfx_Psybeam_Ch6
+	channel 8, Sfx_Psybeam_Ch8
+
+Sfx_Charge:
+	channel_count 3
+	channel 5, Sfx_Charge_Ch5
+	channel 6, Sfx_Charge_Ch6
+	channel 8, Sfx_Charge_Ch8
+
+Sfx_Thundershock:
+	channel_count 3
+	channel 5, Sfx_Thundershock_Ch5
+	channel 6, Sfx_Thundershock_Ch6
+	channel 8, Sfx_Thundershock_Ch8
+
+Sfx_Psychic:
+	channel_count 3
+	channel 5, Sfx_Psychic_Ch5
+	channel 6, Sfx_Psychic_Ch6
+	channel 8, Sfx_Psychic_Ch8
+
+Sfx_Screech:
+	channel_count 2
+	channel 5, Sfx_Screech_Ch5
+	channel 6, Sfx_Screech_Ch6
+
+Sfx_BoneClub:
+	channel_count 2
+	channel 5, Sfx_BoneClub_Ch5
+	channel 6, Sfx_BoneClub_Ch6
+
+Sfx_Sharpen:
+	channel_count 2
+	channel 5, Sfx_Sharpen_Ch5
+	channel 6, Sfx_Sharpen_Ch6
+
+Sfx_EggBomb:
+	channel_count 3
+	channel 5, Sfx_EggBomb_Ch5
+	channel 6, Sfx_EggBomb_Ch6
+	channel 8, Sfx_EggBomb_Ch8
+
+Sfx_Sing:
+	channel_count 2
+	channel 5, Sfx_Sing_Ch5
+	channel 6, Sfx_Sing_Ch6
+
+Sfx_HyperBeam:
+	channel_count 3
+	channel 5, Sfx_HyperBeam_Ch5
+	channel 6, Sfx_HyperBeam_Ch6
+	channel 8, Sfx_HyperBeam_Ch8
+
+Sfx_Shine:
+	channel_count 1
+	channel 5, Sfx_Shine_Ch5
+
+Sfx_Unknown5F:
+	channel_count 3
+	channel 5, Sfx_Unknown5F_Ch5
+	channel 6, Sfx_Unknown5F_Ch6
+Sfx_Sandstorm:
+	channel 8, Sfx_Sandstorm_Ch8
+	assert Sfx_Sandstorm_Ch8 == Sfx_Unknown5F_Ch8
+
+Sfx_HangUp:
+	channel_count 1
+	channel 5, Sfx_HangUp_Ch5
+
+Sfx_NoSignal:
+	channel_count 1
+	channel 5, Sfx_NoSignal_Ch5
+
+Sfx_Elevator:
+	channel_count 4
+	channel 5, Sfx_Elevator_Ch5
+	channel 6, Sfx_Elevator_Ch6
+	channel 7, Sfx_Elevator_Ch7
+	channel 8, Sfx_Elevator_Ch8
+
+Sfx_LevelUp:
+Sfx_DexFanfare5079:
+	channel_count 4
+	channel 5, Sfx_LevelUp_Ch5
+	channel 6, Sfx_LevelUp_Ch6
+	channel 7, Sfx_LevelUp_Ch7
+	channel 8, Sfx_LevelUp_Ch8
+	assert Sfx_LevelUp_Ch5 == Sfx_DexFanfare5079_Ch5
+	assert Sfx_LevelUp_Ch6 == Sfx_DexFanfare5079_Ch6
+	assert Sfx_LevelUp_Ch7 == Sfx_DexFanfare5079_Ch7
+	assert Sfx_LevelUp_Ch8 == Sfx_DexFanfare5079_Ch8
+
+Sfx_LevelUp_Ch5:
+Sfx_DexFanfare5079_Ch5:
+	toggle_sfx
 	tempo 120
-	volume $77
-	dutycycle $2
-	notetype $8, $b1
+	volume 7, 7
+	duty_cycle 2
+	note_type 8, 11, 1
 	octave 3
 	note B_, 2
 	note B_, 2
 	note B_, 2
-	intensity $b3
+	volume_envelope 11, 3
 	octave 4
 	note G#, 12
-	endchannel
-; f0b5f
+	sound_ret
 
-Sfx_DexFanfare5079_Ch6: ; f0b5f
-Sfx_LevelUp_Ch6: ; f0b5f
-	togglesfx
-	dutycycle $2
-	notetype $8, $c1
+Sfx_LevelUp_Ch6:
+Sfx_DexFanfare5079_Ch6:
+	toggle_sfx
+	duty_cycle 2
+	note_type 8, 12, 1
 	octave 4
 	note E_, 2
 	note E_, 2
 	note E_, 2
-	intensity $c3
+	volume_envelope 12, 3
 	note B_, 12
-	endchannel
-; f0b6d
+	sound_ret
 
-Sfx_DexFanfare5079_Ch7: ; f0b6d
-Sfx_LevelUp_Ch7: ; f0b6d
-	togglesfx
-	notetype $8, $25
+Sfx_LevelUp_Ch7:
+Sfx_DexFanfare5079_Ch7:
+	toggle_sfx
+	note_type 8, 2, 5
 	octave 4
 	note G#, 1
-	note __, 1
+	rest 1
 	note G#, 1
-	note __, 1
+	rest 1
 	note G#, 1
-	note __, 1
+	rest 1
 	octave 5
 	note E_, 5
-	intensity $35
+	volume_envelope 3, 5
 	note E_, 3
-	note __, 4
-	endchannel
-; f0b7f
+	rest 4
+	sound_ret
 
-Sfx_DexFanfare5079_Ch8: ; f0b7f
-Sfx_LevelUp_Ch8: ; f0b7f
-	togglesfx
-	sfxtogglenoise $4
-	notetype $c
+Sfx_LevelUp_Ch8:
+Sfx_DexFanfare5079_Ch8:
+	toggle_sfx
+	sfx_toggle_noise 4
+	drum_speed 12
 	note C_, 12
-	endchannel
-; f0b86
+	sound_ret
 
-Sfx_KeyItem: ; f0b86
-	dbw $c4, Sfx_KeyItem_Ch5
-	dbw $05, Sfx_KeyItem_Ch6
-	dbw $06, Sfx_KeyItem_Ch7
-	dbw $07, Sfx_KeyItem_Ch8
-; f0b92
+Sfx_KeyItem:
+	channel_count 4
+	channel 5, Sfx_KeyItem_Ch5
+	channel 6, Sfx_KeyItem_Ch6
+	channel 7, Sfx_KeyItem_Ch7
+	channel 8, Sfx_KeyItem_Ch8
 
-Sfx_KeyItem_Ch5: ; f0b92
-	togglesfx
+Sfx_KeyItem_Ch5:
+	toggle_sfx
 	tempo 120
-	volume $77
-	dutycycle $2
-	notetype $6, $b1
+	volume 7, 7
+	duty_cycle 2
+	note_type 6, 11, 1
 	octave 3
 	note B_, 4
 	note B_, 2
@@ -572,93 +572,88 @@ Sfx_KeyItem_Ch5: ; f0b92
 	note B_, 4
 	octave 4
 	note E_, 4
-	intensity $b3
+	volume_envelope 11, 3
 	note G#, 16
-	endchannel
-; f0ba8
+	sound_ret
 
-Sfx_KeyItem_Ch6: ; f0ba8
-	togglesfx
-	dutycycle $2
-	notetype $6, $c1
+Sfx_KeyItem_Ch6:
+	toggle_sfx
+	duty_cycle 2
+	note_type 6, 12, 1
 	octave 4
 	note E_, 4
 	note E_, 2
 	note E_, 2
 	note E_, 4
 	note G#, 4
-	intensity $c3
+	volume_envelope 12, 3
 	note B_, 16
-	endchannel
-; f0bb8
+	sound_ret
 
-Sfx_KeyItem_Ch7: ; f0bb8
-	togglesfx
-	notetype $6, $25
+Sfx_KeyItem_Ch7:
+	toggle_sfx
+	note_type 6, 2, 5
 	octave 4
 	note G#, 2
-	note __, 2
+	rest 2
 	note G#, 1
-	note __, 1
+	rest 1
 	note G#, 1
-	note __, 1
+	rest 1
 	note G#, 2
-	note __, 2
+	rest 2
 	note B_, 2
-	note __, 2
+	rest 2
 	octave 5
 	note E_, 8
-	intensity $35
+	volume_envelope 3, 5
 	note E_, 4
-	note __, 4
-	endchannel
-; f0bce
+	rest 4
+	sound_ret
 
-Sfx_KeyItem_Ch8: ; f0bce
-	togglesfx
-	sfxtogglenoise $4
-	notetype $c
+Sfx_KeyItem_Ch8:
+	toggle_sfx
+	sfx_toggle_noise 4
+	drum_speed 12
 	note C_, 16
-	endchannel
-; f0bd5
+	sound_ret
 
-Sfx_DexFanfare2049: ; f0bd5
-	dbw $c4, Sfx_DexFanfare2049_Ch5
-	dbw $05, Sfx_DexFanfare2049_Ch6
-	dbw $06, Sfx_DexFanfare2049_Ch7
-	dbw $07, Sfx_DexFanfare2049_Ch8
-; f0be1
+Sfx_DexFanfare2049:
+	channel_count 4
+	channel 5, Sfx_DexFanfare2049_Ch5
+	channel 6, Sfx_DexFanfare2049_Ch6
+	channel 7, Sfx_DexFanfare2049_Ch7
+	channel 8, Sfx_DexFanfare2049_Ch8
 
-Sfx_DexFanfare2049_Ch5: ; f0be1
-	togglesfx
+Sfx_DexFanfare2049_Ch5:
+	toggle_sfx
 	tempo 104
-	volume $77
-	dutycycle $2
-	notetype $c, $88
+	volume 7, 7
+	duty_cycle 2
+	note_type 12, 8, 8
 	octave 3
 	note A_, 4
-	note __, 2
+	rest 2
 	note A_, 1
-	note __, 1
+	rest 1
 	note A#, 4
-	note __, 2
+	rest 2
 	note A#, 1
-	note __, 1
+	rest 1
 	octave 4
 	note C_, 2
-	note __, 2
+	rest 2
 	octave 3
 	note A#, 2
-	note __, 2
+	rest 2
 	note A_, 2
-	note __, 6
-	endchannel
-; f0bfe
+	rest 6
+	sound_ret
 
-Sfx_DexFanfare2049_Ch6: ; f0bfe
-	togglesfx
-	dutycycle $2
-	notetype $c, $c1
+Sfx_DexFanfare2049_Ch6:
+	toggle_sfx
+	duty_cycle 2
+	note_type 12, 12, 1
 	octave 5
 	note F_, 2
 	note E_, 2
@@ -673,53 +668,50 @@ Sfx_DexFanfare2049_Ch6: ; f0bfe
 	note F_, 4
 	note G_, 4
 	note F_, 8
-	endchannel
-; f0c13
+	sound_ret
 
-Sfx_DexFanfare2049_Ch7: ; f0c13
-	togglesfx
-	notetype $c, $25
+Sfx_DexFanfare2049_Ch7:
+	toggle_sfx
+	note_type 12, 2, 5
 	octave 4
 	note F_, 4
-	note __, 2
+	rest 2
 	note F_, 1
-	note __, 1
+	rest 1
 	note F_, 4
-	note __, 2
+	rest 2
 	note F_, 1
-	note __, 1
+	rest 1
 	note A_, 2
-	note __, 2
+	rest 2
 	note E_, 2
-	note __, 2
+	rest 2
 	note F_, 2
-	note __, 6
-	endchannel
-; f0c27
+	rest 6
+	sound_ret
 
-Sfx_DexFanfare2049_Ch8: ; f0c27
-	togglesfx
-	sfxtogglenoise $4
-	notetype $c
+Sfx_DexFanfare2049_Ch8:
+	toggle_sfx
+	sfx_toggle_noise 4
+	drum_speed 12
 	note C_, 16
-	note __, 16
-	endchannel
-; f0c2f
+	rest 16
+	sound_ret
 
-Sfx_Item: ; f0c2f
-	dbw $c4, Sfx_Item_Ch5
-	dbw $05, Sfx_Item_Ch6
-	dbw $06, Sfx_Item_Ch7
-	dbw $07, Sfx_Item_Ch8
-; f0c3b
+Sfx_Item:
+	channel_count 4
+	channel 5, Sfx_Item_Ch5
+	channel 6, Sfx_Item_Ch6
+	channel 7, Sfx_Item_Ch7
+	channel 8, Sfx_Item_Ch8
 
-Sfx_Item_Ch5: ; f0c3b
-	togglesfx
+Sfx_Item_Ch5:
+	toggle_sfx
 	tempo 108
-	volume $77
-	vibrato $8, $27
-	dutycycle $2
-	notetype $8, $b2
+	volume 7, 7
+	vibrato 8, 2, 7
+	duty_cycle 2
+	note_type 8, 11, 2
 	octave 4
 	note C_, 6
 	note C_, 2
@@ -729,15 +721,14 @@ Sfx_Item_Ch5: ; f0c3b
 	note G_, 4
 	note G_, 4
 	note F_, 12
-	note __, 12
-	endchannel
-; f0c54
+	rest 12
+	sound_ret
 
-Sfx_Item_Ch6: ; f0c54
-	togglesfx
-	vibrato $8, $27
-	dutycycle $2
-	notetype $8, $c3
+Sfx_Item_Ch6:
+	toggle_sfx
+	vibrato 8, 2, 7
+	duty_cycle 2
+	note_type 8, 12, 3
 	octave 4
 	note A_, 6
 	note A_, 2
@@ -747,64 +738,61 @@ Sfx_Item_Ch6: ; f0c54
 	note A#, 4
 	note A#, 4
 	note A_, 12
-	note __, 12
-	endchannel
-; f0c68
+	rest 12
+	sound_ret
 
-Sfx_Item_Ch7: ; f0c68
-	togglesfx
-	notetype $8, $25
+Sfx_Item_Ch7:
+	toggle_sfx
+	note_type 8, 2, 5
 	octave 4
 	note F_, 4
-	note __, 2
+	rest 2
 	note F_, 1
-	note __, 1
+	rest 1
 	note F_, 1
-	note __, 1
+	rest 1
 	note F_, 1
-	note __, 1
+	rest 1
 	note D#, 2
-	note __, 2
+	rest 2
 	note D#, 2
-	note __, 2
+	rest 2
 	note E_, 2
-	note __, 2
+	rest 2
 	note F_, 6
-	intensity $35
+	volume_envelope 3, 5
 	note F_, 4
-	note __, 14
-	endchannel
-; f0c81
+	rest 14
+	sound_ret
 
-Sfx_Item_Ch8: ; f0c81
-	togglesfx
-	sfxtogglenoise $4
-	notetype $c
+Sfx_Item_Ch8:
+	toggle_sfx
+	sfx_toggle_noise 4
+	drum_speed 12
 	note C_, 16
-	note __, 16
-	endchannel
-; f0c89
+	rest 16
+	sound_ret
 
-Sfx_CaughtMon: ; f0c89
-	dbw $c4, Sfx_CaughtMon_Ch5
-	dbw $05, Sfx_CaughtMon_Ch6
-	dbw $06, Sfx_CaughtMon_Ch7
-	dbw $07, Sfx_CaughtMon_Ch8
-; f0c95
+Sfx_CaughtMon:
+	channel_count 4
+	channel 5, Sfx_CaughtMon_Ch5
+	channel 6, Sfx_CaughtMon_Ch6
+	channel 7, Sfx_CaughtMon_Ch7
+	channel 8, Sfx_CaughtMon_Ch8
 
-Sfx_CaughtMon_Ch5: ; f0c95
-	togglesfx
+Sfx_CaughtMon_Ch5:
+	toggle_sfx
 	tempo 112
-	volume $77
-	vibrato $8, $27
-	dutycycle $2
-	notetype $8, $b3
+	volume 7, 7
+	vibrato 8, 2, 7
+	duty_cycle 2
+	note_type 8, 11, 3
 	octave 4
 	note C_, 6
 	octave 3
 	note A_, 6
 	note F_, 12
-	intensity $b1
+	volume_envelope 11, 1
 	octave 4
 	note D#, 2
 	note D#, 2
@@ -812,35 +800,33 @@ Sfx_CaughtMon_Ch5: ; f0c95
 	note D#, 2
 	note D#, 2
 	note G_, 2
-	intensity $b3
+	volume_envelope 11, 3
 	note F_, 12
-	endchannel
-; f0cb5
+	sound_ret
 
-Sfx_CaughtMon_Ch6: ; f0cb5
-	togglesfx
-	dutycycle $2
-	vibrato $8, $27
-	notetype $8, $c3
+Sfx_CaughtMon_Ch6:
+	toggle_sfx
+	duty_cycle 2
+	vibrato 8, 2, 7
+	note_type 8, 12, 3
 	octave 4
 	note A_, 6
 	note F_, 6
 	note C_, 12
-	intensity $c1
+	volume_envelope 12, 1
 	note A#, 2
 	note A#, 2
 	note A#, 2
 	note G_, 2
 	note G_, 2
 	note A#, 2
-	intensity $c3
+	volume_envelope 12, 3
 	note A_, 12
-	endchannel
-; f0cce
+	sound_ret
 
-Sfx_CaughtMon_Ch7: ; f0cce
-	togglesfx
-	notetype $8, $25
+Sfx_CaughtMon_Ch7:
+	toggle_sfx
+	note_type 8, 2, 5
 	octave 3
 	note C_, 12
 	note C_, 6
@@ -852,35 +838,33 @@ Sfx_CaughtMon_Ch7: ; f0cce
 	note G_, 6
 	note A#, 6
 	note A_, 6
-	intensity $35
+	volume_envelope 3, 5
 	note A_, 3
-	note __, 3
-	endchannel
-; f0ce2
+	rest 3
+	sound_ret
 
-Sfx_CaughtMon_Ch8: ; f0ce2
-	togglesfx
-	sfxtogglenoise $4
-	notetype $c
+Sfx_CaughtMon_Ch8:
+	toggle_sfx
+	sfx_toggle_noise 4
+	drum_speed 12
 	note C_, 16
-	note __, 16
-	endchannel
-; f0cea
+	rest 16
+	sound_ret
 
-Sfx_DexFanfare80109: ; f0cea
-	dbw $c4, Sfx_DexFanfare80109_Ch5
-	dbw $05, Sfx_DexFanfare80109_Ch6
-	dbw $06, Sfx_DexFanfare80109_Ch7
-	dbw $07, Sfx_DexFanfare80109_Ch8
-; f0cf6
+Sfx_DexFanfare80109:
+	channel_count 4
+	channel 5, Sfx_DexFanfare80109_Ch5
+	channel 6, Sfx_DexFanfare80109_Ch6
+	channel 7, Sfx_DexFanfare80109_Ch7
+	channel 8, Sfx_DexFanfare80109_Ch8
 
-Sfx_DexFanfare80109_Ch5: ; f0cf6
-	togglesfx
+Sfx_DexFanfare80109_Ch5:
+	toggle_sfx
 	tempo 112
-	volume $77
-	vibrato $8, $27
-	dutycycle $2
-	notetype $c, $b1
+	volume 7, 7
+	vibrato 8, 2, 7
+	duty_cycle 2
+	note_type 12, 11, 1
 	octave 4
 	note D#, 2
 	note D#, 1
@@ -896,16 +880,15 @@ Sfx_DexFanfare80109_Ch5: ; f0cf6
 	note F_, 2
 	note F_, 1
 	note F_, 1
-	intensity $a5
+	volume_envelope 10, 5
 	note A#, 16
-	endchannel
-; f0d17
+	sound_ret
 
-Sfx_DexFanfare80109_Ch6: ; f0d17
-	togglesfx
-	vibrato $8, $27
-	dutycycle $2
-	notetype $c, $c1
+Sfx_DexFanfare80109_Ch6:
+	toggle_sfx
+	vibrato 8, 2, 7
+	duty_cycle 2
+	note_type 12, 12, 1
 	octave 4
 	note G_, 2
 	note G_, 1
@@ -919,69 +902,66 @@ Sfx_DexFanfare80109_Ch6: ; f0d17
 	note A#, 2
 	note A#, 1
 	note A#, 1
-	intensity $b5
+	volume_envelope 11, 5
 	octave 5
 	note D#, 16
-	endchannel
-; f0d32
+	sound_ret
 
-Sfx_DexFanfare80109_Ch7: ; f0d32
-	togglesfx
-	notetype $c, $25
+Sfx_DexFanfare80109_Ch7:
+	toggle_sfx
+	note_type 12, 2, 5
 	octave 4
 	note D#, 1
-	note __, 1
+	rest 1
 	octave 3
 	note A#, 2
 	octave 4
 	note D#, 1
-	note __, 1
+	rest 1
 	octave 3
 	note A#, 2
 	octave 4
 	note D#, 1
-	note __, 1
+	rest 1
 	note C_, 2
 	note D_, 1
-	note __, 1
+	rest 1
 	octave 3
 	note A#, 2
 	note D#, 4
-	intensity $35
+	volume_envelope 3, 5
 	note D#, 3
-	note __, 9
-	endchannel
-; f0d4e
+	rest 9
+	sound_ret
 
-Sfx_DexFanfare80109_Ch8: ; f0d4e
-	togglesfx
-	sfxtogglenoise $4
-	notetype $c
+Sfx_DexFanfare80109_Ch8:
+	toggle_sfx
+	sfx_toggle_noise 4
+	drum_speed 12
 	note C_, 16
-	note __, 16
-	endchannel
-; f0d56
+	rest 16
+	sound_ret
 
-Sfx_Fanfare2: ; f0d56
-	dbw $84, Sfx_Fanfare2_Ch5
-	dbw $05, Sfx_Fanfare2_Ch6
-	dbw $07, Sfx_Fanfare2_Ch8
-; f0d5f
+Sfx_Fanfare2:
+	channel_count 3
+	channel 5, Sfx_Fanfare2_Ch5
+	channel 6, Sfx_Fanfare2_Ch6
+	channel 8, Sfx_Fanfare2_Ch8
 
-UnknownSfx: ; f0d5f
-	dbw $c4, UnknownSfx_Ch5
-	dbw $05, UnknownSfx_Ch6
-	dbw $06, UnknownSfx_Ch7
-	dbw $07, UnknownSfx_Ch8
-; f0d6b
+Sfx_Unused: ; unreferenced
+	channel_count 4
+	channel 5, Sfx_Unused_Ch5
+	channel 6, Sfx_Unused_Ch6
+	channel 7, Sfx_Unused_Ch7
+	channel 8, Sfx_Unused_Ch8
 
-UnknownSfx_Ch5: ; f0d6b
-	togglesfx
+Sfx_Unused_Ch5:
+	toggle_sfx
 	tempo 124
-	volume $77
-	vibrato $8, $27
-	dutycycle $2
-	notetype $c, $b1
+	volume 7, 7
+	vibrato 8, 2, 7
+	duty_cycle 2
+	note_type 12, 11, 1
 	octave 4
 	note F_, 2
 	note F_, 1
@@ -995,16 +975,15 @@ UnknownSfx_Ch5: ; f0d6b
 	note C_, 2
 	note E_, 1
 	note E_, 1
-	intensity $a5
+	volume_envelope 10, 5
 	note F_, 16
-	endchannel
-; f0d8a
+	sound_ret
 
-UnknownSfx_Ch6: ; f0d8a
-	togglesfx
-	vibrato $8, $27
-	dutycycle $2
-	notetype $c, $c1
+Sfx_Unused_Ch6:
+	toggle_sfx
+	vibrato 8, 2, 7
+	duty_cycle 2
+	note_type 12, 12, 1
 	octave 4
 	note A_, 2
 	note A_, 1
@@ -1020,14 +999,13 @@ UnknownSfx_Ch6: ; f0d8a
 	note A#, 2
 	note A#, 1
 	note A#, 1
-	intensity $b5
+	volume_envelope 11, 5
 	note A_, 16
-	endchannel
-; f0da6
+	sound_ret
 
-UnknownSfx_Ch7: ; f0da6
-	togglesfx
-	notetype $c, $25
+Sfx_Unused_Ch7:
+	toggle_sfx
+	note_type 12, 2, 5
 	octave 4
 	note F_, 8
 	note C_, 2
@@ -1035,41 +1013,39 @@ UnknownSfx_Ch7: ; f0da6
 	note G_, 2
 	note A#, 2
 	note A_, 4
-	intensity $35
+	volume_envelope 3, 5
 	note A_, 3
-	note __, 9
-	endchannel
-; f0db6
+	rest 9
+	sound_ret
 
-UnknownSfx_Ch8: ; f0db6
-	togglesfx
-	sfxtogglenoise $4
-	notetype $c
+Sfx_Unused_Ch8:
+	toggle_sfx
+	sfx_toggle_noise 4
+	drum_speed 12
 	note C_, 16
-	note __, 16
-	endchannel
-; f0dbe
+	rest 16
+	sound_ret
 
-Sfx_Fanfare: ; f0dbe
-	dbw $84, Sfx_Fanfare_Ch5
-	dbw $05, Sfx_Fanfare_Ch6
-	dbw $07, Sfx_Fanfare_Ch8
-; f0dc7
+Sfx_Fanfare:
+	channel_count 3
+	channel 5, Sfx_Fanfare_Ch5
+	channel 6, Sfx_Fanfare_Ch6
+	channel 8, Sfx_Fanfare_Ch8
 
-Sfx_RegisterPhoneNumber: ; f0dc7
-	dbw $c4, Sfx_RegisterPhoneNumber_Ch5
-	dbw $05, Sfx_RegisterPhoneNumber_Ch6
-	dbw $06, Sfx_RegisterPhoneNumber_Ch7
-	dbw $07, Sfx_RegisterPhoneNumber_Ch8
-; f0dd3
+Sfx_RegisterPhoneNumber:
+	channel_count 4
+	channel 5, Sfx_RegisterPhoneNumber_Ch5
+	channel 6, Sfx_RegisterPhoneNumber_Ch6
+	channel 7, Sfx_RegisterPhoneNumber_Ch7
+	channel 8, Sfx_RegisterPhoneNumber_Ch8
 
-Sfx_RegisterPhoneNumber_Ch5: ; f0dd3
-	togglesfx
+Sfx_RegisterPhoneNumber_Ch5:
+	toggle_sfx
 	tempo 124
-	volume $77
-	dutycycle $3
-	notetype $c, $a2
-	note __, 2
+	volume 7, 7
+	duty_cycle 3
+	note_type 12, 10, 2
+	rest 2
 	octave 3
 	note C_, 4
 	note G#, 4
@@ -1084,26 +1060,23 @@ Sfx_RegisterPhoneNumber_Ch5: ; f0dd3
 	octave 4
 	note C#, 3
 	note C_, 2
-	note __, 8
-	endchannel
-; f0def
+	rest 8
+	sound_ret
 
+	toggle_sfx ; unused
 
-INCBIN "baserom.gbc", $f0def, $f0df0 - $f0def
-
-
-Sfx_RegisterPhoneNumber_Ch6: ; f0df0
-	togglesfx
-	dutycycle $3
-	notetype $c, $c2
-	note __, 2
+Sfx_RegisterPhoneNumber_Ch6:
+	toggle_sfx
+	duty_cycle 3
+	note_type 12, 12, 2
+	rest 2
 	octave 4
 	note D#, 2
 	note C#, 2
 	note C_, 2
 	note D#, 2
 	note F_, 2
-	note __, 1
+	rest 1
 	note G#, 3
 	octave 5
 	note C_, 2
@@ -1111,137 +1084,117 @@ Sfx_RegisterPhoneNumber_Ch6: ; f0df0
 	octave 4
 	note G_, 3
 	note G#, 2
-	note __, 8
-	endchannel
-; f0e07
+	rest 8
+	sound_ret
 
+	toggle_sfx ; unused
 
-INCBIN "baserom.gbc", $f0e07, $f0e08 - $f0e07
-
-
-Sfx_RegisterPhoneNumber_Ch7: ; f0e08
-	togglesfx
-	notetype $c, $25
-	note __, 2
+Sfx_RegisterPhoneNumber_Ch7:
+	toggle_sfx
+	note_type 12, 2, 5
+	rest 2
 	octave 3
 	note D#, 7
-	note __, 1
+	rest 1
 	note G#, 2
-	note __, 1
+	rest 1
 	note C_, 2
-	note __, 1
+	rest 1
 	note G#, 2
 	note G_, 2
-	note __, 1
+	rest 1
 	note A#, 3
 	note G#, 2
-	note __, 8
-	endchannel
-; f0e1b
+	rest 8
+	sound_ret
 
+	toggle_sfx ; unused
 
-INCBIN "baserom.gbc", $f0e1b, $f0e1c - $f0e1b
-
-
-Sfx_RegisterPhoneNumber_Ch8: ; f0e1c
-	togglesfx
-	sfxtogglenoise $4
-	notetype $c
+Sfx_RegisterPhoneNumber_Ch8:
+	toggle_sfx
+	sfx_toggle_noise 4
+	drum_speed 12
 	note C_, 2
-	note __, 16
-	note __, 16
-	endchannel
-; f0e25
+	rest 16
+	rest 16
+	sound_ret
 
+	toggle_sfx ; unused
 
-INCBIN "baserom.gbc", $f0e25, $f0e26 - $f0e25
+Sfx_3rdPlace:
+	channel_count 3
+	channel 5, Sfx_3rdPlace_Ch5
+	channel 6, Sfx_3rdPlace_Ch6
+	channel 7, Sfx_3rdPlace_Ch7
 
-
-Sfx_3RdPlace: ; f0e26
-	dbw $84, Sfx_3RdPlace_Ch5
-	dbw $05, Sfx_3RdPlace_Ch6
-	dbw $06, Sfx_3RdPlace_Ch7
-; f0e2f
-
-Sfx_3RdPlace_Ch5: ; f0e2f
-	togglesfx
+Sfx_3rdPlace_Ch5:
+	toggle_sfx
 	tempo 120
-	volume $77
-	dutycycle $2
-	notetype $c, $a4
+	volume 7, 7
+	duty_cycle 2
+	note_type 12, 10, 4
 	octave 4
 	note F_, 1
 	note A_, 1
 	octave 5
 	note C_, 1
 	note F_, 1
-	note __, 1
+	rest 1
 	note C_, 1
 	note D_, 6
-	endchannel
-; f0e44
+	sound_ret
 
+	toggle_sfx ; unused
 
-INCBIN "baserom.gbc", $f0e44, $f0e45 - $f0e44
-
-
-Sfx_3RdPlace_Ch6: ; f0e45
-	togglesfx
-	dutycycle $2
-	notetype $c, $b4
+Sfx_3rdPlace_Ch6:
+	toggle_sfx
+	duty_cycle 2
+	note_type 12, 11, 4
 	octave 4
 	note A_, 1
 	octave 5
 	note C_, 1
 	note F_, 1
 	note A_, 1
-	note __, 1
+	rest 1
 	note F_, 1
 	note G_, 6
-	endchannel
-; f0e55
+	sound_ret
 
+	toggle_sfx ; unused
 
-INCBIN "baserom.gbc", $f0e55, $f0e56 - $f0e55
-
-
-Sfx_3RdPlace_Ch7: ; f0e56
-	togglesfx
-	notetype $c, $25
+Sfx_3rdPlace_Ch7:
+	toggle_sfx
+	note_type 12, 2, 5
 	octave 3
 	note A_, 1
 	note F_, 1
 	note A_, 1
 	octave 4
 	note C_, 1
-	note __, 1
+	rest 1
 	octave 3
 	note A_, 1
 	note B_, 6
-	endchannel
-; f0e65
+	sound_ret
 
+	toggle_sfx ; unused
 
-INCBIN "baserom.gbc", $f0e65, $f0e66 - $f0e65
+Sfx_GetEgg:
+	channel_count 4
+	channel 5, Sfx_GetEgg_Ch5
+	channel 6, Sfx_GetEgg_Ch6
+	channel 7, Sfx_GetEgg_Ch7
+	channel 8, Sfx_GetEgg_Ch8
 
-
-Sfx_GetEggFromDaycareLady: ; f0e66
-Sfx_GetEggFromDaycareMan: ; f0e66
-	dbw $c4, Sfx_GetEggFromDaycareLady_Ch5
-	dbw $05, Sfx_GetEggFromDaycareLady_Ch6
-	dbw $06, Sfx_GetEggFromDaycareLady_Ch7
-	dbw $07, Sfx_GetEggFromDaycareLady_Ch8
-; f0e72
-
-Sfx_GetEggFromDaycareLady_Ch5: ; f0e72
-Sfx_GetEggFromDaycareMan_Ch5: ; f0e72
-	togglesfx
+Sfx_GetEgg_Ch5:
+	toggle_sfx
 	tempo 120
-	volume $77
-	vibrato $12, $34
-	dutycycle $2
-	notetype $8, $a1
-	note __, 2
+	volume 7, 7
+	vibrato 18, 3, 4
+	duty_cycle 2
+	note_type 8, 10, 1
+	rest 2
 	octave 3
 	note C_, 2
 	note F_, 2
@@ -1250,63 +1203,55 @@ Sfx_GetEggFromDaycareMan_Ch5: ; f0e72
 	note A#, 2
 	octave 4
 	note D_, 2
-	intensity $a2
+	volume_envelope 10, 2
 	note F_, 6
-	intensity $a1
-	dutycycle $3
+	volume_envelope 10, 1
+	duty_cycle 3
 	octave 3
 	note E_, 2
 	note G_, 2
 	octave 4
 	note C_, 2
-	intensity $a4
+	volume_envelope 10, 4
 	note F_, 9
-	note __, 9
-	endchannel
-; f0e9a
+	rest 9
+	sound_ret
 
+	toggle_sfx ; unused
 
-INCBIN "baserom.gbc", $f0e9a, $f0e9b - $f0e9a
-
-
-Sfx_GetEggFromDaycareLady_Ch6: ; f0e9b
-Sfx_GetEggFromDaycareMan_Ch6: ; f0e9b
-	togglesfx
-	vibrato $12, $34
-	dutycycle $3
-	notetype $8, $c2
-	note __, 2
+Sfx_GetEgg_Ch6:
+	toggle_sfx
+	vibrato 18, 3, 4
+	duty_cycle 3
+	note_type 8, 12, 2
+	rest 2
 	octave 4
 	note F_, 2
-	note __, 2
+	rest 2
 	note A_, 2
-	intensity $c1
+	volume_envelope 12, 1
 	note A#, 2
 	note A_, 2
 	note A#, 2
-	intensity $c2
+	volume_envelope 12, 2
 	octave 5
 	note C_, 6
-	intensity $c1
+	volume_envelope 12, 1
 	octave 4
 	note C_, 2
 	note E_, 2
 	note G_, 2
-	intensity $c4
+	volume_envelope 12, 4
 	note A_, 9
-	note __, 9
-	endchannel
-; f0ebd
+	rest 9
+	sound_ret
 
+	toggle_sfx ; unused
 
-INCBIN "baserom.gbc", $f0ebd, $f0ebe - $f0ebd
-
-
-Sfx_GetEggFromDaycareLady_Ch7: ; f0ebe
-Sfx_GetEggFromDaycareMan_Ch7: ; f0ebe
-	togglesfx
-	notetype $8, $25
-	note __, 2
+Sfx_GetEgg_Ch7:
+	toggle_sfx
+	note_type 8, 2, 5
+	rest 2
 	octave 3
 	note C_, 6
 	octave 2
@@ -1317,168 +1262,149 @@ Sfx_GetEggFromDaycareMan_Ch7: ; f0ebe
 	note G_, 2
 	note A#, 6
 	note A_, 9
-	note __, 9
-	endchannel
-; f0ecf
+	rest 9
+	sound_ret
 
+	toggle_sfx ; unused
 
-INCBIN "baserom.gbc", $f0ecf, $f0ed0 - $f0ecf
+Sfx_GetEgg_Ch8:
+	toggle_sfx
+	sfx_toggle_noise 4
+	drum_speed 8
+	rest 2
+	drum_speed 12
+	rest 16
+	rest 12
+	sound_ret
 
+	toggle_sfx ; unused
 
-Sfx_GetEggFromDaycareLady_Ch8: ; f0ed0
-Sfx_GetEggFromDaycareMan_Ch8: ; f0ed0
-	togglesfx
-	sfxtogglenoise $4
-	notetype $8
-	note __, 2
-	notetype $c
-	note __, 16
-	note __, 12
-	endchannel
-; f0edb
+Sfx_MoveDeleted:
+	channel_count 4
+	channel 5, Sfx_MoveDeleted_Ch5
+	channel 6, Sfx_MoveDeleted_Ch6
+	channel 7, Sfx_MoveDeleted_Ch7
+	channel 8, Sfx_MoveDeleted_Ch8
 
-
-INCBIN "baserom.gbc", $f0edb, $f0edc - $f0edb
-
-
-Sfx_MoveDeleted: ; f0edc
-	dbw $c4, Sfx_MoveDeleted_Ch5
-	dbw $05, Sfx_MoveDeleted_Ch6
-	dbw $06, Sfx_MoveDeleted_Ch7
-	dbw $07, Sfx_MoveDeleted_Ch8
-; f0ee8
-
-Sfx_MoveDeleted_Ch5: ; f0ee8
-	togglesfx
+Sfx_MoveDeleted_Ch5:
+	toggle_sfx
 	tempo 116
-	volume $77
-	dutycycle $2
-	vibrato $c, $44
-	notetype $c, $a4
-	note __, 8
+	volume 7, 7
+	duty_cycle 2
+	vibrato 12, 4, 4
+	note_type 12, 10, 4
+	rest 8
 	octave 2
 	note G_, 1
-	note __, 2
+	rest 2
 	note C#, 1
 	note E_, 1
 	note D#, 1
 	note E_, 4
-	intensity $a1
+	volume_envelope 10, 1
 	note G_, 2
 	note F_, 2
 	note E_, 2
 	note D_, 2
 	note G#, 2
 	note B_, 2
-	intensity $a6
+	volume_envelope 10, 6
 	octave 3
 	note D_, 10
-	note __, 6
-	endchannel
-; f0f0c
+	rest 6
+	sound_ret
 
+	toggle_sfx ; unused
 
-INCBIN "baserom.gbc", $f0f0c, $f0f0d - $f0f0c
-
-
-Sfx_MoveDeleted_Ch6: ; f0f0d
-	togglesfx
-	dutycycle $3
-	vibrato $c, $44
-	notetype $c, $74
+Sfx_MoveDeleted_Ch6:
+	toggle_sfx
+	duty_cycle 3
+	vibrato 12, 4, 4
+	note_type 12, 7, 4
 	octave 1
 	note B_, 1
 	octave 2
 	note D_, 1
 	note F_, 1
 	note G#, 1
-	intensity $94
+	volume_envelope 9, 4
 	note D_, 1
 	note F_, 1
 	note G#, 1
 	note B_, 1
-	intensity $b4
+	volume_envelope 11, 4
 	octave 3
 	note C#, 1
-	note __, 2
+	rest 2
 	octave 2
 	note A#, 1
 	octave 3
 	note C#, 4
-	note __, 2
-	intensity $b1
+	rest 2
+	volume_envelope 11, 1
 	note C#, 2
 	note D#, 2
 	note E_, 2
-	intensity $b6
+	volume_envelope 11, 6
 	note F_, 16
-	note __, 6
-	endchannel
-; f0f36
+	rest 6
+	sound_ret
 
+	toggle_sfx ; unused
 
-INCBIN "baserom.gbc", $f0f36, $f0f37 - $f0f36
-
-
-Sfx_MoveDeleted_Ch7: ; f0f37
-	togglesfx
-	notetype $6, $25
+Sfx_MoveDeleted_Ch7:
+	toggle_sfx
+	note_type 6, 2, 5
 	octave 2
 	note G#, 8
 	note A_, 8
 	note A#, 2
-	note __, 4
+	rest 4
 	note A#, 1
-	note __, 1
+	rest 1
 	note A#, 8
-	note __, 4
+	rest 4
 	octave 3
 	note C#, 2
-	note __, 2
+	rest 2
 	note C_, 2
-	note __, 2
+	rest 2
 	octave 2
 	note A#, 2
-	note __, 2
-	notetype $c, $20
+	rest 2
+	note_type 12, 2, 0
 	note B_, 16
-	note __, 6
-	endchannel
-; f0f52
+	rest 6
+	sound_ret
 
+	toggle_sfx ; unused
 
-INCBIN "baserom.gbc", $f0f52, $f0f53 - $f0f52
-
-
-Sfx_MoveDeleted_Ch8: ; f0f53
-	togglesfx
-	sfxtogglenoise $3
-	notetype $c
+Sfx_MoveDeleted_Ch8:
+	toggle_sfx
+	sfx_toggle_noise 3
+	drum_speed 12
 	note F_, 8
-	note __, 16
-	note __, 16
-	note __, 6
-	endchannel
-; f0f5d
+	rest 16
+	rest 16
+	rest 6
+	sound_ret
 
+	toggle_sfx ; unused
 
-INCBIN "baserom.gbc", $f0f5d, $f0f5e - $f0f5d
+Sfx_2ndPlace:
+	channel_count 4
+	channel 5, Sfx_2ndPlace_Ch5
+	channel 6, Sfx_2ndPlace_Ch6
+	channel 7, Sfx_2ndPlace_Ch7
+	channel 8, Sfx_2ndPlace_Ch8
 
-
-Sfx_2ndPlace: ; f0f5e
-	dbw $c4, Sfx_2ndPlace_Ch5
-	dbw $05, Sfx_2ndPlace_Ch6
-	dbw $06, Sfx_2ndPlace_Ch7
-	dbw $07, Sfx_2ndPlace_Ch8
-; f0f6a
-
-Sfx_2ndPlace_Ch5: ; f0f6a
-	togglesfx
+Sfx_2ndPlace_Ch5:
+	toggle_sfx
 	tempo 116
-	volume $77
-	dutycycle $2
-	vibrato $c, $34
-	notetype $8, $a1
+	volume 7, 7
+	duty_cycle 2
+	vibrato 12, 3, 4
+	note_type 8, 10, 1
 	octave 4
 	note E_, 2
 	note E_, 2
@@ -1499,116 +1425,104 @@ Sfx_2ndPlace_Ch5: ; f0f6a
 	note A_, 2
 	note A_, 2
 	note A_, 2
-	intensity $a7
+	volume_envelope 10, 7
 	note B_, 12
-	note __, 6
-	endchannel
-; f0f91
+	rest 6
+	sound_ret
 
+	toggle_sfx ; unused
 
-INCBIN "baserom.gbc", $f0f91, $f0f92 - $f0f91
-
-
-Sfx_2ndPlace_Ch6: ; f0f92
-	togglesfx
-	dutycycle $2
-	notetype $8, $b1
+Sfx_2ndPlace_Ch6:
+	toggle_sfx
+	duty_cycle 2
+	note_type 8, 11, 1
 	octave 4
 	note G_, 2
 	note G_, 2
 	note G_, 2
 	note A_, 4
 	note B_, 2
-	intensity $b4
+	volume_envelope 11, 4
 	octave 5
 	note C_, 12
-	intensity $b1
+	volume_envelope 11, 1
 	note C_, 2
 	note C_, 2
 	note C_, 2
-	intensity $b7
+	volume_envelope 11, 7
 	note D_, 12
-	note __, 6
-	endchannel
-; f0fac
+	rest 6
+	sound_ret
 
+	toggle_sfx ; unused
 
-INCBIN "baserom.gbc", $f0fac, $f0fad - $f0fac
-
-
-Sfx_2ndPlace_Ch7: ; f0fad
-	togglesfx
-	notetype $8, $25
+Sfx_2ndPlace_Ch7:
+	toggle_sfx
+	note_type 8, 2, 5
 	octave 3
 	note C_, 1
-	note __, 1
+	rest 1
 	note C_, 1
-	note __, 1
+	rest 1
 	note C_, 1
-	note __, 1
+	rest 1
 	octave 2
 	note F_, 2
-	note __, 2
+	rest 2
 	octave 3
 	note F_, 2
 	octave 2
 	note F_, 2
-	note __, 2
+	rest 2
 	octave 3
 	note F_, 2
 	octave 2
 	note F_, 2
-	note __, 2
+	rest 2
 	octave 3
 	note F_, 2
 	note D_, 1
-	note __, 1
+	rest 1
 	note D_, 1
-	note __, 1
+	rest 1
 	note D_, 1
-	note __, 1
+	rest 1
 	octave 2
 	note G_, 12
-	note __, 6
-	endchannel
-; f0fd1
+	rest 6
+	sound_ret
 
+	toggle_sfx ; unused
 
-INCBIN "baserom.gbc", $f0fd1, $f0fd2 - $f0fd1
-
-
-Sfx_2ndPlace_Ch8: ; f0fd2
-	togglesfx
-	sfxtogglenoise $3
-	notetype $8
-Sfx_2ndPlace_branch_f0fd7: ; f0fd7
+Sfx_2ndPlace_Ch8:
+	toggle_sfx
+	sfx_toggle_noise 3
+	drum_speed 8
+.loop1:
 	note C#, 1
-	loopchannel 6, Sfx_2ndPlace_branch_f0fd7
+	sound_loop 6, .loop1
 	note B_, 12
 	note B_, 12
 	note B_, 12
-	note __, 6
-	endchannel
-; f0fe1
+	rest 6
+	sound_ret
 
+	toggle_sfx ; unused
 
-INCBIN "baserom.gbc", $f0fe1, $f0fe2 - $f0fe1
+Sfx_1stPlace:
+	channel_count 4
+	channel 5, Sfx_1stPlace_Ch5
+	channel 6, Sfx_1stPlace_Ch6
+	channel 7, Sfx_1stPlace_Ch7
+	channel 8, Sfx_1stPlace_Ch8
 
-
-Sfx_1stPlace: ; f0fe2
-	dbw $c4, Sfx_1stPlace_Ch5
-	dbw $05, Sfx_1stPlace_Ch6
-	dbw $06, Sfx_1stPlace_Ch7
-	dbw $07, Sfx_1stPlace_Ch8
-; f0fee
-
-Sfx_1stPlace_Ch5: ; f0fee
-	togglesfx
+Sfx_1stPlace_Ch5:
+	toggle_sfx
 	tempo 124
-	volume $77
-	dutycycle $3
-	vibrato $c, $34
-	notetype $c, $a1
+	volume 7, 7
+	duty_cycle 3
+	vibrato 12, 3, 4
+	note_type 12, 10, 1
 	octave 5
 	note D_, 2
 	octave 4
@@ -1619,91 +1533,82 @@ Sfx_1stPlace_Ch5: ; f0fee
 	note F_, 1
 	note D_, 1
 	note F_, 1
-	intensity $91
+	volume_envelope 9, 1
 	note D_, 1
 	octave 4
 	note A#, 1
 	note F_, 1
 	note A#, 1
-	intensity $81
+	volume_envelope 8, 1
 	octave 5
 	note D_, 1
 	octave 4
 	note A#, 1
 	note F_, 1
 	note D_, 1
-	intensity $a1
+	volume_envelope 10, 1
 	note C_, 2
 	note E_, 2
 	note G_, 2
-	intensity $a7
+	volume_envelope 10, 7
 	note A_, 10
-	note __, 6
-	endchannel
-; f101f
+	rest 6
+	sound_ret
 
+	toggle_sfx ; unused
 
-INCBIN "baserom.gbc", $f101f, $f1020 - $f101f
-
-
-Sfx_1stPlace_Ch6: ; f1020
-	togglesfx
-	dutycycle $3
-	vibrato $c, $34
-	notetype $c, $c1
+Sfx_1stPlace_Ch6:
+	toggle_sfx
+	duty_cycle 3
+	vibrato 12, 3, 4
+	note_type 12, 12, 1
 	octave 3
 	note B_, 2
 	note G_, 2
 	note B_, 2
-	intensity $b6
+	volume_envelope 11, 6
 	octave 4
 	note D_, 12
-	intensity $c1
+	volume_envelope 12, 1
 	note E_, 2
 	note G_, 2
 	octave 5
 	note C_, 2
-	intensity $b7
+	volume_envelope 11, 7
 	note D_, 10
-	note __, 6
-	endchannel
-; f103c
+	rest 6
+	sound_ret
 
+	toggle_sfx ; unused
 
-INCBIN "baserom.gbc", $f103c, $f103d - $f103c
-
-
-Sfx_1stPlace_Ch7: ; f103d
-	togglesfx
-	notetype $c, $25
+Sfx_1stPlace_Ch7:
+	toggle_sfx
+	note_type 12, 2, 5
 	octave 2
 	note G_, 1
-	note __, 1
+	rest 1
 	note G_, 1
-	note __, 1
+	rest 1
 	note G_, 1
-	note __, 1
+	rest 1
 	note A#, 6
 	note F_, 6
 	note E_, 1
-	note __, 1
+	rest 1
 	note E_, 1
-	note __, 1
+	rest 1
 	note E_, 1
-	note __, 1
+	rest 1
 	note D_, 10
-	note __, 6
-	endchannel
-; f1053
+	rest 6
+	sound_ret
 
+	toggle_sfx ; unused
 
-INCBIN "baserom.gbc", $f1053, $f1054 - $f1053
-
-
-Sfx_1stPlace_Ch8: ; f1054
-	togglesfx
-	sfxtogglenoise $4
-	notetype $6
+Sfx_1stPlace_Ch8:
+	toggle_sfx
+	sfx_toggle_noise 4
+	drum_speed 6
 	note D_, 4
 	note D_, 4
 	note D_, 4
@@ -1714,129 +1619,120 @@ Sfx_1stPlace_Ch8: ; f1054
 	note D_, 4
 	note D_, 4
 	note D_, 4
-	notetype $c
+	drum_speed 12
 	note B_, 10
-	note __, 6
-	endchannel
-; f1068
+	rest 6
+	sound_ret
 
+	toggle_sfx ; unused
 
-INCBIN "baserom.gbc", $f1068, $f1069 - $f1068
+Sfx_ChooseACard:
+	channel_count 4
+	channel 5, Sfx_ChooseACard_Ch5
+	channel 6, Sfx_ChooseACard_Ch6
+	channel 7, Sfx_ChooseACard_Ch7
+	channel 8, Sfx_ChooseACard_Ch8
 
-
-Sfx_ChooseACard: ; f1069
-	dbw $c4, Sfx_ChooseACard_Ch5
-	dbw $05, Sfx_ChooseACard_Ch6
-	dbw $06, Sfx_ChooseACard_Ch7
-	dbw $07, Sfx_ChooseACard_Ch8
-; f1075
-
-Sfx_ChooseACard_Ch5: ; f1075
-	togglesfx
+Sfx_ChooseACard_Ch5:
+	toggle_sfx
 	tempo 152
-	volume $77
-	dutycycle $3
-	notetype $6, $a4
+	volume 7, 7
+	duty_cycle 3
+	note_type 6, 10, 4
 	octave 3
 	note E_, 1
-	note __, 1
+	rest 1
 	note E_, 1
-	note __, 1
+	rest 1
 	octave 4
 	note C#, 4
 	octave 3
 	note F_, 1
-	note __, 1
+	rest 1
 	note F_, 1
-	note __, 1
+	rest 1
 	octave 4
 	note D_, 4
 	octave 3
 	note E_, 1
-	note __, 1
+	rest 1
 	note E_, 1
-	note __, 1
+	rest 1
 	octave 4
 	note E_, 4
-	intensity $71
+	volume_envelope 7, 1
 	octave 3
 	note E_, 1
 	note F#, 1
 	note G#, 1
 	note A_, 1
-	intensity $91
+	volume_envelope 9, 1
 	note B_, 1
 	octave 4
 	note C#, 1
 	note D_, 1
 	note D#, 1
-	intensity $a4
+	volume_envelope 10, 4
 	note E_, 4
-	note __, 12
-	endchannel
-; f10a8
+	rest 12
+	sound_ret
 
+	toggle_sfx ; unused
 
-INCBIN "baserom.gbc", $f10a8, $f10a9 - $f10a8
-
-
-Sfx_ChooseACard_Ch6: ; f10a9
-	togglesfx
-	dutycycle $3
-	notetype $6, $b4
+Sfx_ChooseACard_Ch6:
+	toggle_sfx
+	duty_cycle 3
+	note_type 6, 11, 4
 	octave 3
 	note A_, 1
-	note __, 1
+	rest 1
 	note A_, 1
-	note __, 1
+	rest 1
 	octave 4
 	note E_, 4
 	octave 3
 	note A_, 1
-	note __, 1
+	rest 1
 	note A_, 1
-	note __, 1
+	rest 1
 	octave 4
 	note F_, 4
 	octave 3
 	note A_, 1
-	note __, 1
+	rest 1
 	note A_, 1
-	note __, 1
+	rest 1
 	octave 4
 	note G_, 4
 	note G#, 8
 	note A_, 4
-	note __, 12
-	endchannel
-; f10c8
+	rest 12
+	sound_ret
 
+	toggle_sfx ; unused
 
-INCBIN "baserom.gbc", $f10c8, $f10c9 - $f10c8
-
-
-Sfx_ChooseACard_Ch7: ; f10c9
-	togglesfx
-	notetype $6, $25
+Sfx_ChooseACard_Ch7:
+	toggle_sfx
+	note_type 6, 2, 5
 	octave 3
 	note C#, 1
-	note __, 1
+	rest 1
 	note C#, 1
-	note __, 1
+	rest 1
 	octave 2
 	note A_, 4
 	octave 3
 	note D_, 1
-	note __, 1
+	rest 1
 	note D_, 1
-	note __, 1
+	rest 1
 	octave 2
 	note A_, 4
 	octave 3
 	note C_, 1
-	note __, 1
+	rest 1
 	note C_, 1
-	note __, 1
+	rest 1
 	octave 2
 	note A_, 4
 	octave 3
@@ -1846,18 +1742,15 @@ Sfx_ChooseACard_Ch7: ; f10c9
 	note B_, 2
 	note G#, 2
 	note A_, 4
-	note __, 12
-	endchannel
-; f10eb
+	rest 12
+	sound_ret
 
+	toggle_sfx ; unused
 
-INCBIN "baserom.gbc", $f10eb, $f10ec - $f10eb
-
-
-Sfx_ChooseACard_Ch8: ; f10ec
-	togglesfx
-	sfxtogglenoise $4
-	notetype $6
+Sfx_ChooseACard_Ch8:
+	toggle_sfx
+	sfx_toggle_noise 4
+	drum_speed 6
 	note D_, 2
 	note C#, 2
 	note B_, 4
@@ -1875,113 +1768,101 @@ Sfx_ChooseACard_Ch8: ; f10ec
 	note C#, 2
 	note D_, 2
 	note B_, 16
-	endchannel
-; f1103
+	sound_ret
 
+	toggle_sfx ; unused
 
-INCBIN "baserom.gbc", $f1103, $f1104 - $f1103
+Sfx_GetTm:
+	channel_count 4
+	channel 5, Sfx_GetTm_Ch5
+	channel 6, Sfx_GetTm_Ch6
+	channel 7, Sfx_GetTm_Ch7
+	channel 8, Sfx_GetTm_Ch8
 
-
-Sfx_GetTm: ; f1104
-	dbw $c4, Sfx_GetTm_Ch5
-	dbw $05, Sfx_GetTm_Ch6
-	dbw $06, Sfx_GetTm_Ch7
-	dbw $07, Sfx_GetTm_Ch8
-; f1110
-
-Sfx_GetTm_Ch5: ; f1110
-	togglesfx
+Sfx_GetTm_Ch5:
+	toggle_sfx
 	tempo 144
-	volume $77
-	dutycycle $3
-	vibrato $8, $24
-	notetype $c, $a3
+	volume 7, 7
+	duty_cycle 3
+	vibrato 8, 2, 4
+	note_type 12, 10, 3
 	octave 4
 	note D_, 1
-	note __, 1
+	rest 1
 	octave 3
 	note B_, 1
 	octave 4
 	note D_, 1
 	note G_, 6
-	intensity $b1
+	volume_envelope 11, 1
 	note E_, 2
 	note F#, 2
 	note G_, 2
-	intensity $a5
+	volume_envelope 10, 5
 	note F#, 8
-	note __, 6
-	endchannel
-; f1130
+	rest 6
+	sound_ret
 
+	toggle_sfx ; unused
 
-INCBIN "baserom.gbc", $f1130, $f1131 - $f1130
-
-
-Sfx_GetTm_Ch6: ; f1131
-	togglesfx
-	dutycycle $3
-	vibrato $8, $24
-	notetype $c, $b3
+Sfx_GetTm_Ch6:
+	toggle_sfx
+	duty_cycle 3
+	vibrato 8, 2, 4
+	note_type 12, 11, 3
 	octave 4
 	note G_, 1
-	note __, 1
+	rest 1
 	note D_, 1
 	note G_, 1
 	note B_, 6
-	intensity $c1
+	volume_envelope 12, 1
 	note A_, 2
 	note B_, 2
 	octave 5
 	note C_, 2
-	intensity $b5
+	volume_envelope 11, 5
 	note D_, 8
-	note __, 6
-	endchannel
-; f114b
+	rest 6
+	sound_ret
 
+	toggle_sfx ; unused
 
-INCBIN "baserom.gbc", $f114b, $f114c - $f114b
-
-
-Sfx_GetTm_Ch7: ; f114c
-	togglesfx
-	notetype $6, $25
+Sfx_GetTm_Ch7:
+	toggle_sfx
+	note_type 6, 2, 5
 	octave 2
 	note B_, 2
-	note __, 2
+	rest 2
 	note G_, 2
 	note B_, 2
 	octave 3
 	note D_, 4
 	octave 2
 	note G_, 1
-	note __, 1
+	rest 1
 	note G_, 1
-	note __, 1
+	rest 1
 	note G_, 4
 	octave 3
 	note C_, 2
-	note __, 2
+	rest 2
 	octave 2
 	note B_, 2
-	note __, 2
+	rest 2
 	octave 3
 	note C_, 4
 	octave 2
 	note A_, 16
-	note __, 6
-	endchannel
-; f1169
+	rest 6
+	sound_ret
 
+	toggle_sfx ; unused
 
-INCBIN "baserom.gbc", $f1169, $f116a - $f1169
-
-
-Sfx_GetTm_Ch8: ; f116a
-	togglesfx
-	sfxtogglenoise $4
-	notetype $6
+Sfx_GetTm_Ch8:
+	toggle_sfx
+	sfx_toggle_noise 4
+	drum_speed 6
 	note D_, 4
 	note C#, 2
 	note D_, 2
@@ -1993,47 +1874,41 @@ Sfx_GetTm_Ch8: ; f116a
 	note C#, 1
 	note D_, 2
 	note B_, 16
-	note __, 6
-	endchannel
-; f117c
+	rest 6
+	sound_ret
 
+	toggle_sfx ; unused
 
-INCBIN "baserom.gbc", $f117c, $f117d - $f117c
+Sfx_GetBadge:
+	channel_count 4
+	channel 5, Sfx_GetBadge_Ch5
+	channel 6, Sfx_GetBadge_Ch6
+	channel 7, Sfx_GetBadge_Ch7
+	channel 8, Sfx_GetBadge_Ch8
 
-
-Sfx_GetBadge: ; f117d
-	dbw $c4, Sfx_GetBadge_Ch5
-	dbw $05, Sfx_GetBadge_Ch6
-	dbw $06, Sfx_GetBadge_Ch7
-	dbw $07, Sfx_GetBadge_Ch8
-; f1189
-
-Sfx_GetBadge_Ch5: ; f1189
-	togglesfx
+Sfx_GetBadge_Ch5:
+	toggle_sfx
 	tempo 120
-	volume $77
-	dutycycle $2
-	vibrato $8, $24
-	notetype $6, $92
+	volume 7, 7
+	duty_cycle 2
+	vibrato 8, 2, 4
+	note_type 6, 9, 2
 	octave 4
 	note F_, 3
-	callchannel Sfx_GetBadge_branch_f11aa
+	sound_call .sub1
 	note A#, 3
-	forceoctave $2
-	callchannel Sfx_GetBadge_branch_f11aa
-	forceoctave $0
-	intensity $a7
+	transpose 0, 2
+	sound_call .sub1
+	transpose 0, 0
+	volume_envelope 10, 7
 	note A_, 16
-	note __, 6
-	endchannel
-; f11a9
+	rest 6
+	sound_ret
 
+	toggle_sfx ; unused
 
-INCBIN "baserom.gbc", $f11a9, $f11aa - $f11a9
-
-
-Sfx_GetBadge_branch_f11aa: ; f11aa
-	note __, 5
+.sub1:
+	rest 5
 	octave 3
 	note F_, 2
 	note G#, 2
@@ -2052,108 +1927,101 @@ Sfx_GetBadge_branch_f11aa: ; f11aa
 	octave 4
 	note C#, 2
 	note F_, 2
-	endchannel
-; f11be
+	sound_ret
 
-Sfx_GetBadge_Ch6: ; f11be
-	togglesfx
-	dutycycle $3
-	vibrato $8, $24
-	notetype $6, $b5
+Sfx_GetBadge_Ch6:
+	toggle_sfx
+	duty_cycle 3
+	vibrato 8, 2, 4
+	note_type 6, 11, 5
 	octave 5
 	note C#, 3
-	note __, 3
+	rest 3
 	octave 4
 	note G#, 1
-	note __, 1
+	rest 1
 	note G#, 8
 	octave 3
 	note C#, 2
-	note __, 2
+	rest 2
 	octave 2
 	note G#, 2
-	note __, 1
-	intensity $95
+	rest 1
+	volume_envelope 9, 5
 	octave 5
 	note C_, 1
-	intensity $b5
+	volume_envelope 11, 5
 	note C#, 2
-	note __, 2
+	rest 2
 	note D_, 2
-	note __, 2
+	rest 2
 	note D#, 3
-	note __, 3
+	rest 3
 	octave 4
 	note A#, 1
-	note __, 1
+	rest 1
 	note A#, 8
 	octave 3
 	note D#, 2
-	note __, 2
+	rest 2
 	octave 2
 	note A#, 2
-	note __, 1
-	intensity $95
+	rest 1
+	volume_envelope 9, 5
 	octave 5
 	note D_, 1
-	intensity $b5
+	volume_envelope 11, 5
 	note D#, 8
 	note F_, 16
-	note __, 6
-	endchannel
-; f11f4
+	rest 6
+	sound_ret
 
+	toggle_sfx ; unused
 
-INCBIN "baserom.gbc", $f11f4, $f11f5 - $f11f4
-
-
-Sfx_GetBadge_Ch7: ; f11f5
-	togglesfx
-	notetype $6, $25
+Sfx_GetBadge_Ch7:
+	toggle_sfx
+	note_type 6, 2, 5
 	octave 2
 	note G#, 3
-	note __, 3
+	rest 3
 	octave 3
 	note C#, 1
-	note __, 1
+	rest 1
 	note C#, 8
 	note G#, 2
-	note __, 2
+	rest 2
 	note F_, 2
-	note __, 2
+	rest 2
 	note C#, 2
 	note C_, 2
 	octave 2
 	note A#, 2
 	note G#, 2
 	note G_, 3
-	note __, 3
+	rest 3
 	octave 3
 	note D#, 1
-	note __, 1
+	rest 1
 	note D#, 8
 	note A#, 2
-	note __, 2
+	rest 2
 	note G_, 2
-	note __, 2
+	rest 2
 	note G_, 2
 	note F_, 2
 	note G_, 2
 	note D#, 2
 	note F_, 16
-	note __, 6
-	endchannel
-; f121a
+	rest 6
+	sound_ret
 
+	toggle_sfx ; unused
 
-INCBIN "baserom.gbc", $f121a, $f121b - $f121a
-
-
-Sfx_GetBadge_Ch8: ; f121b
-	togglesfx
-	sfxtogglenoise $4
-	notetype $6
-Sfx_GetBadge_branch_f1220: ; f1220
+Sfx_GetBadge_Ch8:
+	toggle_sfx
+	sfx_toggle_noise 4
+	drum_speed 6
+.loop1:
 	note B_, 12
 	note D_, 1
 	note D_, 1
@@ -2168,32 +2036,29 @@ Sfx_GetBadge_branch_f1220: ; f1220
 	note C#, 1
 	note C#, 1
 	note C#, 1
-	loopchannel 2, Sfx_GetBadge_branch_f1220
+	sound_loop 2, .loop1
 	note B_, 16
-	note __, 6
-	endchannel
-; f1235
+	rest 6
+	sound_ret
 
+	toggle_sfx ; unused
 
-INCBIN "baserom.gbc", $f1235, $f1236 - $f1235
+Sfx_QuitSlots:
+	channel_count 4
+	channel 5, Sfx_QuitSlots_Ch5
+	channel 6, Sfx_QuitSlots_Ch6
+	channel 7, Sfx_QuitSlots_Ch7
+	channel 8, Sfx_QuitSlots_Ch8
 
-
-Sfx_QuitSlots: ; f1236
-	dbw $c4, Sfx_QuitSlots_Ch5
-	dbw $05, Sfx_QuitSlots_Ch6
-	dbw $06, Sfx_QuitSlots_Ch7
-	dbw $07, Sfx_QuitSlots_Ch8
-; f1242
-
-Sfx_QuitSlots_Ch5: ; f1242
-	togglesfx
+Sfx_QuitSlots_Ch5:
+	toggle_sfx
 	tempo 144
-	volume $77
-	dutycycle $2
-	notetype $8, $82
+	volume 7, 7
+	duty_cycle 2
+	note_type 8, 8, 2
 	octave 3
 	note G#, 2
-	note __, 4
+	rest 4
 	note C#, 2
 	note F_, 2
 	note G#, 2
@@ -2210,21 +2075,18 @@ Sfx_QuitSlots_Ch5: ; f1242
 	note A#, 2
 	note G#, 2
 	note F#, 2
-	intensity $97
+	volume_envelope 9, 7
 	note G#, 14
-	note __, 6
-	endchannel
-; f1265
+	rest 6
+	sound_ret
 
+	toggle_sfx ; unused
 
-INCBIN "baserom.gbc", $f1265, $f1266 - $f1265
-
-
-Sfx_QuitSlots_Ch6: ; f1266
-	togglesfx
-	dutycycle $2
-	notetype $8, $b3
-	note __, 3
+Sfx_QuitSlots_Ch6:
+	toggle_sfx
+	duty_cycle 2
+	note_type 8, 11, 3
+	rest 3
 	octave 4
 	note B_, 1
 	octave 5
@@ -2232,7 +2094,7 @@ Sfx_QuitSlots_Ch6: ; f1266
 	octave 4
 	note G#, 4
 	note A#, 2
-	intensity $c1
+	volume_envelope 12, 1
 	note B_, 4
 	note A#, 2
 	note G#, 4
@@ -2240,28 +2102,25 @@ Sfx_QuitSlots_Ch6: ; f1266
 	note F#, 4
 	note F_, 2
 	note D#, 4
-	intensity $b7
+	volume_envelope 11, 7
 	note F_, 14
-	note __, 6
-	endchannel
-; f1282
+	rest 6
+	sound_ret
 
+	toggle_sfx ; unused
 
-INCBIN "baserom.gbc", $f1282, $f1283 - $f1282
-
-
-Sfx_QuitSlots_Ch7: ; f1283
-	togglesfx
-	notetype $8, $25
+Sfx_QuitSlots_Ch7:
+	toggle_sfx
+	note_type 8, 2, 5
 	octave 3
 	note C#, 2
-	note __, 2
+	rest 2
 	note F_, 2
 	note D#, 2
 	note C#, 2
 	note G#, 2
 	note D_, 2
-	note __, 2
+	rest 2
 	note D_, 2
 	octave 2
 	note G#, 2
@@ -2269,25 +2128,22 @@ Sfx_QuitSlots_Ch7: ; f1283
 	octave 3
 	note D_, 2
 	note D#, 2
-	note __, 2
+	rest 2
 	octave 2
 	note A#, 2
 	octave 3
 	note C_, 2
-	note __, 2
+	rest 2
 	note C#, 14
-	note __, 6
-	endchannel
-; f12a0
+	rest 6
+	sound_ret
 
+	toggle_sfx ; unused
 
-INCBIN "baserom.gbc", $f12a0, $f12a1 - $f12a0
-
-
-Sfx_QuitSlots_Ch8: ; f12a1
-	togglesfx
-	sfxtogglenoise $3
-	notetype $8
+Sfx_QuitSlots_Ch8:
+	toggle_sfx
+	sfx_toggle_noise 3
+	drum_speed 8
 	note D#, 6
 	note D_, 4
 	note D#, 2
@@ -2299,24 +2155,21 @@ Sfx_QuitSlots_Ch8: ; f12a1
 	note D#, 2
 	note D_, 4
 	note B_, 14
-	note __, 6
-	endchannel
-; f12b3
+	rest 6
+	sound_ret
 
+	toggle_sfx ; unused
 
-INCBIN "baserom.gbc", $f12b3, $f12b4 - $f12b3
+Sfx_Protect:
+	channel_count 2
+	channel 5, Sfx_Protect_Ch5
+	channel 8, Sfx_Protect_Ch8
 
-
-Sfx_Protect: ; f12b4
-	dbw $44, Sfx_Protect_Ch5
-	dbw $07, Sfx_Protect_Ch8
-; f12ba
-
-Sfx_Protect_Ch5: ; f12ba
-	togglesfx
-	notetype $1, $f1
-	dutycycle $0
-Sfx_Protect_branch_f12c0: ; f12c0
+Sfx_Protect_Ch5:
+	toggle_sfx
+	note_type 1, 15, 1
+	duty_cycle 0
+.loop1:
 	octave 5
 	note F_, 5
 	note A_, 5
@@ -2329,385 +2182,354 @@ Sfx_Protect_branch_f12c0: ; f12c0
 	octave 6
 	note C#, 5
 	note E_, 5
-	loopchannel 3, Sfx_Protect_branch_f12c0
-	intensity $c1
+	sound_loop 3, .loop1
+	volume_envelope 12, 1
 	octave 5
 	note F_, 5
 	note A_, 5
-	intensity $91
+	volume_envelope 9, 1
 	octave 6
 	note C_, 5
 	note E_, 5
-	intensity $71
+	volume_envelope 7, 1
 	octave 5
 	note F#, 5
 	note A#, 5
-	intensity $51
+	volume_envelope 5, 1
 	octave 6
 	note C#, 5
 	note E_, 5
-	endchannel
-; f12e5
+	sound_ret
 
-Sfx_Protect_Ch8: ; f12e5
-Sfx_Protect_branch_f12e5: ; f12e5
-	noise $9, $9e, $0
-	noise $9, $be, $11
-	loopchannel 6, Sfx_Protect_branch_f12e5
-	noise $9, $a7, $0
-	noise $10, $75, $11
-	endchannel
-; f12f6
+Sfx_Protect_Ch8:
+	noise_note 9, 9, -6, 0
+	noise_note 9, 11, -6, 17
+	sound_loop 6, Sfx_Protect_Ch8
+	noise_note 9, 10, 7, 0
+	noise_note 16, 7, 5, 17
+	sound_ret
 
-Sfx_Sketch: ; f12f6
-	dbw $04, Sfx_Sketch_Ch5
-; f12f9
+Sfx_Sketch:
+	channel_count 1
+	channel 5, Sfx_Sketch_Ch5
 
-Sfx_Sketch_Ch5: ; f12f9
-	dutycycle $1
-	soundinput $a5
-Sfx_Sketch_branch_f12fd: ; f12fd
-	sound $2, $f1, $06e0
-	sound $d, $af, $05b0
-	sound $4, $0, $0000
-	sound $9, $f4, $0718
-	loopchannel 3, Sfx_Sketch_branch_f12fd
-	soundinput $8
-	endchannel
-; f1314
+Sfx_Sketch_Ch5:
+	duty_cycle 1
+	pitch_sweep 10, 5
+.loop1:
+	square_note 2, 15, 1, 1760
+	square_note 13, 10, -7, 1456
+	square_note 4, 0, 0, 0
+	square_note 9, 15, 4, 1816
+	sound_loop 3, .loop1
+	pitch_sweep 0, 8
+	sound_ret
 
-Sfx_RainDance: ; f1314
-	dbw $07, Sfx_RainDance_Ch8
-; f1317
+Sfx_RainDance:
+	channel_count 1
+	channel 8, Sfx_RainDance_Ch8
 
-Sfx_RainDance_Ch8: ; f1317
-Sfx_RainDance_branch_f1317: ; f1317
-	noise $b, $7d, $50
-	noise $6, $7d, $4f
-	noise $b, $7f, $47
-	noise $f, $6e, $22
-	loopchannel 3, Sfx_RainDance_branch_f1317
-	noise $6, $6d, $50
-	noise $5, $5d, $4f
-	noise $5, $4f, $47
-	noise $a, $32, $46
-	endchannel
-; f1334
+Sfx_RainDance_Ch8:
+	noise_note 11, 7, -5, 80
+	noise_note 6, 7, -5, 79
+	noise_note 11, 7, -7, 71
+	noise_note 15, 6, -6, 34
+	sound_loop 3, Sfx_RainDance_Ch8
+	noise_note 6, 6, -5, 80
+	noise_note 5, 5, -5, 79
+	noise_note 5, 4, -7, 71
+	noise_note 10, 3, 2, 70
+	sound_ret
 
-Sfx_Aeroblast: ; f1334
-	dbw $44, Sfx_Aeroblast_Ch5
-	dbw $07, Sfx_Aeroblast_Ch8
-; f133a
+Sfx_Aeroblast:
+	channel_count 2
+	channel 5, Sfx_Aeroblast_Ch5
+	channel 8, Sfx_Aeroblast_Ch8
 
-Sfx_Aeroblast_Ch5: ; f133a
-	unknownmusic0xde $f2
-	soundinput $f5
-	sound $1c, $f8, $0580
-	soundinput $8
-	endchannel
-; f1345
+Sfx_Aeroblast_Ch5:
+	duty_cycle_pattern 3, 3, 0, 2
+	pitch_sweep 15, 5
+	square_note 28, 15, 8, 1408
+	pitch_sweep 0, 8
+	sound_ret
 
-Sfx_Aeroblast_Ch8: ; f1345
-	noise $4, $f8, $6c
-	noise $4, $c8, $5c
-	noise $4, $78, $5b
-	noise $10, $31, $5a
-	endchannel
-; f1352
+Sfx_Aeroblast_Ch8:
+	noise_note 4, 15, 8, 108
+	noise_note 4, 12, 8, 92
+	noise_note 4, 7, 8, 91
+	noise_note 16, 3, 1, 90
+	sound_ret
 
-Sfx_Spark: ; f1352
-	dbw $07, Sfx_Spark_Ch8
-; f1355
+Sfx_Spark:
+	channel_count 1
+	channel 8, Sfx_Spark_Ch8
 
-Sfx_Spark_Ch8: ; f1355
-Sfx_Spark_branch_f1355: ; f1355
-	noise $4, $f8, $5d
-	noise $4, $d8, $6f
-	loopchannel 2, Sfx_Spark_branch_f1355
-	endchannel
-; f1360
+Sfx_Spark_Ch8:
+	noise_note 4, 15, 8, 93
+	noise_note 4, 13, 8, 111
+	sound_loop 2, Sfx_Spark_Ch8
+	sound_ret
 
-Sfx_Curse: ; f1360
-	dbw $44, Sfx_Curse_Ch5
-	dbw $07, Sfx_Curse_Ch8
-; f1366
+Sfx_Curse:
+	channel_count 2
+	channel 5, Sfx_Curse_Ch5
+	channel 8, Sfx_Curse_Ch8
 
-Sfx_Curse_Ch5: ; f1366
-	dutycycle $3
-	sound $4, $f2, $0483
-	sound $4, $f2, $0511
-	sound $4, $f2, $0589
-	sound $4, $f2, $05ed
-	endchannel
-; f1379
+Sfx_Curse_Ch5:
+	duty_cycle 3
+	square_note 4, 15, 2, 1155
+	square_note 4, 15, 2, 1297
+	square_note 4, 15, 2, 1417
+	square_note 4, 15, 2, 1517
+	sound_ret
 
-Sfx_Curse_Ch8: ; f1379
-	noise $14, $9a, $9
-	endchannel
-; f137d
+Sfx_Curse_Ch8:
+	noise_note 20, 9, -2, 9
+	sound_ret
 
-Sfx_Rage: ; f137d
-	dbw $44, Sfx_Rage_Ch5
-	dbw $07, Sfx_Rage_Ch8
-; f1383
+Sfx_Rage:
+	channel_count 2
+	channel 5, Sfx_Rage_Ch5
+	channel 8, Sfx_Rage_Ch8
 
-Sfx_Rage_Ch5: ; f1383
-	dutycycle $0
-	sound $3, $d1, $07b0
-	sound $3, $d1, $07c2
-	sound $18, $d2, $07d5
-	endchannel
-; f1392
+Sfx_Rage_Ch5:
+	duty_cycle 0
+	square_note 3, 13, 1, 1968
+	square_note 3, 13, 1, 1986
+	square_note 24, 13, 2, 2005
+	sound_ret
 
-Sfx_Rage_Ch8: ; f1392
-	noise $3, $f4, $1a
-	noise $3, $f4, $19
-	noise $18, $f2, $18
-	endchannel
-; f139c
+Sfx_Rage_Ch8:
+	noise_note 3, 15, 4, 26
+	noise_note 3, 15, 4, 25
+	noise_note 24, 15, 2, 24
+	sound_ret
 
-Sfx_Thief: ; f139c
-	dbw $07, Sfx_Thief_Ch8
-; f139f
+Sfx_Thief:
+	channel_count 1
+	channel 8, Sfx_Thief_Ch8
 
-Sfx_Thief_Ch8: ; f139f
-Sfx_Thief_branch_f139f: ; f139f
-	noise $0, $0, $0
-	noise $4, $e1, $12
-	noise $0, $0, $0
-	noise $2, $b1, $22
-	loopchannel 2, Sfx_Thief_branch_f139f
-	endchannel
-; f13b0
+Sfx_Thief_Ch8:
+	noise_note 0, 0, 0, 0
+	noise_note 4, 14, 1, 18
+	noise_note 0, 0, 0, 0
+	noise_note 2, 11, 1, 34
+	sound_loop 2, Sfx_Thief_Ch8
+	sound_ret
 
-Sfx_Thief2: ; f13b0
-	dbw $04, Sfx_Thief2_Ch5
-; f13b3
+Sfx_Thief2:
+	channel_count 1
+	channel 5, Sfx_Thief2_Ch5
 
-Sfx_Thief2_Ch5: ; f13b3
-	togglesfx
-	notetype $2, $f4
-	dutycycle $0
+Sfx_Thief2_Ch5:
+	toggle_sfx
+	note_type 2, 15, 4
+	duty_cycle 0
 	octave 4
 	note C#, 3
 	note A#, 3
-	intensity $d2
+	volume_envelope 13, 2
 	note C#, 3
 	note A#, 3
-	intensity $b1
+	volume_envelope 11, 1
 	note C_, 3
 	note A_, 3
-	intensity $81
+	volume_envelope 8, 1
 	note C_, 3
 	note A_, 3
-	togglesfx
-	endchannel
-; f13ca
+	toggle_sfx
+	sound_ret
 
-Sfx_SpiderWeb: ; f13ca
-	dbw $44, Sfx_SpiderWeb_Ch5
-	dbw $07, Sfx_SpiderWeb_Ch8
-; f13d0
+Sfx_SpiderWeb:
+	channel_count 2
+	channel 5, Sfx_SpiderWeb_Ch5
+	channel 8, Sfx_SpiderWeb_Ch8
 
-Sfx_SpiderWeb_Ch5: ; f13d0
-	dutycycle $0
-	sound $20, $7f, $0720
-	soundinput $95
-	sound $4, $f8, $0620
-	sound $4, $e8, $0630
-	sound $4, $d8, $0640
-	sound $4, $95, $0620
-	sound $4, $73, $0630
-	sound $4, $51, $0640
-	soundinput $8
-	endchannel
-; f13f3
+Sfx_SpiderWeb_Ch5:
+	duty_cycle 0
+	square_note 32, 7, -7, 1824
+	pitch_sweep 9, 5
+	square_note 4, 15, 8, 1568
+	square_note 4, 14, 8, 1584
+	square_note 4, 13, 8, 1600
+	square_note 4, 9, 5, 1568
+	square_note 4, 7, 3, 1584
+	square_note 4, 5, 1, 1600
+	pitch_sweep 0, 8
+	sound_ret
 
-Sfx_SpiderWeb_Ch8: ; f13f3
-	noise $20, $ef, $0
-	endchannel
-; f13f7
+Sfx_SpiderWeb_Ch8:
+	noise_note 32, 14, -7, 0
+	sound_ret
 
-Sfx_MindReader: ; f13f7
-	dbw $44, Sfx_MindReader_Ch5
-	dbw $07, Sfx_MindReader_Ch8
-; f13fd
+Sfx_MindReader:
+	channel_count 2
+	channel 5, Sfx_MindReader_Ch5
+	channel 8, Sfx_MindReader_Ch8
 
-Sfx_MindReader_Ch5: ; f13fd
-	togglesfx
-	dutycycle $2
-	notetype $2, $f1
+Sfx_MindReader_Ch5:
+	toggle_sfx
+	duty_cycle 2
+	note_type 2, 15, 1
 	octave 5
 	note C_, 3
-	intensity $41
+	volume_envelope 4, 1
 	note C_, 3
-	intensity $f1
+	volume_envelope 15, 1
 	note C#, 3
-	intensity $41
+	volume_envelope 4, 1
 	note C#, 3
-	intensity $f1
+	volume_envelope 15, 1
 	note D_, 3
-	intensity $41
+	volume_envelope 4, 1
 	note D_, 3
-	togglesfx
-	endchannel
-; f1416
+	toggle_sfx
+	sound_ret
 
-Sfx_MindReader_Ch8: ; f1416
-	noise $11, $af, $19
-	noise $12, $af, $18
-	endchannel
-; f141d
+Sfx_MindReader_Ch8:
+	noise_note 17, 10, -7, 25
+	noise_note 18, 10, -7, 24
+	sound_ret
 
-Sfx_Nightmare: ; f141d
-	dbw $04, Sfx_Nightmare_Ch5
-; f1420
+Sfx_Nightmare:
+	channel_count 1
+	channel 5, Sfx_Nightmare_Ch5
 
-Sfx_Nightmare_Ch5: ; f1420
-	dutycycle $0
-	soundinput $34
-Sfx_Nightmare_branch_f1424: ; f1424
-	sound $3, $ba, $0631
-	sound $2, $0, $0000
-	sound $3, $f8, $0621
-	sound $2, $0, $0000
-	sound $3, $f8, $0611
-	sound $2, $0, $0000
-	sound $3, $e8, $0601
-	sound $2, $0, $0000
-	sound $3, $e8, $05f1
-	sound $2, $0, $0000
-	loopchannel 2, Sfx_Nightmare_branch_f1424
-	soundinput $8
-	endchannel
-; f1453
+Sfx_Nightmare_Ch5:
+	duty_cycle 0
+	pitch_sweep 3, 4
+.loop1:
+	square_note 3, 11, -2, 1585
+	square_note 2, 0, 0, 0
+	square_note 3, 15, 8, 1569
+	square_note 2, 0, 0, 0
+	square_note 3, 15, 8, 1553
+	square_note 2, 0, 0, 0
+	square_note 3, 14, 8, 1537
+	square_note 2, 0, 0, 0
+	square_note 3, 14, 8, 1521
+	square_note 2, 0, 0, 0
+	sound_loop 2, .loop1
+	pitch_sweep 0, 8
+	sound_ret
 
-Sfx_Snore: ; f1453
-	dbw $07, Sfx_Snore_Ch8
-; f1456
+Sfx_Snore:
+	channel_count 1
+	channel 8, Sfx_Snore_Ch8
 
-Sfx_Snore_Ch8: ; f1456
-	noise $2, $ea, $4b
-	noise $2, $ea, $5b
-	noise $2, $0, $0
-	noise $4, $ee, $47
-	noise $4, $ee, $46
-	noise $4, $ee, $45
-	endchannel
-; f1469
+Sfx_Snore_Ch8:
+	noise_note 2, 14, -2, 75
+	noise_note 2, 14, -2, 91
+	noise_note 2, 0, 0, 0
+	noise_note 4, 14, -6, 71
+	noise_note 4, 14, -6, 70
+	noise_note 4, 14, -6, 69
+	sound_ret
 
-Sfx_SweetKiss: ; f1469
-	dbw $04, Sfx_SweetKiss_Ch5
-; f146c
+Sfx_SweetKiss:
+	channel_count 1
+	channel 5, Sfx_SweetKiss_Ch5
 
-Sfx_SweetKiss_Ch5: ; f146c
-	dutycycle $2
-Sfx_SweetKiss_branch_f146e: ; f146e
-	sound $2, $c1, $07c8
-	sound $2, $d1, $07da
-	loopchannel 2, Sfx_SweetKiss_branch_f146e
-	sound $1a, $f1, $07e2
-	endchannel
-; f147f
+Sfx_SweetKiss_Ch5:
+	duty_cycle 2
+.loop1:
+	square_note 2, 12, 1, 1992
+	square_note 2, 13, 1, 2010
+	sound_loop 2, .loop1
+	square_note 26, 15, 1, 2018
+	sound_ret
 
-Sfx_SweetKiss2: ; f147f
-	dbw $04, Sfx_SweetKiss2_Ch5
-; f1482
+Sfx_SweetKiss2:
+	channel_count 1
+	channel 5, Sfx_SweetKiss2_Ch5
 
-Sfx_SweetKiss2_Ch5: ; f1482
-	dutycycle $0
-	soundinput $97
-	sound $2, $f4, $0772
-	sound $4, $0, $0000
-	sound $2, $c4, $0772
-	sound $4, $0, $0000
-	sound $2, $b4, $0772
-	sound $4, $0, $0000
-	sound $2, $a1, $0772
-	soundinput $8
-	endchannel
-; f14a5
+Sfx_SweetKiss2_Ch5:
+	duty_cycle 0
+	pitch_sweep 9, 7
+	square_note 2, 15, 4, 1906
+	square_note 4, 0, 0, 0
+	square_note 2, 12, 4, 1906
+	square_note 4, 0, 0, 0
+	square_note 2, 11, 4, 1906
+	square_note 4, 0, 0, 0
+	square_note 2, 10, 1, 1906
+	pitch_sweep 0, 8
+	sound_ret
 
-Sfx_BellyDrum: ; f14a5
-	dbw $44, Sfx_BellyDrum_Ch5
-	dbw $07, Sfx_BellyDrum_Ch8
-; f14ab
+Sfx_BellyDrum:
+	channel_count 2
+	channel 5, Sfx_BellyDrum_Ch5
+	channel 8, Sfx_BellyDrum_Ch8
 
-Sfx_BellyDrum_Ch5: ; f14ab
-	dutycycle $2
-	soundinput $ac
-	sound $c, $f1, $05a3
-	soundinput $8
-	endchannel
-; f14b6
+Sfx_BellyDrum_Ch5:
+	duty_cycle 2
+	pitch_sweep 10, -4
+	square_note 12, 15, 1, 1443
+	pitch_sweep 0, 8
+	sound_ret
 
-Sfx_BellyDrum_Ch8: ; f14b6
-	noise $c, $b1, $6c
-	endchannel
-; f14ba
+Sfx_BellyDrum_Ch8:
+	noise_note 12, 11, 1, 108
+	sound_ret
 
-Sfx_Unknown7F: ; f14ba
-	dbw $04, Sfx_Unknown7F_Ch5
-; f14bd
+Sfx_Unknown7F:
+	channel_count 1
+	channel 5, Sfx_Unknown7F_Ch5
 
-Sfx_Unknown7F_Ch5: ; f14bd
-	dutycycle $2
-	soundinput $95
-	sound $2, $c9, $03b3
-	sound $5, $f8, $0463
-	sound $4, $d1, $0543
-	soundinput $8
-	endchannel
-; f14d0
+Sfx_Unknown7F_Ch5:
+	duty_cycle 2
+	pitch_sweep 9, 5
+	square_note 2, 12, -1, 947
+	square_note 5, 15, 8, 1123
+	square_note 4, 13, 1, 1347
+	pitch_sweep 0, 8
+	sound_ret
 
-Sfx_SludgeBomb: ; f14d0
-	dbw $44, Sfx_SludgeBomb_Ch5
-	dbw $07, Sfx_SludgeBomb_Ch8
-; f14d6
+Sfx_SludgeBomb:
+	channel_count 2
+	channel 5, Sfx_SludgeBomb_Ch5
+	channel 8, Sfx_SludgeBomb_Ch8
 
-Sfx_SludgeBomb_Ch5: ; f14d6
-	dutycycle $2
-	soundinput $c5
-	sound $3, $f8, $0581
-	sound $1, $0, $0000
-	soundinput $cb
-	sound $10, $f2, $05d1
-	soundinput $8
-	endchannel
-; f14eb
+Sfx_SludgeBomb_Ch5:
+	duty_cycle 2
+	pitch_sweep 12, 5
+	square_note 3, 15, 8, 1409
+	square_note 1, 0, 0, 0
+	pitch_sweep 12, -3
+	square_note 16, 15, 2, 1489
+	pitch_sweep 0, 8
+	sound_ret
 
-Sfx_SludgeBomb_Ch8: ; f14eb
-	noise $3, $e2, $6e
-	noise $1, $0, $0
-	noise $10, $e2, $6d
-	endchannel
-; f14f5
+Sfx_SludgeBomb_Ch8:
+	noise_note 3, 14, 2, 110
+	noise_note 1, 0, 0, 0
+	noise_note 16, 14, 2, 109
+	sound_ret
 
-Sfx_Foresight: ; f14f5
-	dbw $04, Sfx_Foresight_Ch5
-; f14f8
+Sfx_Foresight:
+	channel_count 1
+	channel 5, Sfx_Foresight_Ch5
 
-Sfx_Foresight_Ch5: ; f14f8
-	sound $3, $f4, $07b5
-	sound $3, $f5, $07c8
-	sound $8, $f4, $07da
-	sound $2, $0, $0000
-	sound $8, $c1, $07da
-	sound $2, $0, $0000
-	sound $8, $91, $07da
-	endchannel
-; f1515
+Sfx_Foresight_Ch5:
+	square_note 3, 15, 4, 1973
+	square_note 3, 15, 5, 1992
+	square_note 8, 15, 4, 2010
+	square_note 2, 0, 0, 0
+	square_note 8, 12, 1, 2010
+	square_note 2, 0, 0, 0
+	square_note 8, 9, 1, 2010
+	sound_ret
 
-Sfx_Spite: ; f1515
-	dbw $04, Sfx_Spite_Ch5
-; f1518
+Sfx_Spite:
+	channel_count 1
+	channel 5, Sfx_Spite_Ch5
 
-Sfx_Spite_Ch5: ; f1518
-	togglesfx
-	vibrato $0, $12
-	dutycycle $3
-	soundinput $fd
-	notetype $3, $f8
+Sfx_Spite_Ch5:
+	toggle_sfx
+	vibrato 0, 1, 2
+	duty_cycle 3
+	pitch_sweep 15, -5
+	note_type 3, 15, 8
 	octave 3
 	note F_, 3
 	note G#, 3
@@ -2715,371 +2537,346 @@ Sfx_Spite_Ch5: ; f1518
 	note E_, 3
 	note G_, 3
 	note A#, 3
-	intensity $bf
+	volume_envelope 11, -7
 	note D#, 3
 	note F#, 3
 	note A_, 3
-	intensity $5f
+	volume_envelope 5, -7
 	note D_, 3
-	intensity $2f
+	volume_envelope 2, -7
 	note F_, 3
 	note G#, 3
-	soundinput $8
-	togglesfx
-	endchannel
-; f153a
+	pitch_sweep 0, 8
+	toggle_sfx
+	sound_ret
 
-Sfx_Outrage: ; f153a
-	dbw $07, Sfx_Outrage_Ch8
-; f153d
+Sfx_Outrage:
+	channel_count 1
+	channel 8, Sfx_Outrage_Ch8
 
-Sfx_Outrage_Ch8: ; f153d
-	noise $b, $ea, $6c
-	noise $b, $ea, $6b
-	noise $b, $ea, $6a
-	noise $b, $ea, $69
-	noise $b, $e1, $59
-	endchannel
-; f154d
+Sfx_Outrage_Ch8:
+	noise_note 11, 14, -2, 108
+	noise_note 11, 14, -2, 107
+	noise_note 11, 14, -2, 106
+	noise_note 11, 14, -2, 105
+	noise_note 11, 14, 1, 89
+	sound_ret
 
-Sfx_PerishSong: ; f154d
-	dbw $44, Sfx_PerishSong_Ch5
-	dbw $05, Sfx_PerishSong_Ch6
-; f1553
+Sfx_PerishSong:
+	channel_count 2
+	channel 5, Sfx_PerishSong_Ch5
+	channel 6, Sfx_PerishSong_Ch6
 
-Sfx_PerishSong_Ch5: ; f1553
-	togglesfx
-	dutycycle $0
-	vibrato $12, $53
-	notetype $8, $af
+Sfx_PerishSong_Ch5:
+	toggle_sfx
+	duty_cycle 0
+	vibrato 18, 5, 3
+	note_type 8, 10, -7
 	octave 4
 	note A_, 9
 	note G#, 9
-	togglesfx
-	endchannel
-; f1561
+	toggle_sfx
+	sound_ret
 
-Sfx_PerishSong_Ch6: ; f1561
-	togglesfx
-	dutycycle $0
-	vibrato $12, $53
-	notetype $8, $af
+Sfx_PerishSong_Ch6:
+	toggle_sfx
+	duty_cycle 0
+	vibrato 18, 5, 3
+	note_type 8, 10, -7
 	octave 4
 	note C_, 9
 	octave 3
 	note B_, 9
-	togglesfx
-	endchannel
-; f1570
+	toggle_sfx
+	sound_ret
 
-Sfx_GigaDrain: ; f1570
-	dbw $44, Sfx_GigaDrain_Ch5
-	dbw $07, Sfx_GigaDrain_Ch8
-; f1576
+Sfx_GigaDrain:
+	channel_count 2
+	channel 5, Sfx_GigaDrain_Ch5
+	channel 8, Sfx_GigaDrain_Ch8
 
-Sfx_GigaDrain_Ch5: ; f1576
-	dutycycle $2
-	soundinput $97
-	sound $4, $f8, $0680
-	sound $14, $f8, $0680
-	sound $14, $c8, $0660
-	sound $14, $a8, $0670
-	sound $14, $88, $0680
-	sound $14, $f8, $0561
-	sound $14, $c8, $0541
-	sound $14, $a8, $0521
-	sound $14, $88, $0511
-	soundinput $8
-	endchannel
-; f15a1
+Sfx_GigaDrain_Ch5:
+	duty_cycle 2
+	pitch_sweep 9, 7
+	square_note 4, 15, 8, 1664
+	square_note 20, 15, 8, 1664
+	square_note 20, 12, 8, 1632
+	square_note 20, 10, 8, 1648
+	square_note 20, 8, 8, 1664
+	square_note 20, 15, 8, 1377
+	square_note 20, 12, 8, 1345
+	square_note 20, 10, 8, 1313
+	square_note 20, 8, 8, 1297
+	pitch_sweep 0, 8
+	sound_ret
 
-Sfx_GigaDrain_Ch8: ; f15a1
-	noise $4, $c8, $44
-	noise $14, $c8, $50
-	noise $14, $c8, $52
-	noise $14, $c8, $54
-	noise $14, $c8, $56
-	noise $40, $c7, $57
-	endchannel
-; f15b4
+Sfx_GigaDrain_Ch8:
+	noise_note 4, 12, 8, 68
+	noise_note 20, 12, 8, 80
+	noise_note 20, 12, 8, 82
+	noise_note 20, 12, 8, 84
+	noise_note 20, 12, 8, 86
+	noise_note 64, 12, 7, 87
+	sound_ret
 
-Sfx_Attract: ; f15b4
-	dbw $04, Sfx_Attract_Ch5
-; f15b7
+Sfx_Attract:
+	channel_count 1
+	channel 5, Sfx_Attract_Ch5
 
-Sfx_Attract_Ch5: ; f15b7
-	dutycycle $0
-	soundinput $77
-	sound $4, $a9, $06f0
-	sound $c, $f8, $0720
-	soundinput $7f
-	sound $8, $f1, $0740
-	soundinput $8
-	endchannel
-; f15cc
+Sfx_Attract_Ch5:
+	duty_cycle 0
+	pitch_sweep 7, 7
+	square_note 4, 10, -1, 1776
+	square_note 12, 15, 8, 1824
+	pitch_sweep 7, -7
+	square_note 8, 15, 1, 1856
+	pitch_sweep 0, 8
+	sound_ret
 
-Sfx_Kinesis2: ; f15cc
-	dbw $04, Sfx_Kinesis2_Ch5
-; f15cf
+Sfx_Kinesis2:
+	channel_count 1
+	channel 5, Sfx_Kinesis2_Ch5
 
-Sfx_Kinesis2_Ch5: ; f15cf
-	dutycycle $0
-	sound $2, $f3, $0796
-	sound $2, $23, $0796
-	sound $14, $f1, $07c4
-	endchannel
-; f15de
+Sfx_Kinesis2_Ch5:
+	duty_cycle 0
+	square_note 2, 15, 3, 1942
+	square_note 2, 2, 3, 1942
+	square_note 20, 15, 1, 1988
+	sound_ret
 
-Sfx_ZapCannon: ; f15de
-	dbw $07, Sfx_ZapCannon_Ch8
-; f15e1
+Sfx_ZapCannon:
+	channel_count 1
+	channel 8, Sfx_ZapCannon_Ch8
 
-Sfx_ZapCannon_Ch8: ; f15e1
-Sfx_ZapCannon_branch_f15e1: ; f15e1
-	noise $2, $e1, $49
-	noise $0, $0, $0
-	loopchannel 8, Sfx_ZapCannon_branch_f15e1
-	noise $8, $e1, $49
-	endchannel
-; f15ef
+Sfx_ZapCannon_Ch8:
+	noise_note 2, 14, 1, 73
+	noise_note 0, 0, 0, 0
+	sound_loop 8, Sfx_ZapCannon_Ch8
+	noise_note 8, 14, 1, 73
+	sound_ret
 
-Sfx_MeanLook: ; f15ef
-	dbw $04, Sfx_MeanLook_Ch5
-; f15f2
+Sfx_MeanLook:
+	channel_count 1
+	channel 5, Sfx_MeanLook_Ch5
 
-Sfx_MeanLook_Ch5: ; f15f2
-	soundinput $77
-	dutycycle $3
-	sound $2, $f8, $0720
-Sfx_MeanLook_branch_f15fa: ; f15fa
-	sound $1, $88, $0660
-	sound $2, $f8, $0790
-	loopchannel 5, Sfx_MeanLook_branch_f15fa
-	sound $c, $f8, $0700
-	sound $c, $c8, $0720
-	sound $c, $a8, $0700
-	sound $c, $78, $0720
-	sound $c, $48, $0700
-	sound $c, $28, $0720
-	soundinput $8
-	endchannel
-; f1621
+Sfx_MeanLook_Ch5:
+	pitch_sweep 7, 7
+	duty_cycle 3
+	square_note 2, 15, 8, 1824
+.loop1:
+	square_note 1, 8, 8, 1632
+	square_note 2, 15, 8, 1936
+	sound_loop 5, .loop1
+	square_note 12, 15, 8, 1792
+	square_note 12, 12, 8, 1824
+	square_note 12, 10, 8, 1792
+	square_note 12, 7, 8, 1824
+	square_note 12, 4, 8, 1792
+	square_note 12, 2, 8, 1824
+	pitch_sweep 0, 8
+	sound_ret
 
-Sfx_HealBell: ; f1621
-	dbw $04, Sfx_HealBell_Ch5
-; f1624
+Sfx_HealBell:
+	channel_count 1
+	channel 5, Sfx_HealBell_Ch5
 
-Sfx_HealBell_Ch5: ; f1624
-	dutycycle $1
-	sound $1, $f1, $07da
-	sound $1, $d1, $07d9
-	sound $1, $f1, $07da
-	sound $8, $d1, $07db
-	endchannel
-; f1637
+Sfx_HealBell_Ch5:
+	duty_cycle 1
+	square_note 1, 15, 1, 2010
+	square_note 1, 13, 1, 2009
+	square_note 1, 15, 1, 2010
+	square_note 8, 13, 1, 2011
+	sound_ret
 
-Sfx_Return: ; f1637
-	dbw $04, Sfx_Return_Ch5
-; f163a
+Sfx_Return:
+	channel_count 1
+	channel 5, Sfx_Return_Ch5
 
-Sfx_Return_Ch5: ; f163a
-	dutycycle $0
-Sfx_Return_branch_f163c: ; f163c
-	soundinput $bf
-	sound $8, $f1, $0759
-	soundinput $57
-	sound $8, $f1, $0759
-	sound $10, $0, $0000
-	loopchannel 2, Sfx_Return_branch_f163c
-	soundinput $8
-	endchannel
-; f1653
+Sfx_Return_Ch5:
+	duty_cycle 0
+.loop1:
+	pitch_sweep 11, -7
+	square_note 8, 15, 1, 1881
+	pitch_sweep 5, 7
+	square_note 8, 15, 1, 1881
+	square_note 16, 0, 0, 0
+	sound_loop 2, .loop1
+	pitch_sweep 0, 8
+	sound_ret
 
-Sfx_ExpBar: ; f1653
-	dbw $04, Sfx_ExpBar_Ch5
-; f1656
+Sfx_ExpBar:
+	channel_count 1
+	channel 5, Sfx_ExpBar_Ch5
 
-Sfx_ExpBar_Ch5: ; f1656
-	dutycycle $2
-	soundinput $d7
-	sound $8, $e1, $0750
-	soundinput $e7
-	sound $8, $48, $06e0
-	sound $8, $58, $06f8
-	sound $8, $68, $0710
-	sound $8, $78, $0728
-	sound $8, $88, $0740
-	sound $8, $98, $0758
-	sound $10, $a8, $0770
-	soundinput $8
-	endchannel
-; f167f
+Sfx_ExpBar_Ch5:
+	duty_cycle 2
+	pitch_sweep 13, 7
+	square_note 8, 14, 1, 1872
+	pitch_sweep 14, 7
+	square_note 8, 4, 8, 1760
+	square_note 8, 5, 8, 1784
+	square_note 8, 6, 8, 1808
+	square_note 8, 7, 8, 1832
+	square_note 8, 8, 8, 1856
+	square_note 8, 9, 8, 1880
+	square_note 16, 10, 8, 1904
+	pitch_sweep 0, 8
+	sound_ret
 
-Sfx_MilkDrink: ; f167f
-	dbw $04, Sfx_MilkDrink_Ch5
-; f1682
+Sfx_MilkDrink:
+	channel_count 1
+	channel 5, Sfx_MilkDrink_Ch5
 
-Sfx_MilkDrink_Ch5: ; f1682
-	dutycycle $2
-Sfx_MilkDrink_branch_f1684: ; f1684
-	soundinput $a4
-	sound $2, $ea, $04e0
-	sound $d, $f7, $0290
-	soundinput $9e
-	sound $4, $c9, $05e1
-	sound $2, $0, $0000
-	loopchannel 6, Sfx_MilkDrink_branch_f1684
-	soundinput $8
-	endchannel
-; f169f
+Sfx_MilkDrink_Ch5:
+	duty_cycle 2
+.loop1:
+	pitch_sweep 10, 4
+	square_note 2, 14, -2, 1248
+	square_note 13, 15, 7, 656
+	pitch_sweep 9, -6
+	square_note 4, 12, -1, 1505
+	square_note 2, 0, 0, 0
+	sound_loop 6, .loop1
+	pitch_sweep 0, 8
+	sound_ret
 
-Sfx_Present: ; f169f
-	dbw $04, Sfx_Present_Ch5
-; f16a2
+Sfx_Present:
+	channel_count 1
+	channel 5, Sfx_Present_Ch5
 
-Sfx_Present_Ch5: ; f16a2
-	dutycycle $2
-	soundinput $d6
-Sfx_Present_branch_f16a6: ; f16a6
-	sound $2, $f1, $0740
-	sound $1, $0, $0000
-	loopchannel 3, Sfx_Present_branch_f16a6
-	sound $10, $f1, $0780
-	soundinput $8
-	endchannel
-; f16b9
+Sfx_Present_Ch5:
+	duty_cycle 2
+	pitch_sweep 13, 6
+.loop1:
+	square_note 2, 15, 1, 1856
+	square_note 1, 0, 0, 0
+	sound_loop 3, .loop1
+	square_note 16, 15, 1, 1920
+	pitch_sweep 0, 8
+	sound_ret
 
-Sfx_MorningSun: ; f16b9
-	dbw $04, Sfx_MorningSun_Ch5
-; f16bc
+Sfx_MorningSun:
+	channel_count 1
+	channel 5, Sfx_MorningSun_Ch5
 
-Sfx_MorningSun_Ch5: ; f16bc
-	dutycycle $3
-Sfx_MorningSun_branch_f16be: ; f16be
-	sound $2, $f1, $07e4
-	sound $2, $f1, $07e0
-	sound $5, $f2, $07e7
-	loopchannel 3, Sfx_MorningSun_branch_f16be
-	sound $1, $0, $0000
-	sound $8, $c2, $07e7
-	sound $1, $0, $0000
-	sound $8, $82, $07e7
-	endchannel
-; f16df
+Sfx_MorningSun_Ch5:
+	duty_cycle 3
+.loop1:
+	square_note 2, 15, 1, 2020
+	square_note 2, 15, 1, 2016
+	square_note 5, 15, 2, 2023
+	sound_loop 3, .loop1
+	square_note 1, 0, 0, 0
+	square_note 8, 12, 2, 2023
+	square_note 1, 0, 0, 0
+	square_note 8, 8, 2, 2023
+	sound_ret
 
-Sfx_Moonlight: ; f16df
-	dbw $04, Sfx_Moonlight_Ch5
-; f16e2
+Sfx_Moonlight:
+	channel_count 1
+	channel 5, Sfx_Moonlight_Ch5
 
-Sfx_Moonlight_Ch5: ; f16e2
-	dutycycle $2
-Sfx_Moonlight_branch_f16e4: ; f16e4
-	sound $1, $f8, $07d0
-	sound $4, $f1, $07e0
-	loopchannel 2, Sfx_Moonlight_branch_f16e4
-	sound $10, $f1, $07e0
-	sound $10, $d1, $07e0
-	sound $10, $81, $07e0
-	endchannel
-; f16fd
+Sfx_Moonlight_Ch5:
+	duty_cycle 2
+.loop1:
+	square_note 1, 15, 8, 2000
+	square_note 4, 15, 1, 2016
+	sound_loop 2, .loop1
+	square_note 16, 15, 1, 2016
+	square_note 16, 13, 1, 2016
+	square_note 16, 8, 1, 2016
+	sound_ret
 
-Sfx_Encore: ; f16fd
-	dbw $44, Sfx_Encore_Ch5
-	dbw $07, Sfx_Encore_Ch8
-; f1703
+Sfx_Encore:
+	channel_count 2
+	channel 5, Sfx_Encore_Ch5
+	channel 8, Sfx_Encore_Ch8
 
-Sfx_Encore_Ch5: ; f1703
-	dutycycle $2
-	soundinput $ce
-	sound $10, $0, $0000
-Sfx_Encore_branch_f170b: ; f170b
-	sound $2, $f8, $0774
-	sound $24, $0, $0000
-	loopchannel 2, Sfx_Encore_branch_f170b
-	soundinput $8
-	endchannel
-; f171a
+Sfx_Encore_Ch5:
+	duty_cycle 2
+	pitch_sweep 12, -6
+	square_note 16, 0, 0, 0
+.loop1:
+	square_note 2, 15, 8, 1908
+	square_note 36, 0, 0, 0
+	sound_loop 2, .loop1
+	pitch_sweep 0, 8
+	sound_ret
 
-Sfx_Encore_Ch8: ; f171a
-	noise $30, $1f, $36
-	noise $30, $76, $36
-	endchannel
-; f1721
+Sfx_Encore_Ch8:
+	noise_note 48, 1, -7, 54
+	noise_note 48, 7, 6, 54
+	sound_ret
 
-Sfx_BeatUp: ; f1721
-	dbw $07, Sfx_BeatUp_Ch8
-; f1724
+Sfx_BeatUp:
+	channel_count 1
+	channel 8, Sfx_BeatUp_Ch8
 
-Sfx_BeatUp_Ch8: ; f1724
-	noise $2, $e8, $69
-	noise $6, $d8, $24
-	noise $2, $e8, $6c
-	noise $4, $c8, $46
-	noise $6, $d1, $24
-	endchannel
-; f1734
+Sfx_BeatUp_Ch8:
+	noise_note 2, 14, 8, 105
+	noise_note 6, 13, 8, 36
+	noise_note 2, 14, 8, 108
+	noise_note 4, 12, 8, 70
+	noise_note 6, 13, 1, 36
+	sound_ret
 
-Sfx_SweetScent: ; f1734
-	dbw $04, Sfx_SweetScent_Ch5
-; f1737
+Sfx_SweetScent:
+	channel_count 1
+	channel 5, Sfx_SweetScent_Ch5
 
-Sfx_SweetScent_Ch5: ; f1737
-	dutycycle $2
-	soundinput $96
-	sound $6, $f8, $0760
-	sound $6, $e8, $0720
-	soundinput $df
-	sound $16, $f1, $0730
-	soundinput $8
-	endchannel
-; f174c
+Sfx_SweetScent_Ch5:
+	duty_cycle 2
+	pitch_sweep 9, 6
+	square_note 6, 15, 8, 1888
+	square_note 6, 14, 8, 1824
+	pitch_sweep 13, -7
+	square_note 22, 15, 1, 1840
+	pitch_sweep 0, 8
+	sound_ret
 
-Sfx_BatonPass: ; f174c
-	dbw $44, Sfx_BatonPass_Ch5
-	dbw $07, Sfx_BatonPass_Ch8
-; f1752
+Sfx_BatonPass:
+	channel_count 2
+	channel 5, Sfx_BatonPass_Ch5
+	channel 8, Sfx_BatonPass_Ch8
 
-Sfx_BatonPass_Ch5: ; f1752
-	dutycycle $2
-	soundinput $f7
-	sound $20, $f2, $0680
-	sound $1, $f1, $0760
-	sound $20, $0, $0000
-	sound $1, $f1, $0760
-	sound $1a, $0, $0000
-	sound $1, $f1, $0760
-	soundinput $8
-	endchannel
-; f1771
+Sfx_BatonPass_Ch5:
+	duty_cycle 2
+	pitch_sweep 15, 7
+	square_note 32, 15, 2, 1664
+	square_note 1, 15, 1, 1888
+	square_note 32, 0, 0, 0
+	square_note 1, 15, 1, 1888
+	square_note 26, 0, 0, 0
+	square_note 1, 15, 1, 1888
+	pitch_sweep 0, 8
+	sound_ret
 
-Sfx_BatonPass_Ch8: ; f1771
-	noise $20, $f2, $20
-	endchannel
-; f1775
+Sfx_BatonPass_Ch8:
+	noise_note 32, 15, 2, 32
+	sound_ret
 
-Sfx_EggCrack: ; f1775
-	dbw $04, Sfx_EggCrack_Ch5
-; f1778
+Sfx_EggCrack:
+	channel_count 1
+	channel 5, Sfx_EggCrack_Ch5
 
-Sfx_EggCrack_Ch5: ; f1778
-	togglesfx
-	notetype $1, $f1
-	dutycycle $0
+Sfx_EggCrack_Ch5:
+	toggle_sfx
+	note_type 1, 15, 1
+	duty_cycle 0
 	octave 4
 	note D#, 1
 	note C_, 1
-	note __, 1
+	rest 1
 	note F#, 1
-	endchannel
-; f1784
+	sound_ret
 
-Sfx_Evolved: ; f1784
-	dbw $04, Sfx_Evolved_Ch5
-; f1787
+Sfx_Evolved:
+	channel_count 1
+	channel 5, Sfx_Evolved_Ch5
 
-Sfx_Evolved_Ch5: ; f1787
-	togglesfx
-	notetype $1, $c1
+Sfx_Evolved_Ch5:
+	toggle_sfx
+	note_type 1, 12, 1
 	octave 4
 	note C_, 2
 	note E_, 2
@@ -3095,17 +2892,16 @@ Sfx_Evolved_Ch5: ; f1787
 	note B_, 3
 	octave 7
 	note C_, 16
-	endchannel
-; f179b
+	sound_ret
 
-Sfx_MasterBall: ; f179b
-	dbw $04, Sfx_MasterBall_Ch5
-; f179e
+Sfx_MasterBall:
+	channel_count 1
+	channel 5, Sfx_MasterBall_Ch5
 
-Sfx_MasterBall_Ch5: ; f179e
-	togglesfx
-	dutycycle $1
-	notetype $2, $e1
+Sfx_MasterBall_Ch5:
+	toggle_sfx
+	duty_cycle 1
+	note_type 2, 14, 1
 	octave 6
 	note B_, 2
 	octave 7
@@ -3118,132 +2914,126 @@ Sfx_MasterBall_Ch5: ; f179e
 	note A_, 2
 	note A#, 2
 	note A_, 2
-	intensity $c1
+	volume_envelope 12, 1
 	note G#, 2
 	note G_, 2
 	note F#, 2
-	intensity $91
+	volume_envelope 9, 1
 	note F_, 2
 	note E_, 2
 	note D#, 2
-	intensity $61
+	volume_envelope 6, 1
 	note D_, 2
 	note C#, 2
 	note C_, 2
-	endchannel
-; f17c0
+	sound_ret
 
-Sfx_EggHatch: ; f17c0
-	dbw $04, Sfx_EggHatch_Ch5
-; f17c3
+Sfx_EggHatch:
+	channel_count 1
+	channel 5, Sfx_EggHatch_Ch5
 
-Sfx_EggHatch_Ch5: ; f17c3
-	togglesfx
-	notetype $2, $f1
-	dutycycle $2
+Sfx_EggHatch_Ch5:
+	toggle_sfx
+	note_type 2, 15, 1
+	duty_cycle 2
 	octave 5
 	note E_, 1
 	note C_, 1
-	note __, 1
+	rest 1
 	note G_, 1
 	note D_, 1
-	intensity $e2
+	volume_envelope 14, 2
 	note B_, 7
-	intensity $82
+	volume_envelope 8, 2
 	note B_, 7
-	intensity $42
+	volume_envelope 4, 2
 	note B_, 7
-	endchannel
-; f17d9
+	sound_ret
 
-Sfx_GsIntroCharizardFireball: ; f17d9
-	dbw $07, Sfx_GsIntroCharizardFireball_Ch8
-; f17dc
+Sfx_GsIntroCharizardFireball:
+	channel_count 1
+	channel 8, Sfx_GsIntroCharizardFireball_Ch8
 
-Sfx_GsIntroCharizardFireball_Ch8: ; f17dc
-	noise $8, $cf, $4d
-	noise $8, $f1, $37
-Sfx_GsIntroCharizardFireball_branch_f17e2: ; f17e2
-	noise $1, $f8, $4f
-	noise $0, $c8, $26
-	noise $1, $d8, $5f
-	noise $0, $a8, $37
-	loopchannel 12, Sfx_GsIntroCharizardFireball_branch_f17e2
-	noise $3, $f8, $6f
-	noise $4, $d8, $5f
-	noise $c, $d8, $5c
-	noise $28, $d3, $4f
-	endchannel
-; f17ff
+Sfx_GsIntroCharizardFireball_Ch8:
+	noise_note 8, 12, -7, 77
+	noise_note 8, 15, 1, 55
+.loop1:
+	noise_note 1, 15, 8, 79
+	noise_note 0, 12, 8, 38
+	noise_note 1, 13, 8, 95
+	noise_note 0, 10, 8, 55
+	sound_loop 12, .loop1
+	noise_note 3, 15, 8, 111
+	noise_note 4, 13, 8, 95
+	noise_note 12, 13, 8, 92
+	noise_note 40, 13, 3, 79
+	sound_ret
 
-Sfx_GsIntroPokemonAppears: ; f17ff
-	dbw $07, Sfx_GsIntroPokemonAppears_Ch8
-; f1802
+Sfx_GsIntroPokemonAppears:
+	channel_count 1
+	channel 8, Sfx_GsIntroPokemonAppears_Ch8
 
-Sfx_GsIntroPokemonAppears_Ch8: ; f1802
-	noise $1, $88, $4f
-	noise $2, $8f, $2
-	noise $2, $5f, $12
-	noise $2, $3f, $22
-	noise $0, $f8, $27
-	noise $1, $f8, $4f
-	noise $8, $f1, $0
-	endchannel
-; f1818
+Sfx_GsIntroPokemonAppears_Ch8:
+	noise_note 1, 8, 8, 79
+	noise_note 2, 8, -7, 2
+	noise_note 2, 5, -7, 18
+	noise_note 2, 3, -7, 34
+	noise_note 0, 15, 8, 39
+	noise_note 1, 15, 8, 79
+	noise_note 8, 15, 1, 0
+	sound_ret
 
-Sfx_Flash: ; f1818
-	dbw $04, Sfx_Flash_Ch5
-; f181b
+Sfx_Flash:
+	channel_count 1
+	channel 5, Sfx_Flash_Ch5
 
-Sfx_Flash_Ch5: ; f181b
-	dutycycle $1
-	soundinput $ef
-	sound $1, $40, $07e8
-	sound $1, $60, $07e8
-	sound $2, $80, $07e8
-	sound $5, $a0, $07e8
-	sound $6, $a0, $07e8
-	sound $7, $80, $07e8
-	sound $8, $60, $07e8
-	sound $9, $30, $07e8
-	sound $f, $12, $07e8
-	soundinput $8
-	endchannel
-; f1846
+Sfx_Flash_Ch5:
+	duty_cycle 1
+	pitch_sweep 14, -7
+	square_note 1, 4, 0, 2024
+	square_note 1, 6, 0, 2024
+	square_note 2, 8, 0, 2024
+	square_note 5, 10, 0, 2024
+	square_note 6, 10, 0, 2024
+	square_note 7, 8, 0, 2024
+	square_note 8, 6, 0, 2024
+	square_note 9, 3, 0, 2024
+	square_note 15, 1, 2, 2024
+	pitch_sweep 0, 8
+	sound_ret
 
-Sfx_GameFreakLogoGs: ; f1846
-	dbw $04, Sfx_GameFreakLogoGs_Ch5
-; f1849
+Sfx_GameFreakLogoGs:
+	channel_count 1
+	channel 5, Sfx_GameFreakLogoGs_Ch5
 
-Sfx_GameFreakLogoGs_Ch5: ; f1849
-	dutycycle $3
-	soundinput $7f
-	sound $4, $55, $07e2
-	sound $5, $75, $07e2
-	sound $6, $94, $07e2
-	sound $7, $b4, $07e2
-	sound $8, $b3, $07e2
-	sound $9, $93, $07e2
-	sound $a, $72, $07e2
-	sound $a, $53, $07e2
-	sound $a, $34, $07e2
-	sound $a, $15, $07e2
-	soundinput $8
-	endchannel
-; f1878
+Sfx_GameFreakLogoGs_Ch5:
+	duty_cycle 3
+	pitch_sweep 7, -7
+	square_note 4, 5, 5, 2018
+	square_note 5, 7, 5, 2018
+	square_note 6, 9, 4, 2018
+	square_note 7, 11, 4, 2018
+	square_note 8, 11, 3, 2018
+	square_note 9, 9, 3, 2018
+	square_note 10, 7, 2, 2018
+	square_note 10, 5, 3, 2018
+	square_note 10, 3, 4, 2018
+	square_note 10, 1, 5, 2018
+	pitch_sweep 0, 8
+	sound_ret
 
-Sfx_DexFanfareLessThan20: ; f1878
-	dbw $c4, Sfx_DexFanfareLessThan20_Ch5
-	dbw $05, Sfx_DexFanfareLessThan20_Ch6
-	dbw $06, Sfx_DexFanfareLessThan20_Ch7
-	dbw $07, Sfx_DexFanfareLessThan20_Ch8
-; f1884
+Sfx_DexFanfareLessThan20:
+	channel_count 4
+	channel 5, Sfx_DexFanfareLessThan20_Ch5
+	channel 6, Sfx_DexFanfareLessThan20_Ch6
+	channel 7, Sfx_DexFanfareLessThan20_Ch7
+	channel 8, Sfx_DexFanfareLessThan20_Ch8
 
-Sfx_DexFanfareLessThan20_Ch5: ; f1884
-	togglesfx
+Sfx_DexFanfareLessThan20_Ch5:
+	toggle_sfx
 	tempo 124
-	volume $77
-	notetype $8, $b1
+	volume 7, 7
+	note_type 8, 11, 1
 	octave 3
 	note A_, 4
 	note F#, 2
@@ -3256,16 +3046,13 @@ Sfx_DexFanfareLessThan20_Ch5: ; f1884
 	note E_, 2
 	note E_, 2
 	note D_, 6
-	endchannel
-; f189a
+	sound_ret
 
+	toggle_sfx ; unused
 
-INCBIN "baserom.gbc", $f189a, $f189b - $f189a
-
-
-Sfx_DexFanfareLessThan20_Ch6: ; f189b
-	togglesfx
-	notetype $8, $c1
+Sfx_DexFanfareLessThan20_Ch6:
+	toggle_sfx
+	note_type 8, 12, 1
 	octave 3
 	note B_, 4
 	note A_, 2
@@ -3278,80 +3065,71 @@ Sfx_DexFanfareLessThan20_Ch6: ; f189b
 	note A_, 2
 	note G_, 2
 	note F#, 6
-	endchannel
-; f18ac
+	sound_ret
 
+	toggle_sfx ; unused
 
-INCBIN "baserom.gbc", $f18ac, $f18ad - $f18ac
-
-
-Sfx_DexFanfareLessThan20_Ch7: ; f18ad
-	togglesfx
-	notetype $8, $25
+Sfx_DexFanfareLessThan20_Ch7:
+	toggle_sfx
+	note_type 8, 2, 5
 	octave 4
 	note D_, 6
 	octave 3
 	note A_, 2
-	note __, 2
+	rest 2
 	note A_, 2
 	note A#, 4
 	note G_, 2
 	octave 4
 	note D#, 6
 	note D_, 2
-	note __, 4
+	rest 4
 	octave 3
 	note E_, 1
-	note __, 1
+	rest 1
 	note F#, 1
-	note __, 1
+	rest 1
 	note G_, 1
-	note __, 1
+	rest 1
 	note A_, 2
-	note __, 6
-	endchannel
-; f18c7
+	rest 6
+	sound_ret
 
+	toggle_sfx ; unused
 
-INCBIN "baserom.gbc", $f18c7, $f18c8 - $f18c7
-
-
-Sfx_DexFanfareLessThan20_Ch8: ; f18c8
-	togglesfx
-	sfxtogglenoise $4
-	notetype $c
+Sfx_DexFanfareLessThan20_Ch8:
+	toggle_sfx
+	sfx_toggle_noise 4
+	drum_speed 12
 	note C#, 6
-	note __, 16
-	note __, 12
-	endchannel
-; f18d1
+	rest 16
+	rest 12
+	sound_ret
 
+	toggle_sfx ; unused
 
-INCBIN "baserom.gbc", $f18d1, $f18d2 - $f18d1
+Sfx_DexFanfare140169:
+	channel_count 4
+	channel 5, Sfx_DexFanfare140169_Ch5
+	channel 6, Sfx_DexFanfare140169_Ch6
+	channel 7, Sfx_DexFanfare140169_Ch7
+	channel 8, Sfx_DexFanfare140169_Ch8
 
-
-Sfx_DexFanfare140169: ; f18d2
-	dbw $c4, Sfx_DexFanfare140169_Ch5
-	dbw $05, Sfx_DexFanfare140169_Ch6
-	dbw $06, Sfx_DexFanfare140169_Ch7
-	dbw $07, Sfx_DexFanfare140169_Ch8
-; f18de
-
-Sfx_DexFanfare140169_Ch5: ; f18de
-	togglesfx
+Sfx_DexFanfare140169_Ch5:
+	toggle_sfx
 	tempo 120
-	volume $77
-	dutycycle $3
-	vibrato $12, $34
-	notetype $6, $b1
-	note __, 8
+	volume 7, 7
+	duty_cycle 3
+	vibrato 18, 3, 4
+	note_type 6, 11, 1
+	rest 8
 	octave 3
 	note E_, 4
 	note E_, 4
 	note A_, 4
 	octave 4
 	note C#, 4
-	intensity $a4
+	volume_envelope 10, 4
 	note D_, 4
 	note C_, 4
 	octave 3
@@ -3361,19 +3139,16 @@ Sfx_DexFanfare140169_Ch5: ; f18de
 	note G_, 16
 	octave 2
 	note B_, 8
-	note __, 8
-	endchannel
-; f1900
+	rest 8
+	sound_ret
 
+	toggle_sfx ; unused
 
-INCBIN "baserom.gbc", $f1900, $f1901 - $f1900
-
-
-Sfx_DexFanfare140169_Ch6: ; f1901
-	togglesfx
-	dutycycle $2
-	vibrato $12, $34
-	notetype $6, $c1
+Sfx_DexFanfare140169_Ch6:
+	toggle_sfx
+	duty_cycle 2
+	vibrato 18, 3, 4
+	note_type 6, 12, 1
 	octave 4
 	note E_, 4
 	note F#, 4
@@ -3381,7 +3156,7 @@ Sfx_DexFanfare140169_Ch6: ; f1901
 	note G_, 4
 	note G_, 4
 	note G_, 4
-	intensity $b4
+	volume_envelope 11, 4
 	note F#, 4
 	note G_, 4
 	note A_, 4
@@ -3390,18 +3165,15 @@ Sfx_DexFanfare140169_Ch6: ; f1901
 	octave 4
 	note B_, 16
 	note G_, 8
-	note __, 8
-	endchannel
-; f191d
+	rest 8
+	sound_ret
 
+	toggle_sfx ; unused
 
-INCBIN "baserom.gbc", $f191d, $f191e - $f191d
-
-
-Sfx_DexFanfare140169_Ch7: ; f191e
-	togglesfx
-	notetype $c, $25
-	note __, 4
+Sfx_DexFanfare140169_Ch7:
+	toggle_sfx
+	note_type 12, 2, 5
+	rest 4
 	octave 2
 	note A_, 1
 	octave 3
@@ -3409,7 +3181,7 @@ Sfx_DexFanfare140169_Ch7: ; f191e
 	note E_, 1
 	note A_, 3
 	note C#, 1
-	note __, 1
+	rest 1
 	note D_, 1
 	note F#, 1
 	note A_, 1
@@ -3417,7 +3189,7 @@ Sfx_DexFanfare140169_Ch7: ; f191e
 	note D_, 3
 	octave 2
 	note A_, 1
-	note __, 1
+	rest 1
 	note G_, 1
 	note B_, 1
 	octave 3
@@ -3425,141 +3197,126 @@ Sfx_DexFanfare140169_Ch7: ; f191e
 	note G_, 3
 	octave 2
 	note B_, 1
-	note __, 1
+	rest 1
 	note G_, 4
-	note __, 4
-	endchannel
-; f193e
+	rest 4
+	sound_ret
 
+	toggle_sfx ; unused
 
-INCBIN "baserom.gbc", $f193e, $f193f - $f193e
-
-
-Sfx_DexFanfare140169_Ch8: ; f193f
-	togglesfx
-	sfxtogglenoise $4
-	notetype $c
+Sfx_DexFanfare140169_Ch8:
+	toggle_sfx
+	sfx_toggle_noise 4
+	drum_speed 12
 	note C_, 4
-Sfx_DexFanfare140169_branch_f1945: ; f1945
+.loop1:
 	note D_, 4
 	note C#, 1
 	note C#, 1
 	note C#, 1
 	note C#, 1
-	loopchannel 3, Sfx_DexFanfare140169_branch_f1945
+	sound_loop 3, .loop1
 	note D_, 8
-	endchannel
-; f1950
+	sound_ret
 
+	toggle_sfx ; unused
 
-INCBIN "baserom.gbc", $f1950, $f1951 - $f1950
+Sfx_DexFanfare170199:
+	channel_count 4
+	channel 5, Sfx_DexFanfare170199_Ch5
+	channel 6, Sfx_DexFanfare170199_Ch6
+	channel 7, Sfx_DexFanfare170199_Ch7
+	channel 8, Sfx_DexFanfare170199_Ch8
 
-
-Sfx_DexFanfare170199: ; f1951
-	dbw $c4, Sfx_DexFanfare170199_Ch5
-	dbw $05, Sfx_DexFanfare170199_Ch6
-	dbw $06, Sfx_DexFanfare170199_Ch7
-	dbw $07, Sfx_DexFanfare170199_Ch8
-; f195d
-
-Sfx_DexFanfare170199_Ch5: ; f195d
-	togglesfx
+Sfx_DexFanfare170199_Ch5:
+	toggle_sfx
 	tempo 112
-	volume $77
-	vibrato $12, $34
-	dutycycle $3
-	notetype $8, $b4
+	volume 7, 7
+	vibrato 18, 3, 4
+	duty_cycle 3
+	note_type 8, 11, 4
 	octave 3
 	note G_, 1
-	note __, 1
+	rest 1
 	note G_, 1
-	note __, 1
+	rest 1
 	note G_, 6
-	note __, 2
+	rest 2
 	note G_, 1
-	note __, 1
+	rest 1
 	note G_, 1
-	note __, 1
-	intensity $c1
+	rest 1
+	volume_envelope 12, 1
 	note F_, 4
 	note G_, 4
 	note A_, 4
-	notetype $c, $a8
+	note_type 12, 10, 8
 	note A#, 12
-	note __, 4
-	endchannel
-; f1981
+	rest 4
+	sound_ret
 
+	toggle_sfx ; unused
 
-INCBIN "baserom.gbc", $f1981, $f1982 - $f1981
-
-
-Sfx_DexFanfare170199_Ch6: ; f1982
-	togglesfx
-	vibrato $12, $34
-	dutycycle $3
-	notetype $8, $c4
+Sfx_DexFanfare170199_Ch6:
+	toggle_sfx
+	vibrato 18, 3, 4
+	duty_cycle 3
+	note_type 8, 12, 4
 	octave 3
 	note A#, 1
-	note __, 1
+	rest 1
 	note A#, 1
-	note __, 1
+	rest 1
 	note A#, 6
-	note __, 2
+	rest 2
 	note A#, 1
-	note __, 1
+	rest 1
 	note A#, 1
-	note __, 1
-	intensity $d1
+	rest 1
+	volume_envelope 13, 1
 	octave 4
 	note D#, 4
 	note D#, 4
 	note D#, 4
-	notetype $c, $b8
+	note_type 12, 11, 8
 	note D_, 12
-	note __, 4
-	endchannel
-; f19a2
+	rest 4
+	sound_ret
 
+	toggle_sfx ; unused
 
-INCBIN "baserom.gbc", $f19a2, $f19a3 - $f19a2
-
-
-Sfx_DexFanfare170199_Ch7: ; f19a3
-	togglesfx
-	notetype $8, $25
+Sfx_DexFanfare170199_Ch7:
+	toggle_sfx
+	note_type 8, 2, 5
 	octave 3
 	note D#, 1
-	note __, 1
+	rest 1
 	note D#, 1
-	note __, 1
+	rest 1
 	note D#, 6
-	note __, 2
+	rest 2
 	note D#, 1
-	note __, 1
+	rest 1
 	note D#, 1
-	note __, 1
+	rest 1
 	note C_, 2
-	note __, 2
+	rest 2
 	note C_, 2
-	note __, 2
+	rest 2
 	note C_, 2
-	note __, 2
-	notetype $c, $25
+	rest 2
+	note_type 12, 2, 5
 	octave 2
 	note A#, 12
-	note __, 4
-	endchannel
-; f19bf
+	rest 4
+	sound_ret
 
+	toggle_sfx ; unused
 
-INCBIN "baserom.gbc", $f19bf, $f19c0 - $f19bf
-
-
-Sfx_DexFanfare170199_Ch8: ; f19c0
-	togglesfx
-	sfxtogglenoise $4
-	notetype $8
+Sfx_DexFanfare170199_Ch8:
+	toggle_sfx
+	sfx_toggle_noise 4
+	drum_speed 8
 	note D_, 2
 	note D_, 2
 	note D_, 4
@@ -3572,29 +3329,26 @@ Sfx_DexFanfare170199_Ch8: ; f19c0
 	note C#, 1
 	note C#, 1
 	note C#, 1
-	notetype $c
+	drum_speed 12
 	note B_, 16
-	endchannel
-; f19d5
+	sound_ret
 
+	db sound_loop_cmd ; unused
 
-INCBIN "baserom.gbc", $f19d5, $f19d6 - $f19d5
+Sfx_DexFanfare200229:
+	channel_count 4
+	channel 5, Sfx_DexFanfare200229_Ch5
+	channel 6, Sfx_DexFanfare200229_Ch6
+	channel 7, Sfx_DexFanfare200229_Ch7
+	channel 8, Sfx_DexFanfare200229_Ch8
 
-
-Sfx_DexFanfare200229: ; f19d6
-	dbw $c4, Sfx_DexFanfare200229_Ch5
-	dbw $05, Sfx_DexFanfare200229_Ch6
-	dbw $06, Sfx_DexFanfare200229_Ch7
-	dbw $07, Sfx_DexFanfare200229_Ch8
-; f19e2
-
-Sfx_DexFanfare200229_Ch5: ; f19e2
-	togglesfx
+Sfx_DexFanfare200229_Ch5:
+	toggle_sfx
 	tempo 124
-	volume $77
-	vibrato $12, $34
-	dutycycle $3
-	notetype $8, $b2
+	volume 7, 7
+	vibrato 18, 3, 4
+	duty_cycle 3
+	note_type 8, 11, 2
 	octave 3
 	note C_, 2
 	note E_, 2
@@ -3608,21 +3362,18 @@ Sfx_DexFanfare200229_Ch5: ; f19e2
 	octave 4
 	note D#, 4
 	note G_, 4
-	notetype $c, $a8
+	note_type 12, 10, 8
 	note F#, 12
-	note __, 4
-	endchannel
-; f1a03
+	rest 4
+	sound_ret
 
+	toggle_sfx ; unused
 
-INCBIN "baserom.gbc", $f1a03, $f1a04 - $f1a03
-
-
-Sfx_DexFanfare200229_Ch6: ; f1a04
-	togglesfx
-	vibrato $12, $34
-	dutycycle $3
-	notetype $8, $b2
+Sfx_DexFanfare200229_Ch6:
+	toggle_sfx
+	vibrato 18, 3, 4
+	duty_cycle 3
+	note_type 8, 11, 2
 	octave 3
 	note E_, 2
 	note G_, 2
@@ -3634,26 +3385,23 @@ Sfx_DexFanfare200229_Ch6: ; f1a04
 	note D#, 4
 	note G_, 4
 	note A#, 4
-	notetype $c, $b8
+	note_type 12, 11, 8
 	note A_, 12
-	note __, 4
-	endchannel
-; f1a1e
+	rest 4
+	sound_ret
 
+	toggle_sfx ; unused
 
-INCBIN "baserom.gbc", $f1a1e, $f1a1f - $f1a1e
-
-
-Sfx_DexFanfare200229_Ch7: ; f1a1f
-	togglesfx
-	notetype $8, $25
+Sfx_DexFanfare200229_Ch7:
+	toggle_sfx
+	note_type 8, 2, 5
 	octave 3
 	note C_, 1
-	note __, 1
+	rest 1
 	note C_, 1
-	note __, 1
+	rest 1
 	note C_, 1
-	note __, 1
+	rest 1
 	note C_, 2
 	note E_, 2
 	note G_, 2
@@ -3669,32 +3417,29 @@ Sfx_DexFanfare200229_Ch7: ; f1a1f
 	octave 3
 	note D#, 4
 	note D_, 1
-	note __, 1
+	rest 1
 	note D_, 1
-	note __, 1
+	rest 1
 	octave 2
 	note A_, 2
 	octave 3
 	note D_, 1
-	note __, 1
+	rest 1
 	note D_, 1
-	note __, 1
+	rest 1
 	octave 2
 	note A_, 2
 	octave 3
 	note D_, 6
-	note __, 6
-	endchannel
-; f1a49
+	rest 6
+	sound_ret
 
+	toggle_sfx ; unused
 
-INCBIN "baserom.gbc", $f1a49, $f1a4a - $f1a49
-
-
-Sfx_DexFanfare200229_Ch8: ; f1a4a
-	togglesfx
-	sfxtogglenoise $4
-	notetype $8
+Sfx_DexFanfare200229_Ch8:
+	toggle_sfx
+	sfx_toggle_noise 4
+	drum_speed 8
 	note C#, 1
 	note C#, 1
 	note C#, 1
@@ -3716,82 +3461,76 @@ Sfx_DexFanfare200229_Ch8: ; f1a4a
 	note D_, 2
 	note D_, 2
 	note B_, 12
-	endchannel
-; f1a65
+	sound_ret
 
+	toggle_sfx ; unused
 
-INCBIN "baserom.gbc", $f1a65, $f1a66 - $f1a65
+Sfx_DexFanfare230Plus:
+	channel_count 4
+	channel 5, Sfx_DexFanfare230Plus_Ch5
+	channel 6, Sfx_DexFanfare230Plus_Ch6
+	channel 7, Sfx_DexFanfare230Plus_Ch7
+	channel 8, Sfx_DexFanfare230Plus_Ch8
 
-
-Sfx_DexFanfare230Plus: ; f1a66
-	dbw $c4, Sfx_DexFanfare230Plus_Ch5
-	dbw $05, Sfx_DexFanfare230Plus_Ch6
-	dbw $06, Sfx_DexFanfare230Plus_Ch7
-	dbw $07, Sfx_DexFanfare230Plus_Ch8
-; f1a72
-
-Sfx_DexFanfare230Plus_Ch5: ; f1a72
-	togglesfx
+Sfx_DexFanfare230Plus_Ch5:
+	toggle_sfx
 	tempo 112
-	volume $77
-	vibrato $12, $34
-	dutycycle $3
-	notetype $8, $a5
+	volume 7, 7
+	vibrato 18, 3, 4
+	duty_cycle 3
+	note_type 8, 10, 5
 	octave 3
 	note B_, 2
 	note G_, 2
 	note B_, 2
 	octave 4
 	note D_, 14
-	note __, 2
-	dutycycle $2
-	intensity $85
+	rest 2
+	duty_cycle 2
+	volume_envelope 8, 5
 	octave 2
 	note F_, 1
-	note __, 1
+	rest 1
 	note F_, 6
-	intensity $a5
-	dutycycle $3
+	volume_envelope 10, 5
+	duty_cycle 3
 	octave 3
 	note A_, 2
 	note G_, 2
 	note F_, 10
-	note __, 2
-	dutycycle $2
-	intensity $85
+	rest 2
+	duty_cycle 2
+	volume_envelope 8, 5
 	octave 2
 	note F_, 1
-	note __, 1
+	rest 1
 	note F_, 6
-	intensity $a5
-	dutycycle $3
+	volume_envelope 10, 5
+	duty_cycle 3
 	octave 3
 	note A#, 12
-	intensity $b2
+	volume_envelope 11, 2
 	note G_, 4
 	note A_, 4
 	note A#, 4
-	notetype $c, $a8
+	note_type 12, 10, 8
 	note A_, 14
-	note __, 2
-	endchannel
-; f1ab1
+	rest 2
+	sound_ret
 
+	toggle_sfx ; unused
 
-INCBIN "baserom.gbc", $f1ab1, $f1ab2 - $f1ab1
-
-
-Sfx_DexFanfare230Plus_Ch6: ; f1ab2
-	togglesfx
-	vibrato $12, $34
-	dutycycle $3
-	notetype $8, $b5
+Sfx_DexFanfare230Plus_Ch6:
+	toggle_sfx
+	vibrato 18, 3, 4
+	duty_cycle 3
+	note_type 8, 11, 5
 	octave 4
 	note G_, 2
 	note D_, 2
 	note G_, 2
 	note F_, 14
-	note __, 4
+	rest 4
 	note F_, 2
 	note E_, 2
 	note D_, 2
@@ -3799,86 +3538,80 @@ Sfx_DexFanfare230Plus_Ch6: ; f1ab2
 	octave 3
 	note B_, 2
 	note A_, 10
-	note __, 4
+	rest 4
 	note A_, 2
 	octave 4
 	note C_, 2
 	note D_, 2
 	note D#, 12
-	intensity $c2
+	volume_envelope 12, 2
 	note G_, 4
 	note G_, 4
 	note G_, 4
-	notetype $c, $b8
+	note_type 12, 11, 8
 	note F#, 14
-	note __, 2
-	endchannel
-; f1ad9
+	rest 2
+	sound_ret
 
+	toggle_sfx ; unused
 
-INCBIN "baserom.gbc", $f1ad9, $f1ada - $f1ad9
-
-
-Sfx_DexFanfare230Plus_Ch7: ; f1ada
-	togglesfx
-	notetype $8, $25
+Sfx_DexFanfare230Plus_Ch7:
+	toggle_sfx
+	note_type 8, 2, 5
 	octave 3
 	note G_, 6
 	note A#, 4
 	note F_, 2
 	note A#, 1
-	note __, 1
+	rest 1
 	note A#, 1
-	note __, 1
+	rest 1
 	note A#, 1
-	note __, 1
+	rest 1
 	note A#, 2
-	note __, 2
+	rest 2
 	note D_, 1
-	note __, 1
+	rest 1
 	note D_, 6
 	note A_, 4
 	note F_, 2
 	note A_, 1
-	note __, 1
+	rest 1
 	note A_, 1
-	note __, 1
+	rest 1
 	note A_, 1
-	note __, 1
+	rest 1
 	note A_, 2
-	note __, 2
+	rest 2
 	note C_, 1
-	note __, 1
+	rest 1
 	note C_, 6
 	note G_, 4
 	note D#, 2
 	note G_, 1
-	note __, 1
+	rest 1
 	note G_, 1
-	note __, 1
+	rest 1
 	note G_, 1
-	note __, 1
+	rest 1
 	note A#, 4
 	note G_, 4
 	note D#, 4
-	notetype $c, $25
+	note_type 12, 2, 5
 	note D_, 14
-	note __, 2
-	endchannel
-; f1b0b
+	rest 2
+	sound_ret
 
+	toggle_sfx ; unused
 
-INCBIN "baserom.gbc", $f1b0b, $f1b0c - $f1b0b
-
-
-Sfx_DexFanfare230Plus_Ch8: ; f1b0c
-	togglesfx
-	sfxtogglenoise $4
-	notetype $8
+Sfx_DexFanfare230Plus_Ch8:
+	toggle_sfx
+	sfx_toggle_noise 4
+	drum_speed 8
 	note D_, 2
 	note D_, 2
 	note D_, 2
-Sfx_DexFanfare230Plus_branch_f1b14: ; f1b14
+.loop1:
 	note D_, 6
 	note D_, 2
 	note D_, 2
@@ -3890,7 +3623,7 @@ Sfx_DexFanfare230Plus_branch_f1b14: ; f1b14
 	note C#, 1
 	note C#, 1
 	note C#, 1
-	loopchannel 2, Sfx_DexFanfare230Plus_branch_f1b14
+	sound_loop 2, .loop1
 	note D_, 6
 	note D_, 2
 	note D_, 2
@@ -3899,238 +3632,220 @@ Sfx_DexFanfare230Plus_branch_f1b14: ; f1b14
 	note D_, 4
 	note D_, 4
 	note D_, 4
-Sfx_DexFanfare230Plus_branch_f1b2b: ; f1b2b
+.loop2:
 	note C#, 1
-	loopchannel 18, Sfx_DexFanfare230Plus_branch_f1b2b
+	sound_loop 18, .loop2
 	note D_, 6
-	endchannel
-; f1b32
+	sound_ret
 
+	toggle_sfx ; unused
 
-INCBIN "baserom.gbc", $f1b32, $f1b33 - $f1b32
+Sfx_NotVeryEffective:
+	channel_count 1
+	channel 8, Sfx_NotVeryEffective_Ch8
 
+Sfx_NotVeryEffective_Ch8:
+	noise_note 4, 15, 1, 95
+	noise_note 1, 10, 0, 66
+	noise_note 16, 15, 1, 83
+	sound_ret
 
-Sfx_NotVeryEffective: ; f1b33
-	dbw $07, Sfx_NotVeryEffective_Ch8
-; f1b36
+Sfx_Damage:
+	channel_count 1
+	channel 8, Sfx_Damage_Ch8
 
-Sfx_NotVeryEffective_Ch8: ; f1b36
-	noise $4, $f1, $5f
-	noise $1, $a0, $42
-	noise $10, $f1, $53
-	endchannel
-; f1b40
+Sfx_Damage_Ch8:
+	noise_note 4, 15, 1, 94
+	noise_note 1, 10, 0, 18
+	noise_note 4, 15, 0, 50
+	noise_note 16, 15, 1, 68
+	sound_ret
 
-Sfx_Damage: ; f1b40
-	dbw $07, Sfx_Damage_Ch8
-; f1b43
+Sfx_SuperEffective:
+	channel_count 1
+	channel 8, Sfx_SuperEffective_Ch8
 
-Sfx_Damage_Ch8: ; f1b43
-	noise $4, $f1, $5e
-	noise $1, $a0, $12
-	noise $4, $f0, $32
-	noise $10, $f1, $44
-	endchannel
-; f1b50
+Sfx_SuperEffective_Ch8:
+	noise_note 3, 15, 1, 79
+	noise_note 1, 12, 8, 34
+	noise_note 2, 15, 8, 63
+	noise_note 3, 13, 0, 21
+	noise_note 32, 15, 2, 53
+	sound_ret
 
-Sfx_SuperEffective: ; f1b50
-	dbw $07, Sfx_SuperEffective_Ch8
-; f1b53
+Sfx_BallBounce:
+	channel_count 2
+	channel 5, Sfx_BallBounce_Ch5
+	channel 6, Sfx_BallBounce_Ch6
 
-Sfx_SuperEffective_Ch8: ; f1b53
-	noise $3, $f1, $4f
-	noise $1, $c8, $22
-	noise $2, $f8, $3f
-	noise $3, $d0, $15
-	noise $20, $f2, $35
-	endchannel
-; f1b63
+Sfx_BallBounce_Ch5:
+	duty_cycle 2
+	square_note 8, 14, 1, 1856
+	square_note 23, 0, 0, 0
+	square_note 8, 11, 1, 1856
+	square_note 23, 0, 0, 0
+	square_note 8, 8, 1, 1856
+	square_note 23, 0, 0, 0
+	square_note 8, 5, 1, 1856
+	square_note 23, 0, 0, 0
+	sound_ret
 
-Sfx_BallBounce: ; f1b63
-	dbw $44, Sfx_BallBounce_Ch5
-	dbw $05, Sfx_BallBounce_Ch6
-; f1b69
+Sfx_BallBounce_Ch6:
+	duty_cycle 2
+	square_note 2, 0, 8, 0
+	square_note 8, 11, 1, 1857
+	square_note 23, 0, 0, 0
+	square_note 8, 8, 1, 1857
+	square_note 23, 0, 0, 0
+	square_note 8, 5, 1, 1857
+	square_note 23, 0, 0, 0
+	square_note 8, 2, 1, 1857
+	square_note 23, 0, 0, 0
+	sound_ret
 
-Sfx_BallBounce_Ch5: ; f1b69
-	dutycycle $2
-	sound $8, $e1, $0740
-	sound $17, $0, $0000
-	sound $8, $b1, $0740
-	sound $17, $0, $0000
-	sound $8, $81, $0740
-	sound $17, $0, $0000
-	sound $8, $51, $0740
-	sound $17, $0, $0000
-	endchannel
-; f1b8c
+Sfx_SweetScent2:
+	channel_count 2
+	channel 5, Sfx_SweetScent2_Ch5
+	channel 8, Sfx_SweetScent2_Ch8
 
-Sfx_BallBounce_Ch6: ; f1b8c
-	dutycycle $2
-	sound $2, $8, $0000
-	sound $8, $b1, $0741
-	sound $17, $0, $0000
-	sound $8, $81, $0741
-	sound $17, $0, $0000
-	sound $8, $51, $0741
-	sound $17, $0, $0000
-	sound $8, $21, $0741
-	sound $17, $0, $0000
-	endchannel
-; f1bb3
+Sfx_SweetScent2_Ch5:
+	pitch_sweep 10, -7
+	duty_cycle 1
+	square_note 6, 15, 8, 1520
+	square_note 2, 15, 1, 1568
+	square_note 16, 15, 1, 1616
+	pitch_sweep 0, 8
+	sound_ret
 
-Sfx_SweetScent2: ; f1bb3
-	dbw $44, Sfx_SweetScent2_Ch5
-	dbw $07, Sfx_SweetScent2_Ch8
-; f1bb9
+Sfx_SweetScent2_Ch8:
+	noise_note 2, 14, 8, 34
+	noise_note 17, 10, -2, 0
+.loop1:
+	noise_note 4, 13, -1, 16
+	noise_note 8, 9, 1, 0
+	noise_note 2, 6, 1, 7
+	sound_loop 5, .loop1
+	noise_note 4, 9, -1, 0
+	noise_note 10, 6, 1, 0
+	noise_note 6, 5, -1, 0
+	noise_note 2, 2, 1, 7
+	sound_ret
 
-Sfx_SweetScent2_Ch5: ; f1bb9
-	soundinput $af
-	dutycycle $1
-	sound $6, $f8, $05f0
-	sound $2, $f1, $0620
-	sound $10, $f1, $0650
-	soundinput $8
-	endchannel
-; f1bcc
+Sfx_HitEndOfExpBar:
+	channel_count 2
+	channel 5, Sfx_HitEndOfExpBar_Ch5
+	channel 6, Sfx_HitEndOfExpBar_Ch6
 
-Sfx_SweetScent2_Ch8: ; f1bcc
-	noise $2, $e8, $22
-	noise $11, $aa, $0
-Sfx_SweetScent2_branch_f1bd2: ; f1bd2
-	noise $4, $d9, $10
-	noise $8, $91, $0
-	noise $2, $61, $7
-	loopchannel 5, Sfx_SweetScent2_branch_f1bd2
-	noise $4, $99, $0
-	noise $a, $61, $0
-	noise $6, $59, $0
-	noise $2, $21, $7
-	endchannel
-; f1bec
+Sfx_HitEndOfExpBar_Ch5:
+	duty_cycle 2
+	square_note 1, 14, 1, 1929
+	square_note 1, 14, 1, 1954
+	square_note 16, 14, 1, 1969
+	sound_ret
 
-Sfx_HitEndOfExpBar: ; f1bec
-	dbw $44, Sfx_HitEndOfExpBar_Ch5
-	dbw $05, Sfx_HitEndOfExpBar_Ch6
-; f1bf2
+Sfx_HitEndOfExpBar_Ch6:
+	duty_cycle 2
+	square_note 1, 14, 1, 1954
+	square_note 1, 14, 1, 1969
+	square_note 16, 14, 1, 1988
+	sound_ret
 
-Sfx_HitEndOfExpBar_Ch5: ; f1bf2
-	dutycycle $2
-	sound $1, $e1, $0789
-	sound $1, $e1, $07a2
-	sound $10, $e1, $07b1
-	endchannel
-; f1c01
+Sfx_GiveTrademon:
+	channel_count 1
+	channel 5, Sfx_GiveTrademon_Ch5
 
-Sfx_HitEndOfExpBar_Ch6: ; f1c01
-	dutycycle $2
-	sound $1, $e1, $07a2
-	sound $1, $e1, $07b1
-	sound $10, $e1, $07c4
-	endchannel
-; f1c10
+Sfx_GiveTrademon_Ch5:
+	square_note 32, 0, 0, 0
+	duty_cycle 1
+	pitch_sweep 10, 7
+	square_note 27, 15, 4, 1872
+	square_note 27, 13, 4, 1872
+	square_note 27, 11, 4, 1872
+	square_note 27, 9, 4, 1872
+	square_note 27, 7, 4, 1872
+	square_note 27, 5, 4, 1872
+	square_note 27, 3, 4, 1872
+	square_note 27, 1, 4, 1872
+	pitch_sweep 0, 8
+	sound_ret
 
-Sfx_GiveTrademon: ; f1c10
-	dbw $04, Sfx_GiveTrademon_Ch5
-; f1c13
+Sfx_GetTrademon:
+	channel_count 1
+	channel 5, Sfx_GetTrademon_Ch5
 
-Sfx_GiveTrademon_Ch5: ; f1c13
-	sound $20, $0, $0000
-	dutycycle $1
-	soundinput $a7
-	sound $1b, $f4, $0750
-	sound $1b, $d4, $0750
-	sound $1b, $b4, $0750
-	sound $1b, $94, $0750
-	sound $1b, $74, $0750
-	sound $1b, $54, $0750
-	sound $1b, $34, $0750
-	sound $1b, $14, $0750
-	soundinput $8
-	endchannel
-; f1c3e
+Sfx_GetTrademon_Ch5:
+	square_note 32, 0, 0, 0
+	duty_cycle 2
+	pitch_sweep 11, -7
+	square_note 27, 1, 4, 1980
+	square_note 27, 3, 4, 1980
+	square_note 27, 5, 4, 1980
+	square_note 27, 7, 4, 1980
+	square_note 27, 9, 4, 1980
+	square_note 27, 11, 4, 1980
+	square_note 27, 13, 4, 1980
+	square_note 27, 15, 4, 1980
+	pitch_sweep 0, 8
+	sound_ret
 
-Sfx_GetTrademon: ; f1c3e
-	dbw $04, Sfx_GetTrademon_Ch5
-; f1c41
+Sfx_TrainArrived:
+	channel_count 3
+	channel 5, Sfx_TrainArrived_Ch5
+	channel 6, Sfx_TrainArrived_Ch6
+	channel 8, Sfx_TrainArrived_Ch8
 
-Sfx_GetTrademon_Ch5: ; f1c41
-	sound $20, $0, $0000
-	dutycycle $2
-	soundinput $bf
-	sound $1b, $14, $07bc
-	sound $1b, $34, $07bc
-	sound $1b, $54, $07bc
-	sound $1b, $74, $07bc
-	sound $1b, $94, $07bc
-	sound $1b, $b4, $07bc
-	sound $1b, $d4, $07bc
-	sound $1b, $f4, $07bc
-	soundinput $8
-	endchannel
-; f1c6c
+Sfx_TrainArrived_Ch6:
+	pitch_offset 8
+	square_note 8, 0, 0, 0
+Sfx_TrainArrived_Ch5:
+	duty_cycle 2
+	square_note 4, 5, -7, 1681
+	square_note 4, 6, -7, 1684
+	square_note 4, 7, 8, 1687
+	square_note 4, 7, -7, 1690
+	square_note 4, 6, 8, 1710
+	square_note 16, 6, -7, 1707
+	square_note 104, 6, 5, 1704
+	sound_ret
 
-Sfx_TrainArrived: ; f1c6c
-	dbw $84, Sfx_TrainArrived_Ch5
-	dbw $05, Sfx_TrainArrived_Ch6
-	dbw $07, Sfx_TrainArrived_Ch8
-; f1c75
+Sfx_TrainArrived_Ch8:
+	noise_note 5, 10, -7, 16
+	noise_note 4, 9, -7, 32
+	noise_note 4, 8, -7, 33
+	noise_note 4, 7, -7, 34
+	noise_note 4, 8, -7, 33
+	noise_note 4, 9, -7, 32
+	noise_note 4, 9, -7, 16
+	noise_note 104, 10, 3, 0
+	sound_ret
 
-Sfx_TrainArrived_Ch6: ; f1c75
-	tone $0008
-	sound $8, $0, $0000
-Sfx_TrainArrived_Ch5: ; f1c7c
-	dutycycle $2
-	sound $4, $5f, $0691
-	sound $4, $6f, $0694
-	sound $4, $78, $0697
-	sound $4, $7f, $069a
-	sound $4, $68, $06ae
-	sound $10, $6f, $06ab
-	sound $68, $65, $06a8
-	endchannel
-; f1c9b
+Sfx_2Boops:
+	channel_count 1
+	channel 5, Sfx_2Boops_Ch5
 
-Sfx_TrainArrived_Ch8: ; f1c9b
-	noise $5, $af, $10
-	noise $4, $9f, $20
-	noise $4, $8f, $21
-	noise $4, $7f, $22
-	noise $4, $8f, $21
-	noise $4, $9f, $20
-	noise $4, $9f, $10
-	noise $68, $a3, $0
-	endchannel
-; f1cb4
+Sfx_2Boops_Ch5:
+	duty_cycle 2
+.loop1:
+	pitch_sweep 7, -1
+	square_note 1, 9, -1, 1379
+	square_note 4, 15, 2, 1205
+	pitch_sweep 4, 3
+	square_note 16, 15, 8, 1485
+	sound_loop 2, .loop1
+	pitch_sweep 0, 8
+	sound_ret
 
-Sfx_2Boops: ; f1cb4
-	dbw $04, Sfx_2Boops_Ch5
-; f1cb7
+Sfx_Menu_Ch8:
+	noise_note 1, 14, 2, 51
+	noise_note 8, 14, 1, 34
+	sound_ret
 
-Sfx_2Boops_Ch5: ; f1cb7
-	dutycycle $2
-Sfx_2Boops_branch_f1cb9: ; f1cb9
-	soundinput $79
-	sound $1, $99, $0563
-	sound $4, $f2, $04b5
-	soundinput $43
-	sound $10, $f8, $05cd
-	loopchannel 2, Sfx_2Boops_branch_f1cb9
-	soundinput $8
-	endchannel
-; f1cd0
-
-Sfx_Menu_Ch8: ; f1cd0
-	noise $1, $e2, $33
-	noise $8, $e1, $22
-	endchannel
-; f1cd7
-
-Sfx_Pokeflute_Ch7: ; f1cd7
+Sfx_Pokeflute_Ch7:
 	tempo 256
-	volume $77
-	togglesfx
-	vibrato $10, $14
-	notetype $c, $10
+	volume 7, 7
+	toggle_sfx
+	vibrato 16, 1, 4
+	note_type 12, 1, 0
 	octave 5
 	note E_, 2
 	note F_, 2
@@ -4147,1093 +3862,948 @@ Sfx_Pokeflute_Ch7: ; f1cd7
 	note A_, 2
 	note F_, 2
 	note G_, 8
-	note __, 12
-	endchannel
-; f1cf5
-
-Sfx_PlacePuzzlePieceDown_Ch8: ; f1cf5
-	noise $2, $f7, $24
-	noise $2, $f7, $34
-	noise $4, $f7, $44
-	noise $8, $f4, $55
-	noise $8, $f1, $44
-	endchannel
-; f1d05
-
-Sfx_EnterDoor_Ch8: ; f1d05
-	noise $9, $f1, $44
-	noise $8, $d1, $43
-	endchannel
-; f1d0c
-
-Sfx_SwitchPokemon_Ch5: ; f1d0c
-	dutycycle $2
-	sound $8, $e1, $0740
-	endchannel
-; f1d13
-
-Sfx_SwitchPokemon_Ch6: ; f1d13
-	dutycycle $2
-	sound $2, $8, $0000
-	sound $8, $b1, $0741
-	endchannel
-; f1d1e
-
-Sfx_PokeballsPlacedOnTable_Ch5: ; f1d1e
-	dutycycle $2
-	soundinput $3a
-	sound $4, $f2, $0200
-	soundinput $22
-	sound $8, $e2, $0200
-	soundinput $8
-	endchannel
-; f1d2f
-
-Sfx_BallWiggle_Ch5: ; f1d2f
-	dutycycle $2
-	soundinput $3a
-	sound $4, $f2, $0400
-	soundinput $22
-	sound $8, $e2, $0400
-	soundinput $8
-	endchannel
-; f1d40
-
-Sfx_Tally_Ch5: ; f1d40
-	dutycycle $2
-	sound $4, $f1, $0780
-	endchannel
-; f1d47
-
-Sfx_Tally_Ch6: ; f1d47
-	dutycycle $2
-	sound $1, $8, $0000
-	sound $4, $a1, $0761
-	endchannel
-; f1d52
-
-Sfx_Transaction_Ch5: ; f1d52
-	dutycycle $2
-	sound $4, $e1, $0700
-	sound $18, $f2, $07e0
-	endchannel
-; f1d5d
-
-Sfx_Transaction_Ch6: ; f1d5d
-	dutycycle $2
-	sound $1, $8, $0000
-	sound $4, $91, $06c1
-	sound $18, $a2, $07a1
-	endchannel
-; f1d6c
-
-Sfx_Bump_Ch5: ; f1d6c
-	dutycycle $2
-	soundinput $5a
-	sound $f, $f1, $0300
-	soundinput $8
-	endchannel
-; f1d77
-
-Sfx_ExitBuilding_Ch8: ; f1d77
-	noise $2, $f1, $54
-	noise $c, $71, $23
-	noise $2, $b1, $54
-	noise $c, $61, $23
-	noise $6, $41, $54
-	endchannel
-; f1d87
-
-Sfx_ReadText2_Ch5: ; f1d87
-Sfx_ReadText_Ch5: ; f1d87
-	dutycycle $2
-	sound $0, $91, $07c0
-	sound $0, $81, $07d0
-	sound $0, $91, $07c0
-	sound $c, $a1, $07d0
-	endchannel
-; f1d9a
-
-Sfx_Potion_Ch5: ; f1d9a
-	dutycycle $2
-	soundinput $17
-	sound $f, $f0, $04f0
-	sound $f, $f2, $0650
-	soundinput $8
-	endchannel
-; f1da9
-
-Sfx_Poison_Ch5: ; f1da9
-Sfx_Poison_branch_f1da9: ; f1da9
-	dutycycle $0
-	soundinput $14
-	sound $4, $f2, $0600
-	loopchannel 4, Sfx_Poison_branch_f1da9
-	sound $f, $f3, $0600
-	soundinput $8
-	endchannel
-; f1dbc
-
-Sfx_FullHeal_Ch5: ; f1dbc
-	dutycycle $2
-	soundinput $14
-	sound $4, $f2, $0600
-	sound $4, $f2, $0600
-	soundinput $17
-	sound $f, $f2, $0600
-	soundinput $8
-	endchannel
-; f1dd1
-
-Sfx_GotSafariBalls_Ch5: ; f1dd1
-	dutycycle $2
-	soundinput $15
-	sound $f, $f0, $04f0
-	sound $f, $f2, $0650
-	soundinput $8
-	endchannel
-; f1de0
-
-Sfx_BootPc_Ch5: ; f1de0
-	dutycycle $2
-	sound $f, $f2, $07c0
-	sound $f, $0, $0000
-	sound $3, $a1, $0780
-	sound $3, $a1, $0700
-	sound $3, $a1, $0740
-	sound $3, $a1, $0700
-	sound $3, $a1, $0780
-	sound $3, $a1, $0700
-	sound $3, $a1, $07c0
-	sound $8, $a1, $0700
-	endchannel
-; f1e0b
-
-Sfx_ShutDownPc_Ch5: ; f1e0b
-	dutycycle $2
-	sound $4, $f0, $0600
-	sound $4, $f0, $0400
-	sound $4, $f0, $0200
-	sound $1, $0, $0000
-	endchannel
-; f1e1e
-
-Sfx_ChoosePcOption_Ch5: ; f1e1e
-	dutycycle $2
-	sound $6, $f0, $0700
-	sound $4, $0, $0000
-	sound $6, $f0, $0700
-	sound $1, $0, $0000
-	endchannel
-; f1e31
-
-Sfx_EscapeRope_Ch5: ; f1e31
-	dutycycle $1
-	soundinput $17
-	sound $f, $d7, $0600
-	sound $f, $b7, $0580
-	sound $f, $87, $0500
-	sound $f, $47, $0480
-	sound $f, $17, $0400
-	soundinput $8
-	endchannel
-; f1e4c
-
-Sfx_PushButton_Ch5: ; f1e4c
-	dutycycle $2
-	sound $4, $0, $0000
-	sound $2, $f1, $0680
-	sound $1, $0, $0000
-	sound $4, $f1, $0780
-	sound $4, $0, $0000
-	endchannel
-; f1e63
-
-Sfx_SecondPartOfItemfinder_Ch5: ; f1e63
-	dutycycle $2
-	soundinput $2c
-	sound $4, $f2, $0500
-	soundinput $22
-	sound $2, $f1, $0500
-	soundinput $8
-	sound $1, $0, $0000
-	endchannel
-; f1e78
-
-Sfx_WarpTo_Ch5: ; f1e78
-	dutycycle $1
-	soundinput $17
-	sound $f, $d7, $0500
-	sound $f, $b7, $0580
-	sound $f, $87, $0600
-	sound $f, $47, $0680
-	sound $f, $17, $0700
-	soundinput $8
-	endchannel
-; f1e93
-
-Sfx_WarpFrom_Ch5: ; f1e93
-	dutycycle $1
-	soundinput $17
-	sound $f, $d7, $0700
-	sound $f, $b7, $0680
-	sound $f, $87, $0600
-	sound $f, $47, $0580
-	sound $f, $17, $0500
-	soundinput $8
-	endchannel
-; f1eae
-
-Sfx_ChangeDexMode_Ch5: ; f1eae
-	dutycycle $1
-	soundinput $16
-	sound $f, $d2, $0500
-	soundinput $8
-	endchannel
-; f1eb9
-
-Sfx_JumpOverLedge_Ch5: ; f1eb9
-	dutycycle $2
-	soundinput $95
-	sound $f, $f2, $0400
-	soundinput $8
-	endchannel
-; f1ec4
-
-Sfx_GrassRustle_Ch8: ; f1ec4
-	noise $2, $f1, $32
-	noise $2, $0, $0
-	noise $2, $f1, $22
-	noise $1, $0, $0
-	endchannel
-; f1ed1
-
-Sfx_Fly_Ch8: ; f1ed1
-	noise $2, $f1, $12
-	noise $2, $0, $0
-	noise $2, $a1, $12
-	noise $2, $0, $0
-	noise $2, $d1, $12
-	noise $2, $0, $0
-	noise $2, $81, $12
-	noise $2, $0, $0
-	noise $2, $b1, $12
-	noise $2, $0, $0
-	noise $2, $61, $12
-	noise $2, $0, $0
-	noise $2, $91, $12
-	noise $2, $0, $0
-	noise $2, $41, $12
-	noise $2, $0, $0
-	endchannel
-; f1f02
-
-Sfx_Wrong_Ch5: ; f1f02
-	dutycycle $3
-	soundinput $5a
-	sound $4, $f0, $0500
-	soundinput $8
-	sound $4, $0, $0000
-	sound $f, $f0, $0500
-	sound $1, $0, $0000
-	endchannel
-; f1f19
-
-Sfx_Wrong_Ch6: ; f1f19
-	dutycycle $3
-	sound $4, $f0, $0401
-	sound $4, $0, $0000
-	sound $f, $f0, $0401
-	sound $1, $0, $0000
-	endchannel
-; f1f2c
-
-Sfx_Squeak_Ch5: ; f1f2c
-	dutycycle $0
-	soundinput $17
-	sound $f, $d2, $0700
-	soundinput $8
-	endchannel
-; f1f37
-
-Sfx_Strength_Ch8: ; f1f37
-	noise $4, $a2, $23
-	noise $8, $f1, $34
-	noise $f, $0, $0
-	noise $2, $f7, $24
-	noise $2, $f7, $34
-	noise $4, $f7, $44
-	noise $8, $f4, $55
-	noise $8, $f1, $44
-	endchannel
-; f1f50
-
-Sfx_Boat_Ch5: ; f1f50
-	dutycycle $2
-	sound $f, $f0, $0500
-	sound $4, $0, $0000
-	sound $f, $f0, $0500
-	sound $f, $f0, $0500
-	sound $f, $f0, $0500
-	sound $f, $f0, $0500
-	sound $f, $f2, $0500
-	endchannel
-; f1f6f
-
-Sfx_Boat_Ch6: ; f1f6f
-	dutycycle $3
-	sound $f, $f0, $0482
-	sound $4, $0, $0000
-	sound $f, $f0, $0482
-	sound $f, $f0, $0482
-	sound $f, $f0, $0482
-	sound $f, $f0, $0482
-	sound $f, $f2, $0482
-	endchannel
-; f1f8e
-
-Sfx_WallOpen_Ch5: ; f1f8e
-	dutycycle $1
-	soundinput $3a
-	sound $4, $f2, $0500
-	soundinput $22
-	sound $4, $e2, $0500
-	soundinput $3a
-	sound $4, $f2, $0700
-	soundinput $22
-	sound $f, $e2, $0700
-	soundinput $8
-	endchannel
-; f1fab
-
-Sfx_ElevatorEnd_Ch5: ; f1fab
-	dutycycle $2
-	sound $f, $f3, $0730
-	sound $8, $65, $0730
-	sound $f, $f4, $0700
-	sound $f, $74, $0700
-	sound $f, $44, $0700
-	sound $f, $24, $0700
-	endchannel
-; f1fc6
-
-Sfx_ThrowBall_Ch5: ; f1fc6
-	dutycycle $2
-	soundinput $2f
-	sound $f, $f2, $0780
-	endchannel
-; f1fcf
-
-Sfx_ThrowBall_Ch6: ; f1fcf
-	dutycycle $2
-	sound $f, $c2, $0782
-	endchannel
-; f1fd6
-
-Sfx_Shine_Ch5: ; f1fd6
-	dutycycle $0
-	sound $0, $d2, $0700
-	sound $0, $d2, $0740
-	sound $0, $d2, $0780
-	sound $0, $d2, $07c0
-	sound $a, $e1, $07e0
-	sound $1, $0, $0000
-	endchannel
-; f1ff1
-
-Sfx_BallPoof_Ch5: ; f1ff1
-	dutycycle $2
-	soundinput $16
-	sound $f, $f2, $0400
-	soundinput $8
-	endchannel
-; f1ffc
-
-Sfx_BallPoof_Ch8: ; f1ffc
-	noise $f, $a2, $22
-	endchannel
-; f2000
-
-Sfx_Unknown3A_Ch5: ; f2000
-	sound $f, $d1, $0200
-	soundinput $8
-	endchannel
-; f2007
-
-Sfx_Unknown3A_Ch8: ; f2007
-	noise $4, $f5, $33
-	noise $8, $f4, $22
-	noise $f, $f2, $21
-	endchannel
-; f2011
-
-Sfx_Run_Ch8: ; f2011
-	noise $2, $61, $23
-	noise $2, $a1, $33
-	noise $2, $c1, $33
-	noise $2, $51, $11
-	noise $2, $f1, $33
-	noise $2, $41, $11
-	noise $2, $c1, $33
-	noise $2, $31, $11
-	noise $2, $81, $33
-	noise $2, $31, $11
-	noise $8, $41, $33
-	endchannel
-; f2033
-
-Sfx_SlotMachineStart_Ch5: ; f2033
-	dutycycle $2
-	soundinput $44
-	sound $f, $f0, $04f0
-	soundinput $17
-	sound $f, $f2, $0650
-	soundinput $8
-	endchannel
-; f2044
-
-Sfx_SlotMachineStart_Ch6: ; f2044
-	dutycycle $2
-	sound $f, $92, $0600
-	sound $f, $92, $0782
-	endchannel
-; f204f
-
-Sfx_Call_Ch5: ; f204f
-	soundinput $67
-	sound $4, $f7, $07a0
-	sound $4, $f7, $07a0
-	sound $4, $f7, $07a0
-	sound $4, $f7, $07a0
-	sound $4, $f7, $07a0
-	soundinput $8
-	sound $4, $0, $0000
-	endchannel
-; f206c
-
-Sfx_Peck_Ch8: ; f206c
-	noise $2, $a1, $12
-	endchannel
-; f2070
-
-Sfx_Kinesis_Ch5: ; f2070
-	dutycycle $1
-	soundinput $af
-	sound $f, $f2, $0780
-	soundinput $8
-	endchannel
-; f207b
-
-Sfx_Lick_Ch5: ; f207b
-	dutycycle $1
-	soundinput $97
-	sound $f, $f2, $0500
-	soundinput $8
-	endchannel
-; f2086
-
-Sfx_Pound_Ch8: ; f2086
-	noise $2, $a1, $22
-	endchannel
-; f208a
-
-Sfx_MovePuzzlePiece_Ch8: ; f208a
-	noise $8, $f1, $54
-	endchannel
-; f208e
-
-Sfx_CometPunch_Ch8: ; f208e
-	noise $f, $8f, $11
-	noise $4, $ff, $12
-	noise $a, $f1, $55
-	endchannel
-; f2098
-
-Sfx_MegaPunch_Ch8: ; f2098
-	noise $f, $8f, $34
-	noise $8, $f2, $35
-	noise $a, $f1, $55
-	endchannel
-; f20a2
-
-Sfx_Scratch_Ch8: ; f20a2
-	noise $f, $9f, $23
-	noise $8, $f1, $21
-	endchannel
-; f20a9
-
-Sfx_Vicegrip_Ch8: ; f20a9
-	noise $2, $e1, $4b
-	noise $a, $f1, $44
-	noise $2, $e1, $3a
-	noise $6, $f1, $34
-	endchannel
-; f20b6
-
-Sfx_RazorWind_Ch8: ; f20b6
-	noise $2, $f4, $44
-	noise $2, $f4, $14
-	noise $f, $f1, $32
-	endchannel
-; f20c0
-
-Sfx_Cut_Ch8: ; f20c0
-	noise $4, $8f, $55
-	noise $2, $f4, $44
-	noise $8, $f4, $22
-	noise $f, $f2, $21
-	endchannel
-; f20cd
-
-Sfx_WingAttack_Ch8: ; f20cd
-Sfx_WingAttack_branch_f20cd: ; f20cd
-	noise $8, $4f, $23
-	noise $4, $c4, $22
-	noise $6, $f2, $23
-	loopchannel 4, Sfx_WingAttack_branch_f20cd
-	endchannel
-; f20db
-
-Sfx_Whirlwind_Ch8: ; f20db
-	noise $8, $4f, $33
-	noise $4, $c4, $22
-	noise $6, $f2, $23
-	noise $f, $f2, $22
-	endchannel
-; f20e8
-
-Sfx_Bind_Ch8: ; f20e8
-	noise $8, $ff, $32
-	noise $8, $f4, $43
-	noise $8, $f2, $54
-	noise $8, $f1, $65
-	endchannel
-; f20f5
-
-Sfx_VineWhip_Ch8: ; f20f5
-	noise $1, $c2, $33
-	noise $2, $f2, $21
-	noise $1, $e2, $33
-	noise $1, $c2, $32
-	noise $1, $92, $12
-	noise $1, $b2, $31
-	noise $c, $91, $10
-	noise $8, $f2, $41
-	endchannel
-; f210e
-
-Sfx_DoubleKick_Ch8: ; f210e
-	noise $1, $94, $23
-	noise $1, $b4, $22
-	noise $8, $f1, $44
-	endchannel
-; f2118
-
-Sfx_MegaKick_Ch8: ; f2118
-	noise $2, $94, $33
-	noise $4, $b4, $22
-	noise $4, $f1, $44
-	noise $8, $f1, $55
-	endchannel
-; f2125
-
-Sfx_Headbutt_Ch8: ; f2125
-	noise $4, $ff, $55
-	noise $8, $f1, $65
-	endchannel
-; f212c
-
-Sfx_HornAttack_Ch8: ; f212c
-	noise $2, $84, $43
-	noise $2, $c4, $22
-	noise $8, $f2, $34
-	endchannel
-; f2136
-
-Sfx_Tackle_Ch8: ; f2136
-	noise $4, $f1, $34
-	noise $f, $f2, $64
-	endchannel
-; f213d
-
-Sfx_PoisonSting_Ch8: ; f213d
-	noise $2, $f1, $22
-	noise $f, $f2, $12
-	endchannel
-; f2144
-
-Sfx_Powder_Ch8: ; f2144
-	noise $2, $c2, $1
-	noise $f, $f4, $1
-	noise $f, $f2, $1
-	endchannel
-; f214e
-
-Sfx_Doubleslap_Ch8: ; f214e
-	noise $8, $f1, $32
-	noise $8, $f1, $33
-	endchannel
-; f2155
-
-Sfx_Bite_Ch5: ; f2155
-	dutycycle $0
-	soundinput $3a
-	sound $4, $f2, $0200
-	soundinput $22
-	sound $8, $e2, $0200
-	soundinput $8
-	endchannel
-; f2166
-
-Sfx_Bite_Ch8: ; f2166
-	noise $0, $d1, $42
-	noise $4, $a1, $32
-	noise $0, $d1, $22
-	noise $6, $a1, $32
-	endchannel
-; f2173
-
-Sfx_JumpKick_Ch8: ; f2173
-	noise $3, $92, $31
-	noise $3, $b2, $32
-	noise $3, $c2, $33
-	noise $8, $f1, $54
-	endchannel
-; f2180
-
-Sfx_Stomp_Ch8: ; f2180
-	noise $c, $f1, $54
-	noise $8, $f1, $64
-	endchannel
-; f2187
-
-Sfx_TailWhip_Ch8: ; f2187
-	noise $2, $f1, $33
-	noise $2, $c1, $32
-	noise $2, $a1, $31
-	noise $f, $82, $32
-	noise $8, $f1, $34
-	endchannel
-; f2197
-
-Sfx_KarateChop_Ch8: ; f2197
-	noise $2, $d2, $32
-	noise $f, $f2, $43
-	endchannel
-; f219e
-
-Sfx_Submission_Ch8: ; f219e
-	noise $2, $f2, $43
-	noise $4, $b5, $32
-	noise $9, $86, $31
-	noise $7, $64, $0
-	noise $f, $f2, $55
-	endchannel
-; f21ae
-
-Sfx_WaterGun_Ch5: ; f21ae
-	dutycycle $1
-	soundinput $97
-	sound $f, $f2, $0700
-	soundinput $8
-	endchannel
-; f21b9
-
-Sfx_WaterGun_Ch8: ; f21b9
-	noise $f, $3f, $22
-	noise $f, $f2, $21
-	endchannel
-; f21c0
-
-Sfx_SwordsDance_Ch8: ; f21c0
-	noise $f, $4f, $41
-	noise $8, $8f, $41
-	noise $8, $cf, $41
-	noise $8, $f2, $42
-	noise $f, $f2, $41
-	endchannel
-; f21d0
-
-Sfx_Thunder_Ch8: ; f21d0
-	noise $a, $ff, $50
-	noise $f, $ff, $51
-	noise $8, $f2, $51
-	noise $6, $ff, $52
-	noise $6, $ff, $53
-	noise $8, $ff, $54
-	noise $f, $f2, $54
-	endchannel
-; f21e6
-
-Sfx_Supersonic_Ch5: ; f21e6
-	dutycycle $2
-	sound $f, $3f, $07c0
-Sfx_Supersonic_branch_f21ec: ; f21ec
-	sound $f, $df, $07c0
-	loopchannel 4, Sfx_Supersonic_branch_f21ec
-	sound $f, $d1, $07c0
-	endchannel
-; f21f9
-
-Sfx_Supersonic_Ch6: ; f21f9
-	unknownmusic0xde $b3
-	sound $f, $2f, $07c8
-Sfx_Supersonic_branch_f21ff: ; f21ff
-	sound $f, $cf, $07c7
-	loopchannel 4, Sfx_Supersonic_branch_f21ff
-	sound $f, $c1, $07c8
-	endchannel
-; f220c
-
-Sfx_Supersonic_Ch8: ; f220c
-Sfx_Supersonic_branch_f220c: ; f220c
-	noise $3, $97, $12
-	noise $3, $a1, $11
-	loopchannel 10, Sfx_Supersonic_branch_f220c
-	endchannel
-; f2217
-
-Sfx_Leer_Ch5: ; f2217
-Sfx_Leer_branch_f2217: ; f2217
-	dutycycle $0
-	sound $0, $f1, $07c0
-	sound $0, $f1, $0700
-	loopchannel 12, Sfx_Leer_branch_f2217
-	endchannel
-; f2226
-
-Sfx_Leer_Ch6: ; f2226
-Sfx_Leer_branch_f2226: ; f2226
-	unknownmusic0xde $b3
-	sound $0, $e1, $07c1
-	sound $0, $e1, $0701
-	loopchannel 12, Sfx_Leer_branch_f2226
-	endchannel
-; f2235
-
-Sfx_Leer_Ch8: ; f2235
-Sfx_Leer_branch_f2235: ; f2235
-	noise $1, $d1, $49
-	noise $1, $d1, $29
-	loopchannel 6, Sfx_Leer_branch_f2235
-	endchannel
-; f2240
-
-Sfx_Ember_Ch5: ; f2240
-Sfx_Ember_branch_f2240: ; f2240
-	unknownmusic0xde $c9
-	sound $b, $f3, $0120
-	sound $9, $d3, $0150
-	loopchannel 5, Sfx_Ember_branch_f2240
-	sound $8, $e3, $0130
-	sound $f, $c2, $0110
-	endchannel
-; f2257
-
-Sfx_Ember_Ch8: ; f2257
-Sfx_Ember_branch_f2257: ; f2257
-	noise $a, $f3, $35
-	noise $e, $f6, $45
-	loopchannel 4, Sfx_Ember_branch_f2257
-	noise $c, $f4, $bc
-	noise $c, $f5, $9c
-	noise $f, $f4, $ac
-	endchannel
-; f226b
-
-Sfx_Bubblebeam_Ch5: ; f226b
-Sfx_Bubblebeam_branch_f226b: ; f226b
-	unknownmusic0xde $39
-	sound $4, $f4, $0600
-	sound $3, $c4, $0500
-	sound $5, $b5, $0600
-	sound $d, $e2, $06c0
-	loopchannel 3, Sfx_Bubblebeam_branch_f226b
-	sound $8, $d1, $0600
-	endchannel
-; f2286
-
-Sfx_Bubblebeam_Ch6: ; f2286
-Sfx_Bubblebeam_branch_f2286: ; f2286
-	unknownmusic0xde $8d
-	sound $5, $e4, $05e0
-	sound $4, $b4, $04e0
-	sound $6, $a5, $05e8
-	sound $e, $d1, $06a0
-	loopchannel 3, Sfx_Bubblebeam_branch_f2286
-	endchannel
-; f229d
-
-Sfx_Bubblebeam_Ch8: ; f229d
-Sfx_Bubblebeam_branch_f229d: ; f229d
-	noise $5, $c3, $33
-	noise $3, $92, $43
-	noise $a, $b5, $33
-	noise $f, $c3, $32
-	loopchannel 2, Sfx_Bubblebeam_branch_f229d
-	endchannel
-; f22ae
-
-Sfx_HydroPump_Ch5: ; f22ae
-Sfx_HydroPump_branch_f22ae: ; f22ae
-	unknownmusic0xde $d2
-	sound $3, $81, $0300
-	sound $3, $c1, $0400
-	sound $3, $f1, $0500
-	sound $3, $b1, $0400
-	sound $3, $71, $0300
-	loopchannel 5, Sfx_HydroPump_branch_f22ae
-	sound $8, $81, $0400
-	endchannel
-; f22cd
-
-Sfx_HydroPump_Ch8: ; f22cd
-Sfx_HydroPump_branch_f22cd: ; f22cd
-	noise $3, $62, $22
-	noise $3, $a2, $32
-	noise $3, $d2, $33
-	noise $3, $92, $23
-	noise $3, $52, $12
-	loopchannel 5, Sfx_HydroPump_branch_f22cd
-	noise $8, $81, $12
-	endchannel
-; f22e4
-
-Sfx_Surf_Ch5: ; f22e4
-Sfx_Surf_branch_f22e4: ; f22e4
-	unknownmusic0xde $39
-	sound $f, $f4, $0500
-	sound $f, $c4, $0400
-	sound $f, $e2, $05c0
-	loopchannel 3, Sfx_Surf_branch_f22e4
-	endchannel
-; f22f7
-
-Sfx_Surf_Ch6: ; f22f7
-Sfx_Surf_branch_f22f7: ; f22f7
-	unknownmusic0xde $8d
-	sound $7, $e4, $0430
-	sound $f, $b4, $0330
-	sound $f, $a2, $0438
-	loopchannel 4, Sfx_Surf_branch_f22f7
-	endchannel
-; f230a
-
-Sfx_Surf_Ch8: ; f230a
-Sfx_Surf_branch_f230a: ; f230a
-	noise $9, $f4, $44
-	noise $9, $f2, $43
-	noise $f, $f4, $42
-	noise $f, $f4, $41
-	loopchannel 3, Sfx_Surf_branch_f230a
-	endchannel
-; f231b
-
-Sfx_Psybeam_Ch5: ; f231b
-Sfx_Psybeam_branch_f231b: ; f231b
-	unknownmusic0xde $a1
-	sound $a, $f1, $0640
-	sound $a, $f3, $0680
-	sound $a, $f2, $0620
-	loopchannel 4, Sfx_Psybeam_branch_f231b
-	sound $a, $f1, $0640
-	endchannel
-; f2332
-
-Sfx_Psybeam_Ch6: ; f2332
-Sfx_Psybeam_branch_f2332: ; f2332
-	unknownmusic0xde $b3
-	sound $a, $f3, $0571
-	sound $7, $e3, $0531
-	sound $a, $f1, $0551
-	loopchannel 4, Sfx_Psybeam_branch_f2332
-	sound $a, $f1, $0571
-	endchannel
-; f2349
-
-Sfx_Psybeam_Ch8: ; f2349
-Sfx_Psybeam_branch_f2349: ; f2349
-	noise $2, $d1, $4a
-	noise $2, $d2, $2a
-	loopchannel 21, Sfx_Psybeam_branch_f2349
-	endchannel
-; f2354
-
-Sfx_Charge_Ch5: ; f2354
-Sfx_Charge_branch_f2354: ; f2354
-	dutycycle $0
-	sound $2, $f1, $0200
-	sound $3, $f1, $0700
-	sound $4, $f1, $0500
-	sound $5, $f1, $07f0
-	loopchannel 8, Sfx_Charge_branch_f2354
-	endchannel
-; f236b
-
-Sfx_Charge_Ch6: ; f236b
-Sfx_Charge_branch_f236b: ; f236b
-	unknownmusic0xde $b3
-	sound $2, $e1, $0302
-	sound $3, $e1, $07f2
-	sound $4, $e1, $0602
-	sound $5, $e1, $0702
-	loopchannel 8, Sfx_Charge_branch_f236b
-	endchannel
-; f2382
-
-Sfx_Charge_Ch8: ; f2382
-Sfx_Charge_branch_f2382: ; f2382
-	noise $2, $d3, $10
-	noise $3, $d3, $11
-	noise $2, $d2, $10
-	noise $5, $d2, $12
-	loopchannel 9, Sfx_Charge_branch_f2382
-	endchannel
-; f2393
-
-Sfx_Thundershock_Ch5: ; f2393
-Sfx_Thundershock_branch_f2393: ; f2393
-	unknownmusic0xde $2b
-	sound $3, $f1, $07f0
-	sound $4, $f2, $0200
-	loopchannel 8, Sfx_Thundershock_branch_f2393
-	endchannel
-; f23a2
-
-Sfx_Thundershock_Ch6: ; f23a2
-Sfx_Thundershock_branch_f23a2: ; f23a2
-	unknownmusic0xde $b3
-	sound $4, $e2, $0202
-	sound $4, $e1, $07e2
-	loopchannel 9, Sfx_Thundershock_branch_f23a2
-	endchannel
-; f23b1
-
-Sfx_Thundershock_Ch8: ; f23b1
-Sfx_Thundershock_branch_f23b1: ; f23b1
-	noise $4, $ff, $43
-	noise $4, $f2, $44
-	loopchannel 9, Sfx_Thundershock_branch_f23b1
-	endchannel
-; f23bc
-
-Sfx_Psychic_Ch5: ; f23bc
-	dutycycle $2
-	soundinput $f7
-	sound $8, $c4, $07bd
-	sound $8, $c4, $07be
-	sound $8, $c4, $07bf
-	sound $8, $c4, $07c0
-	sound $f, $c4, $07c1
-	sound $f, $f2, $07c0
-	soundinput $8
-	endchannel
-; f23db
-
-Sfx_Psychic_Ch6: ; f23db
-	dutycycle $2
-	sound $8, $c4, $0770
-	sound $8, $c4, $0761
-	sound $8, $c4, $0762
-	sound $8, $c4, $0763
-	sound $f, $c4, $0764
-	sound $f, $f2, $0764
-	endchannel
-; f23f6
-
-Sfx_Psychic_Ch8: ; f23f6
-	noise $f, $3f, $14
-	noise $f, $cf, $13
-	noise $f, $cf, $12
-	noise $f, $cf, $11
-	noise $f, $cf, $10
-	noise $f, $c2, $10
-	endchannel
-; f2409
-
-Sfx_Screech_Ch5: ; f2409
-	dutycycle $2
-	sound $f, $ff, $07e0
-	sound $f, $ff, $07e0
-	sound $f, $ff, $07e0
-	sound $f, $ff, $07e0
-	sound $f, $f2, $07e0
-	endchannel
-; f2420
-
-Sfx_Screech_Ch6: ; f2420
-	dutycycle $3
-	sound $f, $ff, $07e2
-	sound $f, $ff, $07e1
-	sound $f, $ff, $07e2
-	sound $f, $ff, $07e1
-	sound $f, $f2, $07e2
-	endchannel
-; f2437
-
-Sfx_BoneClub_Ch5: ; f2437
-	dutycycle $2
-	soundinput $af
-	sound $8, $f1, $0700
-	soundinput $8
-	endchannel
-; f2442
-
-Sfx_BoneClub_Ch6: ; f2442
-	dutycycle $3
-	sound $8, $f1, $0701
-	endchannel
-; f2449
-
-Sfx_Sharpen_Ch5: ; f2449
-	dutycycle $2
-	sound $6, $f1, $0500
-	sound $6, $f1, $0580
-	sound $6, $f1, $0600
-	sound $6, $f1, $0680
-	sound $8, $f1, $0700
-	endchannel
-; f2460
-
-Sfx_Sharpen_Ch6: ; f2460
-	dutycycle $3
-	sound $6, $e1, $0510
-	sound $6, $e1, $0590
-	sound $6, $e1, $0610
-	sound $6, $e1, $0690
-	sound $8, $e1, $0710
-	endchannel
-; f2477
-
-Sfx_EggBomb_Ch5: ; f2477
-	unknownmusic0xde $ed
-	sound $8, $ff, $03f8
-	sound $f, $ff, $0400
-	sound $f, $f3, $0400
-	endchannel
-; f2486
-
-Sfx_EggBomb_Ch6: ; f2486
-	unknownmusic0xde $b4
-	sound $8, $ef, $03c0
-	sound $f, $ef, $03c0
-	sound $f, $e3, $03c0
-	endchannel
-; f2495
-
-Sfx_EggBomb_Ch8: ; f2495
-	noise $4, $ff, $51
-	noise $8, $ff, $54
-	noise $f, $ff, $55
-	noise $f, $f3, $56
-	endchannel
-; f24a2
-
-Sfx_Sing_Ch5: ; f24a2
-	togglesfx
-	vibrato $a, $24
-	dutycycle $2
-	notetype $a, $87
+	rest 12
+	sound_ret
+
+Sfx_PlacePuzzlePieceDown_Ch8:
+	noise_note 2, 15, 7, 36
+	noise_note 2, 15, 7, 52
+	noise_note 4, 15, 7, 68
+	noise_note 8, 15, 4, 85
+	noise_note 8, 15, 1, 68
+	sound_ret
+
+Sfx_EnterDoor_Ch8:
+	noise_note 9, 15, 1, 68
+	noise_note 8, 13, 1, 67
+	sound_ret
+
+Sfx_SwitchPokemon_Ch5:
+	duty_cycle 2
+	square_note 8, 14, 1, 1856
+	sound_ret
+
+Sfx_SwitchPokemon_Ch6:
+	duty_cycle 2
+	square_note 2, 0, 8, 0
+	square_note 8, 11, 1, 1857
+	sound_ret
+
+Sfx_PokeballsPlacedOnTable_Ch5:
+	duty_cycle 2
+	pitch_sweep 3, -2
+	square_note 4, 15, 2, 512
+	pitch_sweep 2, 2
+	square_note 8, 14, 2, 512
+	pitch_sweep 0, 8
+	sound_ret
+
+Sfx_BallWobble_Ch5:
+	duty_cycle 2
+	pitch_sweep 3, -2
+	square_note 4, 15, 2, 1024
+	pitch_sweep 2, 2
+	square_note 8, 14, 2, 1024
+	pitch_sweep 0, 8
+	sound_ret
+
+Sfx_Tally_Ch5:
+	duty_cycle 2
+	square_note 4, 15, 1, 1920
+	sound_ret
+
+Sfx_Tally_Ch6:
+	duty_cycle 2
+	square_note 1, 0, 8, 0
+	square_note 4, 10, 1, 1889
+	sound_ret
+
+Sfx_Transaction_Ch5:
+	duty_cycle 2
+	square_note 4, 14, 1, 1792
+	square_note 24, 15, 2, 2016
+	sound_ret
+
+Sfx_Transaction_Ch6:
+	duty_cycle 2
+	square_note 1, 0, 8, 0
+	square_note 4, 9, 1, 1729
+	square_note 24, 10, 2, 1953
+	sound_ret
+
+Sfx_Bump_Ch5:
+	duty_cycle 2
+	pitch_sweep 5, -2
+	square_note 15, 15, 1, 768
+	pitch_sweep 0, 8
+	sound_ret
+
+Sfx_ExitBuilding_Ch8:
+	noise_note 2, 15, 1, 84
+	noise_note 12, 7, 1, 35
+	noise_note 2, 11, 1, 84
+	noise_note 12, 6, 1, 35
+	noise_note 6, 4, 1, 84
+	sound_ret
+
+Sfx_ReadText_Ch5:
+Sfx_ReadText2_Ch5:
+	duty_cycle 2
+	square_note 0, 9, 1, 1984
+	square_note 0, 8, 1, 2000
+	square_note 0, 9, 1, 1984
+	square_note 12, 10, 1, 2000
+	sound_ret
+
+Sfx_Potion_Ch5:
+	duty_cycle 2
+	pitch_sweep 1, 7
+	square_note 15, 15, 0, 1264
+	square_note 15, 15, 2, 1616
+	pitch_sweep 0, 8
+	sound_ret
+
+Sfx_Poison_Ch5:
+	duty_cycle 0
+	pitch_sweep 1, 4
+	square_note 4, 15, 2, 1536
+	sound_loop 4, Sfx_Poison_Ch5
+	square_note 15, 15, 3, 1536
+	pitch_sweep 0, 8
+	sound_ret
+
+Sfx_FullHeal_Ch5:
+	duty_cycle 2
+	pitch_sweep 1, 4
+	square_note 4, 15, 2, 1536
+	square_note 4, 15, 2, 1536
+	pitch_sweep 1, 7
+	square_note 15, 15, 2, 1536
+	pitch_sweep 0, 8
+	sound_ret
+
+Sfx_GotSafariBalls_Ch5:
+	duty_cycle 2
+	pitch_sweep 1, 5
+	square_note 15, 15, 0, 1264
+	square_note 15, 15, 2, 1616
+	pitch_sweep 0, 8
+	sound_ret
+
+Sfx_BootPc_Ch5:
+	duty_cycle 2
+	square_note 15, 15, 2, 1984
+	square_note 15, 0, 0, 0
+	square_note 3, 10, 1, 1920
+	square_note 3, 10, 1, 1792
+	square_note 3, 10, 1, 1856
+	square_note 3, 10, 1, 1792
+	square_note 3, 10, 1, 1920
+	square_note 3, 10, 1, 1792
+	square_note 3, 10, 1, 1984
+	square_note 8, 10, 1, 1792
+	sound_ret
+
+Sfx_ShutDownPc_Ch5:
+	duty_cycle 2
+	square_note 4, 15, 0, 1536
+	square_note 4, 15, 0, 1024
+	square_note 4, 15, 0, 512
+	square_note 1, 0, 0, 0
+	sound_ret
+
+Sfx_ChoosePcOption_Ch5:
+	duty_cycle 2
+	square_note 6, 15, 0, 1792
+	square_note 4, 0, 0, 0
+	square_note 6, 15, 0, 1792
+	square_note 1, 0, 0, 0
+	sound_ret
+
+Sfx_EscapeRope_Ch5:
+	duty_cycle 1
+	pitch_sweep 1, 7
+	square_note 15, 13, 7, 1536
+	square_note 15, 11, 7, 1408
+	square_note 15, 8, 7, 1280
+	square_note 15, 4, 7, 1152
+	square_note 15, 1, 7, 1024
+	pitch_sweep 0, 8
+	sound_ret
+
+Sfx_PushButton_Ch5:
+	duty_cycle 2
+	square_note 4, 0, 0, 0
+	square_note 2, 15, 1, 1664
+	square_note 1, 0, 0, 0
+	square_note 4, 15, 1, 1920
+	square_note 4, 0, 0, 0
+	sound_ret
+
+Sfx_SecondPartOfItemfinder_Ch5:
+	duty_cycle 2
+	pitch_sweep 2, -4
+	square_note 4, 15, 2, 1280
+	pitch_sweep 2, 2
+	square_note 2, 15, 1, 1280
+	pitch_sweep 0, 8
+	square_note 1, 0, 0, 0
+	sound_ret
+
+Sfx_WarpTo_Ch5:
+	duty_cycle 1
+	pitch_sweep 1, 7
+	square_note 15, 13, 7, 1280
+	square_note 15, 11, 7, 1408
+	square_note 15, 8, 7, 1536
+	square_note 15, 4, 7, 1664
+	square_note 15, 1, 7, 1792
+	pitch_sweep 0, 8
+	sound_ret
+
+Sfx_WarpFrom_Ch5:
+	duty_cycle 1
+	pitch_sweep 1, 7
+	square_note 15, 13, 7, 1792
+	square_note 15, 11, 7, 1664
+	square_note 15, 8, 7, 1536
+	square_note 15, 4, 7, 1408
+	square_note 15, 1, 7, 1280
+	pitch_sweep 0, 8
+	sound_ret
+
+Sfx_ChangeDexMode_Ch5:
+	duty_cycle 1
+	pitch_sweep 1, 6
+	square_note 15, 13, 2, 1280
+	pitch_sweep 0, 8
+	sound_ret
+
+Sfx_JumpOverLedge_Ch5:
+	duty_cycle 2
+	pitch_sweep 9, 5
+	square_note 15, 15, 2, 1024
+	pitch_sweep 0, 8
+	sound_ret
+
+Sfx_GrassRustle_Ch8:
+	noise_note 2, 15, 1, 50
+	noise_note 2, 0, 0, 0
+	noise_note 2, 15, 1, 34
+	noise_note 1, 0, 0, 0
+	sound_ret
+
+Sfx_Fly_Ch8:
+	noise_note 2, 15, 1, 18
+	noise_note 2, 0, 0, 0
+	noise_note 2, 10, 1, 18
+	noise_note 2, 0, 0, 0
+	noise_note 2, 13, 1, 18
+	noise_note 2, 0, 0, 0
+	noise_note 2, 8, 1, 18
+	noise_note 2, 0, 0, 0
+	noise_note 2, 11, 1, 18
+	noise_note 2, 0, 0, 0
+	noise_note 2, 6, 1, 18
+	noise_note 2, 0, 0, 0
+	noise_note 2, 9, 1, 18
+	noise_note 2, 0, 0, 0
+	noise_note 2, 4, 1, 18
+	noise_note 2, 0, 0, 0
+	sound_ret
+
+Sfx_Wrong_Ch5:
+	duty_cycle 3
+	pitch_sweep 5, -2
+	square_note 4, 15, 0, 1280
+	pitch_sweep 0, 8
+	square_note 4, 0, 0, 0
+	square_note 15, 15, 0, 1280
+	square_note 1, 0, 0, 0
+	sound_ret
+
+Sfx_Wrong_Ch6:
+	duty_cycle 3
+	square_note 4, 15, 0, 1025
+	square_note 4, 0, 0, 0
+	square_note 15, 15, 0, 1025
+	square_note 1, 0, 0, 0
+	sound_ret
+
+Sfx_Squeak_Ch5:
+	duty_cycle 0
+	pitch_sweep 1, 7
+	square_note 15, 13, 2, 1792
+	pitch_sweep 0, 8
+	sound_ret
+
+Sfx_Strength_Ch8:
+	noise_note 4, 10, 2, 35
+	noise_note 8, 15, 1, 52
+	noise_note 15, 0, 0, 0
+	noise_note 2, 15, 7, 36
+	noise_note 2, 15, 7, 52
+	noise_note 4, 15, 7, 68
+	noise_note 8, 15, 4, 85
+	noise_note 8, 15, 1, 68
+	sound_ret
+
+Sfx_Boat_Ch5:
+	duty_cycle 2
+	square_note 15, 15, 0, 1280
+	square_note 4, 0, 0, 0
+	square_note 15, 15, 0, 1280
+	square_note 15, 15, 0, 1280
+	square_note 15, 15, 0, 1280
+	square_note 15, 15, 0, 1280
+	square_note 15, 15, 2, 1280
+	sound_ret
+
+Sfx_Boat_Ch6:
+	duty_cycle 3
+	square_note 15, 15, 0, 1154
+	square_note 4, 0, 0, 0
+	square_note 15, 15, 0, 1154
+	square_note 15, 15, 0, 1154
+	square_note 15, 15, 0, 1154
+	square_note 15, 15, 0, 1154
+	square_note 15, 15, 2, 1154
+	sound_ret
+
+Sfx_WallOpen_Ch5:
+	duty_cycle 1
+	pitch_sweep 3, -2
+	square_note 4, 15, 2, 1280
+	pitch_sweep 2, 2
+	square_note 4, 14, 2, 1280
+	pitch_sweep 3, -2
+	square_note 4, 15, 2, 1792
+	pitch_sweep 2, 2
+	square_note 15, 14, 2, 1792
+	pitch_sweep 0, 8
+	sound_ret
+
+Sfx_ElevatorEnd_Ch5:
+	duty_cycle 2
+	square_note 15, 15, 3, 1840
+	square_note 8, 6, 5, 1840
+	square_note 15, 15, 4, 1792
+	square_note 15, 7, 4, 1792
+	square_note 15, 4, 4, 1792
+	square_note 15, 2, 4, 1792
+	sound_ret
+
+Sfx_ThrowBall_Ch5:
+	duty_cycle 2
+	pitch_sweep 2, -7
+	square_note 15, 15, 2, 1920
+	sound_ret
+
+Sfx_ThrowBall_Ch6:
+	duty_cycle 2
+	square_note 15, 12, 2, 1922
+	sound_ret
+
+Sfx_Shine_Ch5:
+	duty_cycle 0
+	square_note 0, 13, 2, 1792
+	square_note 0, 13, 2, 1856
+	square_note 0, 13, 2, 1920
+	square_note 0, 13, 2, 1984
+	square_note 10, 14, 1, 2016
+	square_note 1, 0, 0, 0
+	sound_ret
+
+Sfx_BallPoof_Ch5:
+	duty_cycle 2
+	pitch_sweep 1, 6
+	square_note 15, 15, 2, 1024
+	pitch_sweep 0, 8
+	sound_ret
+
+Sfx_BallPoof_Ch8:
+	noise_note 15, 10, 2, 34
+	sound_ret
+
+Sfx_Unknown3A_Ch5:
+	square_note 15, 13, 1, 512
+	pitch_sweep 0, 8
+	sound_ret
+
+Sfx_Unknown3A_Ch8:
+	noise_note 4, 15, 5, 51
+	noise_note 8, 15, 4, 34
+	noise_note 15, 15, 2, 33
+	sound_ret
+
+Sfx_Run_Ch8:
+	noise_note 2, 6, 1, 35
+	noise_note 2, 10, 1, 51
+	noise_note 2, 12, 1, 51
+	noise_note 2, 5, 1, 17
+	noise_note 2, 15, 1, 51
+	noise_note 2, 4, 1, 17
+	noise_note 2, 12, 1, 51
+	noise_note 2, 3, 1, 17
+	noise_note 2, 8, 1, 51
+	noise_note 2, 3, 1, 17
+	noise_note 8, 4, 1, 51
+	sound_ret
+
+Sfx_SlotMachineStart_Ch5:
+	duty_cycle 2
+	pitch_sweep 4, 4
+	square_note 15, 15, 0, 1264
+	pitch_sweep 1, 7
+	square_note 15, 15, 2, 1616
+	pitch_sweep 0, 8
+	sound_ret
+
+Sfx_SlotMachineStart_Ch6:
+	duty_cycle 2
+	square_note 15, 9, 2, 1536
+	square_note 15, 9, 2, 1922
+	sound_ret
+
+Sfx_Call_Ch5:
+	pitch_sweep 6, 7
+	square_note 4, 15, 7, 1952
+	square_note 4, 15, 7, 1952
+	square_note 4, 15, 7, 1952
+	square_note 4, 15, 7, 1952
+	square_note 4, 15, 7, 1952
+	pitch_sweep 0, 8
+	square_note 4, 0, 0, 0
+	sound_ret
+
+Sfx_Peck_Ch8:
+	noise_note 2, 10, 1, 18
+	sound_ret
+
+Sfx_Kinesis_Ch5:
+	duty_cycle 1
+	pitch_sweep 10, -7
+	square_note 15, 15, 2, 1920
+	pitch_sweep 0, 8
+	sound_ret
+
+Sfx_Lick_Ch5:
+	duty_cycle 1
+	pitch_sweep 9, 7
+	square_note 15, 15, 2, 1280
+	pitch_sweep 0, 8
+	sound_ret
+
+Sfx_Pound_Ch8:
+	noise_note 2, 10, 1, 34
+	sound_ret
+
+Sfx_MovePuzzlePiece_Ch8:
+	noise_note 8, 15, 1, 84
+	sound_ret
+
+Sfx_CometPunch_Ch8:
+	noise_note 15, 8, -7, 17
+	noise_note 4, 15, -7, 18
+	noise_note 10, 15, 1, 85
+	sound_ret
+
+Sfx_MegaPunch_Ch8:
+	noise_note 15, 8, -7, 52
+	noise_note 8, 15, 2, 53
+	noise_note 10, 15, 1, 85
+	sound_ret
+
+Sfx_Scratch_Ch8:
+	noise_note 15, 9, -7, 35
+	noise_note 8, 15, 1, 33
+	sound_ret
+
+Sfx_Vicegrip_Ch8:
+	noise_note 2, 14, 1, 75
+	noise_note 10, 15, 1, 68
+	noise_note 2, 14, 1, 58
+	noise_note 6, 15, 1, 52
+	sound_ret
+
+Sfx_RazorWind_Ch8:
+	noise_note 2, 15, 4, 68
+	noise_note 2, 15, 4, 20
+	noise_note 15, 15, 1, 50
+	sound_ret
+
+Sfx_Cut_Ch8:
+	noise_note 4, 8, -7, 85
+	noise_note 2, 15, 4, 68
+	noise_note 8, 15, 4, 34
+	noise_note 15, 15, 2, 33
+	sound_ret
+
+Sfx_WingAttack_Ch8:
+	noise_note 8, 4, -7, 35
+	noise_note 4, 12, 4, 34
+	noise_note 6, 15, 2, 35
+	sound_loop 4, Sfx_WingAttack_Ch8
+	sound_ret
+
+Sfx_Whirlwind_Ch8:
+	noise_note 8, 4, -7, 51
+	noise_note 4, 12, 4, 34
+	noise_note 6, 15, 2, 35
+	noise_note 15, 15, 2, 34
+	sound_ret
+
+Sfx_Bind_Ch8:
+	noise_note 8, 15, -7, 50
+	noise_note 8, 15, 4, 67
+	noise_note 8, 15, 2, 84
+	noise_note 8, 15, 1, 101
+	sound_ret
+
+Sfx_VineWhip_Ch8:
+	noise_note 1, 12, 2, 51
+	noise_note 2, 15, 2, 33
+	noise_note 1, 14, 2, 51
+	noise_note 1, 12, 2, 50
+	noise_note 1, 9, 2, 18
+	noise_note 1, 11, 2, 49
+	noise_note 12, 9, 1, 16
+	noise_note 8, 15, 2, 65
+	sound_ret
+
+Sfx_DoubleKick_Ch8:
+	noise_note 1, 9, 4, 35
+	noise_note 1, 11, 4, 34
+	noise_note 8, 15, 1, 68
+	sound_ret
+
+Sfx_MegaKick_Ch8:
+	noise_note 2, 9, 4, 51
+	noise_note 4, 11, 4, 34
+	noise_note 4, 15, 1, 68
+	noise_note 8, 15, 1, 85
+	sound_ret
+
+Sfx_Headbutt_Ch8:
+	noise_note 4, 15, -7, 85
+	noise_note 8, 15, 1, 101
+	sound_ret
+
+Sfx_HornAttack_Ch8:
+	noise_note 2, 8, 4, 67
+	noise_note 2, 12, 4, 34
+	noise_note 8, 15, 2, 52
+	sound_ret
+
+Sfx_Tackle_Ch8:
+	noise_note 4, 15, 1, 52
+	noise_note 15, 15, 2, 100
+	sound_ret
+
+Sfx_PoisonSting_Ch8:
+	noise_note 2, 15, 1, 34
+	noise_note 15, 15, 2, 18
+	sound_ret
+
+Sfx_Powder_Ch8:
+	noise_note 2, 12, 2, 1
+	noise_note 15, 15, 4, 1
+	noise_note 15, 15, 2, 1
+	sound_ret
+
+Sfx_Doubleslap_Ch8:
+	noise_note 8, 15, 1, 50
+	noise_note 8, 15, 1, 51
+	sound_ret
+
+Sfx_Bite_Ch5:
+	duty_cycle 0
+	pitch_sweep 3, -2
+	square_note 4, 15, 2, 512
+	pitch_sweep 2, 2
+	square_note 8, 14, 2, 512
+	pitch_sweep 0, 8
+	sound_ret
+
+Sfx_Bite_Ch8:
+	noise_note 0, 13, 1, 66
+	noise_note 4, 10, 1, 50
+	noise_note 0, 13, 1, 34
+	noise_note 6, 10, 1, 50
+	sound_ret
+
+Sfx_JumpKick_Ch8:
+	noise_note 3, 9, 2, 49
+	noise_note 3, 11, 2, 50
+	noise_note 3, 12, 2, 51
+	noise_note 8, 15, 1, 84
+	sound_ret
+
+Sfx_Stomp_Ch8:
+	noise_note 12, 15, 1, 84
+	noise_note 8, 15, 1, 100
+	sound_ret
+
+Sfx_TailWhip_Ch8:
+	noise_note 2, 15, 1, 51
+	noise_note 2, 12, 1, 50
+	noise_note 2, 10, 1, 49
+	noise_note 15, 8, 2, 50
+	noise_note 8, 15, 1, 52
+	sound_ret
+
+Sfx_KarateChop_Ch8:
+	noise_note 2, 13, 2, 50
+	noise_note 15, 15, 2, 67
+	sound_ret
+
+Sfx_Submission_Ch8:
+	noise_note 2, 15, 2, 67
+	noise_note 4, 11, 5, 50
+	noise_note 9, 8, 6, 49
+	noise_note 7, 6, 4, 0
+	noise_note 15, 15, 2, 85
+	sound_ret
+
+Sfx_WaterGun_Ch5:
+	duty_cycle 1
+	pitch_sweep 9, 7
+	square_note 15, 15, 2, 1792
+	pitch_sweep 0, 8
+	sound_ret
+
+Sfx_WaterGun_Ch8:
+	noise_note 15, 3, -7, 34
+	noise_note 15, 15, 2, 33
+	sound_ret
+
+Sfx_SwordsDance_Ch8:
+	noise_note 15, 4, -7, 65
+	noise_note 8, 8, -7, 65
+	noise_note 8, 12, -7, 65
+	noise_note 8, 15, 2, 66
+	noise_note 15, 15, 2, 65
+	sound_ret
+
+Sfx_Thunder_Ch8:
+	noise_note 10, 15, -7, 80
+	noise_note 15, 15, -7, 81
+	noise_note 8, 15, 2, 81
+	noise_note 6, 15, -7, 82
+	noise_note 6, 15, -7, 83
+	noise_note 8, 15, -7, 84
+	noise_note 15, 15, 2, 84
+	sound_ret
+
+Sfx_Supersonic_Ch5:
+	duty_cycle 2
+	square_note 15, 3, -7, 1984
+.loop:
+	square_note 15, 13, -7, 1984
+	sound_loop 4, .loop
+	square_note 15, 13, 1, 1984
+	sound_ret
+
+Sfx_Supersonic_Ch6:
+	duty_cycle_pattern 2, 3, 0, 3
+	square_note 15, 2, -7, 1992
+.loop:
+	square_note 15, 12, -7, 1991
+	sound_loop 4, .loop
+	square_note 15, 12, 1, 1992
+	sound_ret
+
+Sfx_Supersonic_Ch8:
+	noise_note 3, 9, 7, 18
+	noise_note 3, 10, 1, 17
+	sound_loop 10, Sfx_Supersonic_Ch8
+	sound_ret
+
+Sfx_Leer_Ch5:
+	duty_cycle 0
+	square_note 0, 15, 1, 1984
+	square_note 0, 15, 1, 1792
+	sound_loop 12, Sfx_Leer_Ch5
+	sound_ret
+
+Sfx_Leer_Ch6:
+	duty_cycle_pattern 2, 3, 0, 3
+	square_note 0, 14, 1, 1985
+	square_note 0, 14, 1, 1793
+	sound_loop 12, Sfx_Leer_Ch6
+	sound_ret
+
+Sfx_Leer_Ch8:
+	noise_note 1, 13, 1, 73
+	noise_note 1, 13, 1, 41
+	sound_loop 6, Sfx_Leer_Ch8
+	sound_ret
+
+Sfx_Ember_Ch5:
+	duty_cycle_pattern 3, 0, 2, 1
+	square_note 11, 15, 3, 288
+	square_note 9, 13, 3, 336
+	sound_loop 5, Sfx_Ember_Ch5
+	square_note 8, 14, 3, 304
+	square_note 15, 12, 2, 272
+	sound_ret
+
+Sfx_Ember_Ch8:
+	noise_note 10, 15, 3, 53
+	noise_note 14, 15, 6, 69
+	sound_loop 4, Sfx_Ember_Ch8
+	noise_note 12, 15, 4, 188
+	noise_note 12, 15, 5, 156
+	noise_note 15, 15, 4, 172
+	sound_ret
+
+Sfx_Bubblebeam_Ch5:
+	duty_cycle_pattern 0, 3, 2, 1
+	square_note 4, 15, 4, 1536
+	square_note 3, 12, 4, 1280
+	square_note 5, 11, 5, 1536
+	square_note 13, 14, 2, 1728
+	sound_loop 3, Sfx_Bubblebeam_Ch5
+	square_note 8, 13, 1, 1536
+	sound_ret
+
+Sfx_Bubblebeam_Ch6:
+	duty_cycle_pattern 2, 0, 3, 1
+	square_note 5, 14, 4, 1504
+	square_note 4, 11, 4, 1248
+	square_note 6, 10, 5, 1512
+	square_note 14, 13, 1, 1696
+	sound_loop 3, Sfx_Bubblebeam_Ch6
+	sound_ret
+
+Sfx_Bubblebeam_Ch8:
+	noise_note 5, 12, 3, 51
+	noise_note 3, 9, 2, 67
+	noise_note 10, 11, 5, 51
+	noise_note 15, 12, 3, 50
+	sound_loop 2, Sfx_Bubblebeam_Ch8
+	sound_ret
+
+Sfx_HydroPump_Ch5:
+	duty_cycle_pattern 3, 1, 0, 2
+	square_note 3, 8, 1, 768
+	square_note 3, 12, 1, 1024
+	square_note 3, 15, 1, 1280
+	square_note 3, 11, 1, 1024
+	square_note 3, 7, 1, 768
+	sound_loop 5, Sfx_HydroPump_Ch5
+	square_note 8, 8, 1, 1024
+	sound_ret
+
+Sfx_HydroPump_Ch8:
+	noise_note 3, 6, 2, 34
+	noise_note 3, 10, 2, 50
+	noise_note 3, 13, 2, 51
+	noise_note 3, 9, 2, 35
+	noise_note 3, 5, 2, 18
+	sound_loop 5, Sfx_HydroPump_Ch8
+	noise_note 8, 8, 1, 18
+	sound_ret
+
+Sfx_Surf_Ch5:
+	duty_cycle_pattern 0, 3, 2, 1
+	square_note 15, 15, 4, 1280
+	square_note 15, 12, 4, 1024
+	square_note 15, 14, 2, 1472
+	sound_loop 3, Sfx_Surf_Ch5
+	sound_ret
+
+Sfx_Surf_Ch6:
+	duty_cycle_pattern 2, 0, 3, 1
+	square_note 7, 14, 4, 1072
+	square_note 15, 11, 4, 816
+	square_note 15, 10, 2, 1080
+	sound_loop 4, Sfx_Surf_Ch6
+	sound_ret
+
+Sfx_Surf_Ch8:
+	noise_note 9, 15, 4, 68
+	noise_note 9, 15, 2, 67
+	noise_note 15, 15, 4, 66
+	noise_note 15, 15, 4, 65
+	sound_loop 3, Sfx_Surf_Ch8
+	sound_ret
+
+Sfx_Psybeam_Ch5:
+	duty_cycle_pattern 2, 2, 0, 1
+	square_note 10, 15, 1, 1600
+	square_note 10, 15, 3, 1664
+	square_note 10, 15, 2, 1568
+	sound_loop 4, Sfx_Psybeam_Ch5
+	square_note 10, 15, 1, 1600
+	sound_ret
+
+Sfx_Psybeam_Ch6:
+	duty_cycle_pattern 2, 3, 0, 3
+	square_note 10, 15, 3, 1393
+	square_note 7, 14, 3, 1329
+	square_note 10, 15, 1, 1361
+	sound_loop 4, Sfx_Psybeam_Ch6
+	square_note 10, 15, 1, 1393
+	sound_ret
+
+Sfx_Psybeam_Ch8:
+	noise_note 2, 13, 1, 74
+	noise_note 2, 13, 2, 42
+	sound_loop 21, Sfx_Psybeam_Ch8
+	sound_ret
+
+Sfx_Charge_Ch5:
+	duty_cycle 0
+	square_note 2, 15, 1, 512
+	square_note 3, 15, 1, 1792
+	square_note 4, 15, 1, 1280
+	square_note 5, 15, 1, 2032
+	sound_loop 8, Sfx_Charge_Ch5
+	sound_ret
+
+Sfx_Charge_Ch6:
+	duty_cycle_pattern 2, 3, 0, 3
+	square_note 2, 14, 1, 770
+	square_note 3, 14, 1, 2034
+	square_note 4, 14, 1, 1538
+	square_note 5, 14, 1, 1794
+	sound_loop 8, Sfx_Charge_Ch6
+	sound_ret
+
+Sfx_Charge_Ch8:
+	noise_note 2, 13, 3, 16
+	noise_note 3, 13, 3, 17
+	noise_note 2, 13, 2, 16
+	noise_note 5, 13, 2, 18
+	sound_loop 9, Sfx_Charge_Ch8
+	sound_ret
+
+Sfx_Thundershock_Ch5:
+	duty_cycle_pattern 0, 2, 2, 3
+	square_note 3, 15, 1, 2032
+	square_note 4, 15, 2, 512
+	sound_loop 8, Sfx_Thundershock_Ch5
+	sound_ret
+
+Sfx_Thundershock_Ch6:
+	duty_cycle_pattern 2, 3, 0, 3
+	square_note 4, 14, 2, 514
+	square_note 4, 14, 1, 2018
+	sound_loop 9, Sfx_Thundershock_Ch6
+	sound_ret
+
+Sfx_Thundershock_Ch8:
+	noise_note 4, 15, -7, 67
+	noise_note 4, 15, 2, 68
+	sound_loop 9, Sfx_Thundershock_Ch8
+	sound_ret
+
+Sfx_Psychic_Ch5:
+	duty_cycle 2
+	pitch_sweep 15, 7
+	square_note 8, 12, 4, 1981
+	square_note 8, 12, 4, 1982
+	square_note 8, 12, 4, 1983
+	square_note 8, 12, 4, 1984
+	square_note 15, 12, 4, 1985
+	square_note 15, 15, 2, 1984
+	pitch_sweep 0, 8
+	sound_ret
+
+Sfx_Psychic_Ch6:
+	duty_cycle 2
+	square_note 8, 12, 4, 1904
+	square_note 8, 12, 4, 1889
+	square_note 8, 12, 4, 1890
+	square_note 8, 12, 4, 1891
+	square_note 15, 12, 4, 1892
+	square_note 15, 15, 2, 1892
+	sound_ret
+
+Sfx_Psychic_Ch8:
+	noise_note 15, 3, -7, 20
+	noise_note 15, 12, -7, 19
+	noise_note 15, 12, -7, 18
+	noise_note 15, 12, -7, 17
+	noise_note 15, 12, -7, 16
+	noise_note 15, 12, 2, 16
+	sound_ret
+
+Sfx_Screech_Ch5:
+	duty_cycle 2
+	square_note 15, 15, -7, 2016
+	square_note 15, 15, -7, 2016
+	square_note 15, 15, -7, 2016
+	square_note 15, 15, -7, 2016
+	square_note 15, 15, 2, 2016
+	sound_ret
+
+Sfx_Screech_Ch6:
+	duty_cycle 3
+	square_note 15, 15, -7, 2018
+	square_note 15, 15, -7, 2017
+	square_note 15, 15, -7, 2018
+	square_note 15, 15, -7, 2017
+	square_note 15, 15, 2, 2018
+	sound_ret
+
+Sfx_BoneClub_Ch5:
+	duty_cycle 2
+	pitch_sweep 10, -7
+	square_note 8, 15, 1, 1792
+	pitch_sweep 0, 8
+	sound_ret
+
+Sfx_BoneClub_Ch6:
+	duty_cycle 3
+	square_note 8, 15, 1, 1793
+	sound_ret
+
+Sfx_Sharpen_Ch5:
+	duty_cycle 2
+	square_note 6, 15, 1, 1280
+	square_note 6, 15, 1, 1408
+	square_note 6, 15, 1, 1536
+	square_note 6, 15, 1, 1664
+	square_note 8, 15, 1, 1792
+	sound_ret
+
+Sfx_Sharpen_Ch6:
+	duty_cycle 3
+	square_note 6, 14, 1, 1296
+	square_note 6, 14, 1, 1424
+	square_note 6, 14, 1, 1552
+	square_note 6, 14, 1, 1680
+	square_note 8, 14, 1, 1808
+	sound_ret
+
+Sfx_EggBomb_Ch5:
+	duty_cycle_pattern 3, 2, 3, 1
+	square_note 8, 15, -7, 1016
+	square_note 15, 15, -7, 1024
+	square_note 15, 15, 3, 1024
+	sound_ret
+
+Sfx_EggBomb_Ch6:
+	duty_cycle_pattern 2, 3, 1, 0
+	square_note 8, 14, -7, 960
+	square_note 15, 14, -7, 960
+	square_note 15, 14, 3, 960
+	sound_ret
+
+Sfx_EggBomb_Ch8:
+	noise_note 4, 15, -7, 81
+	noise_note 8, 15, -7, 84
+	noise_note 15, 15, -7, 85
+	noise_note 15, 15, 3, 86
+	sound_ret
+
+Sfx_Sing_Ch5:
+	toggle_sfx
+	vibrato 10, 2, 4
+	duty_cycle 2
+	note_type 10, 8, 7
 	octave 5
 	note G_, 8
 	octave 6
@@ -5241,193 +4811,174 @@ Sfx_Sing_Ch5: ; f24a2
 	note D#, 4
 	octave 5
 	note G_, 8
-	endchannel
-; f24b3
+	sound_ret
 
-Sfx_Sing_Ch6: ; f24b3
-	togglesfx
-	vibrato $a, $23
-	dutycycle $2
-	notetype $b, $67
+Sfx_Sing_Ch6:
+	toggle_sfx
+	vibrato 10, 2, 3
+	duty_cycle 2
+	note_type 11, 6, 7
 	octave 5
 	note G_, 8
-	notetype $a, $67
+	note_type 10, 6, 7
 	octave 6
 	note F_, 4
 	note D#, 4
 	octave 5
 	note G_, 8
-	endchannel
-; f24c7
+	sound_ret
 
-Sfx_HyperBeam_Ch5: ; f24c7
-	dutycycle $0
-	sound $2, $f1, $0780
-	sound $2, $f1, $0700
-	sound $2, $f1, $0790
-	sound $2, $f1, $0700
-	sound $2, $f1, $07a0
-	sound $2, $f1, $0700
-	sound $2, $f1, $07b0
-	sound $2, $f1, $0700
-	sound $2, $f1, $07c0
-	sound $2, $f1, $0700
-	sound $2, $f1, $07d0
-Sfx_HyperBeam_branch_f24f5: ; f24f5
-	sound $2, $f1, $0700
-	sound $2, $f1, $07e0
-	loopchannel 12, Sfx_HyperBeam_branch_f24f5
-	sound $f, $f1, $0700
-	endchannel
-; f2506
+Sfx_HyperBeam_Ch5:
+	duty_cycle 0
+	square_note 2, 15, 1, 1920
+	square_note 2, 15, 1, 1792
+	square_note 2, 15, 1, 1936
+	square_note 2, 15, 1, 1792
+	square_note 2, 15, 1, 1952
+	square_note 2, 15, 1, 1792
+	square_note 2, 15, 1, 1968
+	square_note 2, 15, 1, 1792
+	square_note 2, 15, 1, 1984
+	square_note 2, 15, 1, 1792
+	square_note 2, 15, 1, 2000
+.loop:
+	square_note 2, 15, 1, 1792
+	square_note 2, 15, 1, 2016
+	sound_loop 12, .loop
+	square_note 15, 15, 1, 1792
+	sound_ret
 
-Sfx_HyperBeam_Ch6: ; f2506
-	unknownmusic0xde $b3
-	sound $2, $f1, $0781
-	sound $2, $f1, $0701
-	sound $2, $f1, $0791
-	sound $2, $f1, $0701
-	sound $2, $f1, $07a1
-	sound $2, $f1, $0701
-	sound $2, $f1, $07b1
-	sound $2, $f1, $0701
-	sound $2, $f1, $07c1
-	sound $2, $f1, $0701
-	sound $2, $f1, $07d1
-Sfx_HyperBeam_branch_f2534: ; f2534
-	sound $2, $f1, $0701
-	sound $2, $f1, $07e1
-	loopchannel 12, Sfx_HyperBeam_branch_f2534
-	sound $f, $f1, $0701
-	endchannel
-; f2545
+Sfx_HyperBeam_Ch6:
+	duty_cycle_pattern 2, 3, 0, 3
+	square_note 2, 15, 1, 1921
+	square_note 2, 15, 1, 1793
+	square_note 2, 15, 1, 1937
+	square_note 2, 15, 1, 1793
+	square_note 2, 15, 1, 1953
+	square_note 2, 15, 1, 1793
+	square_note 2, 15, 1, 1969
+	square_note 2, 15, 1, 1793
+	square_note 2, 15, 1, 1985
+	square_note 2, 15, 1, 1793
+	square_note 2, 15, 1, 2001
+.loop:
+	square_note 2, 15, 1, 1793
+	square_note 2, 15, 1, 2017
+	sound_loop 12, .loop
+	square_note 15, 15, 1, 1793
+	sound_ret
 
-Sfx_HyperBeam_Ch8: ; f2545
-Sfx_HyperBeam_branch_f2545: ; f2545
-	noise $1, $d1, $49
-	noise $1, $d1, $29
-	loopchannel 26, Sfx_HyperBeam_branch_f2545
-	endchannel
-; f2550
+Sfx_HyperBeam_Ch8:
+	noise_note 1, 13, 1, 73
+	noise_note 1, 13, 1, 41
+	sound_loop 26, Sfx_HyperBeam_Ch8
+	sound_ret
 
-Sfx_Unknown60_Ch8: ; f2550
-	noise $6, $20, $10
-	noise $6, $2f, $40
-	noise $6, $4f, $41
-	noise $6, $8f, $41
-	noise $6, $cf, $42
-	noise $8, $d7, $42
-	noise $f, $e7, $43
-	noise $f, $f2, $43
-	endchannel
-; f2569
+Sfx_Unknown60_Ch8:
+	noise_note 6, 2, 0, 16
+	noise_note 6, 2, -7, 64
+	noise_note 6, 4, -7, 65
+	noise_note 6, 8, -7, 65
+	noise_note 6, 12, -7, 66
+	noise_note 8, 13, 7, 66
+	noise_note 15, 14, 7, 67
+	noise_note 15, 15, 2, 67
+	sound_ret
 
-Sfx_Unknown61_Ch8: ; f2569
-	noise $4, $d1, $41
-	endchannel
-; f256d
+Sfx_Unknown61_Ch8:
+	noise_note 4, 13, 1, 65
+	sound_ret
 
-Sfx_Unknown62_Ch8: ; f256d
-	noise $4, $c1, $42
-	endchannel
-; f2571
+Sfx_SwitchPockets_Ch8:
+	noise_note 4, 12, 1, 66
+	sound_ret
 
-Sfx_Unknown63_Ch8: ; f2571
-	noise $2, $6f, $21
-	noise $2, $af, $31
-	noise $f, $f2, $41
-	endchannel
-; f257b
+Sfx_Unknown63_Ch8:
+	noise_note 2, 6, -7, 33
+	noise_note 2, 10, -7, 49
+	noise_note 15, 15, 2, 65
+	sound_ret
 
-Sfx_Burn_Ch8: ; f257b
-	noise $2, $d2, $32
-	noise $f, $f2, $43
-	endchannel
-; f2582
+Sfx_Burn_Ch8:
+	noise_note 2, 13, 2, 50
+	noise_note 15, 15, 2, 67
+	sound_ret
 
-Sfx_TitleScreenEntrance_Ch8: ; f2582
-	noise $8, $3c, $20
-	noise $6, $a0, $20
-	noise $8, $b0, $21
-	noise $a, $c0, $22
-	noise $f, $d2, $23
-	endchannel
-; f2592
+Sfx_TitleScreenEntrance_Ch8:
+	noise_note 8, 3, 12, 32
+	noise_note 6, 10, 0, 32
+	noise_note 8, 11, 0, 33
+	noise_note 10, 12, 0, 34
+	noise_note 15, 13, 2, 35
+	sound_ret
 
-Sfx_Unknown66_Ch5: ; f2592
-	dutycycle $2
-	sound $1, $f2, $06a0
-	sound $1, $f2, $06e0
-	sound $8, $f1, $0700
-	endchannel
-; f25a1
+Sfx_Unknown66_Ch5:
+	duty_cycle 2
+	square_note 1, 15, 2, 1696
+	square_note 1, 15, 2, 1760
+	square_note 8, 15, 1, 1792
+	sound_ret
 
-Sfx_GetCoinFromSlots_Ch5: ; f25a1
-	dutycycle $2
-	sound $2, $f1, $0700
-	sound $8, $81, $07e0
-	endchannel
-; f25ac
+Sfx_GetCoinFromSlots_Ch5:
+	duty_cycle 2
+	square_note 2, 15, 1, 1792
+	square_note 8, 8, 1, 2016
+	sound_ret
 
-Sfx_PayDay_Ch5: ; f25ac
-	dutycycle $3
-	sound $5, $e1, $0700
-	sound $2, $e1, $0780
-	sound $f, $f1, $07c0
-	endchannel
-; f25bb
+Sfx_PayDay_Ch5:
+	duty_cycle 3
+	square_note 5, 14, 1, 1792
+	square_note 2, 14, 1, 1920
+	square_note 15, 15, 1, 1984
+	sound_ret
 
-Sfx_PayDay_Ch6: ; f25bb
-	dutycycle $2
-	sound $4, $c1, $06c1
-	sound $2, $c1, $0741
-	sound $f, $d1, $0781
-	endchannel
-; f25ca
+Sfx_PayDay_Ch6:
+	duty_cycle 2
+	square_note 4, 12, 1, 1729
+	square_note 2, 12, 1, 1857
+	square_note 15, 13, 1, 1921
+	sound_ret
 
-Sfx_Metronome_Ch5: ; f25ca
-	dutycycle $2
-	soundinput $5f
-	sound $4, $40, $07e0
-	sound $4, $60, $07e0
-	sound $4, $80, $07e0
-	sound $8, $a0, $07e0
-	sound $8, $a0, $07e0
-	sound $8, $80, $07e0
-	sound $8, $60, $07e0
-	sound $8, $30, $07e0
-	sound $f, $12, $07e0
-	soundinput $8
-	endchannel
-; f25f5
+Sfx_Metronome_Ch5:
+	duty_cycle 2
+	pitch_sweep 5, -7
+	square_note 4, 4, 0, 2016
+	square_note 4, 6, 0, 2016
+	square_note 4, 8, 0, 2016
+	square_note 8, 10, 0, 2016
+	square_note 8, 10, 0, 2016
+	square_note 8, 8, 0, 2016
+	square_note 8, 6, 0, 2016
+	square_note 8, 3, 0, 2016
+	square_note 15, 1, 2, 2016
+	pitch_sweep 0, 8
+	sound_ret
 
-Sfx_Unknown5F_Ch5: ; f25f5
-Sfx_Unknown5F_branch_f25f5: ; f25f5
-	sound $2, $f7, $0601
-	sound $2, $f7, $0701
-	loopchannel 8, Sfx_Unknown5F_branch_f25f5
-	endchannel
-; f2602
+Sfx_Unknown5F_Ch5:
+.loop:
+	square_note 2, 15, 7, 1537
+	square_note 2, 15, 7, 1793
+	sound_loop 8, .loop
+	sound_ret
 
-Sfx_Unknown5F_Ch6: ; f2602
-	sound $1, $f7, $ffff
-	sound $2, $f7, $0602
-	sound $2, $f7, $0702
-	loopchannel 8, Sfx_Unknown5F_branch_f25f5
-	endchannel
-; f2613
+Sfx_Unknown5F_Ch6:
+	square_note 1, 15, 7, 65535
+	square_note 2, 15, 7, 1538
+	square_note 2, 15, 7, 1794
+	sound_loop 8, Sfx_Unknown5F_Ch5.loop
+	sound_ret
 
-Sfx_Fanfare2_Ch5: ; f2613
-	togglesfx
-	sfxpriorityon
+Sfx_Fanfare2_Ch5:
+	toggle_sfx
+	sfx_priority_on
 	tempo 256
-	volume $77
-	tone $0001
-	dutycycle $3
-	notetype $6, $b5
+	volume 7, 7
+	pitch_offset 1
+	duty_cycle 3
+	note_type 6, 11, 5
 	octave 3
 	note G#, 4
-	notetype $4, $b2
+	note_type 4, 11, 2
 	note F_, 2
 	note G#, 2
 	note A_, 2
@@ -5437,62 +4988,59 @@ Sfx_Fanfare2_Ch5: ; f2613
 	octave 4
 	note C_, 4
 	note C_, 2
-	notetype $4, $b6
+	note_type 4, 11, 6
 	note C#, 12
-	sfxpriorityoff
-	endchannel
-; f2636
+	sfx_priority_off
+	sound_ret
 
-Sfx_Fanfare2_Ch6: ; f2636
-	togglesfx
-	dutycycle $2
-	notetype $6, $c5
+Sfx_Fanfare2_Ch6:
+	toggle_sfx
+	duty_cycle 2
+	note_type 6, 12, 5
 	octave 4
 	note C#, 6
-	notetype $4, $c1
+	note_type 4, 12, 1
 	note C#, 1
 	note C#, 1
 	note C#, 1
-	notetype $4, $c2
+	note_type 4, 12, 2
 	note D#, 2
 	note C#, 2
 	note D#, 2
 	note E_, 4
 	note E_, 2
-	notetype $4, $c6
+	note_type 4, 12, 6
 	note F_, 12
-	endchannel
-; f2651
+	sound_ret
 
-Sfx_Fanfare2_Ch8: ; f2651
-	togglesfx
-	notetype $6
+Sfx_Fanfare2_Ch8:
+	toggle_sfx
+	drum_speed 6
 	note C_, 1
 	octave 5
 	note C#, 2
-	note __, 2
+	rest 2
 	note C#, 2
-	note __, 2
-	notetype $4
+	rest 2
+	drum_speed 4
 	note C_, 1
 	note C#, 2
-	note __, 2
+	rest 2
 	note C#, 2
 	note D#, 2
-	note __, 2
+	rest 2
 	note F_, 2
 	note G#, 6
-	endchannel
-; f2665
+	sound_ret
 
-Sfx_Fanfare_Ch5: ; f2665
-	togglesfx
-	sfxpriorityon
+Sfx_Fanfare_Ch5:
+	toggle_sfx
+	sfx_priority_on
 	tempo 256
-	volume $77
-	dutycycle $3
-	tone $0001
-	notetype $6, $b3
+	volume 7, 7
+	duty_cycle 3
+	pitch_offset 1
+	note_type 6, 11, 3
 	octave 3
 	note F_, 4
 	note C#, 4
@@ -5502,7 +5050,7 @@ Sfx_Fanfare_Ch5: ; f2665
 	note F_, 4
 	note A#, 4
 	note F#, 4
-	notetype $4, $b3
+	note_type 4, 11, 3
 	note A#, 4
 	note B_, 4
 	octave 4
@@ -5510,19 +5058,18 @@ Sfx_Fanfare_Ch5: ; f2665
 	note C#, 4
 	note D#, 4
 	note C_, 4
-	notetype $4, $b6
+	note_type 4, 11, 6
 	note C#, 12
-	sfxpriorityoff
-	endchannel
-; f268d
+	sfx_priority_off
+	sound_ret
 
-Sfx_Fanfare_Ch6: ; f268d
-	togglesfx
-	dutycycle $2
-	notetype $6, $c4
+Sfx_Fanfare_Ch6:
+	toggle_sfx
+	duty_cycle 2
+	note_type 6, 12, 4
 	octave 4
 	note C#, 4
-	notetype $4, $c4
+	note_type 4, 12, 4
 	note C#, 2
 	octave 3
 	note A#, 2
@@ -5548,26 +5095,25 @@ Sfx_Fanfare_Ch6: ; f268d
 	note F_, 4
 	note F#, 4
 	note G#, 4
-	notetype $4, $c6
+	note_type 4, 12, 6
 	note F#, 12
-	endchannel
-; f26b6
+	sound_ret
 
-Sfx_Fanfare_Ch8: ; f26b6
-	togglesfx
-	notetype $6
+Sfx_Fanfare_Ch8:
+	toggle_sfx
+	drum_speed 6
 	note C_, 1
 	octave 4
 	note A#, 4
-	note __, 4
+	rest 4
 	note B_, 4
-	note __, 4
+	rest 4
 	octave 5
 	note C#, 4
-	note __, 4
+	rest 4
 	note D#, 4
-	note __, 4
-	notetype $4
+	rest 4
+	drum_speed 4
 	note C_, 1
 	note F_, 4
 	note D#, 4
@@ -5576,74 +5122,63 @@ Sfx_Fanfare_Ch8: ; f26b6
 	note G#, 4
 	note F_, 4
 	note F#, 6
-	endchannel
-; f26cf
+	sound_ret
 
-Sfx_HangUp_Ch5: ; f26cf
-	dutycycle $2
-	sound $4, $b8, $077b
-	sound $2, $21, $077b
-	sound $10, $0, $0000
-Sfx_HangUp_branch_f26dd: ; f26dd
-Sfx_NoSignal_Ch5: ; f26dd
-Sfx_NoSignal_branch_f26dd: ; f26dd
-	dutycycle $2
-	sound $14, $e8, $070b
-	sound $1c, $0, $0000
-	loopchannel 3, Sfx_HangUp_branch_f26dd
-	endchannel
-; f26ec
+Sfx_HangUp_Ch5:
+	duty_cycle 2
+	square_note 4, 11, 8, 1915
+	square_note 2, 2, 1, 1915
+	square_note 16, 0, 0, 0
+Sfx_NoSignal_Ch5:
+	duty_cycle 2
+	square_note 20, 14, 8, 1803
+	square_note 28, 0, 0, 0
+	sound_loop 3, Sfx_NoSignal_Ch5
+	sound_ret
 
-Sfx_Sandstorm_Ch8: ; f26ec
-Sfx_Sandstorm_branch_f26ec: ; f26ec
-Sfx_Unknown5F_Ch8: ; f26ec
-Sfx_Unknown5F_branch_f26ec: ; f26ec
-	noise $1, $f8, $41
-	noise $2, $9c, $24
-	noise $0, $0, $0
-	noise $3, $59, $16
-	noise $2, $0, $0
-	loopchannel 3, Sfx_Sandstorm_branch_f26ec
-	endchannel
-; f2700
+Sfx_Unknown5F_Ch8:
+Sfx_Sandstorm_Ch8:
+	noise_note 1, 15, 8, 65
+	noise_note 2, 9, -4, 36
+	noise_note 0, 0, 0, 0
+	noise_note 3, 5, -1, 22
+	noise_note 2, 0, 0, 0
+	sound_loop 3, Sfx_Sandstorm_Ch8
+	sound_ret
 
-Sfx_Elevator_Ch5: ; f2700
-	dutycycle $2
-	soundinput $5a
-Sfx_Elevator_branch_f2704: ; f2704
-	sound $2, $f1, $0300
-	loopchannel 48, Sfx_Elevator_branch_f2704
-	soundinput $8
-	dutycycle $2
-	sound $f, $f3, $0730
-	sound $8, $65, $0730
-	sound $f, $f4, $0700
-	sound $f, $74, $0700
-	sound $f, $44, $0700
-	sound $f, $24, $0700
-	endchannel
-; f2729
+Sfx_Elevator_Ch5:
+	duty_cycle 2
+	pitch_sweep 5, -2
+.loop:
+	square_note 2, 15, 1, 768
+	sound_loop 48, .loop
+	pitch_sweep 0, 8
+	duty_cycle 2
+	square_note 15, 15, 3, 1840
+	square_note 8, 6, 5, 1840
+	square_note 15, 15, 4, 1792
+	square_note 15, 7, 4, 1792
+	square_note 15, 4, 4, 1792
+	square_note 15, 2, 4, 1792
+	sound_ret
 
-Sfx_Elevator_Ch6: ; f2729
-Sfx_Elevator_Ch7: ; f2729
-	sound $60, $0, $0000
-	sound $53, $0, $0000
-	endchannel
-; f2732
+Sfx_Elevator_Ch6:
+Sfx_Elevator_Ch7:
+	square_note 96, 0, 0, 0
+	square_note 83, 0, 0, 0
+	sound_ret
 
-Sfx_Elevator_Ch8: ; f2732
-	noise $60, $0, $0
-	noise $53, $0, $0
-	endchannel
-; f2739
+Sfx_Elevator_Ch8:
+	noise_note 96, 0, 0, 0
+	noise_note 83, 0, 0, 0
+	sound_ret
 
-Sfx_StopSlot: ; f2739
-	dbw $04, Sfx_StopSlot_Ch5
-; f273c
+Sfx_StopSlot:
+	channel_count 1
+	channel 5, Sfx_StopSlot_Ch5
 
-Sfx_StopSlot_Ch5: ; f273c
-	dutycycle $2
-	sound $1, $f8, $0760
-	sound $4, $82, $0760
-	endchannel
-; f2747
+Sfx_StopSlot_Ch5:
+	duty_cycle 2
+	square_note 1, 15, 8, 1888
+	square_note 4, 8, 2, 1888
+	sound_ret

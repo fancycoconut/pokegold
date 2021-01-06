@@ -1,19 +1,19 @@
-Music_Credits: ; 1f84c
-	dbw $c0, Music_Credits_Ch1
-	dbw $01, Music_Credits_Ch2
-	dbw $02, Music_Credits_Ch3
-	dbw $03, Music_Credits_Ch4
-; 1f858
+Music_Credits:
+	channel_count 4
+	channel 1, Music_Credits_Ch1
+	channel 2, Music_Credits_Ch2
+	channel 3, Music_Credits_Ch3
+	channel 4, Music_Credits_Ch4
 
-Music_Credits_Ch1: ; 1f858
+Music_Credits_Ch1:
 	tempo 139
-	volume $77
-	stereopanning $f
-	dutycycle $3
-	notetype $c, $2f
+	volume 7, 7
+	stereo_panning FALSE, TRUE
+	duty_cycle 3
+	note_type 12, 2, -7
 	octave 2
 	note G_, 16
-	notetype $6, $a7
+	note_type 6, 10, 7
 	octave 3
 	note B_, 12
 	note A#, 2
@@ -22,17 +22,17 @@ Music_Credits_Ch1: ; 1f858
 	octave 4
 	note C_, 7
 	note D_, 8
-	callchannel Music_Credits_branch_1f9b3
-	note __, 4
+	sound_call .sub1
+	rest 4
 	octave 3
 	note B_, 2
-	note __, 2
+	rest 2
 	note A_, 2
 	note B_, 2
-	note __, 2
+	rest 2
 	note A_, 2
 	note B_, 2
-	intensity $96
+	volume_envelope 9, 6
 	note A_, 1
 	note G_, 1
 	octave 3
@@ -41,7 +41,7 @@ Music_Credits_Ch1: ; 1f858
 	octave 2
 	note B_, 1
 	note A_, 1
-	intensity $94
+	volume_envelope 9, 4
 	note G_, 1
 	note F_, 1
 	note E_, 1
@@ -51,12 +51,12 @@ Music_Credits_Ch1: ; 1f858
 	note B_, 1
 	note A_, 1
 	octave 3
-	note __, 1
-	intensity $a7
-	callchannel Music_Credits_branch_1f9b3
-	callchannel Music_Credits_branch_1fa1d
-	intensity $97
-	callchannel Music_Credits_branch_1fa28
+	rest 1
+	volume_envelope 10, 7
+	sound_call .sub1
+	sound_call .sub2
+	volume_envelope 9, 7
+	sound_call .sub3
 	octave 3
 	note B_, 2
 	octave 4
@@ -118,13 +118,13 @@ Music_Credits_Ch1: ; 1f858
 	note C_, 2
 	octave 3
 	note B_, 2
-	callchannel Music_Credits_branch_1fa28
-	callchannel Music_Credits_branch_1fa89
+	sound_call .sub3
+	sound_call .sub4
 	note B_, 1
 	octave 4
 	note C_, 7
 	note D_, 8
-	intensity $a7
+	volume_envelope 10, 7
 	octave 5
 	note E_, 2
 	note C#, 2
@@ -141,20 +141,20 @@ Music_Credits_Ch1: ; 1f858
 	note D_, 7
 	note E_, 7
 	octave 3
-	note __, 1
-	forceoctave $2
-	callchannel Music_Credits_branch_1f9b3
-	callchannel Music_Credits_branch_1fa1d
-	callchannel Music_Credits_branch_1fa28
-	callchannel Music_Credits_branch_1fa89
-	forceoctave $0
+	rest 1
+	transpose 0, 2
+	sound_call .sub1
+	sound_call .sub2
+	sound_call .sub3
+	sound_call .sub4
+	transpose 0, 0
 	octave 3
 	note A_, 12
-	notetype $8, $a7
+	note_type 8, 10, 7
 	note D_, 1
 	note D_, 1
 	note D_, 1
-	callchannel Music_Credits_branch_1fab2
+	sound_call .sub5
 	octave 3
 	note B_, 6
 	note A_, 6
@@ -165,7 +165,7 @@ Music_Credits_Ch1: ; 1f858
 	note A_, 6
 	octave 4
 	note C#, 6
-	callchannel Music_Credits_branch_1fab2
+	sound_call .sub5
 	tempo 143
 	octave 4
 	note D_, 6
@@ -180,22 +180,22 @@ Music_Credits_Ch1: ; 1f858
 	note A_, 6
 	octave 5
 	note C#, 6
-	notetype $c, $a7
-Music_Credits_branch_1f937: ; 1f937
+	note_type 12, 10, 7
+.loop1:
 	octave 3
 	note A_, 1
 	octave 4
 	note D_, 1
-	loopchannel 6, Music_Credits_branch_1f937
-	notetype $8, $a7
+	sound_loop 6, .loop1
+	note_type 8, 10, 7
 	note G_, 1
-	note __, 1
+	rest 1
 	note G_, 1
-	note __, 1
+	rest 1
 	note G#, 1
-	note __, 1
+	rest 1
 	tempo 153
-	notetype $c, $a7
+	note_type 12, 10, 7
 	octave 3
 	note C_, 1
 	note E_, 1
@@ -214,14 +214,14 @@ Music_Credits_branch_1f937: ; 1f937
 	note C_, 1
 	note E_, 1
 	note G_, 1
-	notetype $8, $a7
+	note_type 8, 10, 7
 	note C_, 1
-	note __, 1
+	rest 1
 	note E_, 1
-	note __, 1
+	rest 1
 	note G_, 1
-	note __, 1
-	notetype $c, $a7
+	rest 1
+	note_type 12, 10, 7
 	octave 3
 	note D_, 1
 	note F#, 1
@@ -235,54 +235,53 @@ Music_Credits_branch_1f937: ; 1f937
 	note D_, 1
 	note E_, 1
 	note F#, 1
-	note __, 1
+	rest 1
 	note F#, 1
-	note __, 1
-	notetype $8, $a7
+	rest 1
+	note_type 8, 10, 7
 	note A_, 1
-	note __, 1
+	rest 1
 	note A_, 1
-	note __, 1
+	rest 1
 	note A_, 1
-	note __, 1
+	rest 1
 	tempo 160
-	notetype $c, $a7
+	note_type 12, 10, 7
 	octave 2
 	note G_, 1
-	note __, 3
+	rest 3
 	note E_, 1
-	note __, 3
-	notetype $8, $a7
+	rest 3
+	note_type 8, 10, 7
 	octave 1
 	note G_, 1
-	note __, 1
+	rest 1
 	note G_, 1
-	note __, 1
+	rest 1
 	note G_, 1
-	note __, 1
+	rest 1
 	octave 2
 	note C_, 1
-	note __, 1
+	rest 1
 	note C_, 1
-	note __, 1
+	rest 1
 	note C#, 1
-	note __, 1
-	notetype $c, $a7
+	rest 1
+	note_type 12, 10, 7
 	octave 2
 	note D_, 1
-	note __, 7
-	intensity $c7
+	rest 7
+	volume_envelope 12, 7
 	octave 2
 	note D_, 16
-	intensity $b8
-	intensity $b7
-	note __, 16
-	note __, 16
-	note __, 16
-	endchannel
-; 1f9b3
+	volume_envelope 11, 8
+	volume_envelope 11, 7
+	rest 16
+	rest 16
+	rest 16
+	sound_ret
 
-Music_Credits_branch_1f9b3: ; 1f9b3
+.sub1:
 	note C_, 16
 	note F#, 1
 	note G_, 3
@@ -292,17 +291,17 @@ Music_Credits_branch_1f9b3: ; 1f9b3
 	note D_, 4
 	octave 3
 	note B_, 2
-	note __, 2
+	rest 2
 	note A#, 2
 	note B_, 2
-	note __, 2
+	rest 2
 	note A#, 2
 	note B_, 4
 	note G_, 4
-	note __, 4
+	rest 4
 	octave 4
 	note D_, 4
-	note __, 4
+	rest 4
 	note E_, 4
 	octave 3
 	note A#, 4
@@ -314,19 +313,19 @@ Music_Credits_branch_1f9b3: ; 1f9b3
 	note C_, 4
 	note D_, 4
 	note C_, 2
-	note __, 2
+	rest 2
 	octave 3
 	note B_, 2
 	octave 4
 	note C_, 2
-	note __, 2
+	rest 2
 	octave 3
 	note B_, 2
 	octave 4
 	note C_, 4
 	octave 3
 	note A_, 4
-	note __, 4
+	rest 4
 	octave 4
 	note C_, 4
 	octave 3
@@ -337,7 +336,7 @@ Music_Credits_branch_1f9b3: ; 1f9b3
 	note A_, 1
 	note A#, 7
 	note G#, 4
-	note __, 4
+	rest 4
 	octave 4
 	note C_, 4
 	octave 3
@@ -350,48 +349,47 @@ Music_Credits_branch_1f9b3: ; 1f9b3
 	note C_, 4
 	octave 5
 	note D_, 1
-	note __, 1
+	rest 1
 	octave 4
 	note A_, 1
-	note __, 1
+	rest 1
 	note F#, 1
-	note __, 1
+	rest 1
 	note A_, 1
-	note __, 1
+	rest 1
 	octave 5
 	note D_, 1
-	note __, 1
+	rest 1
 	octave 4
 	note A_, 1
-	note __, 1
+	rest 1
 	note F#, 1
-	note __, 1
+	rest 1
 	note A_, 1
-	note __, 1
+	rest 1
 	octave 5
 	note D_, 1
-	note __, 1
+	rest 1
 	octave 4
 	note A_, 1
-	note __, 1
+	rest 1
 	note F#, 1
-	note __, 1
+	rest 1
 	note A_, 1
-	note __, 1
+	rest 1
 	octave 5
 	note D_, 1
-	note __, 1
+	rest 1
 	note F#, 1
-	note __, 1
+	rest 1
 	note A_, 1
-	note __, 1
+	rest 1
 	octave 6
 	note C_, 1
-	note __, 1
-	endchannel
-; 1fa1d
+	rest 1
+	sound_ret
 
-Music_Credits_branch_1fa1d: ; 1fa1d
+.sub2:
 	octave 4
 	note C_, 4
 	octave 3
@@ -402,10 +400,9 @@ Music_Credits_branch_1fa1d: ; 1fa1d
 	note D_, 4
 	note C_, 4
 	note D#, 4
-	endchannel
-; 1fa28
+	sound_ret
 
-Music_Credits_branch_1fa28: ; 1fa28
+.sub3:
 	octave 3
 	note A_, 2
 	octave 4
@@ -502,10 +499,9 @@ Music_Credits_branch_1fa28: ; 1fa28
 	note F_, 2
 	note C_, 2
 	note F_, 2
-	endchannel
-; 1fa89
+	sound_ret
 
-Music_Credits_branch_1fa89: ; 1fa89
+.sub4:
 	octave 3
 	note A_, 2
 	octave 4
@@ -546,11 +542,10 @@ Music_Credits_branch_1fa89: ; 1fa89
 	note B_, 12
 	note A#, 2
 	note A_, 2
-	endchannel
-; 1fab2
+	sound_ret
 
-Music_Credits_branch_1fab2: ; 1fab2
-	note __, 6
+.sub5:
+	rest 6
 	octave 3
 	note D_, 6
 	note E_, 6
@@ -560,52 +555,51 @@ Music_Credits_branch_1fab2: ; 1fab2
 	octave 4
 	note F#, 6
 	note C#, 6
-	endchannel
-; 1fabd
+	sound_ret
 
-Music_Credits_Ch2: ; 1fabd
-	dutycycle $1
-	vibrato $14, $23
-	notetype $c, $2f
-	stereopanning $f0
+Music_Credits_Ch2:
+	duty_cycle 1
+	vibrato 20, 2, 3
+	note_type 12, 2, -7
+	stereo_panning TRUE, FALSE
 	octave 4
 	note G_, 16
-	intensity $c7
+	volume_envelope 12, 7
 	octave 5
 	note G_, 8
 	octave 3
 	note G_, 4
 	note F_, 4
-	notetype $6, $c7
-	callchannel Music_Credits_branch_1fbfb
+	note_type 6, 12, 7
+	sound_call .sub1
 	octave 1
 	note G_, 2
-	note __, 2
+	rest 2
 	octave 2
 	note G_, 2
-	note __, 2
+	rest 2
 	note F#, 2
 	note G_, 2
-	note __, 2
+	rest 2
 	octave 3
 	note C_, 2
 	octave 2
 	note G_, 2
-	note __, 2
+	rest 2
 	note G_, 2
-	note __, 2
+	rest 2
 	note G_, 2
-	intensity $97
+	volume_envelope 9, 7
 	note F#, 1
 	note F_, 1
 	note E_, 1
 	note D#, 1
 	note D_, 1
 	note C#, 1
-	intensity $c7
-	callchannel Music_Credits_branch_1fbfb
-	callchannel Music_Credits_branch_1fc6f
-	callchannel Music_Credits_branch_1fc78
+	volume_envelope 12, 7
+	sound_call .sub1
+	sound_call .sub2
+	sound_call .sub3
 	octave 4
 	note B_, 1
 	octave 5
@@ -616,10 +610,10 @@ Music_Credits_Ch2: ; 1fabd
 	note B_, 4
 	note F#, 1
 	note G_, 15
-	notetype $c, $c7
+	note_type 12, 12, 7
 	octave 5
 	note E_, 15
-	notetype $6, $c7
+	note_type 6, 12, 7
 	note G_, 1
 	note G#, 1
 	note A_, 2
@@ -633,7 +627,7 @@ Music_Credits_Ch2: ; 1fabd
 	octave 4
 	note A_, 2
 	note E_, 2
-	callchannel Music_Credits_branch_1fc78
+	sound_call .sub3
 	octave 4
 	note B_, 1
 	octave 5
@@ -642,7 +636,7 @@ Music_Credits_Ch2: ; 1fabd
 	note B_, 8
 	octave 5
 	note C_, 12
-	notetype $c, $c7
+	note_type 12, 12, 7
 	note D_, 16
 	note G_, 8
 	octave 3
@@ -663,21 +657,21 @@ Music_Credits_Ch2: ; 1fabd
 	octave 3
 	note A_, 4
 	note G_, 4
-	notetype $6, $c7
-	forceoctave $2
-	callchannel Music_Credits_branch_1fbfb
-	callchannel Music_Credits_branch_1fc6f
-	callchannel Music_Credits_branch_1fc78
-	forceoctave $0
+	note_type 6, 12, 7
+	transpose 0, 2
+	sound_call .sub1
+	sound_call .sub2
+	sound_call .sub3
+	transpose 0, 0
 	octave 5
 	note C#, 1
 	note D_, 11
 	note C#, 8
 	note D_, 12
-	notetype $c, $c7
+	note_type 12, 12, 7
 	note E_, 16
 	note A_, 14
-	notetype $8, $c7
+	note_type 8, 12, 7
 	octave 2
 	note D_, 1
 	note D_, 1
@@ -702,34 +696,34 @@ Music_Credits_Ch2: ; 1fabd
 	note E_, 6
 	octave 1
 	note D_, 3
-	note __, 3
+	rest 3
 	note D_, 3
-	note __, 3
+	rest 3
 	note D_, 3
-	note __, 3
+	rest 3
 	note D_, 3
-	note __, 3
+	rest 3
 	note F#, 3
-	note __, 3
+	rest 3
 	note F#, 3
-	note __, 3
+	rest 3
 	note F#, 3
-	notetype $c, $c7
+	note_type 12, 12, 7
 	octave 2
 	note F#, 1
-	note __, 1
+	rest 1
 	octave 1
 	note F#, 2
 	octave 2
 	note F#, 1
-	note __, 1
-Music_Credits_branch_1fb87: ; 1fb87
+	rest 1
+.loop1:
 	octave 1
 	note G_, 2
 	octave 2
 	note G_, 1
-	note __, 1
-	loopchannel 4, Music_Credits_branch_1fb87
+	rest 1
+	sound_loop 4, .loop1
 	octave 1
 	note A_, 1
 	octave 2
@@ -755,165 +749,164 @@ Music_Credits_branch_1fb87: ; 1fb87
 	note C#, 1
 	octave 5
 	note D_, 12
-	notetype $8, $c7
+	note_type 8, 12, 7
 	note C_, 1
-	note __, 1
+	rest 1
 	note C_, 1
-	note __, 1
+	rest 1
 	note C#, 1
-	note __, 1
-	notetype $c, $c7
+	rest 1
+	note_type 12, 12, 7
 	note D_, 12
-	notetype $8, $c7
+	note_type 8, 12, 7
 	note C_, 1
-	note __, 1
+	rest 1
 	note C_, 1
-	note __, 1
+	rest 1
 	note C#, 1
-	note __, 1
+	rest 1
 	note D_, 9
-	notetype $c, $c7
+	note_type 12, 12, 7
 	octave 4
 	note F#, 1
 	note A_, 1
 	octave 5
 	note D_, 1
-	note __, 1
+	rest 1
 	note D_, 1
-	note __, 1
-	notetype $8, $c7
+	rest 1
+	note_type 8, 12, 7
 	note D_, 1
-	note __, 1
+	rest 1
 	note D_, 1
-	note __, 1
+	rest 1
 	note D_, 1
-	note __, 1
-	notetype $c, $c7
+	rest 1
+	note_type 12, 12, 7
 	note C_, 1
-	note __, 3
+	rest 3
 	note C_, 1
-	note __, 3
-	notetype $8, $c7
+	rest 3
+	note_type 8, 12, 7
 	note C_, 1
-	note __, 1
+	rest 1
 	note C_, 1
-	note __, 1
+	rest 1
 	note C_, 1
-	note __, 1
+	rest 1
 	note C_, 1
-	note __, 1
+	rest 1
 	note C_, 1
-	note __, 1
+	rest 1
 	note C#, 1
-	note __, 1
-	notetype $c, $c7
+	rest 1
+	note_type 12, 12, 7
 	note D_, 1
-	note __, 7
-	intensity $c8
-	intensity $c7
+	rest 7
+	volume_envelope 12, 8
+	volume_envelope 12, 7
 	octave 1
 	note D_, 16
-	intensity $c7
-	note __, 16
-	note __, 16
-	note __, 16
-	endchannel
-; 1fbfb
+	volume_envelope 12, 7
+	rest 16
+	rest 16
+	rest 16
+	sound_ret
 
-Music_Credits_branch_1fbfb: ; 1fbfb
+.sub1:
 	octave 2
 	note C_, 4
-	intensity $b1
+	volume_envelope 11, 1
 	octave 5
 	note G_, 1
-	note __, 1
+	rest 1
 	note G_, 1
-	note __, 1
+	rest 1
 	note F#, 1
-	note __, 1
+	rest 1
 	note G_, 2
-	note __, 2
-	intensity $c7
+	rest 2
+	volume_envelope 12, 7
 	octave 2
 	note C_, 1
-	note __, 1
+	rest 1
 	note C_, 4
-	note __, 12
+	rest 12
 	octave 1
 	note B_, 4
-	note __, 10
+	rest 10
 	note B_, 1
-	note __, 1
+	rest 1
 	note B_, 2
-	note __, 2
+	rest 2
 	note B_, 2
-	note __, 2
+	rest 2
 	octave 2
 	note G_, 2
 	octave 1
 	note B_, 6
 	note A#, 4
-	intensity $b1
+	volume_envelope 11, 1
 	octave 5
 	note E_, 1
-	note __, 1
+	rest 1
 	note E_, 1
-	note __, 1
+	rest 1
 	note D#, 1
-	note __, 1
+	rest 1
 	note E_, 2
-	note __, 2
-	intensity $c7
+	rest 2
+	volume_envelope 12, 7
 	octave 1
 	note A#, 1
-	note __, 1
+	rest 1
 	note A#, 4
-	note __, 12
+	rest 12
 	note A_, 4
-	note __, 10
+	rest 10
 	note A_, 1
-	note __, 1
+	rest 1
 	note A_, 2
-	note __, 2
+	rest 2
 	note A_, 2
-	note __, 2
+	rest 2
 	octave 2
 	note F_, 2
 	octave 1
 	note A_, 6
 	note G#, 4
-	intensity $b1
+	volume_envelope 11, 1
 	octave 5
 	note C_, 1
-	note __, 1
+	rest 1
 	note C_, 1
-	note __, 1
+	rest 1
 	octave 4
 	note B_, 1
-	note __, 1
+	rest 1
 	octave 5
 	note C_, 2
-	note __, 2
-	intensity $c7
+	rest 2
+	volume_envelope 12, 7
 	octave 1
 	note G#, 1
-	note __, 1
+	rest 1
 	note G#, 4
-	note __, 12
+	rest 12
 	note G_, 4
-	note __, 10
+	rest 10
 	note G_, 1
-	note __, 1
+	rest 1
 	note G_, 2
-	note __, 2
+	rest 2
 	note G_, 2
-	note __, 2
+	rest 2
 	octave 2
 	note E_, 2
 	octave 1
 	note G_, 6
 	note F#, 4
-	note __, 2
+	rest 2
 	note F#, 2
 	note F#, 2
 	octave 2
@@ -930,29 +923,27 @@ Music_Credits_branch_1fbfb: ; 1fbfb
 	note A_, 2
 	octave 3
 	note C_, 2
-	endchannel
-; 1fc6f
+	sound_ret
 
-Music_Credits_branch_1fc6f: ; 1fc6f
+.sub2:
 	octave 1
 	note G_, 4
-	note __, 4
+	rest 4
 	note G_, 2
-	note __, 2
+	rest 2
 	octave 2
 	note G_, 12
 	note F#, 8
-	endchannel
-; 1fc78
+	sound_ret
 
-Music_Credits_branch_1fc78: ; 1fc78
+.sub3:
 	octave 4
 	note A_, 8
 	note B_, 8
 	octave 5
 	note C_, 8
 	note E_, 8
-	notetype $c, $c7
+	note_type 12, 12, 7
 	note D_, 16
 	octave 4
 	note G_, 4
@@ -961,7 +952,7 @@ Music_Credits_branch_1fc78: ; 1fc78
 	octave 5
 	note D_, 4
 	note C_, 10
-	notetype $6, $c7
+	note_type 6, 12, 7
 	octave 4
 	note B_, 1
 	octave 5
@@ -970,22 +961,21 @@ Music_Credits_branch_1fc78: ; 1fc78
 	note B_, 4
 	octave 5
 	note C_, 4
-	notetype $c, $c7
+	note_type 12, 12, 7
 	octave 4
 	note A_, 10
-	notetype $6, $c7
+	note_type 6, 12, 7
 	note G#, 1
 	note A_, 3
 	note B_, 4
 	octave 5
 	note C_, 4
-	endchannel
-; 1fca2
+	sound_ret
 
-Music_Credits_Ch3: ; 1fca2
-	vibrato $16, $23
-	notetype $c, $34
-	stereopanning $ff
+Music_Credits_Ch3:
+	vibrato 22, 2, 3
+	note_type 12, 3, 4
+	stereo_panning TRUE, TRUE
 	octave 6
 	note G_, 1
 	note D_, 1
@@ -998,14 +988,14 @@ Music_Credits_Ch3: ; 1fca2
 	note C_, 1
 	octave 5
 	note G_, 1
-	intensity $24
+	volume_envelope 2, 4
 	octave 6
 	note G_, 1
 	note D_, 1
 	note C_, 1
 	octave 5
 	note G_, 1
-	intensity $14
+	volume_envelope 1, 4
 	octave 6
 	note G_, 1
 	note D_, 1
@@ -1024,46 +1014,46 @@ Music_Credits_Ch3: ; 1fca2
 	note B_, 1
 	note G_, 1
 	note D_, 1
-	notetype $6, $14
+	note_type 6, 1, 4
 	note D#, 1
 	note E_, 7
 	note F_, 8
-	callchannel Music_Credits_branch_1fdda
+	sound_call .sub1
 	octave 4
 	note G_, 1
-	note __, 1
+	rest 1
 	octave 5
 	note G_, 1
-	note __, 1
+	rest 1
 	note F#, 1
 	note G_, 1
-	note __, 1
+	rest 1
 	note F#, 1
 	note G_, 1
-	notetype $6, $14
-	intensity $24
+	note_type 6, 1, 4
+	volume_envelope 2, 4
 	note F_, 1
 	note E_, 1
-	intensity $14
+	volume_envelope 1, 4
 	note E_, 4
-	note __, 4
+	rest 4
 	note F_, 4
-	callchannel Music_Credits_branch_1fdda
-	callchannel Music_Credits_branch_1fe0b
-	callchannel Music_Credits_branch_1fe17
-	callchannel Music_Credits_branch_1fe64
+	sound_call .sub1
+	sound_call .sub2
+	sound_call .sub3
+	sound_call .sub4
 	octave 2
 	note G_, 4
-	note __, 2
+	rest 2
 	note G_, 1
-	note __, 1
+	rest 1
 	note G_, 2
 	octave 3
 	note G_, 2
-	note __, 2
+	rest 2
 	octave 2
 	note G_, 1
-	note __, 1
+	rest 1
 	note G_, 2
 	octave 3
 	note G_, 2
@@ -1076,16 +1066,16 @@ Music_Credits_Ch3: ; 1fca2
 	note G_, 2
 	octave 2
 	note E_, 4
-	note __, 2
+	rest 2
 	note E_, 1
-	note __, 1
+	rest 1
 	note E_, 2
 	octave 3
 	note E_, 2
-	note __, 2
+	rest 2
 	octave 2
 	note E_, 1
-	note __, 1
+	rest 1
 	note E_, 2
 	octave 3
 	note E_, 2
@@ -1100,54 +1090,54 @@ Music_Credits_Ch3: ; 1fca2
 	note A_, 4
 	octave 3
 	note E_, 2
-	note __, 2
+	rest 2
 	octave 2
 	note G#, 2
 	octave 3
 	note E_, 2
-	note __, 2
+	rest 2
 	octave 2
 	note G#, 2
 	note G_, 2
 	octave 3
 	note E_, 2
-	note __, 2
+	rest 2
 	octave 2
 	note G_, 2
 	note F#, 4
 	octave 3
 	note E_, 4
-	callchannel Music_Credits_branch_1fe17
-	callchannel Music_Credits_branch_1fe64
-	callchannel Music_Credits_branch_1fe7b
+	sound_call .sub3
+	sound_call .sub4
+	sound_call .sub5
 	octave 5
 	note D#, 1
 	note E_, 7
 	note F_, 8
 	octave 2
 	note A_, 2
-	note __, 2
+	rest 2
 	octave 3
 	note E_, 2
-	note __, 2
+	rest 2
 	note A_, 2
-	note __, 2
+	rest 2
 	octave 4
 	note C#, 2
-	note __, 2
+	rest 2
 	octave 5
 	note F_, 1
 	note F#, 7
 	note G_, 8
-	forceoctave $2
-	callchannel Music_Credits_branch_1fdda
-	callchannel Music_Credits_branch_1fe0b
-	forceoctave $12
-	callchannel Music_Credits_branch_1fe17
-	forceoctave $2
-	callchannel Music_Credits_branch_1fe64
-	callchannel Music_Credits_branch_1fe7b
-	forceoctave $0
+	transpose 0, 2
+	sound_call .sub1
+	sound_call .sub2
+	transpose 1, 2
+	sound_call .sub3
+	transpose 0, 2
+	sound_call .sub4
+	sound_call .sub5
+	transpose 0, 0
 	octave 6
 	note C#, 2
 	octave 5
@@ -1156,18 +1146,18 @@ Music_Credits_Ch3: ; 1fca2
 	note C#, 2
 	note A_, 2
 	note E_, 2
-	notetype $8, $14
+	note_type 8, 1, 4
 	octave 2
 	note D_, 1
 	note D_, 1
 	note D_, 1
-	notetype $c, $14
+	note_type 12, 1, 4
 	note D_, 16
 	note F#, 16
 	note G_, 16
 	note G_, 8
 	note A_, 8
-	note __, 4
+	rest 4
 	octave 4
 	note F#, 4
 	note G_, 4
@@ -1186,7 +1176,7 @@ Music_Credits_Ch3: ; 1fca2
 	octave 6
 	note C#, 4
 	note E_, 4
-	intensity $15
+	volume_envelope 1, 5
 	octave 4
 	note D_, 6
 	note F#, 2
@@ -1199,48 +1189,47 @@ Music_Credits_Ch3: ; 1fca2
 	note B_, 1
 	note A#, 1
 	note A_, 8
-	intensity $14
+	volume_envelope 1, 4
 	octave 2
 	note A_, 1
-	note __, 1
+	rest 1
 	note A_, 1
-	note __, 1
-	notetype $8, $14
+	rest 1
+	note_type 8, 1, 4
 	octave 3
 	note F#, 1
-	note __, 1
+	rest 1
 	note F#, 1
-	note __, 1
+	rest 1
 	note F#, 1
-	note __, 1
-	notetype $c, $14
+	rest 1
+	note_type 12, 1, 4
 	octave 5
 	note G_, 1
-	note __, 3
+	rest 3
 	note E_, 1
-	note __, 3
-	notetype $8, $14
+	rest 3
+	note_type 8, 1, 4
 	note E_, 1
-	note __, 1
+	rest 1
 	note E_, 1
-	note __, 1
+	rest 1
 	note E_, 1
-	note __, 1
+	rest 1
 	note G_, 1
-	note __, 1
+	rest 1
 	note G_, 1
-	note __, 1
+	rest 1
 	note G#, 1
-	note __, 1
-	notetype $c, $14
+	rest 1
+	note_type 12, 1, 4
 	note A_, 1
-	note __, 16
-	note __, 16
-	note __, 16
-	endchannel
-; 1fdda
+	rest 16
+	rest 16
+	rest 16
+	sound_ret
 
-Music_Credits_branch_1fdda: ; 1fdda
+.sub1:
 	note G_, 16
 	octave 6
 	note C#, 1
@@ -1250,25 +1239,25 @@ Music_Credits_branch_1fdda: ; 1fdda
 	note B_, 4
 	octave 6
 	note C_, 4
-	notetype $c, $14
+	note_type 12, 1, 4
 	octave 5
 	note G_, 10
 	note E_, 2
-	note __, 2
+	rest 2
 	note F_, 2
 	note G_, 10
-	notetype $6, $14
+	note_type 6, 1, 4
 	note G#, 1
 	note A_, 7
 	note E_, 4
 	note G_, 12
 	note F_, 8
 	note D_, 4
-	note __, 4
+	rest 4
 	note E_, 4
-	notetype $c, $14
+	note_type 12, 1, 4
 	note F_, 10
-	notetype $6, $14
+	note_type 6, 1, 4
 	note F#, 1
 	note G_, 7
 	note F_, 4
@@ -1277,13 +1266,12 @@ Music_Credits_branch_1fdda: ; 1fdda
 	note E_, 4
 	note B_, 12
 	note A_, 8
-	notetype $c, $14
+	note_type 12, 1, 4
 	note D_, 16
-	endchannel
-; 1fe0b
+	sound_ret
 
-Music_Credits_branch_1fe0b: ; 1fe0b
-	notetype $6, $14
+.sub2:
+	note_type 6, 1, 4
 	note F#, 1
 	note G_, 3
 	octave 4
@@ -1292,15 +1280,14 @@ Music_Credits_branch_1fe0b: ; 1fe0b
 	note D_, 4
 	note G_, 12
 	note G#, 8
-	endchannel
-; 1fe17
+	sound_ret
 
-Music_Credits_branch_1fe17: ; 1fe17
+.sub3:
 	octave 3
 	note F_, 4
-	note __, 2
+	rest 2
 	note F_, 2
-	note __, 2
+	rest 2
 	octave 4
 	note C_, 2
 	octave 3
@@ -1308,9 +1295,9 @@ Music_Credits_branch_1fe17: ; 1fe17
 	note F_, 2
 	octave 4
 	note C_, 2
-	note __, 2
+	rest 2
 	note C_, 2
-	note __, 2
+	rest 2
 	octave 3
 	note A_, 2
 	octave 4
@@ -1318,9 +1305,9 @@ Music_Credits_branch_1fe17: ; 1fe17
 	octave 3
 	note F_, 4
 	note G_, 4
-	note __, 2
+	rest 2
 	note G_, 2
-	note __, 2
+	rest 2
 	octave 4
 	note D_, 2
 	octave 3
@@ -1328,9 +1315,9 @@ Music_Credits_branch_1fe17: ; 1fe17
 	note G_, 2
 	octave 4
 	note D_, 2
-	note __, 2
+	rest 2
 	note D_, 2
-	note __, 2
+	rest 2
 	octave 3
 	note B_, 2
 	octave 4
@@ -1338,23 +1325,23 @@ Music_Credits_branch_1fe17: ; 1fe17
 	octave 3
 	note G_, 4
 	note E_, 4
-	note __, 2
+	rest 2
 	note E_, 2
-	note __, 2
+	rest 2
 	note B_, 2
 	note G_, 2
 	note E_, 2
 	note B_, 2
-	note __, 2
+	rest 2
 	note B_, 2
-	note __, 2
+	rest 2
 	note G_, 2
 	note B_, 2
 	note E_, 4
 	note A_, 4
-	note __, 2
+	rest 2
 	note A_, 2
-	note __, 2
+	rest 2
 	octave 4
 	note E_, 2
 	note C_, 2
@@ -1364,7 +1351,7 @@ Music_Credits_branch_1fe17: ; 1fe17
 	note C_, 2
 	octave 3
 	note G#, 2
-	note __, 2
+	rest 2
 	note G#, 2
 	octave 4
 	note C_, 2
@@ -1372,22 +1359,21 @@ Music_Credits_branch_1fe17: ; 1fe17
 	note C_, 2
 	octave 3
 	note G#, 2
-	endchannel
-; 1fe64
+	sound_ret
 
-Music_Credits_branch_1fe64: ; 1fe64
+.sub4:
 	octave 2
 	note F_, 4
-	note __, 2
+	rest 2
 	note F_, 1
-	note __, 1
+	rest 1
 	note F_, 2
 	octave 3
 	note F_, 2
-	note __, 2
+	rest 2
 	octave 2
 	note F_, 1
-	note __, 1
+	rest 1
 	note F_, 2
 	octave 3
 	note F_, 2
@@ -1398,22 +1384,21 @@ Music_Credits_branch_1fe64: ; 1fe64
 	note C_, 2
 	note E_, 2
 	note F_, 2
-	endchannel
-; 1fe7b
+	sound_ret
 
-Music_Credits_branch_1fe7b: ; 1fe7b
+.sub5:
 	octave 2
 	note F#, 4
-	note __, 2
+	rest 2
 	note F#, 1
-	note __, 1
+	rest 1
 	note F#, 2
 	octave 3
 	note F#, 2
-	note __, 2
+	rest 2
 	octave 2
 	note F#, 1
-	note __, 1
+	rest 1
 	note F#, 2
 	octave 3
 	note F#, 2
@@ -1441,255 +1426,250 @@ Music_Credits_branch_1fe7b: ; 1fe7b
 	note B_, 2
 	note G_, 2
 	note D_, 2
-	endchannel
-; 1fea3
+	sound_ret
 
-Music_Credits_Ch4: ; 1fea3
-	togglenoise $3
-	notetype $c
-	note G#, 1
-	note G_, 1
-	note G_, 1
-	note G_, 1
-	note G_, 1
-	note G_, 1
-	note G_, 1
-	note G_, 1
-	note G_, 1
-	note G_, 1
-	note G_, 1
-	note G_, 1
-	note G_, 1
-	note G_, 1
-	note G_, 1
-	note G_, 1
-	note G#, 1
-	note G_, 1
-	note B_, 2
-	note G#, 1
-	note G_, 1
-	note G#, 1
-	note G_, 1
-	note A#, 4
-	note A#, 4
-	callchannel Music_Credits_branch_1ff7d
-	callchannel Music_Credits_branch_1ff7d
-	callchannel Music_Credits_branch_1ff7d
-	callchannel Music_Credits_branch_1ff9d
-	callchannel Music_Credits_branch_1ff7d
-	callchannel Music_Credits_branch_1ff7d
-	callchannel Music_Credits_branch_1ff7d
-	callchannel Music_Credits_branch_1ff9d
-Music_Credits_branch_1fed8: ; 1fed8
-	note A#, 2
-	note G_, 1
-	note G_, 1
-	note D_, 2
-	note G_, 1
-	note G_, 1
-	note A#, 2
-	note G_, 1
-	note G_, 1
-	note D_, 2
-	note F#, 2
-	loopchannel 7, Music_Credits_branch_1fed8
-	note G#, 1
-	note G_, 1
-	note D_, 1
-	note G_, 1
-	note G_, 1
-	note D_, 1
-	note F#, 2
-	note D_, 1
-	note G_, 1
-	note D_, 1
-	note G_, 1
-	note C#, 1
-	note C#, 1
-	note D_, 1
-	note D_, 1
-Music_Credits_branch_1fef6: ; 1fef6
-	note A#, 2
-	note G_, 1
-	note G_, 1
-	note D_, 2
-	note G_, 1
-	note G_, 1
-	note A#, 2
-	note G_, 1
-	note G_, 1
-	note D_, 2
-	note F#, 2
-	loopchannel 7, Music_Credits_branch_1fef6
-	note G#, 1
-	note G_, 1
-	note F#, 2
-	note G_, 1
-	note G_, 1
-	note G_, 1
-	note G_, 1
-	note A#, 4
-	note C#, 4
-	note G#, 1
-	note G_, 1
-	note B_, 2
-	note G#, 1
-	note G_, 1
-	note B_, 2
-	note A#, 4
-	note A#, 4
-	callchannel Music_Credits_branch_1ff7d
-	callchannel Music_Credits_branch_1ff7d
-	callchannel Music_Credits_branch_1ff7d
-	callchannel Music_Credits_branch_1ff9d
-Music_Credits_branch_1ff22: ; 1ff22
-	note A#, 2
-	note G_, 1
-	note G_, 1
-	note D_, 2
-	note G_, 1
-	note G_, 1
-	note A#, 2
-	note G_, 1
-	note G_, 1
-	note D_, 2
-	note F#, 2
-	loopchannel 7, Music_Credits_branch_1ff22
-	note G#, 1
-	note G_, 1
-	note F#, 2
-	note G_, 1
-	note G_, 1
-	note G_, 1
-	note G_, 7
-	notetype $8
-	note A#, 1
-	note A#, 1
-	note A#, 1
-	notetype $c
-	note B_, 16
-	note __, 16
-	note B_, 15
-	note __, 1
-	note B_, 8
-	note B_, 8
-	note B_, 16
-	note __, 16
-	note B_, 16
-	note B_, 8
-	note B_, 6
-	note D_, 1
-	note D_, 1
-	note B_, 12
-	notetype $8
-	note D_, 2
-	note D_, 2
-	note D_, 2
-	notetype $c
-	note B_, 12
-	notetype $8
-	note D_, 2
-	note D_, 2
-	note D_, 2
-	note B_, 12
-	notetype $c
-	note D_, 1
-	note __, 1
-	note D_, 1
-	note __, 1
-	notetype $8
-	note C#, 2
-	note C#, 2
-	note D_, 2
-	notetype $c
-	note D_, 1
-	note __, 3
-	note D_, 1
-	note __, 3
-	notetype $8
-	note C#, 2
-	note C#, 2
-	note C#, 2
-	note D_, 2
-	note D_, 2
-	note D_, 2
-	notetype $c
-	note D_, 1
-	note __, 7
-	note A#, 8
-	note __, 16
-	note __, 16
-	note __, 16
-	endchannel
-; 1ff7d
+Music_Credits_Ch4:
+	toggle_noise 3
+	drum_speed 12
+	drum_note 9, 1
+	drum_note 8, 1
+	drum_note 8, 1
+	drum_note 8, 1
+	drum_note 8, 1
+	drum_note 8, 1
+	drum_note 8, 1
+	drum_note 8, 1
+	drum_note 8, 1
+	drum_note 8, 1
+	drum_note 8, 1
+	drum_note 8, 1
+	drum_note 8, 1
+	drum_note 8, 1
+	drum_note 8, 1
+	drum_note 8, 1
+	drum_note 9, 1
+	drum_note 8, 1
+	drum_note 12, 2
+	drum_note 9, 1
+	drum_note 8, 1
+	drum_note 9, 1
+	drum_note 8, 1
+	drum_note 11, 4
+	drum_note 11, 4
+	sound_call .sub1
+	sound_call .sub1
+	sound_call .sub1
+	sound_call .sub2
+	sound_call .sub1
+	sound_call .sub1
+	sound_call .sub1
+	sound_call .sub2
+.loop1:
+	drum_note 11, 2
+	drum_note 8, 1
+	drum_note 8, 1
+	drum_note 3, 2
+	drum_note 8, 1
+	drum_note 8, 1
+	drum_note 11, 2
+	drum_note 8, 1
+	drum_note 8, 1
+	drum_note 3, 2
+	drum_note 7, 2
+	sound_loop 7, .loop1
+	drum_note 9, 1
+	drum_note 8, 1
+	drum_note 3, 1
+	drum_note 8, 1
+	drum_note 8, 1
+	drum_note 3, 1
+	drum_note 7, 2
+	drum_note 3, 1
+	drum_note 8, 1
+	drum_note 3, 1
+	drum_note 8, 1
+	drum_note 2, 1
+	drum_note 2, 1
+	drum_note 3, 1
+	drum_note 3, 1
+.loop2:
+	drum_note 11, 2
+	drum_note 8, 1
+	drum_note 8, 1
+	drum_note 3, 2
+	drum_note 8, 1
+	drum_note 8, 1
+	drum_note 11, 2
+	drum_note 8, 1
+	drum_note 8, 1
+	drum_note 3, 2
+	drum_note 7, 2
+	sound_loop 7, .loop2
+	drum_note 9, 1
+	drum_note 8, 1
+	drum_note 7, 2
+	drum_note 8, 1
+	drum_note 8, 1
+	drum_note 8, 1
+	drum_note 8, 1
+	drum_note 11, 4
+	drum_note 2, 4
+	drum_note 9, 1
+	drum_note 8, 1
+	drum_note 12, 2
+	drum_note 9, 1
+	drum_note 8, 1
+	drum_note 12, 2
+	drum_note 11, 4
+	drum_note 11, 4
+	sound_call .sub1
+	sound_call .sub1
+	sound_call .sub1
+	sound_call .sub2
+.loop3:
+	drum_note 11, 2
+	drum_note 8, 1
+	drum_note 8, 1
+	drum_note 3, 2
+	drum_note 8, 1
+	drum_note 8, 1
+	drum_note 11, 2
+	drum_note 8, 1
+	drum_note 8, 1
+	drum_note 3, 2
+	drum_note 7, 2
+	sound_loop 7, .loop3
+	drum_note 9, 1
+	drum_note 8, 1
+	drum_note 7, 2
+	drum_note 8, 1
+	drum_note 8, 1
+	drum_note 8, 1
+	drum_note 8, 7
+	drum_speed 8
+	drum_note 11, 1
+	drum_note 11, 1
+	drum_note 11, 1
+	drum_speed 12
+	drum_note 12, 16
+	rest 16
+	drum_note 12, 15
+	rest 1
+	drum_note 12, 8
+	drum_note 12, 8
+	drum_note 12, 16
+	rest 16
+	drum_note 12, 16
+	drum_note 12, 8
+	drum_note 12, 6
+	drum_note 3, 1
+	drum_note 3, 1
+	drum_note 12, 12
+	drum_speed 8
+	drum_note 3, 2
+	drum_note 3, 2
+	drum_note 3, 2
+	drum_speed 12
+	drum_note 12, 12
+	drum_speed 8
+	drum_note 3, 2
+	drum_note 3, 2
+	drum_note 3, 2
+	drum_note 12, 12
+	drum_speed 12
+	drum_note 3, 1
+	rest 1
+	drum_note 3, 1
+	rest 1
+	drum_speed 8
+	drum_note 2, 2
+	drum_note 2, 2
+	drum_note 3, 2
+	drum_speed 12
+	drum_note 3, 1
+	rest 3
+	drum_note 3, 1
+	rest 3
+	drum_speed 8
+	drum_note 2, 2
+	drum_note 2, 2
+	drum_note 2, 2
+	drum_note 3, 2
+	drum_note 3, 2
+	drum_note 3, 2
+	drum_speed 12
+	drum_note 3, 1
+	rest 7
+	drum_note 11, 8
+	rest 16
+	rest 16
+	rest 16
+	sound_ret
 
-Music_Credits_branch_1ff7d: ; 1ff7d
-	note G#, 1
-	note G_, 1
-	note G_, 1
-	note G_, 1
-	note G_, 1
-	note G_, 1
-	note G_, 1
-	note G_, 1
-	note G_, 1
-	note G_, 1
-	note G_, 1
-	note G_, 1
-	note D_, 1
-	note G_, 1
-	note G_, 1
-	note G_, 1
-	note G#, 1
-	note G_, 1
-	note G_, 1
-	note G_, 1
-	note G_, 1
-	note G_, 1
-	note G_, 1
-	note G_, 1
-	note G_, 1
-	note G_, 1
-	note G_, 1
-	note G_, 1
-	note D_, 1
-	note G_, 1
-	note F#, 2
-	endchannel
-; 1ff9d
+.sub1:
+	drum_note 9, 1
+	drum_note 8, 1
+	drum_note 8, 1
+	drum_note 8, 1
+	drum_note 8, 1
+	drum_note 8, 1
+	drum_note 8, 1
+	drum_note 8, 1
+	drum_note 8, 1
+	drum_note 8, 1
+	drum_note 8, 1
+	drum_note 8, 1
+	drum_note 3, 1
+	drum_note 8, 1
+	drum_note 8, 1
+	drum_note 8, 1
+	drum_note 9, 1
+	drum_note 8, 1
+	drum_note 8, 1
+	drum_note 8, 1
+	drum_note 8, 1
+	drum_note 8, 1
+	drum_note 8, 1
+	drum_note 8, 1
+	drum_note 8, 1
+	drum_note 8, 1
+	drum_note 8, 1
+	drum_note 8, 1
+	drum_note 3, 1
+	drum_note 8, 1
+	drum_note 7, 2
+	sound_ret
 
-Music_Credits_branch_1ff9d: ; 1ff9d
-	note G#, 1
-	note G_, 1
-	note G_, 1
-	note G_, 1
-	note G_, 1
-	note G_, 1
-	note G_, 1
-	note G_, 1
-	note G_, 1
-	note G_, 1
-	note G_, 1
-	note G_, 1
-	note D_, 1
-	note G_, 1
-	note D_, 1
-	note G_, 1
-	note G#, 1
-	note G_, 1
-	note D_, 1
-	note G_, 1
-	note G#, 1
-	note D_, 1
-	note F#, 2
-	note D_, 1
-	note G_, 1
-	note D_, 1
-	note G_, 1
-	note D_, 1
-	note D_, 1
-	note A#, 1
-	note D_, 1
-	endchannel
-; 1ffbd
-
+.sub2:
+	drum_note 9, 1
+	drum_note 8, 1
+	drum_note 8, 1
+	drum_note 8, 1
+	drum_note 8, 1
+	drum_note 8, 1
+	drum_note 8, 1
+	drum_note 8, 1
+	drum_note 8, 1
+	drum_note 8, 1
+	drum_note 8, 1
+	drum_note 8, 1
+	drum_note 3, 1
+	drum_note 8, 1
+	drum_note 3, 1
+	drum_note 8, 1
+	drum_note 9, 1
+	drum_note 8, 1
+	drum_note 3, 1
+	drum_note 8, 1
+	drum_note 9, 1
+	drum_note 3, 1
+	drum_note 7, 2
+	drum_note 3, 1
+	drum_note 8, 1
+	drum_note 3, 1
+	drum_note 8, 1
+	drum_note 3, 1
+	drum_note 3, 1
+	drum_note 11, 1
+	drum_note 3, 1
+	sound_ret

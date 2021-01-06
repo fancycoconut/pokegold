@@ -1,4 +1,4 @@
-	const_def 2 ; object constants
+	object_const_def
 	const ROUTE31_FISHER
 	const ROUTE31_YOUNGSTER
 	const ROUTE31_BUG_CATCHER
@@ -8,19 +8,19 @@
 	const ROUTE31_POKE_BALL2
 
 Route31_MapScripts:
-	db 0 ; scene scripts
+	def_scene_scripts
 
-	db 1 ; callbacks
+	def_callbacks
 	callback MAPCALLBACK_NEWMAP, .CheckMomCall
 
 .CheckMomCall:
 	checkevent EVENT_TALKED_TO_MOM_AFTER_MYSTERY_EGG_QUEST
 	iffalse .DoMomCall
-	return
+	endcallback
 
 .DoMomCall:
 	specialphonecall SPECIALCALL_WORRIED
-	return
+	endcallback
 
 TrainerBugCatcherWade1:
 	trainer BUG_CATCHER, WADE1, EVENT_BEAT_BUG_CATCHER_WADE, BugCatcherWade1SeenText, BugCatcherWade1BeatenText, 0, .Script
@@ -38,7 +38,7 @@ TrainerBugCatcherWade1:
 	waitbutton
 	setevent EVENT_WADE_ASKED_FOR_PHONE_NUMBER
 	scall .AskPhoneNumberSTD
-	jump .Continue
+	sjump .Continue
 
 .AskAgain:
 	scall .AskAgainSTD
@@ -46,9 +46,9 @@ TrainerBugCatcherWade1:
 	askforphonenumber PHONE_BUG_CATCHER_WADE
 	ifequal PHONE_CONTACTS_FULL, .PhoneFullSTD
 	ifequal PHONE_CONTACT_REFUSED, .DeclinedNumberSTD
-	trainertotext BUG_CATCHER, WADE1, MEM_BUFFER_0
+	gettrainername STRING_BUFFER_3, BUG_CATCHER, WADE1
 	scall .RegisterNumberSTD
-	jump .AcceptedNumberSTD
+	sjump .AcceptedNumberSTD
 
 .WadeRematch:
 	scall .RematchSTD
@@ -78,31 +78,31 @@ TrainerBugCatcherWade1:
 	end
 
 .AskPhoneNumberSTD:
-	jumpstd asknumber1m
+	jumpstd AskNumber1MScript
 	end
 
 .AskAgainSTD:
-	jumpstd asknumber2m
+	jumpstd AskNumber2MScript
 	end
 
 .RegisterNumberSTD:
-	jumpstd registerednumberm
+	jumpstd RegisteredNumberMScript
 	end
 
 .AcceptedNumberSTD:
-	jumpstd numberacceptedm
+	jumpstd NumberAcceptedMScript
 	end
 
 .DeclinedNumberSTD:
-	jumpstd numberdeclinedm
+	jumpstd NumberDeclinedMScript
 	end
 
 .PhoneFullSTD:
-	jumpstd phonefullm
+	jumpstd PhoneFullMScript
 	end
 
 .RematchSTD:
-	jumpstd rematchm
+	jumpstd RematchMScript
 	end
 
 
@@ -120,7 +120,7 @@ Route31MailRecipientScript:
 
 .TryGiveKenya:
 	writetext Text_Route31SleepyManGotMail
-	buttonsound
+	promptbutton
 	checkpokemail ReceivedSpearowMailText
 	ifequal POKEMAIL_WRONG_MAIL, .WrongMail
 	ifequal POKEMAIL_REFUSED, .Refused
@@ -128,9 +128,9 @@ Route31MailRecipientScript:
 	ifequal POKEMAIL_LAST_MON, .LastMon
 	; POKEMAIL_CORRECT
 	writetext Text_Route31HandOverMailMon
-	buttonsound
+	promptbutton
 	writetext Text_Route31ReadingMail
-	buttonsound
+	promptbutton
 	setevent EVENT_GAVE_KENYA
 	verbosegiveitem TM_NIGHTMARE
 	iffalse .NoRoomForItems
@@ -344,18 +344,18 @@ DarkCaveSignText:
 Route31_MapEvents:
 	db 0, 0 ; filler
 
-	db 3 ; warp events
+	def_warp_events
 	warp_event  4,  6, ROUTE_31_VIOLET_GATE, 3
 	warp_event  4,  7, ROUTE_31_VIOLET_GATE, 4
 	warp_event 34,  5, DARK_CAVE_VIOLET_ENTRANCE, 1
 
-	db 0 ; coord events
+	def_coord_events
 
-	db 2 ; bg events
+	def_bg_events
 	bg_event  7,  5, BGEVENT_READ, Route31Sign
 	bg_event 31,  5, BGEVENT_READ, DarkCaveSign
 
-	db 7 ; object events
+	def_object_events
 	object_event 17,  7, SPRITE_FISHER, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, Route31MailRecipientScript, -1
 	object_event  9,  5, SPRITE_YOUNGSTER, SPRITEMOVEDATA_WANDER, 1, 1, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, Route31YoungsterScript, -1
 	object_event 18, 15, SPRITE_BUG_CATCHER, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, PAL_NPC_BROWN, OBJECTTYPE_TRAINER, 3, TrainerBugCatcherWade1, -1

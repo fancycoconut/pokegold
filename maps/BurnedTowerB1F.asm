@@ -1,4 +1,4 @@
-	const_def 2 ; object constants
+	object_const_def
 	const BURNEDTOWERB1F_BOULDER
 	const BURNEDTOWERB1F_RAIKOU1
 	const BURNEDTOWERB1F_ENTEI1
@@ -6,15 +6,15 @@
 	const BURNEDTOWERB1F_RAIKOU2
 	const BURNEDTOWERB1F_ENTEI2
 	const BURNEDTOWERB1F_SUICUNE2
-	const BURNEDTOWERB1F_POKE_BALL
-	const BURNEDTOWERB1F_EUSINE
+	const BURNEDTOWERB1F_POKE_BALL1
+	const BURNEDTOWERB1F_POKE_BALL2
 
 BurnedTowerB1F_MapScripts:
-	db 2 ; scene scripts
+	def_scene_scripts
 	scene_script .DummyScene0 ; SCENE_DEFAULT
 	scene_script .DummyScene1 ; SCENE_FINISHED
 
-	db 0 ; callbacks
+	def_callbacks
 
 .DummyScene0:
 	end
@@ -65,8 +65,9 @@ ReleaseTheBeasts:
 	special InitRoamMons
 	end
 
+UnusedEnteiScript: ; unreferenced
 	opentext
-	writetext BurnedTowerB1FEusineText
+	writetext UnusedEnteiText
 	cry ENTEI
 	waitbutton
 	closetext
@@ -87,7 +88,7 @@ BurnedTowerB1FHPUp:
 BurnedTowerB1FTMEndure:
 	itemball TM_ENDURE
 BurnedTowerB1FBoulder:
-	jumpstd strengthboulder
+	jumpstd StrengthBoulderScript
 
 BurnedTowerB1FHiddenUltraBall:
 	hiddenitem ULTRA_BALL, EVENT_BURNED_TOWER_B1F_HIDDEN_ULTRA_BALL
@@ -120,14 +121,14 @@ BurnedTowerSuicuneMovement:
 	remove_sliding
 	step_end
 
-BurnedTowerB1FEusineText:
+UnusedEnteiText:
 	text "ENTEI: Bufuu!"
 	done
 
 BurnedTowerB1F_MapEvents:
 	db 0, 0 ; filler
 
-	db 6 ; warp events
+	def_warp_events
 	warp_event  3,  3, BURNED_TOWER_1F, 3
 	warp_event 17,  7, BURNED_TOWER_1F, 7
 	warp_event 10,  8, BURNED_TOWER_1F, 9
@@ -135,15 +136,15 @@ BurnedTowerB1F_MapEvents:
 	warp_event 17, 14, BURNED_TOWER_1F, 12
 	warp_event  7, 15, BURNED_TOWER_1F, 14
 
-	db 1 ; coord events
+	def_coord_events
 	coord_event  9,  5, SCENE_DEFAULT, ReleaseTheBeasts
 
-	db 3 ; bg events
+	def_bg_events
 	bg_event  2, 13, BGEVENT_ITEM, BurnedTowerB1FHiddenUltraBall
 	bg_event 17, 14, BGEVENT_ITEM, BurnedTowerB1FHiddenBurnHeal
 	bg_event  8,  3, BGEVENT_ITEM, BurnedTowerB1FHiddenNugget
 
-	db 9 ; object events
+	def_object_events
 	object_event 17,  4, SPRITE_BOULDER, SPRITEMOVEDATA_STRENGTH_BOULDER, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, BurnedTowerB1FBoulder, -1
 	object_event 10,  3, SPRITE_GROWLITHE, SPRITEMOVEDATA_POKEMON, 0, 0, -1, -1, PAL_NPC_BROWN, OBJECTTYPE_SCRIPT, 0, ObjectEvent, EVENT_BURNED_TOWER_B1F_BEASTS_1
 	object_event  8,  4, SPRITE_GROWLITHE, SPRITEMOVEDATA_POKEMON, 0, 0, -1, -1, PAL_NPC_RED, OBJECTTYPE_SCRIPT, 0, ObjectEvent, EVENT_BURNED_TOWER_B1F_BEASTS_1

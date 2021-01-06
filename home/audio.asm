@@ -1,76 +1,93 @@
-DisableAudio:: ; 3d4f (0:3d4f)
+; Audio interfaces.
+
+InitSound::
 	push hl
 	push de
 	push bc
 	push af
-	ld a, [hROMBank]
+
+	ldh a, [hROMBank]
 	push af
-	ld a, BANK(DisableAudio_)
-	ld [hROMBank], a
+	ld a, BANK(_InitSound)
+	ldh [hROMBank], a
 	ld [MBC3RomBank], a
-	call DisableAudio_
+
+	call _InitSound
+
 	pop af
-	ld [hROMBank], a
+	ldh [hROMBank], a
 	ld [MBC3RomBank], a
+
 	pop af
 	pop bc
 	pop de
 	pop hl
 	ret
 
-UpdateSound:: ; 3d6b (0:3d6b)
+UpdateSound::
 	push hl
 	push de
 	push bc
 	push af
-	ld a, [hROMBank]
+
+	ldh a, [hROMBank]
 	push af
-	ld a, BANK(UpdateSound_)
-	ld [hROMBank], a
+	ld a, BANK(_UpdateSound)
+	ldh [hROMBank], a
 	ld [MBC3RomBank], a
-	call UpdateSound_
+
+	call _UpdateSound
+
 	pop af
-	ld [hROMBank], a
+	ldh [hROMBank], a
 	ld [MBC3RomBank], a
+
 	pop af
 	pop bc
 	pop de
 	pop hl
 	ret
 
-LoadMusicByte_::
-	ld [hROMBank], a
+_LoadMusicByte::
+; [wCurMusicByte] = [a:de]
+	ldh [hROMBank], a
 	ld [MBC3RomBank], a
 
 	ld a, [de]
 	ld [wCurMusicByte], a
-	ld a, BANK(UpdateSound_)
+	ld a, BANK(LoadMusicByte)
 
-	ld [hROMBank], a
+	ldh [hROMBank], a
 	ld [MBC3RomBank], a
 	ret
 
-PlayMusic:: ; 3d98 (0:3d98)
+PlayMusic::
+; Play music de.
+
 	push hl
 	push de
 	push bc
 	push af
-	ld a, [hROMBank]
+
+	ldh a, [hROMBank]
 	push af
-	ld a, BANK(PlayMusic_)
-	ld [hROMBank], a
+	ld a, BANK(_PlayMusic) ; aka BANK(_InitSound)
+	ldh [hROMBank], a
 	ld [MBC3RomBank], a
+
 	ld a, e
 	and a
-	jr z, .asm_3daf
-	call PlayMusic_ ; $4b30
-	jr .asm_3db2
+	jr z, .nomusic
 
-.asm_3daf
-	call DisableAudio_
-.asm_3db2
+	call _PlayMusic
+	jr .end
+
+.nomusic
+	call _InitSound
+
+.end
 	pop af
-	ld [hROMBank], a
+	ldh [hROMBank], a
 	ld [MBC3RomBank], a
 	pop af
 	pop bc
@@ -79,51 +96,62 @@ PlayMusic:: ; 3d98 (0:3d98)
 	ret
 
 PlayMusic2::
+; Stop playing music, then play music de.
+
 	push hl
 	push de
 	push bc
 	push af
-	ld a, [hROMBank]
+
+	ldh a, [hROMBank]
 	push af
-	ld a, BANK(PlayMusic_)
-	ld [hROMBank], a
+	ld a, BANK(_PlayMusic)
+	ldh [hROMBank], a
 	ld [MBC3RomBank], a
+
 	push de
 	ld de, MUSIC_NONE
-	call PlayMusic_
+	call _PlayMusic
 	call DelayFrame
 	pop de
-	call PlayMusic_
+	call _PlayMusic
+
 	pop af
-	ld [hROMBank], a
+	ldh [hROMBank], a
 	ld [MBC3RomBank], a
+
 	pop af
 	pop bc
 	pop de
 	pop hl
 	ret
 
-PlayCryHeader:: ; 3de4 (0:3de4)
+PlayCry::
+; Play cry de.
+
 	push hl
 	push de
 	push bc
 	push af
-	ld a, [hROMBank]
+
+	ldh a, [hROMBank]
 	push af
-	ld a, BANK(CryHeaders) ; $3c
-	ld [hROMBank], a
+
+	; Cries are stuck in one bank.
+	ld a, BANK(PokemonCries)
+	ldh [hROMBank], a
 	ld [MBC3RomBank], a
-	ld hl, CryHeaders ; $6747
+
+	ld hl, PokemonCries
+rept 6 ; sizeof(mon_cry)
 	add hl, de
-	add hl, de
-	add hl, de
-	add hl, de
-	add hl, de
-	add hl, de
+endr
+
 	ld e, [hl]
 	inc hl
 	ld d, [hl]
 	inc hl
+
 	ld a, [hli]
 	ld [wCryPitch], a
 	ld a, [hli]
@@ -132,42 +160,57 @@ PlayCryHeader:: ; 3de4 (0:3de4)
 	ld [wCryLength], a
 	ld a, [hl]
 	ld [wCryLength + 1], a
-	ld a, BANK(PlayCryHeader_)
-	ld [hROMBank], a
+
+	ld a, BANK(_PlayCry)
+	ldh [hROMBank], a
 	ld [MBC3RomBank], a
-	call PlayCryHeader_
+
+	call _PlayCry
+
 	pop af
-	ld [hROMBank], a
+	ldh [hROMBank], a
 	ld [MBC3RomBank], a
+
 	pop af
 	pop bc
 	pop de
 	pop hl
 	ret
 
-PlaySFX:: ; 3e24 (0:3e24)
+PlaySFX::
+; Play sound effect de.
+; Sound effects are ordered by priority (highest to lowest)
+
 	push hl
 	push de
 	push bc
 	push af
+
+	; Is something already playing?
 	call CheckSFX
-	jr nc, .asm_3e33
+	jr nc, .play
+
+	; Does it have priority?
 	ld a, [wCurSFX]
 	cp e
-	jr c, .asm_3e4a
-.asm_3e33
-	ld a, [hROMBank]
+	jr c, .done
+
+.play
+	ldh a, [hROMBank]
 	push af
-	ld a, BANK(PlaySFX_) ; $3a
-	ld [hROMBank], a
+	ld a, BANK(_PlaySFX)
+	ldh [hROMBank], a
 	ld [MBC3RomBank], a
+
 	ld a, e
 	ld [wCurSFX], a
-	call PlaySFX_ ; $4c04
+	call _PlaySFX
+
 	pop af
-	ld [hROMBank], a
+	ldh [hROMBank], a
 	ld [MBC3RomBank], a
-.asm_3e4a
+
+.done
 	pop af
 	pop bc
 	pop de
@@ -179,74 +222,83 @@ WaitPlaySFX::
 	call PlaySFX
 	ret
 
-WaitSFX:: ; 3e56 (0:3e56)
+WaitSFX::
+; infinite loop until sfx is done playing
+
 	push hl
-.asm_3e57
-	ld hl, wChannel5Flags
+
+.wait
+	ld hl, wChannel5Flags1
 	bit 0, [hl]
-	jr nz, .asm_3e57
-	ld hl, wChannel6Flags
+	jr nz, .wait
+	ld hl, wChannel6Flags1
 	bit 0, [hl]
-	jr nz, .asm_3e57
-	ld hl, wChannel7Flags
+	jr nz, .wait
+	ld hl, wChannel7Flags1
 	bit 0, [hl]
-	jr nz, .asm_3e57
-	ld hl, wChannel8Flags
+	jr nz, .wait
+	ld hl, wChannel8Flags1
 	bit 0, [hl]
-	jr nz, .asm_3e57
+	jr nz, .wait
+
 	pop hl
 	ret
 
 MaxVolume::
-	ld a, $77
+	ld a, MAX_VOLUME
 	ld [wVolume], a
 	ret
 
 LowVolume::
-	ld a, $33
+	ld a, $33 ; 50%
 	ld [wVolume], a
 	ret
 
-VolumeOff::
+MinVolume::
 	xor a
 	ld [wVolume], a
 	ret
 
-FadeOutMusic::
-	ld a, $4
+FadeOutToMusic:: ; unreferenced
+	ld a, 4
 	ld [wMusicFade], a
 	ret
 
-FadeInMusic::
-	ld a, 4 | 1 << 7
+FadeInToMusic::
+	ld a, 4 | (1 << MUSIC_FADE_IN_F)
 	ld [wMusicFade], a
 	ret
 
-Function3e92:: ; 3e92 (0:3e92)
+SkipMusic::
+; Skip a frames of music.
+.loop
 	and a
 	ret z
 	dec a
 	call UpdateSound
-	jr Function3e92
+	jr .loop
 
 FadeToMapMusic::
 	push hl
 	push de
 	push bc
 	push af
-	call GetMapMusic
+
+	call GetMapMusic_MaybeSpecial
 	ld a, [wMapMusic]
 	cp e
-	jr z, .asm_3eb8
-	ld a, $8
+	jr z, .done
+
+	ld a, 8
 	ld [wMusicFade], a
 	ld a, e
 	ld [wMusicFadeID], a
 	ld a, d
 	ld [wMusicFadeID + 1], a
 	ld a, e
-	ld [wChannelsEnd], a
-.asm_3eb8
+	ld [wMapMusic], a
+
+.done
 	pop af
 	pop bc
 	pop de
@@ -258,10 +310,12 @@ PlayMapMusic::
 	push de
 	push bc
 	push af
-	call GetMapMusic
+
+	call GetMapMusic_MaybeSpecial
 	ld a, [wMapMusic]
 	cp e
-	jr z, .asm_3edc
+	jr z, .done
+
 	push de
 	ld de, MUSIC_NONE
 	call PlayMusic
@@ -270,34 +324,39 @@ PlayMapMusic::
 	ld a, e
 	ld [wMapMusic], a
 	call PlayMusic
-.asm_3edc
+
+.done
 	pop af
 	pop bc
 	pop de
 	pop hl
 	ret
 
-EnterMapMusic::
+PlayMapMusicBike::
+; If the player's on a bike, play the bike music instead of the map music
 	push hl
 	push de
 	push bc
 	push af
+
 	xor a
 	ld [wDontPlayMapMusicOnReload], a
 	ld de, MUSIC_BICYCLE
-	ld a, [wPlayerBikeSurfState]
-	cp $1
-	jr z, .asm_3ef6
-	call GetMapMusic
-.asm_3ef6
+	ld a, [wPlayerState]
+	cp PLAYER_BIKE
+	jr z, .play
+	call GetMapMusic_MaybeSpecial
+.play
 	push de
 	ld de, MUSIC_NONE
 	call PlayMusic
 	call DelayFrame
 	pop de
+
 	ld a, e
-	ld [wChannelsEnd], a
+	ld [wMapMusic], a
 	call PlayMusic
+
 	pop af
 	pop bc
 	pop de
@@ -309,7 +368,7 @@ TryRestartMapMusic::
 	and a
 	jr z, RestartMapMusic
 	xor a
-	ld [wChannelsEnd], a
+	ld [wMapMusic], a
 	ld de, MUSIC_NONE
 	call PlayMusic
 	call DelayFrame
@@ -325,9 +384,9 @@ RestartMapMusic::
 	ld de, MUSIC_NONE
 	call PlayMusic
 	call DelayFrame
-	ld a, [wChannelsEnd]
+	ld a, [wMapMusic]
 	ld e, a
-	ld d, $0
+	ld d, 0
 	call PlayMusic
 	pop af
 	pop bc
@@ -335,19 +394,22 @@ RestartMapMusic::
 	pop hl
 	ret
 
-SpecialMapMusic:: ; 3f40 (0:3f40)
-	ld a, [wPlayerBikeSurfState]
+SpecialMapMusic::
+	ld a, [wPlayerState]
 	cp PLAYER_SURF
 	jr z, .surf
 	cp PLAYER_SURF_PIKA
 	jr z, .surf
-	CheckFlag ENGINE_BUG_CONTEST_TIMER
+
+	ld a, [wStatusFlags2]
+	bit STATUSFLAGS2_BUG_CONTEST_TIMER_F, a
 	jr nz, .contest
-.normal
+
+.no
 	and a
 	ret
 
-.bike
+.bike ; unreferenced
 	ld de, MUSIC_BICYCLE
 	scf
 	ret
@@ -360,83 +422,85 @@ SpecialMapMusic:: ; 3f40 (0:3f40)
 .contest
 	ld a, [wMapGroup]
 	cp GROUP_ROUTE_35_NATIONAL_PARK_GATE
-	jr nz, .normal
+	jr nz, .no
 	ld a, [wMapNumber]
 	cp MAP_ROUTE_35_NATIONAL_PARK_GATE
 	jr z, .ranking
 	cp MAP_ROUTE_36_NATIONAL_PARK_GATE
-	jr nz, .normal
+	jr nz, .no
+
 .ranking
 	ld de, MUSIC_BUG_CATCHING_CONTEST_RANKING
 	scf
 	ret
 
-GetMapMusic:: ; 3f75 (0:3f75)
+GetMapMusic_MaybeSpecial::
 	call SpecialMapMusic
 	ret c
-	call GetMapHeaderMusic
+	call GetMapMusic
 	ret
 
-Function3f7d::
-	ld a, $20
-	ld [$c398], a
-	ld [$c39c], a
-	ld a, $50
-	ld [$c399], a
-	ld a, $58
-	ld [$c39d], a
+PlaceBCDNumberSprite:: ; unreferenced
+; Places a BCD number at the upper center of the screen.
+	ld a, 4 * TILE_WIDTH
+	ld [wVirtualOAMSprite38YCoord], a
+	ld [wVirtualOAMSprite39YCoord], a
+	ld a, 10 * TILE_WIDTH
+	ld [wVirtualOAMSprite38XCoord], a
+	ld a, 11 * TILE_WIDTH
+	ld [wVirtualOAMSprite39XCoord], a
 	xor a
-	ld [$c39b], a
-	ld [$c39f], a
-	ld a, [wc196]
-	cp $64
-	jr nc, .asm_3fb3
-	add $1
+	ld [wVirtualOAMSprite38Attributes], a
+	ld [wVirtualOAMSprite39Attributes], a
+	ld a, [wUnusedBCDNumber]
+	cp 100
+	jr nc, .max
+	add 1
 	daa
 	ld b, a
 	swap a
 	and $f
-	add $f6
-	ld [$c39a], a
+	add "0"
+	ld [wVirtualOAMSprite38TileID], a
 	ld a, b
 	and $f
-	add $f6
-	ld [$c39e], a
+	add "0"
+	ld [wVirtualOAMSprite39TileID], a
 	ret
 
-.asm_3fb3
-	ld a, $ff
-	ld [$c39a], a
-	ld [$c39e], a
+.max
+	ld a, "9"
+	ld [wVirtualOAMSprite38TileID], a
+	ld [wVirtualOAMSprite39TileID], a
 	ret
 
-CheckSFX:: ; 3fbc (0:3fbc)
-	ld a, [wChannel5Flags]
+CheckSFX::
+; Return carry if any SFX channels are active.
+	ld a, [wChannel5Flags1]
 	bit 0, a
-	jr nz, .asm_3fda
-	ld a, [wChannel6Flags]
+	jr nz, .playing
+	ld a, [wChannel6Flags1]
 	bit 0, a
-	jr nz, .asm_3fda
-	ld a, [wChannel7Flags]
+	jr nz, .playing
+	ld a, [wChannel7Flags1]
 	bit 0, a
-	jr nz, .asm_3fda
-	ld a, [wChannel8Flags]
+	jr nz, .playing
+	ld a, [wChannel8Flags1]
 	bit 0, a
-	jr nz, .asm_3fda
+	jr nz, .playing
 	and a
 	ret
-
-.asm_3fda
+.playing
 	scf
 	ret
 
 TerminateExpBarSound::
 	xor a
-	ld [wChannel5Flags], a
-	ld [wSoundInput], a
-	ld [rNR10], a
-	ld [rNR11], a
-	ld [rNR12], a
-	ld [rNR13], a
-	ld [rNR14], a
+	ld [wChannel5Flags1], a
+	ld [wPitchSweep], a
+	ldh [rNR10], a
+	ldh [rNR11], a
+	ldh [rNR12], a
+	ldh [rNR13], a
+	ldh [rNR14], a
 	ret

@@ -1,4 +1,4 @@
-	const_def 2 ; object constants
+	object_const_def
 	const UNIONCAVE1F_POKEFAN_M1
 	const UNIONCAVE1F_SUPER_NERD
 	const UNIONCAVE1F_POKEFAN_M2
@@ -10,9 +10,9 @@
 	const UNIONCAVE1F_POKE_BALL4
 
 UnionCave1F_MapScripts:
-	db 0 ; scene scripts
+	def_scene_scripts
 
-	db 0 ; callbacks
+	def_callbacks
 
 TrainerPokemaniacLarry:
 	trainer POKEMANIAC, LARRY, EVENT_BEAT_POKEMANIAC_LARRY, PokemaniacLarrySeenText, PokemaniacLarryBeatenText, 0, .Script
@@ -72,17 +72,16 @@ TrainerFirebreatherRay:
 UnionCave1FGreatBall:
 	itemball GREAT_BALL
 
-UnionCave1FXAttack:
+UnionCave1FPotion:
 	itemball POTION
 
-UnionCave1FPotion:
+UnionCave1FXAttack:
 	itemball X_ATTACK
 
 UnionCave1FAwakening:
 	itemball AWAKENING
 
-UnionCave1FUnusedSign:
-; unused
+UnionCave1FUnusedSign: ; unreferenced
 	jumptext UnionCave1FUnusedSignText
 
 HikerRussellSeenText:
@@ -201,23 +200,23 @@ UnionCave1FUnusedSignText:
 UnionCave1F_MapEvents:
 	db 0, 0 ; filler
 
-	db 4 ; warp events
+	def_warp_events
 	warp_event  5, 19, UNION_CAVE_B1F, 3
 	warp_event  3, 33, UNION_CAVE_B1F, 4
 	warp_event 17, 31, ROUTE_33, 1
 	warp_event 17,  3, ROUTE_32, 4
 
-	db 0 ; coord events
+	def_coord_events
 
-	db 0 ; bg events
+	def_bg_events
 
-	db 9 ; object events
+	def_object_events
 	object_event  4,  4, SPRITE_POKEFAN_M, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, PAL_NPC_BROWN, OBJECTTYPE_TRAINER, 1, TrainerHikerDaniel, -1
 	object_event  4, 21, SPRITE_SUPER_NERD, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_BLUE, OBJECTTYPE_TRAINER, 2, TrainerPokemaniacLarry, -1
 	object_event 15,  8, SPRITE_POKEFAN_M, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, PAL_NPC_BROWN, OBJECTTYPE_TRAINER, 3, TrainerHikerRussell, -1
 	object_event 16, 31, SPRITE_FISHER, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, PAL_NPC_RED, OBJECTTYPE_TRAINER, 4, TrainerFirebreatherRay, -1
 	object_event 15, 15, SPRITE_FISHER, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, PAL_NPC_RED, OBJECTTYPE_TRAINER, 2, TrainerFirebreatherBill, -1
 	object_event 17, 21, SPRITE_POKE_BALL, SPRITEMOVEDATA_STILL, 0, 0, -1, -1, 0, OBJECTTYPE_ITEMBALL, 0, UnionCave1FGreatBall, EVENT_UNION_CAVE_1F_GREAT_BALL
-	object_event  4,  2, SPRITE_POKE_BALL, SPRITEMOVEDATA_STILL, 0, 0, -1, -1, 0, OBJECTTYPE_ITEMBALL, 0, UnionCave1FXAttack, EVENT_UNION_CAVE_1F_X_ATTACK
-	object_event  4, 17, SPRITE_POKE_BALL, SPRITEMOVEDATA_STILL, 0, 0, -1, -1, 0, OBJECTTYPE_ITEMBALL, 0, UnionCave1FPotion, EVENT_UNION_CAVE_1F_POTION
+	object_event  4,  2, SPRITE_POKE_BALL, SPRITEMOVEDATA_STILL, 0, 0, -1, -1, 0, OBJECTTYPE_ITEMBALL, 0, UnionCave1FPotion, EVENT_UNION_CAVE_1F_POTION
+	object_event  4, 17, SPRITE_POKE_BALL, SPRITEMOVEDATA_STILL, 0, 0, -1, -1, 0, OBJECTTYPE_ITEMBALL, 0, UnionCave1FXAttack, EVENT_UNION_CAVE_1F_X_ATTACK
 	object_event 12, 33, SPRITE_POKE_BALL, SPRITEMOVEDATA_STILL, 0, 0, -1, -1, 0, OBJECTTYPE_ITEMBALL, 0, UnionCave1FAwakening, EVENT_UNION_CAVE_1F_AWAKENING

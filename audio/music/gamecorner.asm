@@ -1,61 +1,61 @@
-Music_GameCorner: ; edd6d
-	dbw $c0, Music_GameCorner_Ch1
-	dbw $01, Music_GameCorner_Ch2
-	dbw $02, Music_GameCorner_Ch3
-	dbw $03, Music_GameCorner_Ch4
-; edd79
+Music_GameCorner:
+	channel_count 4
+	channel 1, Music_GameCorner_Ch1
+	channel 2, Music_GameCorner_Ch2
+	channel 3, Music_GameCorner_Ch3
+	channel 4, Music_GameCorner_Ch4
 
-Music_GameCorner_Ch1: ; edd79
+Music_GameCorner_Ch1:
 	tempo 147
-	volume $77
-	stereopanning $f
-	notetype $c, $91
-	note __, 8
-Music_GameCorner_branch_edd84: ; edd84
-	intensity $91
-	note __, 16
-	note __, 16
-	note __, 16
-	note __, 16
-	callchannel Music_GameCorner_branch_ede03
-	callchannel Music_GameCorner_branch_ede03
-	callchannel Music_GameCorner_branch_ede03
-	callchannel Music_GameCorner_branch_ede13
-	note __, 16
-	note __, 16
-	note __, 16
-	note __, 16
-	note __, 16
-	callchannel Music_GameCorner_branch_ede03
-	callchannel Music_GameCorner_branch_ede03
-	callchannel Music_GameCorner_branch_ede03
-	callchannel Music_GameCorner_branch_ede13
+	volume 7, 7
+	stereo_panning FALSE, TRUE
+	note_type 12, 9, 1
+	rest 8
+.mainloop:
+	volume_envelope 9, 1
+	rest 16
+	rest 16
+	rest 16
+	rest 16
+	sound_call .sub1
+	sound_call .sub1
+	sound_call .sub1
+	sound_call .sub2
+	rest 16
+	rest 16
+	rest 16
+	rest 16
+	rest 16
+	sound_call .sub1
+	sound_call .sub1
+	sound_call .sub1
+	sound_call .sub2
 	octave 3
-	note __, 2
+	rest 2
 	note G#, 3
 	note G#, 3
 	note A#, 2
 	note A#, 2
 	note G#, 2
 	note G_, 2
-	intensity $71
-Music_GameCorner_branch_eddb1: ; eddb1
+	volume_envelope 7, 1
+.loop1:
 	octave 4
 	note G#, 1
 	octave 5
 	note C_, 1
 	note F_, 1
 	note C_, 1
-	loopchannel 4, Music_GameCorner_branch_eddb1
-Music_GameCorner_branch_eddbb: ; eddbb
+	sound_loop 4, .loop1
+.loop2:
 	octave 4
 	note A#, 1
 	octave 5
 	note D_, 1
 	note G_, 1
 	note D_, 1
-	loopchannel 4, Music_GameCorner_branch_eddbb
-Music_GameCorner_branch_eddc5: ; eddc5
+	sound_loop 4, .loop2
+.loop3:
 	octave 4
 	note D#, 1
 	note G_, 1
@@ -63,8 +63,8 @@ Music_GameCorner_branch_eddc5: ; eddc5
 	note C_, 1
 	octave 4
 	note G_, 1
-	loopchannel 4, Music_GameCorner_branch_eddc5
-Music_GameCorner_branch_eddd0: ; eddd0
+	sound_loop 4, .loop3
+.loop4:
 	octave 4
 	note F_, 1
 	note A_, 1
@@ -72,42 +72,41 @@ Music_GameCorner_branch_eddd0: ; eddd0
 	note C_, 1
 	octave 4
 	note A_, 1
-	loopchannel 4, Music_GameCorner_branch_eddd0
-Music_GameCorner_branch_edddb: ; edddb
+	sound_loop 4, .loop4
+.loop5:
 	octave 4
 	note G#, 1
 	octave 5
 	note C_, 1
 	note F_, 1
 	note C_, 1
-	loopchannel 4, Music_GameCorner_branch_edddb
-Music_GameCorner_branch_edde5: ; edde5
+	sound_loop 4, .loop5
+.loop6:
 	octave 4
 	note A#, 1
 	octave 5
 	note D_, 1
 	note G_, 1
 	note D_, 1
-	loopchannel 4, Music_GameCorner_branch_edde5
-Music_GameCorner_branch_eddef: ; eddef
+	sound_loop 4, .loop6
+.loop7:
 	octave 4
 	note B_, 1
 	octave 5
 	note D_, 1
 	note G_, 1
 	note D_, 1
-	loopchannel 4, Music_GameCorner_branch_eddef
+	sound_loop 4, .loop7
 	octave 3
 	note D_, 1
 	note D_, 1
 	note D_, 3
 	note F_, 2
 	note F_, 9
-	loopchannel 0, Music_GameCorner_branch_edd84
-; ede03
+	sound_loop 0, .mainloop
 
-Music_GameCorner_branch_ede03: ; ede03
-	note __, 2
+.sub1:
+	rest 2
 	octave 4
 	note A#, 3
 	note G_, 3
@@ -115,18 +114,17 @@ Music_GameCorner_branch_ede03: ; ede03
 	octave 3
 	note F_, 3
 	note F_, 2
-	note __, 2
+	rest 2
 	note G#, 3
 	note G#, 3
 	note A#, 2
 	note A#, 2
 	note G#, 1
 	note A#, 3
-	endchannel
-; ede13
+	sound_ret
 
-Music_GameCorner_branch_ede13: ; ede13
-	note __, 2
+.sub2:
+	rest 2
 	octave 4
 	note A#, 3
 	note G_, 3
@@ -134,18 +132,17 @@ Music_GameCorner_branch_ede13: ; ede13
 	octave 3
 	note F_, 3
 	note F_, 2
-	endchannel
-; ede1c
+	sound_ret
 
-Music_GameCorner_Ch2: ; ede1c
-	stereopanning $ff
-	vibrato $8, $24
-	notetype $c, $a1
-	note __, 8
-Music_GameCorner_branch_ede25: ; ede25
-	intensity $92
-	dutycycle $1
-	callchannel Music_GameCorner_branch_ede75
+Music_GameCorner_Ch2:
+	stereo_panning TRUE, TRUE
+	vibrato 8, 2, 4
+	note_type 12, 10, 1
+	rest 8
+.mainloop:
+	volume_envelope 9, 2
+	duty_cycle 1
+	sound_call .sub1
 	octave 1
 	note F_, 2
 	octave 3
@@ -154,24 +151,24 @@ Music_GameCorner_branch_ede25: ; ede25
 	note F_, 1
 	octave 3
 	note G#, 2
-	intensity $a4
+	volume_envelope 10, 4
 	note G#, 3
-	intensity $92
+	volume_envelope 9, 2
 	note G_, 2
 	note A#, 1
 	octave 4
 	note C_, 3
-	callchannel Music_GameCorner_branch_ede75
+	sound_call .sub1
 	octave 4
 	note F_, 2
 	note D#, 2
 	note F_, 1
 	note D#, 2
-	intensity $a4
+	volume_envelope 10, 4
 	note G_, 3
 	note F_, 4
-	dutycycle $2
-	intensity $c7
+	duty_cycle 2
+	volume_envelope 12, 7
 	octave 3
 	note D#, 1
 	note F_, 1
@@ -186,7 +183,7 @@ Music_GameCorner_branch_ede25: ; ede25
 	octave 2
 	note A#, 4
 	note A_, 4
-	note __, 10
+	rest 10
 	octave 3
 	note D#, 1
 	note F_, 1
@@ -199,17 +196,16 @@ Music_GameCorner_branch_ede25: ; ede25
 	note D#, 1
 	note F_, 1
 	note G_, 16
-	intensity $92
+	volume_envelope 9, 2
 	note G_, 1
 	note G_, 1
 	note G_, 3
 	note A#, 2
 	note A#, 9
-	intensity $a4
-	loopchannel 0, Music_GameCorner_branch_ede25
-; ede75
+	volume_envelope 10, 4
+	sound_loop 0, .mainloop
 
-Music_GameCorner_branch_ede75: ; ede75
+.sub1:
 	octave 1
 	note C_, 2
 	octave 3
@@ -258,10 +254,10 @@ Music_GameCorner_branch_ede75: ; ede75
 	note D#, 2
 	note F_, 1
 	note D#, 2
-	intensity $a4
+	volume_envelope 10, 4
 	note F_, 3
 	note G_, 4
-	intensity $92
+	volume_envelope 9, 2
 	note F#, 1
 	note F_, 1
 	octave 1
@@ -281,10 +277,10 @@ Music_GameCorner_branch_ede75: ; ede75
 	note D#, 2
 	note G_, 1
 	note D#, 2
-	intensity $a4
+	volume_envelope 10, 4
 	note A#, 3
 	note A_, 2
-	intensity $92
+	volume_envelope 9, 2
 	note A#, 1
 	octave 5
 	note C_, 3
@@ -302,10 +298,10 @@ Music_GameCorner_branch_ede75: ; ede75
 	note D#, 2
 	note F_, 1
 	note D#, 2
-	intensity $a4
+	volume_envelope 10, 4
 	note F_, 3
 	note G_, 4
-	intensity $92
+	volume_envelope 9, 2
 	note F#, 1
 	note F_, 1
 	octave 1
@@ -318,36 +314,35 @@ Music_GameCorner_branch_ede75: ; ede75
 	note C_, 2
 	note D_, 2
 	note D#, 2
-	endchannel
-; edee8
+	sound_ret
 
-Music_GameCorner_Ch3: ; edee8
-	vibrato $8, $22
-	notetype $c, $14
-	note __, 8
-Music_GameCorner_branch_edeef: ; edeef
-	stereopanning $ff
-	notetype $c, $14
-	callchannel Music_GameCorner_branch_edfdd
-	callchannel Music_GameCorner_branch_edff8
+Music_GameCorner_Ch3:
+	vibrato 8, 2, 2
+	note_type 12, 1, 4
+	rest 8
+.mainloop:
+	stereo_panning TRUE, TRUE
+	note_type 12, 1, 4
+	sound_call .sub1
+	sound_call .sub2
 	octave 4
 	note G_, 1
 	note A_, 3
-	callchannel Music_GameCorner_branch_edfdd
-	callchannel Music_GameCorner_branch_edff8
+	sound_call .sub1
+	sound_call .sub2
 	octave 4
 	note A#, 1
 	octave 5
 	note C_, 3
-	stereopanning $f0
-	callchannel Music_GameCorner_branch_edfdd
-	callchannel Music_GameCorner_branch_ee00c
-	callchannel Music_GameCorner_branch_edfdd
-	callchannel Music_GameCorner_branch_ee024
-	callchannel Music_GameCorner_branch_edfdd
-	callchannel Music_GameCorner_branch_ee00c
-	callchannel Music_GameCorner_branch_edfdd
-	stereopanning $ff
+	stereo_panning TRUE, FALSE
+	sound_call .sub1
+	sound_call .sub3
+	sound_call .sub1
+	sound_call .sub4
+	sound_call .sub1
+	sound_call .sub3
+	sound_call .sub1
+	stereo_panning TRUE, TRUE
 	octave 2
 	note F_, 1
 	octave 3
@@ -365,29 +360,29 @@ Music_GameCorner_branch_edeef: ; edeef
 	octave 5
 	note D#, 3
 	note D_, 1
-	note __, 1
+	rest 1
 	note D#, 1
 	note F_, 1
-	note __, 2
-	callchannel Music_GameCorner_branch_edfdd
-	callchannel Music_GameCorner_branch_edff8
+	rest 2
+	sound_call .sub1
+	sound_call .sub2
 	octave 4
 	note G_, 1
 	note A_, 3
-	callchannel Music_GameCorner_branch_edfdd
-	callchannel Music_GameCorner_branch_edff8
+	sound_call .sub1
+	sound_call .sub2
 	octave 4
 	note A#, 1
 	octave 5
 	note C_, 3
-	stereopanning $f0
-	callchannel Music_GameCorner_branch_edfdd
-	callchannel Music_GameCorner_branch_ee00c
-	callchannel Music_GameCorner_branch_edfdd
-	callchannel Music_GameCorner_branch_ee024
-	callchannel Music_GameCorner_branch_edfdd
-	callchannel Music_GameCorner_branch_ee00c
-	callchannel Music_GameCorner_branch_edfdd
+	stereo_panning TRUE, FALSE
+	sound_call .sub1
+	sound_call .sub3
+	sound_call .sub1
+	sound_call .sub4
+	sound_call .sub1
+	sound_call .sub3
+	sound_call .sub1
 	octave 2
 	note F_, 1
 	octave 3
@@ -406,25 +401,25 @@ Music_GameCorner_branch_edeef: ; edeef
 	note F_, 1
 	octave 5
 	note D#, 1
-	note __, 1
+	rest 1
 	note D_, 1
-	note __, 1
+	rest 1
 	note C_, 1
-	note __, 1
+	rest 1
 	octave 4
 	note A#, 1
-	note __, 1
-	intensity $15
-	callchannel Music_GameCorner_branch_ee03f
+	rest 1
+	volume_envelope 1, 5
+	sound_call .sub5
 	octave 2
 	note C_, 2
-	note __, 1
+	rest 1
 	note C_, 1
 	octave 3
 	note C_, 1
 	octave 2
 	note C_, 1
-	note __, 1
+	rest 1
 	note C_, 1
 	note C_, 1
 	octave 3
@@ -435,18 +430,18 @@ Music_GameCorner_branch_edeef: ; edeef
 	note C_, 1
 	octave 2
 	note C_, 1
-	note __, 1
+	rest 1
 	octave 3
 	note C_, 1
 	octave 2
 	note F_, 2
-	note __, 1
+	rest 1
 	note F_, 1
 	octave 3
 	note F_, 1
 	octave 2
 	note F_, 1
-	note __, 1
+	rest 1
 	note F_, 1
 	note F_, 1
 	octave 3
@@ -457,19 +452,19 @@ Music_GameCorner_branch_edeef: ; edeef
 	note F_, 1
 	octave 2
 	note F_, 1
-	note __, 1
+	rest 1
 	octave 3
 	note F_, 1
-	callchannel Music_GameCorner_branch_ee03f
+	sound_call .sub5
 	octave 2
 	note G_, 2
-	note __, 1
+	rest 1
 	note G_, 1
 	octave 3
 	note G_, 1
 	octave 2
 	note G_, 1
-	note __, 1
+	rest 1
 	note G_, 1
 	note G_, 1
 	octave 3
@@ -480,19 +475,19 @@ Music_GameCorner_branch_edeef: ; edeef
 	note G_, 1
 	octave 2
 	note G_, 1
-	note __, 1
+	rest 1
 	octave 3
 	note G_, 1
 	octave 2
 	note B_, 1
 	note B_, 1
 	note B_, 1
-	note __, 2
+	rest 2
 	note B_, 1
-	note __, 1
+	rest 1
 	note B_, 1
-	note __, 4
-	notetype $6, $15
+	rest 4
+	note_type 6, 1, 5
 	octave 3
 	note D_, 1
 	note C_, 1
@@ -503,10 +498,9 @@ Music_GameCorner_branch_edeef: ; edeef
 	note F_, 1
 	note E_, 1
 	note D_, 1
-	loopchannel 0, Music_GameCorner_branch_edeef
-; edfdd
+	sound_loop 0, .mainloop
 
-Music_GameCorner_branch_edfdd: ; edfdd
+.sub1:
 	octave 2
 	note C_, 1
 	octave 3
@@ -533,10 +527,9 @@ Music_GameCorner_branch_edfdd: ; edfdd
 	note C_, 1
 	octave 4
 	note A_, 2
-	endchannel
-; edff8
+	sound_ret
 
-Music_GameCorner_branch_edff8: ; edff8
+.sub2:
 	octave 2
 	note C_, 1
 	octave 3
@@ -553,13 +546,12 @@ Music_GameCorner_branch_edff8: ; edff8
 	note C_, 1
 	octave 4
 	note A#, 1
-	note __, 1
+	rest 1
 	note A_, 1
-	note __, 1
-	endchannel
-; ee00c
+	rest 1
+	sound_ret
 
-Music_GameCorner_branch_ee00c: ; ee00c
+.sub3:
 	octave 2
 	note F_, 1
 	octave 3
@@ -578,15 +570,14 @@ Music_GameCorner_branch_ee00c: ; ee00c
 	note F_, 1
 	octave 5
 	note D#, 1
-	note __, 1
+	rest 1
 	note D_, 1
-	note __, 1
+	rest 1
 	note C_, 1
 	note D_, 3
-	endchannel
-; ee024
+	sound_ret
 
-Music_GameCorner_branch_ee024: ; ee024
+.sub4:
 	octave 2
 	note F_, 1
 	octave 3
@@ -605,27 +596,26 @@ Music_GameCorner_branch_ee024: ; ee024
 	note F_, 1
 	octave 5
 	note D#, 1
-	note __, 1
+	rest 1
 	note D_, 1
-	note __, 1
+	rest 1
 	note C_, 1
 	note D_, 1
 	octave 3
 	note F_, 1
-	note __, 1
-	endchannel
-; ee03f
+	rest 1
+	sound_ret
 
-Music_GameCorner_branch_ee03f: ; ee03f
+.sub5:
 	octave 2
 	note F_, 2
-	note __, 1
+	rest 1
 	note F_, 1
 	octave 3
 	note F_, 1
 	octave 2
 	note F_, 1
-	note __, 1
+	rest 1
 	note F_, 1
 	note F_, 1
 	octave 3
@@ -636,18 +626,18 @@ Music_GameCorner_branch_ee03f: ; ee03f
 	note F_, 1
 	octave 2
 	note F_, 1
-	note __, 1
+	rest 1
 	octave 3
 	note F_, 1
 	octave 2
 	note G_, 2
-	note __, 1
+	rest 1
 	note G_, 1
 	octave 3
 	note G_, 1
 	octave 2
 	note G_, 1
-	note __, 1
+	rest 1
 	note G_, 1
 	note G_, 1
 	octave 3
@@ -664,160 +654,154 @@ Music_GameCorner_branch_ee03f: ; ee03f
 	note D_, 1
 	octave 3
 	note D_, 1
-	endchannel
-; ee06f
+	sound_ret
 
-Music_GameCorner_Ch4: ; ee06f
-	togglenoise $3
-	notetype $c
-	notetype $8
-	note D_, 1
-	note D_, 1
-	note D_, 1
-	notetype $c
-	note D_, 1
-	note D_, 1
-	note D_, 2
-	note D_, 1
-	note D_, 1
-Music_GameCorner_branch_ee07f: ; ee07f
-	callchannel Music_GameCorner_branch_ee106
-Music_GameCorner_branch_ee082: ; ee082
-	note A#, 2
-	note F#, 2
-	note D_, 2
-	note F#, 2
-	note A#, 2
-	note F#, 2
-	note D_, 2
-	note F#, 2
-	loopchannel 6, Music_GameCorner_branch_ee082
-	callchannel Music_GameCorner_branch_ee10f
-Music_GameCorner_branch_ee091: ; ee091
-	note A#, 2
-	note F#, 2
-	note D_, 2
-	note F#, 2
-	note A#, 2
-	note F#, 2
-	note D_, 2
-	note F#, 2
-	loopchannel 3, Music_GameCorner_branch_ee091
-	note __, 12
-	note D_, 1
-	note D_, 1
-	note F#, 2
-	callchannel Music_GameCorner_branch_ee106
-Music_GameCorner_branch_ee0a4: ; ee0a4
-	note A#, 2
-	note F#, 2
-	note D_, 2
-	note F#, 2
-	note A#, 2
-	note F#, 2
-	note D_, 2
-	note F#, 2
-	loopchannel 6, Music_GameCorner_branch_ee0a4
-	callchannel Music_GameCorner_branch_ee10f
-Music_GameCorner_branch_ee0b3: ; ee0b3
-	note A#, 2
-	note F#, 2
-	note D_, 2
-	note F#, 2
-	note A#, 2
-	note F#, 2
-	note D_, 2
-	note F#, 2
-	loopchannel 3, Music_GameCorner_branch_ee0b3
-	note A#, 2
-	note F#, 2
-	note D_, 2
-	note F#, 2
-	note D#, 2
-	note F#, 2
-	note D_, 1
-	note D_, 1
-	note D_, 1
-	note D_, 1
-Music_GameCorner_branch_ee0c9: ; ee0c9
-	note A#, 2
-	note F#, 1
-	note D#, 1
-	note D_, 1
-	note D#, 1
-	note F#, 1
-	note D#, 1
-	note D#, 1
-	note D_, 1
-	note F#, 1
-	note D#, 1
-	note D_, 2
-	note F#, 2
-	loopchannel 3, Music_GameCorner_branch_ee0c9
-	note A#, 2
-	note F#, 1
-	note D#, 1
-	note D_, 1
-	note D#, 1
-	note F#, 1
-	note D#, 1
-	note D#, 1
-	note D_, 1
-	note F#, 1
-	note D#, 1
-	note D_, 2
-	note D_, 1
-	note D_, 1
-Music_GameCorner_branch_ee0e8: ; ee0e8
-	note A#, 2
-	note F#, 1
-	note D#, 1
-	note D_, 1
-	note D#, 1
-	note F#, 1
-	note D#, 1
-	note D#, 1
-	note D_, 1
-	note F#, 1
-	note D#, 1
-	note D_, 2
-	note F#, 2
-	loopchannel 3, Music_GameCorner_branch_ee0e8
-	note D_, 1
-	note D_, 1
-	note D_, 2
-	note A#, 1
-	note F#, 2
-	note F#, 5
-	note D_, 1
-	note D_, 1
-	note D#, 2
-	loopchannel 0, Music_GameCorner_branch_ee07f
-; ee106
+Music_GameCorner_Ch4:
+	toggle_noise 3
+	drum_speed 12
+	drum_speed 8
+	drum_note 3, 1
+	drum_note 3, 1
+	drum_note 3, 1
+	drum_speed 12
+	drum_note 3, 1
+	drum_note 3, 1
+	drum_note 3, 2
+	drum_note 3, 1
+	drum_note 3, 1
+.mainloop:
+	sound_call .sub1
+.loop1:
+	drum_note 11, 2
+	drum_note 7, 2
+	drum_note 3, 2
+	drum_note 7, 2
+	drum_note 11, 2
+	drum_note 7, 2
+	drum_note 3, 2
+	drum_note 7, 2
+	sound_loop 6, .loop1
+	sound_call .sub2
+.loop2:
+	drum_note 11, 2
+	drum_note 7, 2
+	drum_note 3, 2
+	drum_note 7, 2
+	drum_note 11, 2
+	drum_note 7, 2
+	drum_note 3, 2
+	drum_note 7, 2
+	sound_loop 3, .loop2
+	rest 12
+	drum_note 3, 1
+	drum_note 3, 1
+	drum_note 7, 2
+	sound_call .sub1
+.loop3:
+	drum_note 11, 2
+	drum_note 7, 2
+	drum_note 3, 2
+	drum_note 7, 2
+	drum_note 11, 2
+	drum_note 7, 2
+	drum_note 3, 2
+	drum_note 7, 2
+	sound_loop 6, .loop3
+	sound_call .sub2
+.loop4:
+	drum_note 11, 2
+	drum_note 7, 2
+	drum_note 3, 2
+	drum_note 7, 2
+	drum_note 11, 2
+	drum_note 7, 2
+	drum_note 3, 2
+	drum_note 7, 2
+	sound_loop 3, .loop4
+	drum_note 11, 2
+	drum_note 7, 2
+	drum_note 3, 2
+	drum_note 7, 2
+	drum_note 4, 2
+	drum_note 7, 2
+	drum_note 3, 1
+	drum_note 3, 1
+	drum_note 3, 1
+	drum_note 3, 1
+.loop5:
+	drum_note 11, 2
+	drum_note 7, 1
+	drum_note 4, 1
+	drum_note 3, 1
+	drum_note 4, 1
+	drum_note 7, 1
+	drum_note 4, 1
+	drum_note 4, 1
+	drum_note 3, 1
+	drum_note 7, 1
+	drum_note 4, 1
+	drum_note 3, 2
+	drum_note 7, 2
+	sound_loop 3, .loop5
+	drum_note 11, 2
+	drum_note 7, 1
+	drum_note 4, 1
+	drum_note 3, 1
+	drum_note 4, 1
+	drum_note 7, 1
+	drum_note 4, 1
+	drum_note 4, 1
+	drum_note 3, 1
+	drum_note 7, 1
+	drum_note 4, 1
+	drum_note 3, 2
+	drum_note 3, 1
+	drum_note 3, 1
+.loop6:
+	drum_note 11, 2
+	drum_note 7, 1
+	drum_note 4, 1
+	drum_note 3, 1
+	drum_note 4, 1
+	drum_note 7, 1
+	drum_note 4, 1
+	drum_note 4, 1
+	drum_note 3, 1
+	drum_note 7, 1
+	drum_note 4, 1
+	drum_note 3, 2
+	drum_note 7, 2
+	sound_loop 3, .loop6
+	drum_note 3, 1
+	drum_note 3, 1
+	drum_note 3, 2
+	drum_note 11, 1
+	drum_note 7, 2
+	drum_note 7, 5
+	drum_note 3, 1
+	drum_note 3, 1
+	drum_note 4, 2
+	sound_loop 0, .mainloop
 
-Music_GameCorner_branch_ee106: ; ee106
-	note C_, 2
-	note F#, 2
-	note D_, 2
-	note F#, 2
-	note A#, 2
-	note F#, 2
-	note D_, 2
-	note F#, 2
-	endchannel
-; ee10f
+.sub1:
+	drum_note 1, 2
+	drum_note 7, 2
+	drum_note 3, 2
+	drum_note 7, 2
+	drum_note 11, 2
+	drum_note 7, 2
+	drum_note 3, 2
+	drum_note 7, 2
+	sound_ret
 
-Music_GameCorner_branch_ee10f: ; ee10f
-	note A#, 2
-	note F#, 2
-	note D_, 2
-	note F#, 2
-	note A#, 2
-	note F#, 2
-	note D_, 1
-	note D_, 1
-	note F#, 2
-	endchannel
-; ee119
-
-
+.sub2:
+	drum_note 11, 2
+	drum_note 7, 2
+	drum_note 3, 2
+	drum_note 7, 2
+	drum_note 11, 2
+	drum_note 7, 2
+	drum_note 3, 1
+	drum_note 3, 1
+	drum_note 7, 2
+	sound_ret

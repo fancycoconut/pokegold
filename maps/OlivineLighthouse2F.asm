@@ -1,11 +1,11 @@
-	const_def 2 ; object constants
+	object_const_def
 	const OLIVINELIGHTHOUSE2F_SAILOR
 	const OLIVINELIGHTHOUSE2F_GENTLEMAN
 
 OlivineLighthouse2F_MapScripts:
-	db 0 ; scene scripts
+	def_scene_scripts
 
-	db 0 ; callbacks
+	def_callbacks
 
 TrainerGentlemanAlfred:
 	trainer GENTLEMAN, ALFRED, EVENT_BEAT_GENTLEMAN_ALFRED, GentlemanAlfredSeenText, GentlemanAlfredBeatenText, 0, .Script
@@ -31,10 +31,10 @@ TrainerSailorHuey:
 	checkevent EVENT_HUEY_ASKED_FOR_PHONE_NUMBER
 	iftrue .AskedBefore
 	writetext SailorHueyAfterBattleText
-	buttonsound
+	promptbutton
 	setevent EVENT_HUEY_ASKED_FOR_PHONE_NUMBER
 	scall .AskNumber1
-	jump .AskForNumber
+	sjump .AskForNumber
 
 .AskedBefore:
 	scall .AskNumber2
@@ -42,9 +42,9 @@ TrainerSailorHuey:
 	askforphonenumber PHONE_SAILOR_HUEY
 	ifequal PHONE_CONTACTS_FULL, .PhoneFull
 	ifequal PHONE_CONTACT_REFUSED, .NumberDeclined
-	trainertotext SAILOR, HUEY1, MEM_BUFFER_0
+	gettrainername STRING_BUFFER_3, SAILOR, HUEY1
 	scall .RegisteredNumber
-	jump .NumberAccepted
+	sjump .NumberAccepted
 
 .WantsBattle:
 	scall .Rematch
@@ -74,31 +74,31 @@ TrainerSailorHuey:
 	end
 
 .AskNumber1:
-	jumpstd asknumber1m
+	jumpstd AskNumber1MScript
 	end
 
 .AskNumber2:
-	jumpstd asknumber2m
+	jumpstd AskNumber2MScript
 	end
 
 .RegisteredNumber:
-	jumpstd registerednumberm
+	jumpstd RegisteredNumberMScript
 	end
 
 .NumberAccepted:
-	jumpstd numberacceptedm
+	jumpstd NumberAcceptedMScript
 	end
 
 .NumberDeclined:
-	jumpstd numberdeclinedm
+	jumpstd NumberDeclinedMScript
 	end
 
 .PhoneFull:
-	jumpstd phonefullm
+	jumpstd PhoneFullMScript
 	end
 
 .Rematch:
-	jumpstd rematchm
+	jumpstd RematchMScript
 	end
 
 SailorHueySeenText:
@@ -145,7 +145,7 @@ GentlemanAlfredAfterBattleText:
 OlivineLighthouse2F_MapEvents:
 	db 0, 0 ; filler
 
-	db 6 ; warp events
+	def_warp_events
 	warp_event  3, 11, OLIVINE_LIGHTHOUSE_1F, 3
 	warp_event  5,  3, OLIVINE_LIGHTHOUSE_3F, 2
 	warp_event 16, 13, OLIVINE_LIGHTHOUSE_1F, 4
@@ -153,10 +153,10 @@ OlivineLighthouse2F_MapEvents:
 	warp_event 16, 11, OLIVINE_LIGHTHOUSE_3F, 4
 	warp_event 17, 11, OLIVINE_LIGHTHOUSE_3F, 5
 
-	db 0 ; coord events
+	def_coord_events
 
-	db 0 ; bg events
+	def_bg_events
 
-	db 2 ; object events
+	def_object_events
 	object_event  9,  3, SPRITE_SAILOR, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, PAL_NPC_BLUE, OBJECTTYPE_TRAINER, 3, TrainerSailorHuey, -1
 	object_event 17,  8, SPRITE_GENTLEMAN, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, PAL_NPC_BLUE, OBJECTTYPE_TRAINER, 3, TrainerGentlemanAlfred, -1

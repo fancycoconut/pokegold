@@ -1,3 +1,4 @@
+; SFX indexes (see audio/sfx_pointers.asm)
 	const_def
 
 	const SFX_DEX_FANFARE_50_79           ; 00
@@ -127,7 +128,7 @@
 	const SFX_SWEET_KISS                  ; 7c
 	const SFX_SWEET_KISS_2                ; 7d
 	const SFX_BELLY_DRUM                  ; 7e
-	const SFX_UNKNOWN_7F                  ; 7f
+	const SFX_TOXIC                       ; 7f
 	const SFX_SLUDGE_BOMB                 ; 80
 	const SFX_FORESIGHT                   ; 81
 	const SFX_SPITE                       ; 82
@@ -149,8 +150,8 @@
 	const SFX_FANFARE_2                   ; 92
 	const SFX_REGISTER_PHONE_NUMBER       ; 93
 	const SFX_3RD_PLACE                   ; 94
-	const SFX_GET_EGG_FROM_DAYCARE_MAN    ; 95
-	const SFX_GET_EGG_FROM_DAYCARE_LADY   ; 96
+	const SFX_GET_EGG_UNUSED              ; 95
+	const SFX_GET_EGG                     ; 96
 	const SFX_MOVE_DELETED                ; 97
 	const SFX_2ND_PLACE                   ; 98
 	const SFX_1ST_PLACE                   ; 99
@@ -179,7 +180,7 @@
 	const SFX_ENCORE                      ; b0
 	const SFX_BEAT_UP                     ; b1
 	const SFX_BATON_PASS                  ; b2
-	const SFX_BALL_WIGGLE                 ; b3
+	const SFX_BALL_WOBBLE                 ; b3
 	const SFX_SWEET_SCENT                 ; b4
 	const SFX_SWEET_SCENT_2               ; b5
 	const SFX_HIT_END_OF_EXP_BAR          ; b6
@@ -188,5 +189,3 @@
 	const SFX_TRAIN_ARRIVED               ; b9
 	const SFX_STOP_SLOT                   ; ba
 	const SFX_2_BOOPS                     ; bb
-	const SFX_GLASS_TING                  ; bc
-	const SFX_GLASS_TING_2                ; bd

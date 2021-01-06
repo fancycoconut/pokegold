@@ -1,4 +1,4 @@
-	const_def 2 ; object constants
+	object_const_def
 	const ROUTE26_COOLTRAINER_M1
 	const ROUTE26_COOLTRAINER_M2
 	const ROUTE26_COOLTRAINER_F1
@@ -9,9 +9,9 @@
 	const ROUTE26_POKE_BALL
 
 Route26_MapScripts:
-	db 0 ; scene scripts
+	def_scene_scripts
 
-	db 0 ; callbacks
+	def_callbacks
 
 TrainerCooltrainermJake:
 	trainer COOLTRAINERM, JAKE, EVENT_BEAT_COOLTRAINERM_JAKE, CooltrainermJakeSeenText, CooltrainermJakeBeatenText, 0, .Script
@@ -37,10 +37,10 @@ TrainerCooltrainermGaven3:
 	checkevent EVENT_GAVEN_ASKED_FOR_PHONE_NUMBER
 	iftrue .AskedAlready
 	writetext CooltrainermGavenAfterText
-	buttonsound
+	promptbutton
 	setevent EVENT_GAVEN_ASKED_FOR_PHONE_NUMBER
 	scall .AskNumber1
-	jump .AskForNumber
+	sjump .AskForNumber
 
 .AskedAlready:
 	scall .AskNumber2
@@ -48,9 +48,9 @@ TrainerCooltrainermGaven3:
 	askforphonenumber PHONE_COOLTRAINERM_GAVEN
 	ifequal PHONE_CONTACTS_FULL, .PhoneFull
 	ifequal PHONE_CONTACT_REFUSED, .NumberDeclined
-	trainertotext COOLTRAINERM, GAVEN3, MEM_BUFFER_0
+	gettrainername STRING_BUFFER_3, COOLTRAINERM, GAVEN3
 	scall .RegisteredNumber
-	jump .NumberAccepted
+	sjump .NumberAccepted
 
 .WantsBattle:
 	scall .Rematch
@@ -80,31 +80,31 @@ TrainerCooltrainermGaven3:
 	end
 
 .AskNumber1:
-	jumpstd asknumber1m
+	jumpstd AskNumber1MScript
 	end
 
 .AskNumber2:
-	jumpstd asknumber2m
+	jumpstd AskNumber2MScript
 	end
 
 .RegisteredNumber:
-	jumpstd registerednumberm
+	jumpstd RegisteredNumberMScript
 	end
 
 .NumberAccepted:
-	jumpstd numberacceptedm
+	jumpstd NumberAcceptedMScript
 	end
 
 .NumberDeclined:
-	jumpstd numberdeclinedm
+	jumpstd NumberDeclinedMScript
 	end
 
 .PhoneFull:
-	jumpstd phonefullm
+	jumpstd PhoneFullMScript
 	end
 
 .Rematch:
-	jumpstd rematchm
+	jumpstd RematchMScript
 	end
 
 TrainerCooltrainerfJoyce:
@@ -131,10 +131,10 @@ TrainerCooltrainerfBeth1:
 	checkevent EVENT_BETH_ASKED_FOR_PHONE_NUMBER
 	iftrue .AskedAlready
 	writetext CooltrainerfBethAfterText
-	buttonsound
+	promptbutton
 	setevent EVENT_BETH_ASKED_FOR_PHONE_NUMBER
 	scall .AskNumber1
-	jump .AskForNumber
+	sjump .AskForNumber
 
 .AskedAlready:
 	scall .AskNumber2
@@ -142,9 +142,9 @@ TrainerCooltrainerfBeth1:
 	askforphonenumber PHONE_COOLTRAINERF_BETH
 	ifequal PHONE_CONTACTS_FULL, .PhoneFull
 	ifequal PHONE_CONTACT_REFUSED, .NumberDeclined
-	trainertotext COOLTRAINERF, BETH1, MEM_BUFFER_0
+	gettrainername STRING_BUFFER_3, COOLTRAINERF, BETH1
 	scall .RegisteredNumber
-	jump .NumberAccepted
+	sjump .NumberAccepted
 
 .WantsBattle:
 	scall .Rematch
@@ -174,31 +174,31 @@ TrainerCooltrainerfBeth1:
 	end
 
 .AskNumber1:
-	jumpstd asknumber1f
+	jumpstd AskNumber1FScript
 	end
 
 .AskNumber2:
-	jumpstd asknumber2f
+	jumpstd AskNumber2FScript
 	end
 
 .RegisteredNumber:
-	jumpstd registerednumberf
+	jumpstd RegisteredNumberFScript
 	end
 
 .NumberAccepted:
-	jumpstd numberacceptedf
+	jumpstd NumberAcceptedFScript
 	end
 
 .NumberDeclined:
-	jumpstd numberdeclinedf
+	jumpstd NumberDeclinedFScript
 	end
 
 .PhoneFull:
-	jumpstd phonefullf
+	jumpstd PhoneFullFScript
 	end
 
 .Rematch:
-	jumpstd rematchf
+	jumpstd RematchFScript
 	end
 
 TrainerPsychicRichard:
@@ -393,17 +393,17 @@ Route26SignText:
 Route26_MapEvents:
 	db 0, 0 ; filler
 
-	db 3 ; warp events
+	def_warp_events
 	warp_event  7,  5, VICTORY_ROAD_GATE, 3
 	warp_event 15, 57, ROUTE_26_HEAL_HOUSE, 1
 	warp_event  5, 71, DAY_OF_WEEK_SIBLINGS_HOUSE, 1
 
-	db 0 ; coord events
+	def_coord_events
 
-	db 1 ; bg events
+	def_bg_events
 	bg_event  8,  6, BGEVENT_READ, Route26Sign
 
-	db 8 ; object events
+	def_object_events
 	object_event 11, 16, SPRITE_COOLTRAINER_M, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, PAL_NPC_RED, OBJECTTYPE_TRAINER, 2, TrainerCooltrainermJake, -1
 	object_event  9, 38, SPRITE_COOLTRAINER_M, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, PAL_NPC_RED, OBJECTTYPE_TRAINER, 5, TrainerCooltrainermGaven3, -1
 	object_event 10, 56, SPRITE_COOLTRAINER_F, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, PAL_NPC_RED, OBJECTTYPE_TRAINER, 3, TrainerCooltrainerfJoyce, -1

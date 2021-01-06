@@ -1,36 +1,35 @@
-Music_IndigoPlateau: ; ee852
-	dbw $c0, Music_IndigoPlateau_Ch1
-	dbw $01, Music_IndigoPlateau_Ch2
-	dbw $02, Music_IndigoPlateau_Ch3
-	dbw $03, Music_IndigoPlateau_Ch4
-; ee85e
+Music_IndigoPlateau:
+	channel_count 4
+	channel 1, Music_IndigoPlateau_Ch1
+	channel 2, Music_IndigoPlateau_Ch2
+	channel 3, Music_IndigoPlateau_Ch3
+	channel 4, Music_IndigoPlateau_Ch4
 
-Music_IndigoPlateau_Ch1: ; ee85e
+Music_IndigoPlateau_Ch1:
 	tempo 128
-	volume $77
-	dutycycle $3
-	tone $0002
-	stereopanning $f
-Music_IndigoPlateau_branch_ee86a: ; ee86a
-	callchannel Music_IndigoPlateau_branch_ee881
+	volume 7, 7
+	duty_cycle 3
+	pitch_offset 2
+	stereo_panning FALSE, TRUE
+.mainloop:
+	sound_call .sub1
 	octave 3
 	note D_, 4
-	callchannel Music_IndigoPlateau_branch_ee881
+	sound_call .sub1
 	octave 3
 	note D#, 4
-	callchannel Music_IndigoPlateau_branch_ee881
+	sound_call .sub1
 	octave 3
 	note D#, 4
-	callchannel Music_IndigoPlateau_branch_ee881
+	sound_call .sub1
 	note A#, 4
-	loopchannel 0, Music_IndigoPlateau_branch_ee86a
-; ee881
+	sound_loop 0, .mainloop
 
-Music_IndigoPlateau_branch_ee881: ; ee881
-	notetype $c, $b6
+.sub1:
+	note_type 12, 11, 6
 	octave 2
 	note A_, 4
-	intensity $b2
+	volume_envelope 11, 2
 	note A_, 2
 	note A_, 2
 	note A_, 2
@@ -38,45 +37,44 @@ Music_IndigoPlateau_branch_ee881: ; ee881
 	note A_, 4
 	note A_, 2
 	note A_, 2
-	intensity $a0
-	endchannel
-; ee892
+	volume_envelope 10, 0
+	sound_ret
 
-Music_IndigoPlateau_Ch2: ; ee892
-	dutycycle $3
-	vibrato $10, $22
-	stereopanning $f0
-Music_IndigoPlateau_branch_ee899: ; ee899
-	callchannel Music_IndigoPlateau_branch_ee8e9
+Music_IndigoPlateau_Ch2:
+	duty_cycle 3
+	vibrato 16, 2, 2
+	stereo_panning TRUE, FALSE
+.mainloop:
+	sound_call .sub1
 	note A_, 4
-	callchannel Music_IndigoPlateau_branch_ee8e9
+	sound_call .sub1
 	note A#, 4
-	callchannel Music_IndigoPlateau_branch_ee8e9
+	sound_call .sub1
 	note A_, 4
-	callchannel Music_IndigoPlateau_branch_ee8e9
+	sound_call .sub1
 	note C#, 4
-	intensity $c7
+	volume_envelope 12, 7
 	note A_, 6
 	note D_, 2
 	note G_, 2
 	note A#, 2
 	note A_, 8
-	intensity $b0
+	volume_envelope 11, 0
 	note A_, 4
-	callchannel Music_IndigoPlateau_branch_ee8e9
+	sound_call .sub1
 	note A#, 4
-	intensity $c7
+	volume_envelope 12, 7
 	octave 4
 	note D_, 6
 	note D#, 2
 	note C_, 4
 	note D_, 8
-	intensity $b0
+	volume_envelope 11, 0
 	octave 3
 	note A_, 4
-	callchannel Music_IndigoPlateau_branch_ee8e9
+	sound_call .sub1
 	note C#, 4
-	intensity $c7
+	volume_envelope 12, 7
 	octave 4
 	note C_, 6
 	octave 3
@@ -84,29 +82,28 @@ Music_IndigoPlateau_branch_ee899: ; ee899
 	note A_, 2
 	note G_, 2
 	note F#, 8
-	intensity $b0
+	volume_envelope 11, 0
 	note A_, 4
-	callchannel Music_IndigoPlateau_branch_ee8e9
+	sound_call .sub1
 	note A#, 4
-	intensity $c7
+	volume_envelope 12, 7
 	octave 4
 	note D_, 6
 	note D#, 2
 	note F_, 4
 	note F#, 8
-	intensity $b0
+	volume_envelope 11, 0
 	octave 3
 	note A_, 4
-	callchannel Music_IndigoPlateau_branch_ee8e9
+	sound_call .sub1
 	note C#, 4
-	loopchannel 0, Music_IndigoPlateau_branch_ee899
-; ee8e9
+	sound_loop 0, .mainloop
 
-Music_IndigoPlateau_branch_ee8e9: ; ee8e9
-	notetype $c, $c6
+.sub1:
+	note_type 12, 12, 6
 	octave 3
 	note D_, 4
-	intensity $c2
+	volume_envelope 12, 2
 	note D_, 2
 	note D_, 2
 	note D_, 2
@@ -114,79 +111,73 @@ Music_IndigoPlateau_branch_ee8e9: ; ee8e9
 	note D_, 4
 	note D_, 2
 	note D_, 2
-	intensity $b0
-	endchannel
-; ee8fa
+	volume_envelope 11, 0
+	sound_ret
 
-Music_IndigoPlateau_Ch3: ; ee8fa
-	notetype $c, $19
-Music_IndigoPlateau_branch_ee8fd: ; ee8fd
-	callchannel Music_IndigoPlateau_branch_ee915
+Music_IndigoPlateau_Ch3:
+	note_type 12, 1, -1
+.mainloop:
+	sound_call .sub1
 	octave 3
 	note A_, 4
-	callchannel Music_IndigoPlateau_branch_ee915
+	sound_call .sub1
 	octave 3
 	note A_, 4
-	callchannel Music_IndigoPlateau_branch_ee915
+	sound_call .sub1
 	octave 3
 	note A_, 4
-	callchannel Music_IndigoPlateau_branch_ee915
+	sound_call .sub1
 	octave 3
 	note F#, 4
-	loopchannel 0, Music_IndigoPlateau_branch_ee8fd
-; ee915
+	sound_loop 0, .mainloop
 
-Music_IndigoPlateau_branch_ee915: ; ee915
+.sub1:
 	octave 3
 	note D_, 1
-	note __, 3
+	rest 3
 	octave 2
 	note A_, 1
-	note __, 3
+	rest 3
 	octave 3
 	note C_, 1
-	note __, 3
+	rest 3
 	note D_, 1
-	note __, 3
+	rest 3
 	octave 2
 	note A_, 1
-	note __, 3
-	endchannel
-; ee924
+	rest 3
+	sound_ret
 
-Music_IndigoPlateau_Ch4: ; ee924
-	stereopanning $f0
-	togglenoise $0
-	notetype $c
-Music_IndigoPlateau_branch_ee92a: ; ee92a
-	note D#, 4
-	note D_, 2
-	note D#, 2
-	note D#, 2
-	note D#, 2
-	note D_, 4
-	note D_, 2
-	note D_, 2
-	notetype $6
-	note D_, 1
-	note D_, 1
-	note D#, 1
-	note D#, 1
-	note D#, 1
-	note D#, 1
-	note D_, 1
-	note D_, 1
-	notetype $c
-	note D#, 4
-	note D_, 2
-	note D#, 2
-	note D#, 2
-	note D_, 2
-	note C#, 4
-	note D_, 2
-	note D_, 2
-	note C#, 4
-	loopchannel 0, Music_IndigoPlateau_branch_ee92a
-; ee94b
-
-
+Music_IndigoPlateau_Ch4:
+	stereo_panning TRUE, FALSE
+	toggle_noise 0
+	drum_speed 12
+.mainloop:
+	drum_note 4, 4
+	drum_note 3, 2
+	drum_note 4, 2
+	drum_note 4, 2
+	drum_note 4, 2
+	drum_note 3, 4
+	drum_note 3, 2
+	drum_note 3, 2
+	drum_speed 6
+	drum_note 3, 1
+	drum_note 3, 1
+	drum_note 4, 1
+	drum_note 4, 1
+	drum_note 4, 1
+	drum_note 4, 1
+	drum_note 3, 1
+	drum_note 3, 1
+	drum_speed 12
+	drum_note 4, 4
+	drum_note 3, 2
+	drum_note 4, 2
+	drum_note 4, 2
+	drum_note 3, 2
+	drum_note 2, 4
+	drum_note 3, 2
+	drum_note 3, 2
+	drum_note 2, 4
+	sound_loop 0, .mainloop
