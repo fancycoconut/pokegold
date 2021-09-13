@@ -14,7 +14,7 @@ Route43Gate_MapScripts:
 	callback MAPCALLBACK_NEWMAP, .CheckIfRockets
 
 .RocketShakedown:
-	prioritysjump .RocketTakeover
+	sdefer .RocketTakeover
 	end
 
 .DummyScene:
@@ -196,7 +196,7 @@ RocketText_TollFee:
 	text "Hold it there,"
 	line "mister!"
 
-	para "The toll is ¥1000"
+	para "The toll is ¥{d:ROUTE43GATE_TOLL}"
 	line "to go through."
 	done
 

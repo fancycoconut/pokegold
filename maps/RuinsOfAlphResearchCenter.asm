@@ -15,7 +15,7 @@ RuinsOfAlphResearchCenter_MapScripts:
 	end
 
 .GetUnownDex:
-	prioritysjump .GetUnownDexScript
+	sdefer .GetUnownDexScript
 	end
 
 .ScientistCallback:
@@ -286,7 +286,7 @@ RuinsOfAlphResearchCenterComputerText_GotAllUnown:
 	text "Mystery #MON"
 	line "Name: UNOWN"
 
-	para "A total of 26"
+	para "A total of {d:NUM_UNOWN}"
 	line "kinds found."
 	done
 

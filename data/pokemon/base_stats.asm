@@ -1,37 +1,28 @@
 ; used in data/pokemon/base_stats/*.asm
 tmhm: MACRO
 ; initialize bytes to 0
-n = 0
-rept (NUM_TM_HM + 7) / 8
-_TM_BYTE EQUS "_tm{d:n}"
-_TM_BYTE = 0
-PURGE _TM_BYTE
-n = n + 1
+for n, (NUM_TM_HM + 7) / 8
+_tm{d:n} = 0
 endr
 ; set bits of bytes
 rept _NARG
 	if DEF(\1_TMNUM)
 n = (\1_TMNUM - 1) / 8
 i = (\1_TMNUM - 1) % 8
-_TM_BYTE EQUS "_tm{d:n}"
-_TM_BYTE = _TM_BYTE | (1 << i)
-PURGE _TM_BYTE
+_tm{d:n} = _tm{d:n} | (1 << i)
 	else
 		fail "\1 is not a TM or HM move"
 	endc
 	shift
 endr
 ; output bytes
-n = 0
-rept (NUM_TM_HM + 7) / 8
-_TM_BYTE EQUS "_tm{d:n}"
-	db _TM_BYTE
-PURGE _TM_BYTE
-n = n + 1
+for n, (NUM_TM_HM + 7) / 8
+	db _tm{d:n}
 endr
 ENDM
 
 BaseData::
+	table_width BASE_DATA_SIZE, BaseData
 INCLUDE "data/pokemon/base_stats/bulbasaur.asm"
 INCLUDE "data/pokemon/base_stats/ivysaur.asm"
 INCLUDE "data/pokemon/base_stats/venusaur.asm"
@@ -283,5 +274,4 @@ INCLUDE "data/pokemon/base_stats/tyranitar.asm"
 INCLUDE "data/pokemon/base_stats/lugia.asm"
 INCLUDE "data/pokemon/base_stats/ho_oh.asm"
 INCLUDE "data/pokemon/base_stats/celebi.asm"
-.End:
-	assert BaseData.End - BaseData == NUM_POKEMON * BASE_DATA_SIZE
+	assert_table_length NUM_POKEMON

@@ -202,7 +202,7 @@ EvolveAfterBattle_MasterLoop:
 	ld [wEvolutionNewSpecies], a
 	ld a, [wCurPartyMon]
 	ld hl, wPartyMonNicknames
-	call GetNick
+	call GetNickname
 	call CopyName1
 	ld hl, EvolvingText
 	call PrintText
@@ -219,6 +219,7 @@ EvolveAfterBattle_MasterLoop:
 	ld a, $1
 	ldh [hBGMapMode], a
 	call ClearSprites
+
 	call EvolutionAnimation
 
 	push af

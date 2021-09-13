@@ -175,9 +175,9 @@ Gen2ToGen1LinkComms:
 	ld hl, wTimeCapsulePlayerData
 	call Link_ConvertPartyStruct1to2
 
-	ld a, LOW(wOTPartyMonOT)
+	ld a, LOW(wOTPartyMonOTs)
 	ld [wUnusedNamesPointer], a
-	ld a, HIGH(wOTPartyMonOT)
+	ld a, HIGH(wOTPartyMonOTs)
 	ld [wUnusedNamesPointer + 1], a
 
 	ld de, MUSIC_NONE
@@ -402,9 +402,9 @@ Gen2ToGen2LinkComms:
 	ld bc, wOTPartyDataEnd - wOTPartyMons
 	call CopyBytes
 
-	ld a, LOW(wOTPartyMonOT)
+	ld a, LOW(wOTPartyMonOTs)
 	ld [wUnusedNamesPointer], a
-	ld a, HIGH(wOTPartyMonOT)
+	ld a, HIGH(wOTPartyMonOTs)
 	ld [wUnusedNamesPointer + 1], a
 
 	ld de, MUSIC_NONE
@@ -657,7 +657,7 @@ Link_PrepPartyData_Gen1:
 	dec c
 	jr nz, .mon_loop
 
-	ld hl, wPartyMonOT
+	ld hl, wPartyMonOTs
 	call .copy_ot_nicks
 
 	ld hl, wPartyMonNicknames
@@ -801,7 +801,7 @@ Link_PrepPartyData_Gen2:
 	ld bc, PARTY_LENGTH * PARTYMON_STRUCT_LENGTH
 	call CopyBytes
 
-	ld hl, wPartyMonOT
+	ld hl, wPartyMonOTs
 	ld bc, PARTY_LENGTH * NAME_LENGTH
 	call CopyBytes
 
@@ -913,7 +913,7 @@ Link_ConvertPartyStruct1to2:
 	pop hl
 	ld bc, PARTY_LENGTH * REDMON_STRUCT_LENGTH
 	add hl, bc
-	ld de, wOTPartyMonOT
+	ld de, wOTPartyMonOTs
 	ld bc, PARTY_LENGTH * NAME_LENGTH
 	call CopyBytes
 	ld de, wOTPartyMonNicknames
@@ -1528,7 +1528,7 @@ LinkTrade:
 	ld [wNamedObjectIndex], a
 	call GetPokemonName
 	ld hl, wStringBuffer1
-	ld de, wBufferTrademonNick
+	ld de, wBufferTrademonNickname
 	ld bc, MON_NAME_LENGTH
 	call CopyBytes
 	ld a, [wCurOTTradePartyMon]
@@ -1665,7 +1665,7 @@ LinkTrade:
 	push af
 ; OT name
 	ld a, [wCurTradePartyMon]
-	ld hl, wPartyMonOT
+	ld hl, wPartyMonOTs
 	call SkipNames
 	ld de, wPlayerTrademonOTName
 	ld bc, NAME_LENGTH
@@ -1703,7 +1703,7 @@ LinkTrade:
 	ld [wOTTrademonSpecies], a
 ; OT name
 	ld a, [wCurOTTradePartyMon]
-	ld hl, wOTPartyMonOT
+	ld hl, wOTPartyMonOTs
 	call SkipNames
 	ld de, wOTTrademonOTName
 	ld bc, NAME_LENGTH
@@ -2379,20 +2379,20 @@ Link_ResetSerialRegistersAfterLinkClosure:
 
 Link_EnsureSync:
 	add $d0
-	ld [wPlayerLinkAction], a
-	ld [wUnusedLinkAction], a
+	ld [wLinkPlayerSyncBuffer], a
+	ld [wLinkPlayerSyncBuffer + 1], a
 	ld a, $2
 	ldh [hVBlank], a
 	call DelayFrame
 	call DelayFrame
 .receive_loop
-	call Serial_ExchangeLinkMenuSelection
-	ld a, [wOtherPlayerLinkMode]
+	call Serial_ExchangeSyncBytes
+	ld a, [wLinkReceivedSyncBuffer]
 	ld b, a
 	and $f0
 	cp $d0
 	jr z, .done
-	ld a, [wOtherPlayerLinkAction]
+	ld a, [wLinkReceivedSyncBuffer + 1]
 	ld b, a
 	and $f0
 	cp $d0

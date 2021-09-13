@@ -6,7 +6,8 @@ ENDM
 
 Landmarks:
 ; entries correspond to constants/landmark_constants.asm
-	dbbw       0,   0, SpecialMapName
+	table_width 4, Landmarks
+	landmark  -8, -16, SpecialMapName
 	landmark 140, 100, NewBarkTownName
 	landmark 128, 100, Route29Name
 	landmark 100, 100, CherrygroveCityName
@@ -52,6 +53,7 @@ Landmarks:
 	landmark 112,  72, DarkCaveName
 	landmark 124,  88, Route46Name
 	landmark 148,  68, SilverCaveName
+	assert_table_length KANTO_LANDMARK
 	landmark  52, 108, PalletTownName
 	landmark  52,  92, Route1Name
 	landmark  52,  76, ViridianCityName
@@ -101,6 +103,7 @@ Landmarks:
 	landmark  12, 100, TohjoFallsName
 	landmark  20,  68, Route28Name
 	landmark 140, 116, FastShipName
+	assert_table_length NUM_LANDMARKS
 
 NewBarkTownName:     db "NEW BARK¯TOWN@"
 CherrygroveCityName: db "CHERRYGROVE¯CITY@"

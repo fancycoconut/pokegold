@@ -213,7 +213,7 @@ GivePokeMail::
 	call CopyBytes
 	pop af
 	push af
-	ld hl, wPartyMonOT
+	ld hl, wPartyMonOTs
 	ld bc, NAME_LENGTH
 	call AddNTimes
 	ld bc, NAME_LENGTH - 1
@@ -241,11 +241,11 @@ BackupPartyMonMail:
 	call OpenSRAM
 	ld hl, sPartyMail
 	ld de, sPartyMailBackup
-	ld bc, 6 * MAIL_STRUCT_LENGTH
+	ld bc, PARTY_LENGTH * MAIL_STRUCT_LENGTH
 	call CopyBytes
 	ld hl, sMailboxCount
 	ld de, sMailboxCountBackup
-	ld bc, 1 + 10 * MAIL_STRUCT_LENGTH
+	ld bc, 1 + MAILBOX_CAPACITY * MAIL_STRUCT_LENGTH
 	call CopyBytes
 	jp CloseSRAM
 
@@ -254,11 +254,11 @@ RestorePartyMonMail:
 	call OpenSRAM
 	ld hl, sPartyMailBackup
 	ld de, sPartyMail
-	ld bc, 6 * MAIL_STRUCT_LENGTH
+	ld bc, PARTY_LENGTH * MAIL_STRUCT_LENGTH
 	call CopyBytes
 	ld hl, sMailboxCountBackup
 	ld de, sMailboxCount
-	ld bc, 1 + 10 * MAIL_STRUCT_LENGTH
+	ld bc, 1 + MAILBOX_CAPACITY * MAIL_STRUCT_LENGTH
 	call CopyBytes
 	jp CloseSRAM
 
@@ -267,11 +267,11 @@ DeletePartyMonMail:
 	call OpenSRAM
 	xor a
 	ld hl, sPartyMail
-	ld bc, 6 * MAIL_STRUCT_LENGTH
+	ld bc, PARTY_LENGTH * MAIL_STRUCT_LENGTH
 	call ByteFill
 	xor a
 	ld hl, sMailboxCount
-	ld bc, 1 + 10 * MAIL_STRUCT_LENGTH
+	ld bc, 1 + MAILBOX_CAPACITY * MAIL_STRUCT_LENGTH
 	call ByteFill
 	jp CloseSRAM
 
@@ -409,13 +409,13 @@ MailboxPC:
 	jr c, .subexit
 	ld a, [wMenuCursorY]
 	dec a
-	ld hl, .JumpTable
+	ld hl, .Jumptable
 	rst JumpTable
 
 .subexit
 	ret
 
-.JumpTable:
+.Jumptable:
 	dw .ReadMail
 	dw .PutInPack
 	dw .AttachMail
@@ -547,7 +547,7 @@ MailboxPC:
 	db SCROLLINGMENU_DISPLAY_ARROWS ; flags
 	db 4, 0 ; rows, columns
 	db SCROLLINGMENU_ITEMS_NORMAL ; item format
-	dbw 0, wMailboxCount ; text pointer
+	dbw 0, wMailboxCount
 	dba MailboxPC_PrintMailAuthor
 	dba NULL
 	dba NULL

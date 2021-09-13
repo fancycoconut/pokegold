@@ -1,30 +1,35 @@
 ; base data struct members (see data/pokemon/base_stats/*.asm)
-BASE_DEX_NO      EQUS "(wBaseDexNo - wCurBaseData)"
-BASE_STATS       EQUS "(wBaseStats - wCurBaseData)"
-BASE_HP          EQUS "(wBaseHP - wCurBaseData)"
-BASE_ATK         EQUS "(wBaseAttack - wCurBaseData)"
-BASE_SPD         EQUS "(wBaseSpeed - wCurBaseData)"
-BASE_SAT         EQUS "(wBaseSpecialAttack - wCurBaseData)"
-BASE_SDF         EQUS "(wBaseSpecialDefense - wCurBaseData)"
-BASE_TYPES       EQUS "(wBaseType - wCurBaseData)"
-BASE_TYPE_1      EQUS "(wBaseType1 - wCurBaseData)"
-BASE_TYPE_2      EQUS "(wBaseType2 - wCurBaseData)"
-BASE_CATCH_RATE  EQUS "(wBaseCatchRate - wCurBaseData)"
-BASE_EXP         EQUS "(wBaseExp - wCurBaseData)"
-BASE_ITEMS       EQUS "(wBaseItems - wCurBaseData)"
-BASE_ITEM_1      EQUS "(wBaseItem1 - wCurBaseData)"
-BASE_ITEM_2      EQUS "(wBaseItem2 - wCurBaseData)"
-BASE_GENDER      EQUS "(wBaseGender - wCurBaseData)"
-BASE_UNKNOWN_1   EQUS "(wBaseUnknown1 - wCurBaseData)"
-BASE_EGG_STEPS   EQUS "(wBaseEggSteps - wCurBaseData)"
-BASE_UNKNOWN_2   EQUS "(wBaseUnknown2 - wCurBaseData)"
-BASE_PIC_SIZE    EQUS "(wBasePicSize - wCurBaseData)"
-BASE_FRONTPIC    EQUS "(wBaseUnusedFrontpic - wCurBaseData)"
-BASE_BACKPIC     EQUS "(wBaseUnusedBackpic - wCurBaseData)"
-BASE_GROWTH_RATE EQUS "(wBaseGrowthRate - wCurBaseData)"
-BASE_EGG_GROUPS  EQUS "(wBaseEggGroups - wCurBaseData)"
-BASE_TMHM        EQUS "(wBaseTMHM - wCurBaseData)"
-BASE_DATA_SIZE   EQUS "(wCurBaseDataEnd - wCurBaseData)"
+rsreset
+BASE_DEX_NO      rb
+BASE_STATS       rb NUM_STATS
+rsset BASE_STATS
+BASE_HP          rb
+BASE_ATK         rb
+BASE_DEF         rb
+BASE_SPD         rb
+BASE_SAT         rb
+BASE_SDF         rb
+BASE_TYPES       rw
+rsset BASE_TYPES
+BASE_TYPE_1      rb
+BASE_TYPE_2      rb
+BASE_CATCH_RATE  rb
+BASE_EXP         rb
+BASE_ITEMS       rw
+rsset BASE_ITEMS
+BASE_ITEM_1      rb
+BASE_ITEM_2      rb
+BASE_GENDER      rb
+                 rb_skip
+BASE_EGG_STEPS   rb
+                 rb_skip
+BASE_PIC_SIZE    rb
+BASE_FRONTPIC    rw
+BASE_BACKPIC     rw
+BASE_GROWTH_RATE rb
+BASE_EGG_GROUPS  rb
+BASE_TMHM        rb (NUM_TM_HM + 7) / 8
+BASE_DATA_SIZE EQU _RS
 
 ; gender ratio constants
 GENDER_F0      EQU   0 percent
@@ -44,6 +49,7 @@ GENDER_UNKNOWN EQU -1
 	const GROWTH_MEDIUM_SLOW
 	const GROWTH_FAST
 	const GROWTH_SLOW
+NUM_GROWTH_RATES EQU const_value
 
 ; wBaseEggGroups values
 	const_def 1
@@ -67,47 +73,59 @@ GENDER_UNKNOWN EQU -1
 NUM_DEX_ENTRY_BANKS EQU 4
 
 ; party_struct members (see macros/wram.asm)
-MON_SPECIES            EQUS "(wPartyMon1Species - wPartyMon1)"
-MON_ITEM               EQUS "(wPartyMon1Item - wPartyMon1)"
-MON_MOVES              EQUS "(wPartyMon1Moves - wPartyMon1)"
-MON_ID                 EQUS "(wPartyMon1ID - wPartyMon1)"
-MON_EXP                EQUS "(wPartyMon1Exp - wPartyMon1)"
-MON_STAT_EXP           EQUS "(wPartyMon1StatExp - wPartyMon1)"
-MON_HP_EXP             EQUS "(wPartyMon1HPExp - wPartyMon1)"
-MON_ATK_EXP            EQUS "(wPartyMon1AtkExp - wPartyMon1)"
-MON_DEF_EXP            EQUS "(wPartyMon1DefExp - wPartyMon1)"
-MON_SPD_EXP            EQUS "(wPartyMon1SpdExp - wPartyMon1)"
-MON_SPC_EXP            EQUS "(wPartyMon1SpcExp - wPartyMon1)"
-MON_DVS                EQUS "(wPartyMon1DVs - wPartyMon1)"
-MON_PP                 EQUS "(wPartyMon1PP - wPartyMon1)"
-MON_HAPPINESS          EQUS "(wPartyMon1Happiness - wPartyMon1)"
-MON_PKRUS              EQUS "(wPartyMon1PokerusStatus - wPartyMon1)"
-MON_LEVEL              EQUS "(wPartyMon1Level - wPartyMon1)"
-MON_STATUS             EQUS "(wPartyMon1Status - wPartyMon1)"
-MON_HP                 EQUS "(wPartyMon1HP - wPartyMon1)"
-MON_MAXHP              EQUS "(wPartyMon1MaxHP - wPartyMon1)"
-MON_ATK                EQUS "(wPartyMon1Attack - wPartyMon1)"
-MON_DEF                EQUS "(wPartyMon1Defense - wPartyMon1)"
-MON_SPD                EQUS "(wPartyMon1Speed - wPartyMon1)"
-MON_SAT                EQUS "(wPartyMon1SpclAtk - wPartyMon1)"
-MON_SDF                EQUS "(wPartyMon1SpclDef - wPartyMon1)"
-BOXMON_STRUCT_LENGTH   EQUS "(wPartyMon1BoxEnd - wPartyMon1)"
-PARTYMON_STRUCT_LENGTH EQUS "(wPartyMon1StructEnd - wPartyMon1)"
+rsreset
+MON_SPECIES            rb
+MON_ITEM               rb
+MON_MOVES              rb NUM_MOVES
+MON_ID                 rw
+MON_EXP                rb 3
+MON_STAT_EXP           rw NUM_EXP_STATS
+rsset MON_STAT_EXP
+MON_HP_EXP             rw
+MON_ATK_EXP            rw
+MON_DEF_EXP            rw
+MON_SPD_EXP            rw
+MON_SPC_EXP            rw
+MON_DVS                rw
+MON_PP                 rb NUM_MOVES
+MON_HAPPINESS          rb
+MON_POKERUS            rb
+                       rb_skip 2
+MON_LEVEL              rb
+BOXMON_STRUCT_LENGTH EQU _RS
+MON_STATUS             rb
+                       rb_skip
+MON_HP                 rw
+MON_MAXHP              rw
+MON_STATS              rw NUM_BATTLE_STATS
+rsset MON_STATS
+MON_ATK                rw
+MON_DEF                rw
+MON_SPD                rw
+MON_SAT                rw
+MON_SDF                rw
+PARTYMON_STRUCT_LENGTH EQU _RS
 
-NICKNAMED_MON_STRUCT_LENGTH EQUS "(PARTYMON_STRUCT_LENGTH + MON_NAME_LENGTH)"
+NICKNAMED_MON_STRUCT_LENGTH EQU PARTYMON_STRUCT_LENGTH + MON_NAME_LENGTH
 REDMON_STRUCT_LENGTH EQU 44
+
+MON_CRY_LENGTH EQU 6
 
 ; maximum number of party pokemon
 PARTY_LENGTH EQU 6
 
 ; boxes
 MONS_PER_BOX EQU 20
-NUM_BOXES    EQU 14
+; box: count, species, mons, OTs, nicknames, padding
+BOX_LENGTH EQU 1 + MONS_PER_BOX + 1 + (BOXMON_STRUCT_LENGTH + NAME_LENGTH + MON_NAME_LENGTH) * MONS_PER_BOX + 2 ; $450
+NUM_BOXES EQU 14
 NUM_BOXES_JAPANESE EQU 9
 
 ; hall of fame
-HOF_MON_LENGTH EQU 1 + 2 + 2 + 1 + (MON_NAME_LENGTH - 1) ; species, id, dvs, level, nick
-HOF_LENGTH EQU 1 + HOF_MON_LENGTH * PARTY_LENGTH + 1 ; win count, party, terminator
+; hof_mon: species, id, dvs, level, nicknames
+HOF_MON_LENGTH EQU 1 + 2 + 2 + 1 + (MON_NAME_LENGTH - 1) ; $10
+; hall_of_fame: win count, party, terminator
+HOF_LENGTH EQU 1 + HOF_MON_LENGTH * PARTY_LENGTH + 1 ; $62
 NUM_HOF_TEAMS EQU 30
 
 ; evolution types (used in data/pokemon/evos_attacks.asm)
@@ -149,7 +167,7 @@ NUM_ROAMMON_MAPS EQU 16 ; RoamMaps table size (see data/wild/roammon_maps.asm)
 	const TREEMON_SET_CANYON
 	const TREEMON_SET_ROCK
 NUM_TREEMON_SETS EQU const_value
-; last 2 are unused/ignored
+; last two are unused/ignored
 	const TREEMON_SET_UNUSED
 	const TREEMON_SET_CITY
 
@@ -159,7 +177,7 @@ NUM_TREEMON_SETS EQU const_value
 	const TREEMON_SCORE_GOOD ; 1
 	const TREEMON_SCORE_RARE ; 2
 
-; ChangeHappiness arguments (see data/happiness_changes.asm)
+; ChangeHappiness arguments (see data/events/happiness_changes.asm)
 	const_def 1
 	const HAPPINESS_GAINLEVEL         ; 01
 	const HAPPINESS_USEDITEM          ; 02
@@ -179,6 +197,7 @@ NUM_TREEMON_SETS EQU const_value
 	const HAPPINESS_ENERGYROOT        ; 10
 	const HAPPINESS_REVIVALHERB       ; 11
 	const HAPPINESS_GROOMING          ; 12
+NUM_HAPPINESS_CHANGES EQU const_value - 1
 
 ; significant happiness values
 BASE_HAPPINESS        EQU 70

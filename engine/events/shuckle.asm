@@ -38,13 +38,13 @@ GiveShuckle:
 	dec a
 	ld hl, wPartyMonNicknames
 	call SkipNames
-	ld de, SpecialShuckleNick
+	ld de, SpecialShuckleNickname
 	call CopyName2
 
 ; OT.
 	ld a, [wPartyCount]
 	dec a
-	ld hl, wPartyMonOT
+	ld hl, wPartyMonOTs
 	call SkipNames
 	ld de, SpecialShuckleOT
 	call CopyName2
@@ -64,10 +64,10 @@ GiveShuckle:
 SpecialShuckleOT:
 	db "MANIA@"
 
-SpecialShuckleNick:
+SpecialShuckleNickname:
 	db "SHUCKIE@"
 
-ReturnShuckle:
+ReturnShuckie:
 	farcall SelectMonFromParty
 	jr c, .refused
 
@@ -90,7 +90,7 @@ ReturnShuckle:
 
 ; OT
 	ld a, [wCurPartyMon]
-	ld hl, wPartyMonOT
+	ld hl, wPartyMonOTs
 	call SkipNames
 	ld de, SpecialShuckleOT
 .CheckOT:

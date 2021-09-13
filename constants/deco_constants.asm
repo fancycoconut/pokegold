@@ -1,3 +1,12 @@
+; decoration attributes
+rsreset
+DECOATTR_TYPE       rb
+DECOATTR_NAME       rb
+DECOATTR_ACTION     rb
+DECOATTR_EVENT_FLAG rw
+DECOATTR_SPRITE     rb
+DECOATTR_STRUCT_LENGTH EQU _RS
+
 ; decoration types
 	const_def 1
 	const DECO_PLANT
@@ -6,9 +15,11 @@
 	const DECO_POSTER
 	const DECO_DOLL
 	const DECO_BIGDOLL
+NUM_DECO_TYPES EQU const_value - 1
 
 ; DecorationNames indexes (see data/decorations/names.asm)
-	const_def 1
+	const_def
+	const CANCEL_DECO
 	const PUT_IT_AWAY
 	const MAGNAPLANT
 	const TROPICPLANT
@@ -34,6 +45,7 @@
 	const BLUE_CARPET
 	const YELLOW_CARPET
 	const GREEN_CARPET
+NUM_DECO_NAMES EQU const_value
 
 ; DoDecorationAction2.DecoActions indexes (see engine/overworld/decorations.asm)
 	const_def 1
@@ -51,8 +63,7 @@
 	const PUT_AWAY_BIG_DOLL
 	const SET_UP_DOLL
 	const PUT_AWAY_DOLL
-	const SET_UP_ORNAMENT
-	const PUT_AWAY_ORNAMENT
+NUM_DECO_ACTIONS EQU const_value - 1
 
 __deco_value__ = 0
 
@@ -127,3 +138,4 @@ NUM_NON_TROPHY_DECOS EQU __deco_value__
 	deco  GOLD_TROPHY_DOLL
 	deco  SILVER_TROPHY_DOLL
 NUM_DECOS EQU __deco_value__
+NUM_DECO_CATEGORIES EQU const_value - 1 - NUM_DECOS

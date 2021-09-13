@@ -12,16 +12,10 @@ SECTION "Audio RAM", WRAM0
 wMusicPlaying:: db
 
 wAudio::
-
-wChannel1:: channel_struct wChannel1
-wChannel2:: channel_struct wChannel2
-wChannel3:: channel_struct wChannel3
-wChannel4:: channel_struct wChannel4
-
-wChannel5:: channel_struct wChannel5
-wChannel6:: channel_struct wChannel6
-wChannel7:: channel_struct wChannel7
-wChannel8:: channel_struct wChannel8
+; wChannel1 - wChannel8
+for n, 1, NUM_CHANNELS + 1
+wChannel{d:n}:: channel_struct wChannel{d:n}
+endr
 
 	ds 1
 
@@ -144,8 +138,6 @@ wDisableTextAcceleration:: db
 wPCItemsCursor:: db
 wPCItemsScrollPosition:: db
 
-	ds 39
-
 
 SECTION "GBC Palettes", WRAM0
 
@@ -159,46 +151,10 @@ wOBPals2:: ds 8 palettes
 SECTION "Sprites", WRAM0
 
 wVirtualOAM::
-wVirtualOAMSprite00:: sprite_oam_struct wVirtualOAMSprite00
-wVirtualOAMSprite01:: sprite_oam_struct wVirtualOAMSprite01
-wVirtualOAMSprite02:: sprite_oam_struct wVirtualOAMSprite02
-wVirtualOAMSprite03:: sprite_oam_struct wVirtualOAMSprite03
-wVirtualOAMSprite04:: sprite_oam_struct wVirtualOAMSprite04
-wVirtualOAMSprite05:: sprite_oam_struct wVirtualOAMSprite05
-wVirtualOAMSprite06:: sprite_oam_struct wVirtualOAMSprite06
-wVirtualOAMSprite07:: sprite_oam_struct wVirtualOAMSprite07
-wVirtualOAMSprite08:: sprite_oam_struct wVirtualOAMSprite08
-wVirtualOAMSprite09:: sprite_oam_struct wVirtualOAMSprite09
-wVirtualOAMSprite10:: sprite_oam_struct wVirtualOAMSprite10
-wVirtualOAMSprite11:: sprite_oam_struct wVirtualOAMSprite11
-wVirtualOAMSprite12:: sprite_oam_struct wVirtualOAMSprite12
-wVirtualOAMSprite13:: sprite_oam_struct wVirtualOAMSprite13
-wVirtualOAMSprite14:: sprite_oam_struct wVirtualOAMSprite14
-wVirtualOAMSprite15:: sprite_oam_struct wVirtualOAMSprite15
-wVirtualOAMSprite16:: sprite_oam_struct wVirtualOAMSprite16
-wVirtualOAMSprite17:: sprite_oam_struct wVirtualOAMSprite17
-wVirtualOAMSprite18:: sprite_oam_struct wVirtualOAMSprite18
-wVirtualOAMSprite19:: sprite_oam_struct wVirtualOAMSprite19
-wVirtualOAMSprite20:: sprite_oam_struct wVirtualOAMSprite20
-wVirtualOAMSprite21:: sprite_oam_struct wVirtualOAMSprite21
-wVirtualOAMSprite22:: sprite_oam_struct wVirtualOAMSprite22
-wVirtualOAMSprite23:: sprite_oam_struct wVirtualOAMSprite23
-wVirtualOAMSprite24:: sprite_oam_struct wVirtualOAMSprite24
-wVirtualOAMSprite25:: sprite_oam_struct wVirtualOAMSprite25
-wVirtualOAMSprite26:: sprite_oam_struct wVirtualOAMSprite26
-wVirtualOAMSprite27:: sprite_oam_struct wVirtualOAMSprite27
-wVirtualOAMSprite28:: sprite_oam_struct wVirtualOAMSprite28
-wVirtualOAMSprite29:: sprite_oam_struct wVirtualOAMSprite29
-wVirtualOAMSprite30:: sprite_oam_struct wVirtualOAMSprite30
-wVirtualOAMSprite31:: sprite_oam_struct wVirtualOAMSprite31
-wVirtualOAMSprite32:: sprite_oam_struct wVirtualOAMSprite32
-wVirtualOAMSprite33:: sprite_oam_struct wVirtualOAMSprite33
-wVirtualOAMSprite34:: sprite_oam_struct wVirtualOAMSprite34
-wVirtualOAMSprite35:: sprite_oam_struct wVirtualOAMSprite35
-wVirtualOAMSprite36:: sprite_oam_struct wVirtualOAMSprite36
-wVirtualOAMSprite37:: sprite_oam_struct wVirtualOAMSprite37
-wVirtualOAMSprite38:: sprite_oam_struct wVirtualOAMSprite38
-wVirtualOAMSprite39:: sprite_oam_struct wVirtualOAMSprite39
+; wVirtualOAMSprite00 - wVirtualOAMSprite39
+for n, NUM_SPRITE_OAM_STRUCTS
+wVirtualOAMSprite{02d:n}:: sprite_oam_struct wVirtualOAMSprite{02d:n}
+endr
 wVirtualOAMEnd::
 
 
@@ -210,41 +166,39 @@ wTilemap::
 wTilemapEnd::
 
 
-SECTION "Miscellaneous", WRAM0
-
 ; This union spans 480 bytes.
-UNION
+SECTION UNION "Miscellaneous", WRAM0
+
 ; surrounding tiles
 ; This buffer determines the size for the rest of the union;
 ; it uses exactly 480 bytes.
 wSurroundingTiles:: ds SURROUNDING_WIDTH * SURROUNDING_HEIGHT
 
-NEXTU
+
+SECTION UNION "Miscellaneous", WRAM0
+
 ; box save buffer
 ; SaveBoxAddress uses this buffer in three steps because it
 ; needs more space than the buffer can hold.
 wBoxPartialData:: ds 480
 wBoxPartialDataEnd::
 
-NEXTU
+
+SECTION UNION "Miscellaneous", WRAM0
+
 ; 20x18 grid of 8x8 tiles
 wTempTilemap::
 	ds SCREEN_WIDTH * SCREEN_HEIGHT
 
-NEXTU
-; unown puzzle
-wUnownPuzzle::
-	ds 200
-wPuzzlePieces:: ds 6 * 6
-	ds 244
-wUnownPuzzleEnd::
 
-NEXTU
+SECTION UNION "Miscellaneous", WRAM0
+
 ; link patch lists
 wPlayerPatchLists:: ds 200
 wOTPatchLists:: ds 200
 
-NEXTU
+
+SECTION UNION "Miscellaneous", WRAM0
 
 ; This union spans 200 bytes.
 UNION
@@ -257,18 +211,12 @@ wSpriteAnimDict::
 	ds NUM_SPRITEANIMDICT_ENTRIES * 2
 
 wSpriteAnimationStructs::
+; wSpriteAnim1 - wSpriteAnim10
+for n, 1, NUM_SPRITE_ANIM_STRUCTS + 1
 ; field  0:   index
 ; fields 1-3: loaded from SpriteAnimSeqData
-wSpriteAnim1::  sprite_anim_struct wSpriteAnim1
-wSpriteAnim2::  sprite_anim_struct wSpriteAnim2
-wSpriteAnim3::  sprite_anim_struct wSpriteAnim3
-wSpriteAnim4::  sprite_anim_struct wSpriteAnim4
-wSpriteAnim5::  sprite_anim_struct wSpriteAnim5
-wSpriteAnim6::  sprite_anim_struct wSpriteAnim6
-wSpriteAnim7::  sprite_anim_struct wSpriteAnim7
-wSpriteAnim8::  sprite_anim_struct wSpriteAnim8
-wSpriteAnim9::  sprite_anim_struct wSpriteAnim9
-wSpriteAnim10:: sprite_anim_struct wSpriteAnim10
+wSpriteAnim{d:n}:: sprite_anim_struct wSpriteAnim{d:n}
+endr
 wSpriteAnimationStructsEnd::
 
 wSpriteAnimCount:: db
@@ -447,9 +395,14 @@ wBetaPokerSGBPals:: db
 wBetaPokerSGBAttr:: db
 wBetaPokerSGBCol:: db
 wBetaPokerSGBRow:: db
+
+NEXTU
+; unown puzzle
+wPuzzlePieces:: ds 6 * 6
 ENDU
 
-ENDU
+
+SECTION "Unused Map Buffer", WRAM0
 
 ; This was a buffer for map-related pointers in the 1997 G/S prototype.
 ; See wMapBuffer in pokegold-spaceworld's wram.asm.
@@ -457,18 +410,21 @@ wUnusedMapBuffer:: ds 24
 wUnusedMapBufferEnd::
 
 
-SECTION "Overworld Map", WRAM0
+SECTION UNION "Overworld Map", WRAM0
 
-UNION
 ; overworld map blocks
 wOverworldMapBlocks:: ds 1300
 wOverworldMapBlocksEnd::
 
-NEXTU
+
+SECTION UNION "Overworld Map", WRAM0
+
 ; decompress buffer in wram
 wDecompressScratch:: ds 40 tiles
 
-NEXTU
+
+SECTION UNION "Overworld Map", WRAM0
+
 ; GB Printer data
 wGameboyPrinterRAM::
 wGameboyPrinter2bppSource:: ds 40 tiles
@@ -502,7 +458,9 @@ wPrinterExposureTime:: db
 	ds 16
 wGameboyPrinterRAMEnd::
 
-NEXTU
+
+SECTION UNION "Overworld Map", WRAM0
+
 ; bill's pc data
 wBillsPCData::
 wBillsPCPokemonList::
@@ -521,27 +479,37 @@ wBillsPC_MonHasMail:: db
 	ds 5
 wBillsPCDataEnd::
 
-NEXTU
+
+SECTION UNION "Overworld Map", WRAM0
+
 ; Hall of Fame data
 wHallOfFamePokemonList:: hall_of_fame wHallOfFamePokemonList
 
-NEXTU
+
+SECTION UNION "Overworld Map", WRAM0
+
 ; debug color picker
 wDebugOriginalColors:: ds 256 * 4
 
-NEXTU
+
+SECTION UNION "Overworld Map", WRAM0
+
 ; unused sprite anims
 	ds 4
 wUnusedPikachuFrameset:: db
 	ds 18
 wUnusedJigglypuffNoteXCoord:: db
 
-NEXTU
+
+SECTION UNION "Overworld Map", WRAM0
+
 ; raw link data
 wLinkData:: ds 1300
 wLinkDataEnd::
 
-NEXTU
+
+SECTION UNION "Overworld Map", WRAM0
+
 ; link data members
 wLinkPlayerName:: ds NAME_LENGTH
 wLinkPartyCount:: db
@@ -551,26 +519,42 @@ wLinkPartyEnd:: db ; older code doesn't check PartyCount
 UNION
 ; link player data
 wLinkPlayerData::
-wLinkPlayerPartyMon1:: party_struct wLinkPlayerPartyMon1
-wLinkPlayerPartyMon2:: party_struct wLinkPlayerPartyMon2
-wLinkPlayerPartyMon3:: party_struct wLinkPlayerPartyMon3
-wLinkPlayerPartyMon4:: party_struct wLinkPlayerPartyMon4
-wLinkPlayerPartyMon5:: party_struct wLinkPlayerPartyMon5
-wLinkPlayerPartyMon6:: party_struct wLinkPlayerPartyMon6
-wLinkPlayerPartyMonOTNames:: ds NAME_LENGTH * PARTY_LENGTH
-wLinkPlayerPartyMonNicks:: ds MON_NAME_LENGTH * PARTY_LENGTH
+; wLinkPlayerPartyMon1 - wLinkPlayerPartyMon6
+for n, 1, PARTY_LENGTH + 1
+wLinkPlayerPartyMon{d:n}:: party_struct wLinkPlayerPartyMon{d:n}
+endr
+
+wLinkPlayerPartyMonOTs::
+; wLinkPlayerPartyMon1OT - wLinkPlayerPartyMon6OT
+for n, 1, PARTY_LENGTH + 1
+wLinkPlayerPartyMon{d:n}OT:: ds NAME_LENGTH
+endr
+
+wLinkPlayerPartyMonNicknames::
+; wLinkPlayerPartyMon1Nickname - wLinkPlayerPartyMon6Nickname
+for n, 1, PARTY_LENGTH + 1
+wLinkPlayerPartyMon{d:n}Nickname:: ds MON_NAME_LENGTH
+endr
 
 NEXTU
 ; time capsule party data
 wTimeCapsulePlayerData::
-wTimeCapsulePartyMon1:: red_party_struct wTimeCapsulePartyMon1
-wTimeCapsulePartyMon2:: red_party_struct wTimeCapsulePartyMon2
-wTimeCapsulePartyMon3:: red_party_struct wTimeCapsulePartyMon3
-wTimeCapsulePartyMon4:: red_party_struct wTimeCapsulePartyMon4
-wTimeCapsulePartyMon5:: red_party_struct wTimeCapsulePartyMon5
-wTimeCapsulePartyMon6:: red_party_struct wTimeCapsulePartyMon6
-wTimeCapsulePartyMonOTNames:: ds NAME_LENGTH * PARTY_LENGTH
-wTimeCapsulePartyMonNicks:: ds MON_NAME_LENGTH * PARTY_LENGTH
+; wTimeCapsulePartyMon1 - wTimeCapsulePartyMon6
+for n, 1, PARTY_LENGTH + 1
+wTimeCapsulePartyMon{d:n}:: red_party_struct wTimeCapsulePartyMon{d:n}
+endr
+
+wTimeCapsulePartyMonOTs::
+; wTimeCapsulePartyMon1OT - wTimeCapsulePartyMon6OT
+for n, 1, PARTY_LENGTH + 1
+wTimeCapsulePartyMon{d:n}OT:: ds NAME_LENGTH
+endr
+
+wTimeCapsulePartyMonNicknames::
+; wTimeCapsulePartyMon1Nickname - wTimeCapsulePartyMon6Nickname
+for n, 1, PARTY_LENGTH + 1
+wTimeCapsulePartyMon{d:n}Nickname:: ds MON_NAME_LENGTH
+endr
 
 NEXTU
 ; link patch lists
@@ -578,13 +562,22 @@ wLinkPatchList1:: ds SERIAL_PATCH_LIST_LENGTH
 wLinkPatchList2:: ds SERIAL_PATCH_LIST_LENGTH
 ENDU
 
-NEXTU
+
+SECTION UNION "Overworld Map", WRAM0
+
 ; link data prep
 	ds 1000
 wCurLinkOTPartyMonTypePointer:: dw
-wLinkOTPartyMonTypes:: ds 2 * PARTY_LENGTH
 
-NEXTU
+wLinkOTPartyMonTypes::
+; wLinkOTPartyMon1Type - wLinkOTPartyMon6Type
+for n, 1, PARTY_LENGTH + 1
+wLinkOTPartyMon{d:n}Type:: dw
+endr
+
+
+SECTION UNION "Overworld Map", WRAM0
+
 ; link mail data
 	ds 500
 wLinkPlayerMail::
@@ -601,13 +594,17 @@ wOTPlayerMailPatchSet:: ds 103 + SERIAL_MAIL_PREAMBLE_LENGTH
 wLinkOTMailEnd::
 	ds 10
 
-NEXTU
+
+SECTION UNION "Overworld Map", WRAM0
+
 ; received link mail data
 	ds 500
 wLinkReceivedMail:: ds MAIL_STRUCT_LENGTH * PARTY_LENGTH
 wLinkReceivedMailEnd:: db
 
-NEXTU
+
+SECTION UNION "Overworld Map", WRAM0
+
 ; mystery gift data
 wMysteryGiftStaging:: ds 80
 
@@ -642,7 +639,9 @@ wMysteryGiftPlayerBackupItem:: db
 	ds 1
 wMysteryGiftPlayerDataEnd::
 
-NEXTU
+
+SECTION UNION "Overworld Map", WRAM0
+
 ; LCD expects wLYOverrides to have an alignment of $100
 wLYOverrides:: ds SCREEN_HEIGHT_PX
 wLYOverridesEnd::
@@ -678,23 +677,16 @@ wBattleAnimTileDict::
 	ds NUM_BATTLEANIMTILEDICT_ENTRIES * 2
 
 wActiveAnimObjects::
-wAnimObject01:: battle_anim_struct wAnimObject01
-wAnimObject02:: battle_anim_struct wAnimObject02
-wAnimObject03:: battle_anim_struct wAnimObject03
-wAnimObject04:: battle_anim_struct wAnimObject04
-wAnimObject05:: battle_anim_struct wAnimObject05
-wAnimObject06:: battle_anim_struct wAnimObject06
-wAnimObject07:: battle_anim_struct wAnimObject07
-wAnimObject08:: battle_anim_struct wAnimObject08
-wAnimObject09:: battle_anim_struct wAnimObject09
-wAnimObject10:: battle_anim_struct wAnimObject10
+; wAnimObject1 - wAnimObject10
+for n, 1, NUM_ANIM_OBJECTS + 1
+wAnimObject{d:n}:: battle_anim_struct wAnimObject{d:n}
+endr
 
 wActiveBGEffects::
-wBGEffect1:: battle_bg_effect wBGEffect1
-wBGEffect2:: battle_bg_effect wBGEffect2
-wBGEffect3:: battle_bg_effect wBGEffect3
-wBGEffect4:: battle_bg_effect wBGEffect4
-wBGEffect5:: battle_bg_effect wBGEffect5
+; wBGEffect1 - wBGEffect5
+for n, 1, NUM_BG_EFFECTS + 1
+wBGEffect{d:n}:: battle_bg_effect wBGEffect{d:n}
+endr
 
 wLastAnimObjectIndex:: db
 
@@ -760,8 +752,8 @@ wBattle::
 wEnemyMoveStruct:: move_struct wEnemyMoveStruct
 wPlayerMoveStruct:: move_struct wPlayerMoveStruct
 
-wEnemyMonNick:: ds MON_NAME_LENGTH
-wBattleMonNick:: ds MON_NAME_LENGTH
+wEnemyMonNickname::  ds MON_NAME_LENGTH
+wBattleMonNickname:: ds MON_NAME_LENGTH
 
 UNION
 ; battle mon
@@ -1038,8 +1030,10 @@ wBattleEnd::
 
 ENDU
 
+
 IF DEF(_DEBUG)
-NEXTU
+SECTION UNION "Overworld Map", WRAM0
+
 ; debug room paged values
 UNION
 ; debug room new item values
@@ -1063,9 +1057,8 @@ NEXTU
 ; debug room GB ID values
 wDebugRoomGBID:: dw
 ENDU
-ENDC
 
-ENDU
+ENDC
 
 
 SECTION "Video", WRAM0
@@ -1102,6 +1095,8 @@ wAttrmapEnd::
 
 wTileAnimBuffer:: ds 1 tiles
 
+; link data
+UNION
 wOtherPlayerLinkMode:: db
 wOtherPlayerLinkAction::
 wBattleAction:: db
@@ -1109,6 +1104,10 @@ wBattleAction:: db
 wPlayerLinkAction:: db
 wUnusedLinkAction:: db
 	ds 3
+NEXTU
+wLinkReceivedSyncBuffer:: ds 5
+wLinkPlayerSyncBuffer:: ds 5
+ENDU
 wLinkTimeoutFrames:: dw
 wLinkByteTimeout:: dw
 
@@ -1382,7 +1381,7 @@ wDefaultSpawnpoint:: db
 
 UNION
 ; mon buffer
-wBufferMonNick:: ds MON_NAME_LENGTH
+wBufferMonNickname:: ds MON_NAME_LENGTH
 wBufferMonOT:: ds NAME_LENGTH
 wBufferMon:: party_struct wBufferMon
 
@@ -1534,7 +1533,7 @@ NEXTU
 ; trade
 wCurTradePartyMon:: db
 wCurOTTradePartyMon:: db
-wBufferTrademonNick:: ds MON_NAME_LENGTH
+wBufferTrademonNickname:: ds MON_NAME_LENGTH
 
 NEXTU
 ; link battle record data
@@ -1797,13 +1796,13 @@ wUsingItemWithSelect:: db
 
 UNION
 ; mart data
-wCurMart:: ds 16
-wCurMartEnd::
+wCurMartCount:: db
+wCurMartItems:: ds 15
 
 NEXTU
 ; elevator data
-wCurElevator:: db
-wCurElevatorFloors:: db
+wCurElevatorCount:: db
+wCurElevatorFloors:: ds 15
 
 NEXTU
 ; mailbox data
@@ -1931,6 +1930,7 @@ wTilesetAnim:: dw ; bank 3f
 	ds 2 ; unused
 wTilesetPalettes:: dw ; bank 3f
 wTilesetEnd::
+	assert wTilesetEnd - wTileset == TILESET_LENGTH
 
 wEvolvableFlags:: flag_array PARTY_LENGTH
 
@@ -2154,6 +2154,7 @@ wBaseGrowthRate:: db
 wBaseEggGroups:: db
 wBaseTMHM:: flag_array NUM_TM_HM
 wCurBaseDataEnd::
+	assert wCurBaseDataEnd - wCurBaseData == BASE_DATA_SIZE
 
 	ds 1
 
@@ -2205,7 +2206,7 @@ wMapStatus:: db
 wMapEventStatus:: db
 
 wScriptFlags::
-; bit 3: priority jump
+; bit 3: run deferred script
 	db
 	ds 1
 wScriptFlags2::
@@ -2226,10 +2227,10 @@ wScriptStack:: ds 3 * 5
 wScriptVar:: db
 wScriptDelay:: db
 
-wPriorityScriptBank::
+wDeferredScriptBank::
 wScriptTextBank::
 	db
-wPriorityScriptAddr::
+wDeferredScriptAddr::
 wScriptTextAddr::
 	dw
 	ds 1
@@ -2353,25 +2354,17 @@ wCenteredObject:: db
 wFollowerMovementQueueLength:: db
 wFollowMovementQueue:: ds 5
 
-wObjectStructs::
-wPlayerStruct::   object_struct wPlayer
-wObject1Struct::  object_struct wObject1
-wObject2Struct::  object_struct wObject2
-wObject3Struct::  object_struct wObject3
-wObject4Struct::  object_struct wObject4
-wObject5Struct::  object_struct wObject5
-wObject6Struct::  object_struct wObject6
-wObject7Struct::  object_struct wObject7
-wObject8Struct::  object_struct wObject8
-wObject9Struct::  object_struct wObject9
-wObject10Struct:: object_struct wObject10
 UNION
-	ds 18
+wObjectStructs::
+wPlayerStruct:: object_struct wPlayer ; player is object struct 0
+; wObjectStruct1 - wObjectStruct12
+for n, 1, NUM_OBJECT_STRUCTS
+wObject{d:n}Struct:: object_struct wObject{d:n}
+endr
+NEXTU
+	ds 458
 wPlayerData1End::
 wPlayerData2::
-NEXTU
-wObject11Struct:: object_struct wObject11
-wObject12Struct:: object_struct wObject12
 ENDU
 
 wCmdQueue:: ds CMDQUEUE_CAPACITY * CMDQUEUE_ENTRY_SIZE
@@ -2379,22 +2372,11 @@ wCmdQueue:: ds CMDQUEUE_CAPACITY * CMDQUEUE_ENTRY_SIZE
 	ds 40
 
 wMapObjects::
-wPlayerObject:: map_object wPlayer
-wMap1Object::   map_object wMap1
-wMap2Object::   map_object wMap2
-wMap3Object::   map_object wMap3
-wMap4Object::   map_object wMap4
-wMap5Object::   map_object wMap5
-wMap6Object::   map_object wMap6
-wMap7Object::   map_object wMap7
-wMap8Object::   map_object wMap8
-wMap9Object::   map_object wMap9
-wMap10Object::  map_object wMap10
-wMap11Object::  map_object wMap11
-wMap12Object::  map_object wMap12
-wMap13Object::  map_object wMap13
-wMap14Object::  map_object wMap14
-wMap15Object::  map_object wMap15
+wPlayerObject:: map_object wPlayer ; player is map object 0
+; wMap1Object - wMap15Object
+for n, 1, NUM_OBJECTS
+wMap{d:n}Object:: map_object wMap{d:n}
+endr
 
 wObjectMasks:: ds NUM_OBJECTS
 
@@ -2557,7 +2539,6 @@ wCurBox:: db
 
 	ds 2
 
-; 8 chars + $50
 wBoxNames:: ds BOX_NAME_LENGTH * NUM_BOXES
 
 	ds 2
@@ -2687,16 +2668,22 @@ wPartySpecies:: ds PARTY_LENGTH
 wPartyEnd::     db ; older code doesn't check wPartyCount
 
 wPartyMons::
-wPartyMon1:: party_struct wPartyMon1
-wPartyMon2:: party_struct wPartyMon2
-wPartyMon3:: party_struct wPartyMon3
-wPartyMon4:: party_struct wPartyMon4
-wPartyMon5:: party_struct wPartyMon5
-wPartyMon6:: party_struct wPartyMon6
+; wPartyMon1 - wPartyMon6
+for n, 1, PARTY_LENGTH + 1
+wPartyMon{d:n}:: party_struct wPartyMon{d:n}
+endr
 
-wPartyMonOT:: ds NAME_LENGTH * PARTY_LENGTH
+wPartyMonOTs::
+; wPartyMon1OT - wPartyMon6OT
+for n, 1, PARTY_LENGTH + 1
+wPartyMon{d:n}OT:: ds NAME_LENGTH
+endr
 
-wPartyMonNicknames:: ds MON_NAME_LENGTH * PARTY_LENGTH
+wPartyMonNicknames::
+; wPartyMon1Nickname - wPartyMon6Nickname
+for n, 1, PARTY_LENGTH + 1
+wPartyMon{d:n}Nickname:: ds MON_NAME_LENGTH
+endr
 wPartyMonNicknamesEnd::
 
 	ds 22
@@ -2718,9 +2705,9 @@ wDayCareMan::
 ; bit 0: monster 1 in day-care
 	db
 
-wBreedMon1Nick:: ds MON_NAME_LENGTH
-wBreedMon1OT::   ds NAME_LENGTH
-wBreedMon1::     box_struct wBreedMon1
+wBreedMon1Nickname:: ds MON_NAME_LENGTH
+wBreedMon1OT:: ds NAME_LENGTH
+wBreedMon1:: box_struct wBreedMon1
 
 wDayCareLady::
 ; bit 7: active
@@ -2734,13 +2721,13 @@ wBreedMotherOrNonDitto::
 ; nz: no
 	db
 
-wBreedMon2Nick:: ds MON_NAME_LENGTH
-wBreedMon2OT::   ds NAME_LENGTH
-wBreedMon2::     box_struct wBreedMon2
+wBreedMon2Nickname:: ds MON_NAME_LENGTH
+wBreedMon2OT:: ds NAME_LENGTH
+wBreedMon2:: box_struct wBreedMon2
 
-wEggNick:: ds MON_NAME_LENGTH
-wEggOT::   ds NAME_LENGTH
-wEggMon::  box_struct wEggMon
+wEggMonNickname:: ds MON_NAME_LENGTH
+wEggMonOT:: ds NAME_LENGTH
+wEggMon:: box_struct wEggMon
 
 wBugContestSecondPartySpecies:: db
 wContestMon:: party_struct wContestMon
@@ -2784,16 +2771,22 @@ ENDU
 UNION
 ; ot party mons
 wOTPartyMons::
-wOTPartyMon1:: party_struct wOTPartyMon1
-wOTPartyMon2:: party_struct wOTPartyMon2
-wOTPartyMon3:: party_struct wOTPartyMon3
-wOTPartyMon4:: party_struct wOTPartyMon4
-wOTPartyMon5:: party_struct wOTPartyMon5
-wOTPartyMon6:: party_struct wOTPartyMon6
-wOTPartyMonsEnd::
+; wOTPartyMon1 - wOTPartyMon6
+for n, 1, PARTY_LENGTH + 1
+wOTPartyMon{d:n}:: party_struct wOTPartyMon{d:n}
+endr
 
-wOTPartyMonOT:: ds NAME_LENGTH * PARTY_LENGTH
-wOTPartyMonNicknames:: ds MON_NAME_LENGTH * PARTY_LENGTH
+wOTPartyMonOTs::
+; wOTPartyMon1OT - wOTPartyMon6OT
+for n, 1, PARTY_LENGTH + 1
+wOTPartyMon{d:n}OT:: ds NAME_LENGTH
+endr
+
+wOTPartyMonNicknames::
+; wOTPartyMon1Nickname - wOTPartyMon6Nickname
+for n, 1, PARTY_LENGTH + 1
+wOTPartyMon{d:n}Nickname:: ds MON_NAME_LENGTH
+endr
 wOTPartyDataEnd::
 
 NEXTU

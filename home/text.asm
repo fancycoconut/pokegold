@@ -176,24 +176,22 @@ NextChar::
 
 CheckDict::
 dict: MACRO
+assert CHARLEN(\1) == 1
 if \1 == 0
 	and a
 else
 	cp \1
 endc
-
 if ISCONST(\2)
-; Replace a character with another one
-	jr nz, ._\@
+	; Replace a character with another one
+	jr nz, .not\@
 	ld a, \2
-._\@:
-else
-	if STRSUB("\2", 1, 1) == "."
+.not\@:
+elif STRSUB("\2", 1, 1) == "."
 	; Locals can use a short jump
 	jr z, \2
-	else
+else
 	jp z, \2
-	endc
 endc
 ENDM
 
@@ -316,7 +314,7 @@ PlaceBattlersName:
 	and a
 	jr nz, .enemy
 
-	ld de, wBattleMonNick
+	ld de, wBattleMonNickname
 	jr PlaceCommandCharacter
 
 .enemy
@@ -324,7 +322,7 @@ PlaceBattlersName:
 	call PlaceString
 	ld h, b
 	ld l, c
-	ld de, wEnemyMonNick
+	ld de, wEnemyMonNickname
 	jr PlaceCommandCharacter
 
 PlaceEnemysName::
@@ -613,6 +611,7 @@ DoTextUntilTerminator::
 
 TextCommands::
 ; entries correspond to TX_* constants (see macros/scripts/text.asm)
+	table_width 2, TextCommands
 	dw TextCommand_START         ; TX_START
 	dw TextCommand_RAM           ; TX_RAM
 	dw TextCommand_BCD           ; TX_BCD
@@ -636,6 +635,7 @@ TextCommands::
 	dw TextCommand_STRINGBUFFER  ; TX_STRINGBUFFER
 	dw TextCommand_DAY           ; TX_DAY
 	dw TextCommand_FAR           ; TX_FAR
+	assert_table_length NUM_TEXT_CMDS
 
 TextCommand_START::
 ; write text until "@"
@@ -903,8 +903,8 @@ TextCommand_STRINGBUFFER::
 ; 2: wStringBuffer5
 ; 3: wStringBuffer2
 ; 4: wStringBuffer1
-; 5: wEnemyMonNick
-; 6: wBattleMonNick
+; 5: wEnemyMonNickname
+; 6: wBattleMonNickname
 	ld a, [hli]
 	push hl
 	ld e, a
@@ -913,7 +913,7 @@ TextCommand_STRINGBUFFER::
 	add hl, de
 	add hl, de
 	ld a, BANK(StringBufferPointers)
-	call GetFarHalfword
+	call GetFarWord
 	ld d, h
 	ld e, l
 	ld h, b

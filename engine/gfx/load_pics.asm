@@ -102,7 +102,7 @@ GetFrontpic:
 	push af
 	inc hl
 	ld a, d
-	call GetFarHalfword
+	call GetFarWord
 	pop af
 
 .ok
@@ -228,7 +228,7 @@ Intro_GetMonFrontpic:
 	push af
 	inc hl
 	ld a, BANK(PokemonPicPointers)
-	call GetFarHalfword
+	call GetFarWord
 	pop af
 	pop de
 	call FarDecompress
@@ -238,7 +238,7 @@ GetTrainerPic:
 	ld a, [wTrainerClass]
 	and a
 	ret z
-	cp NUM_TRAINER_CLASSES
+	cp NUM_TRAINER_CLASSES + 1
 	ret nc
 	ld a, 0
 	call WaitBGMap

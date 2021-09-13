@@ -1,21 +1,24 @@
-GROUP_N_A  EQU -1
-MAP_N_A    EQU -1
-GROUP_NONE EQU 0
-MAP_NONE   EQU 0
+MAPGROUP_N_A  EQU -1
+GROUP_N_A     EQU -1
+MAP_N_A       EQU -1
+MAPGROUP_NONE EQU 0
+GROUP_NONE    EQU 0
+MAP_NONE      EQU 0
 
 ; map struct members (see data/maps/maps.asm)
-	const_def
-	const MAP_MAPATTRIBUTES_BANK ; 0
-	const MAP_TILESET            ; 1
-	const MAP_ENVIRONMENT        ; 2
-	const MAP_MAPATTRIBUTES      ; 3
-	const MAP_MAPATTRIBUTES_HI   ; 4
-	const MAP_LOCATION           ; 5
-	const MAP_MUSIC              ; 6
-	const MAP_PALETTE            ; 7
-	const MAP_FISHGROUP          ; 8
+rsreset
+MAP_MAPATTRIBUTES_BANK rb ; 0
+MAP_TILESET            rb ; 1
+MAP_ENVIRONMENT        rb ; 2
+MAP_MAPATTRIBUTES      rw ; 3
+MAP_LOCATION           rb ; 5
+MAP_MUSIC              rb ; 6
+MAP_PALETTE            rb ; 7
+MAP_FISHGROUP          rb ; 8
+MAP_LENGTH EQU _RS
 
 ; map environments (wEnvironment)
+; EnvironmentColorsPointers indexes (see data/maps/environment_colors.asm)
 	const_def 1
 	const TOWN
 	const ROUTE
@@ -24,6 +27,7 @@ MAP_NONE   EQU 0
 	const ENVIRONMENT_5
 	const GATE
 	const DUNGEON
+NUM_ENVIRONMENTS EQU const_value - 1
 
 ; map palettes (wEnvironment)
 	const_def
@@ -50,6 +54,7 @@ NUM_MAP_PALETTES EQU const_value
 	const FISHGROUP_QWILFISH
 	const FISHGROUP_REMORAID
 	const FISHGROUP_QWILFISH_NO_SWARM
+NUM_FISHGROUPS EQU const_value - 1
 
 ; connection directions (see data/maps/data.asm)
 	const_def
@@ -66,8 +71,7 @@ NUM_MAP_PALETTES EQU const_value
 	shift_const NORTH
 
 ; SpawnPoints indexes (see data/maps/spawn_points.asm)
-	const_def -1
-	const SPAWN_N_A
+	const_def
 	const SPAWN_HOME
 	const SPAWN_DEBUG
 ; kanto
@@ -99,6 +103,8 @@ NUM_MAP_PALETTES EQU const_value
 	const SPAWN_MT_SILVER
 	const SPAWN_FAST_SHIP
 NUM_SPAWNS EQU const_value
+
+SPAWN_N_A EQU -1
 
 ; Flypoints indexes (see data/maps/flypoints.asm)
 	const_def

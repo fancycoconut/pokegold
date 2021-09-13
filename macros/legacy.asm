@@ -11,6 +11,23 @@ dsprite: MACRO
 	dbsprite \2, \4, \1, \3, \5, \6
 ENDM
 
+; macros/data.asm
+
+dbbw: MACRO
+	db \1, \2
+	dw \3
+ENDM
+
+dbww: MACRO
+	db \1
+	dw \2, \3
+ENDM
+
+dbwww: MACRO
+	db \1
+	dw \2, \3, \4
+ENDM
+
 ; macros/scripts/audio.asm
 __ EQU 0
 CC EQU 13
@@ -33,11 +50,11 @@ noise: MACRO
 ENDM
 
 notetype: MACRO
-IF _NARG >= 2
+if _NARG >= 2
 	note_type \1, \2 >> 4, \2 & $0f
-ELSE
+else
 	note_type \1
-ENDC
+endc
 ENDM
 
 pitchoffset: MACRO
@@ -57,11 +74,11 @@ ENDM
 unknownmusic0xde EQUS "sound_duty"
 sound_duty: MACRO
 	db duty_cycle_pattern_cmd
-IF _NARG == 4
+if _NARG == 4
 	db \1 | (\2 << 2) | (\3 << 4) | (\4 << 6)
-ELSE
+else
 	db \1
-ENDC
+endc
 ENDM
 
 togglesfx EQUS "toggle_sfx"
@@ -102,7 +119,8 @@ checknite EQUS "checktime NITE"
 
 jump           EQUS "sjump"
 farjump        EQUS "farsjump"
-priorityjump   EQUS "prioritysjump"
+priorityjump   EQUS "sdefer"
+prioritysjump  EQUS "sdefer"
 ptcall         EQUS "memcall"
 ptjump         EQUS "memjump"
 ptpriorityjump EQUS "stopandsjump"
@@ -223,12 +241,7 @@ signpost: MACRO
 ENDM
 
 person_event: MACRO
-_s = \1
-_y = \2
-_x = \3
-_m = \4
-	shift 4
-	object_event _x, _y, _s, _m, \1, \2, \3, \4, \5, \6, \7, \8, \9
+	object_event \3, \2, \1, \4, \5, \6, \7, \8, \9, \<10>, \<11>, \<12>, \<13>
 ENDM
 
 PERSONTYPE_SCRIPT   EQUS "OBJECTTYPE_SCRIPT"

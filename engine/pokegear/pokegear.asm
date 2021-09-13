@@ -990,11 +990,9 @@ PokegearPhone_GetDPad:
 
 PokegearPhone_UpdateCursor:
 	ld a, " "
-x = 4
-rept PHONE_DISPLAY_HEIGHT
-	hlcoord 1, x
+for y, PHONE_DISPLAY_HEIGHT
+	hlcoord 1, 4 + y * 2
 	ld [hl], a
-x = x + 2
 endr
 	hlcoord 1, 4
 	ld a, [wPokegearPhoneCursorPosition]
@@ -1677,6 +1675,7 @@ NoRadioStation:
 	call PlayMusic
 	ld a, ENTER_MAP_MUSIC
 	ld [wPokegearRadioMusicPlaying], a
+
 ; no radio name
 	xor a
 	ldh [hBGMapMode], a
@@ -1686,6 +1685,7 @@ NoRadioStation:
 	hlcoord 0, 12
 	lb bc, 4, 18
 	call Textbox
+
 ; no radio channel
 	xor a
 	ld [wPokegearRadioChannelBank], a
@@ -1907,7 +1907,7 @@ PlayRadio:
 .PlayStation:
 	ld a, ENTER_MAP_MUSIC
 	ld [wPokegearRadioMusicPlaying], a
-	ld hl, .StationPointers
+	ld hl, PlayRadioStationPointers
 	ld d, 0
 	add hl, de
 	add hl, de
@@ -1934,9 +1934,10 @@ PlayRadio:
 	call WaitBGMap
 	ret
 
-.StationPointers:
+PlayRadioStationPointers:
 ; entries correspond to MAPRADIO_* constants
-	dw .OakOrPnP
+	table_width 2, PlayRadioStationPointers
+	dw LoadStation_PokemonChannel
 	dw LoadStation_OaksPokemonTalk
 	dw LoadStation_PokedexShow
 	dw LoadStation_PokemonMusic
@@ -1945,8 +1946,9 @@ PlayRadio:
 	dw LoadStation_PlacesAndPeople
 	dw LoadStation_LetsAllSing
 	dw LoadStation_RocketRadio
+	assert_table_length NUM_MAP_RADIO_STATIONS
 
-.OakOrPnP:
+LoadStation_PokemonChannel:
 	call IsInJohto
 	and a
 	jr nz, .kanto
@@ -1956,7 +1958,7 @@ PlayRadio:
 	jp z, LoadStation_PokedexShow
 	jp LoadStation_OaksPokemonTalk
 
-.kanto
+.kanto:
 	jp LoadStation_PlacesAndPeople
 
 PokegearMap:

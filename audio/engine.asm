@@ -223,16 +223,21 @@ UpdateChannels:
 	jp hl
 
 .ChannelFunctions:
+	table_width 2, UpdateChannels.ChannelFunctions
+; music channels
 	dw .Channel1
 	dw .Channel2
 	dw .Channel3
 	dw .Channel4
-; sfx ch ptrs are identical to music chs
-; ..except 5
+	assert_table_length NUM_MUSIC_CHANS
+; sfx channels
+; identical to music channels, except .Channel5 is not disabled by the low-HP danger sound
+; (instead, PlayDanger does not play the danger sound if sfx is playing)
 	dw .Channel5
 	dw .Channel6
 	dw .Channel7
 	dw .Channel8
+	assert_table_length NUM_CHANNELS
 
 .Channel1:
 	ld a, [wLowHealthAlarm]
@@ -977,6 +982,7 @@ ApplyPitchSlide:
 	add hl, bc
 	add [hl]
 	ld [hl], a
+	; could have done "jr nc, .no_rollover / inc de / .no_rollover"
 	ld a, 0
 	adc e
 	ld e, a
@@ -1017,6 +1023,7 @@ ApplyPitchSlide:
 	ld a, [hl]
 	add a
 	ld [hl], a
+	; could have done "jr nc, .no_rollover / dec de / .no_rollover"
 	ld a, e
 	sbc 0
 	ld e, a
@@ -1151,10 +1158,10 @@ ParseMusic:
 	ld hl, CHANNEL_FLAGS1
 	add hl, bc
 	bit SOUND_SFX, [hl]
-	jp nz, ParseSFXOrRest
-	bit SOUND_REST, [hl] ; rest
-	jp nz, ParseSFXOrRest
-	bit SOUND_NOISE, [hl] ; noise sample
+	jp nz, ParseSFXOrCry
+	bit SOUND_CRY, [hl]
+	jp nz, ParseSFXOrCry
+	bit SOUND_NOISE, [hl]
 	jp nz, GetNoiseSample
 ; normal note
 	; set note duration (bottom nybble)
@@ -1213,7 +1220,7 @@ ParseMusic:
 .chan_5to8
 	ld hl, CHANNEL_FLAGS1
 	add hl, bc
-	bit SOUND_REST, [hl]
+	bit SOUND_CRY, [hl]
 	call nz, RestoreVolume
 	; end music
 	ld a, [wCurChannel]
@@ -1260,7 +1267,7 @@ RestoreVolume:
 	ld [wSFXPriority], a
 	ret
 
-ParseSFXOrRest:
+ParseSFXOrCry:
 	; turn noise sampling on
 	ld hl, CHANNEL_NOTE_FLAGS
 	add hl, bc
@@ -1365,6 +1372,7 @@ ParseMusicCommand:
 
 MusicCommands:
 ; entries correspond to audio constants (see macros/scripts/audio.asm)
+	table_width 2, MusicCommands
 	dw Music_Octave8
 	dw Music_Octave7
 	dw Music_Octave6
@@ -1413,6 +1421,7 @@ MusicCommands:
 	dw Music_Loop
 	dw Music_Call
 	dw Music_Ret
+	assert_table_length $100 - FIRST_MUSIC_CMD
 
 MusicF1:
 MusicF2:
@@ -2391,7 +2400,7 @@ _PlayCry::
 
 	ld hl, CHANNEL_FLAGS1
 	add hl, bc
-	set SOUND_REST, [hl]
+	set SOUND_CRY, [hl]
 
 	ld hl, CHANNEL_FLAGS2
 	add hl, bc
@@ -2775,16 +2784,19 @@ StereoTracks:
 	db $11, $22, $44, $88
 
 ChannelPointers:
+	table_width 2, ChannelPointers
 ; music channels
 	dw wChannel1
 	dw wChannel2
 	dw wChannel3
 	dw wChannel4
+	assert_table_length NUM_MUSIC_CHANS
 ; sfx channels
 	dw wChannel5
 	dw wChannel6
 	dw wChannel7
 	dw wChannel8
+	assert_table_length NUM_CHANNELS
 
 ClearChannels::
 ; runs ClearChannel for all 4 channels
