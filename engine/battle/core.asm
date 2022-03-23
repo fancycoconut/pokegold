@@ -3752,9 +3752,11 @@ InitEnemyMon:
 	inc de
 	ld a, [hl]
 	ld [de], a
+	; The enemy mon's base Sp. Def isn't needed since its base
+	; Sp. Atk is also used to calculate Sp. Def stat experience.
 	ld hl, wBaseStats
 	ld de, wEnemyMonBaseStats
-	ld b, 5
+	ld b, NUM_STATS - 1
 .loop
 	ld a, [hli]
 	ld [de], a
@@ -5669,6 +5671,7 @@ LinkBattleSendReceiveAction:
 
 .use_move
 	ld [wPlayerLinkAction], a
+	vc_hook send_byt2
 	callfar PlaceWaitingText
 
 .waiting
@@ -5678,20 +5681,35 @@ LinkBattleSendReceiveAction:
 	inc a
 	jr z, .waiting
 
+	vc_hook send_byt2_ret
+	vc_patch send_byt2_wait
+if DEF(_GOLD_VC) || DEF(_SILVER_VC)
+	ld b, 26
+else
 	ld b, 10
+endc
+	vc_patch_end
 .receive
 	call DelayFrame
 	call LinkTransfer
 	dec b
 	jr nz, .receive
 
+	vc_hook send_dummy
+	vc_patch send_dummy_wait
+if DEF(_GOLD_VC) || DEF(_SILVER_VC)
+	ld b, 26
+else
 	ld b, 10
+endc
+	vc_patch_end
 .acknowledge
 	call DelayFrame
 	call LinkDataReceived
 	dec b
 	jr nz, .acknowledge
 
+	vc_hook send_dummy_end
 	ret
 
 LoadEnemyMon:
@@ -6138,10 +6156,11 @@ LoadEnemyMon:
 	call CopyBytes
 
 .Finish:
-; Only the first five base stats are copied..
+; Copy the first five base stats (the enemy mon's base Sp. Atk
+; is also used to calculate Sp. Def stat experience)
 	ld hl, wBaseStats
 	ld de, wEnemyMonBaseStats
-	ld b, wBaseSpecialDefense - wBaseStats
+	ld b, NUM_STATS - 1
 .loop
 	ld a, [hli]
 	ld [de], a
@@ -7353,7 +7372,7 @@ SendOutMonText:
 	ld hl, GoMonText
 	jr z, .skip_to_textbox
 
-	; compute enemy helth remaining as a percentage
+	; compute enemy health remaining as a percentage
 	xor a
 	ldh [hMultiplicand + 0], a
 	ld hl, wEnemyMonHP
@@ -7418,10 +7437,10 @@ WithdrawMonText:
 .WithdrawMonText:
 	text_far _BattleMonNickCommaText
 	text_asm
-; Print text to withdraw mon
-; depending on HP the message is different
+; Depending on the HP lost since the enemy mon was sent out, the game prints a different text
 	push de
 	push bc
+	; compute enemy health lost as a percentage
 	ld hl, wEnemyMonHP + 1
 	ld de, wEnemyHPAtTimeOfPlayerSwitch + 1
 	ld b, [hl]
@@ -8541,6 +8560,7 @@ InitBattleDisplay:
 	predef PlaceGraphic
 	xor a
 	ldh [hWY], a
+	vc_hook fight_begin
 	ldh [rWY], a
 	call WaitBGMap
 	call HideSprites

@@ -370,6 +370,7 @@ Script_yesorno:
 	ld a, TRUE
 .no
 	ld [wScriptVar], a
+	vc_hook E_YESNO
 	ret
 
 Script_loadmenu:
@@ -705,7 +706,7 @@ Script_musicfadeout:
 	call GetScriptByte
 	ld [wMusicFadeID + 1], a
 	call GetScriptByte
-	and $ff ^ (1 << MUSIC_FADE_IN_F)
+	and ~(1 << MUSIC_FADE_IN_F)
 	ld [wMusicFade], a
 	ret
 
@@ -1065,7 +1066,7 @@ Script_startbattle:
 	call BufferScreen
 	predef StartBattle
 	ld a, [wBattleResult]
-	and $ff ^ BATTLERESULT_BITMASK
+	and ~BATTLERESULT_BITMASK
 	ld [wScriptVar], a
 	ret
 
@@ -1081,7 +1082,7 @@ Script_reloadmapafterbattle:
 	ld d, [hl]
 	ld [hl], 0
 	ld a, [wBattleResult]
-	and $ff ^ BATTLERESULT_BITMASK
+	and ~BATTLERESULT_BITMASK
 	cp LOSE
 	jr nz, .notblackedout
 	ld b, BANK(Script_BattleWhiteout)

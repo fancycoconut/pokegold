@@ -11,6 +11,7 @@
 	const BLUESKY_MAIL_INDEX ; 7
 	const MUSIC_MAIL_INDEX   ; 8
 	const MIRAGE_MAIL_INDEX  ; 9
+NUM_MAIL EQU const_value
 
 ReadPartyMonMail:
 	ld a, [wCurPartyMon]
@@ -47,7 +48,13 @@ ReadAnyMail:
 	ldh a, [hJoyPressed]
 	and A_BUTTON | B_BUTTON | START
 	jr z, .loop
+	vc_patch print_forbid_4
+if DEF(_GOLD_VC) || DEF(_SILVER_VC)
+	and 0
+else
 	and START
+endc
+	vc_patch_end
 	jr nz, .pressed_start
 	ret
 
@@ -107,6 +114,7 @@ ReadAnyMail:
 
 MailGFXPointers:
 ; entries correspond to *MAIL_INDEX constants
+	table_width 3, MailGFXPointers
 	dbw FLOWER_MAIL,  LoadFlowerMailGFX
 	dbw SURF_MAIL,    LoadSurfMailGFX
 	dbw LITEBLUEMAIL, LoadLiteBlueMailGFX
@@ -117,6 +125,7 @@ MailGFXPointers:
 	dbw BLUESKY_MAIL, LoadBlueSkyMailGFX
 	dbw MUSIC_MAIL,   LoadMusicMailGFX
 	dbw MIRAGE_MAIL,  LoadMirageMailGFX
+	assert_table_length NUM_MAIL
 	db -1 ; end
 
 LoadSurfMailGFX:
