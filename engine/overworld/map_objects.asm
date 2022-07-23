@@ -2629,7 +2629,7 @@ ResetObject::
 	add hl, bc
 	ld a, [hl]
 	cp -1
-	jp z, .set_standing ; a jr would have been appropriate here
+	jp z, .set_standing
 	push bc
 	call GetMapObject
 	ld hl, MAPOBJECT_MOVEMENT
@@ -2689,7 +2689,7 @@ _UpdateSprites::
 	cp b
 	ret nc
 	ld l, a
-	ld h, HIGH(wVirtualOAM)
+	ld h, HIGH(wShadowOAM)
 	ld de, SPRITEOAMSTRUCT_LENGTH
 	ld a, b
 	ld c, SCREEN_HEIGHT_PX + 2 * TILE_WIDTH
@@ -2740,9 +2740,9 @@ ApplyBGMapAnchorToObjects::
 	pop hl
 	ret
 
-PRIORITY_LOW  EQU $10
-PRIORITY_NORM EQU $20
-PRIORITY_HIGH EQU $30
+DEF PRIORITY_LOW  EQU $10
+DEF PRIORITY_NORM EQU $20
+DEF PRIORITY_HIGH EQU $30
 
 InitSprites:
 	call .DeterminePriorities
@@ -2895,11 +2895,11 @@ InitSprites:
 	ld l, a
 	ldh a, [hUsedSpriteIndex]
 	ld c, a
-	ld b, HIGH(wVirtualOAM)
+	ld b, HIGH(wShadowOAM)
 	ld a, [hli]
 	ldh [hUsedSpriteTile], a
 	add c
-	cp LOW(wVirtualOAMEnd)
+	cp LOW(wShadowOAMEnd)
 	jr nc, .full
 .addsprite
 	ldh a, [hCurSpriteYPixel]

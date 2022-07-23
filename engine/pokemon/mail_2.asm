@@ -11,7 +11,7 @@
 	const BLUESKY_MAIL_INDEX ; 7
 	const MUSIC_MAIL_INDEX   ; 8
 	const MIRAGE_MAIL_INDEX  ; 9
-NUM_MAIL EQU const_value
+DEF NUM_MAIL EQU const_value
 
 ReadPartyMonMail:
 	ld a, [wCurPartyMon]
@@ -48,7 +48,7 @@ ReadAnyMail:
 	ldh a, [hJoyPressed]
 	and A_BUTTON | B_BUTTON | START
 	jr z, .loop
-	vc_patch print_forbid_4
+	vc_patch Forbid_printing_mail
 if DEF(_GOLD_VC) || DEF(_SILVER_VC)
 	and 0
 else

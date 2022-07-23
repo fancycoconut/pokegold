@@ -21,7 +21,7 @@ PlaySpriteAnimations:
 	push bc
 	push af
 
-	ld a, LOW(wVirtualOAM)
+	ld a, LOW(wShadowOAM)
 	ld [wCurSpriteOAMAddr], a
 	call DoNextFrameForAllSprites
 
@@ -57,11 +57,11 @@ DoNextFrameForAllSprites:
 
 	ld a, [wCurSpriteOAMAddr]
 	ld l, a
-	ld h, HIGH(wVirtualOAM)
+	ld h, HIGH(wShadowOAM)
 
-.loop2 ; Clear (wVirtualOAM + [wCurSpriteOAMAddr] --> wVirtualOAMEnd)
+.loop2 ; Clear (wShadowOAM + [wCurSpriteOAMAddr] --> wShadowOAMEnd)
 	ld a, l
-	cp LOW(wVirtualOAMEnd)
+	cp LOW(wShadowOAMEnd)
 	jr nc, .done
 	xor a
 	ld [hli], a
@@ -96,11 +96,11 @@ DoNextFrameForFirst16Sprites:
 
 	ld a, [wCurSpriteOAMAddr]
 	ld l, a
-	ld h, HIGH(wVirtualOAMSprite16)
+	ld h, HIGH(wShadowOAMSprite16)
 
-.loop2 ; Clear (wVirtualOAM + [wCurSpriteOAMAddr] --> Sprites + $40)
+.loop2 ; Clear (wShadowOAM + [wCurSpriteOAMAddr] --> Sprites + $40)
 	ld a, l
-	cp LOW(wVirtualOAMSprite16)
+	cp LOW(wShadowOAMSprite16)
 	jr nc, .done
 	xor a
 	ld [hli], a
@@ -216,9 +216,9 @@ DeinitializeSprite:
 UpdateAnimFrame:
 	call InitSpriteAnimBuffer ; init WRAM
 	call GetSpriteAnimFrame ; read from a memory array
-	cp dowait_command
+	cp oamwait_command
 	jr z, .done
-	cp delanim_command
+	cp oamdelete_command
 	jr z, .delete
 	call GetFrameOAMPointer
 	; add byte to [wCurAnimVTile]
@@ -233,7 +233,7 @@ UpdateAnimFrame:
 	push bc
 	ld a, [wCurSpriteOAMAddr]
 	ld e, a
-	ld d, HIGH(wVirtualOAM)
+	ld d, HIGH(wShadowOAM)
 	ld a, [hli]
 	ld c, a ; number of objects
 .loop
@@ -282,7 +282,7 @@ UpdateAnimFrame:
 	inc de
 	ld a, e
 	ld [wCurSpriteOAMAddr], a
-	cp LOW(wVirtualOAMEnd)
+	cp LOW(wShadowOAMEnd)
 	jr nc, .reached_the_end
 	dec c
 	jr nz, .loop
@@ -290,6 +290,7 @@ UpdateAnimFrame:
 	jr .done
 
 .delete
+; Removes the object from the screen, as opposed to `oamend` which just stops all motion
 	call DeinitializeSprite
 .done
 	and a
@@ -415,9 +416,9 @@ GetSpriteAnimFrame:
 	inc [hl]
 	call .GetPointer
 	ld a, [hli]
-	cp dorestart_command
+	cp oamrestart_command
 	jr z, .restart
-	cp endanim_command
+	cp oamend_command
 	jr z, .repeat_last
 
 	push af
@@ -433,7 +434,7 @@ GetSpriteAnimFrame:
 	pop hl
 .okay
 	ld a, [hl]
-	and Y_FLIP << 1 | X_FLIP << 1 ; The << 1 is compensated in the "frame" macro
+	and Y_FLIP << 1 | X_FLIP << 1 ; The << 1 is compensated in the "oamframe" macro
 	srl a
 	ld [wCurSpriteOAMFlags], a
 	pop af
@@ -556,7 +557,7 @@ AnimateEndOfExpBar:
 	ret
 
 .AnimateFrame:
-	ld hl, wVirtualOAMSprite00
+	ld hl, wShadowOAMSprite00
 	ld c, 8 ; number of animated circles
 .anim_loop
 	ld a, c

@@ -542,7 +542,7 @@ TryObjectEvent:
 	ld a, [hl]
 	and %00001111
 
-; Bug: If IsInArray returns nc, data at bc will be executed as code.
+; BUG: TryObjectEvent arbitrary code execution (see docs/bugs_and_glitches.md)
 	push bc
 	ld de, 3
 	ld hl, ObjectEventTypeArray
@@ -557,7 +557,6 @@ TryObjectEvent:
 	jp hl
 
 .nope
-	; pop bc
 	xor a
 	ret
 
@@ -1073,9 +1072,13 @@ TryTileCollisionEvent::
 	call GetFacingTileCoord
 	ld [wFacingTileID], a
 	ld c, a
+	; CheckFacingTileForStdScript preserves c, and
+	; farcall copies c back into a.
 	farcall CheckFacingTileForStdScript
 	jr c, .done
 
+	; CheckCutTreeTile expects a == [wFacingTileID], which
+	; it still is after the previous farcall.
 	call CheckCutTreeTile
 	jr nz, .whirlpool
 	farcall TryCutOW

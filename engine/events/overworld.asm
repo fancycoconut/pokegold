@@ -275,7 +275,6 @@ FlashFunction:
 	ret
 
 .CheckUseFlash:
-; Flash
 	ld de, ENGINE_ZEPHYRBADGE
 	farcall CheckBadge
 	jr c, .nozephyrbadge
@@ -391,6 +390,7 @@ SurfFromMenuScript:
 	special UpdateTimePals
 
 UsedSurfScript:
+; BUG: Surfing directly across a map connection does not load the new map (see docs/bugs_and_glitches.md)
 	writetext UsedSurfText ; "used SURF!"
 	waitbutton
 	closetext
@@ -541,7 +541,6 @@ FlyFunction:
  	dw .FailFly
 
 .TryFly:
-; Fly
 	ld de, ENGINE_STORMBADGE
 	call CheckBadge
 	jr c, .nostormbadge
@@ -615,7 +614,6 @@ WaterfallFunction:
 	ret
 
 .TryWaterfall:
-; Waterfall
 	ld de, ENGINE_RISINGBADGE
 	farcall CheckBadge
 	ld a, $80
@@ -939,7 +937,6 @@ StrengthFunction:
 	ret
 
 .TryStrength:
-; Strength
 	ld de, ENGINE_PLAINBADGE
 	call CheckBadge
 	jr c, .Failed

@@ -341,7 +341,7 @@ PokeBallEffect:
 ; Uncomment the line below to fix this.
 	ld b, a
 	ld a, [wEnemyMonStatus]
-	and 1 << FRZ | SLP
+	and 1 << FRZ | SLP_MASK
 	ld c, 10
 	jr nz, .addstatus
 	; ld a, [wEnemyMonStatus]
@@ -753,7 +753,7 @@ HeavyBallMultiplier:
 ; else add 0 to catch rate if weight < 204.8 kg
 ; else add 20 to catch rate if weight < 307.2 kg
 ; else add 30 to catch rate if weight < 409.6 kg
-; else add 40 to catch rate (never happens)
+; else add 40 to catch rate
 	ld a, [wEnemyMonSpecies]
 	dec a
 	ld hl, PokedexDataPointerTable
@@ -2155,7 +2155,7 @@ PokeFluteEffect:
 	xor a
 	ld [wPokeFluteCuredSleep], a
 
-	ld b, ~SLP
+	ld b, ~SLP_MASK
 
 	ld hl, wPartyMon1Status
 	call .CureSleep
@@ -2197,7 +2197,7 @@ PokeFluteEffect:
 .loop
 	ld a, [hl]
 	push af
-	and SLP
+	and SLP_MASK
 	jr z, .not_asleep
 	ld a, TRUE
 	ld [wPokeFluteCuredSleep], a

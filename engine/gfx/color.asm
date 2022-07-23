@@ -1,9 +1,9 @@
 INCLUDE "engine/gfx/sgb_layouts.asm"
 
-SHINY_ATK_BIT EQU 5
-SHINY_DEF_VAL EQU 10
-SHINY_SPD_VAL EQU 10
-SHINY_SPC_VAL EQU 10
+DEF SHINY_ATK_BIT EQU 5
+DEF SHINY_DEF_VAL EQU 10
+DEF SHINY_SPD_VAL EQU 10
+DEF SHINY_SPC_VAL EQU 10
 
 CheckShininess:
 ; Check if a mon is shiny by DVs at bc.
@@ -761,7 +761,7 @@ _PushSGBPals:
 
 InitSGBBorder:
 	call CheckCGB
-	vc_hook Network_RESET
+	vc_hook Unknown_network_reset
 	ret nz
 
 ; SGB/DMG only

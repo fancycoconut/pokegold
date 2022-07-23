@@ -216,7 +216,7 @@ BattleAnim_ClearOAM:
 	jr z, .delete
 
 	; Instead of deleting the sprites, make them all use PAL_BATTLE_OB_ENEMY
-	ld hl, wVirtualOAMSprite00Attributes
+	ld hl, wShadowOAMSprite00Attributes
 	ld c, NUM_SPRITE_OAM_STRUCTS
 .loop
 	ld a, [hl]
@@ -231,8 +231,8 @@ endr
 	ret
 
 .delete
-	ld hl, wVirtualOAM
-	ld c, wVirtualOAMEnd - wVirtualOAM
+	ld hl, wShadowOAM
+	ld c, wShadowOAMEnd - wShadowOAM
 	xor a
 .loop2
 	ld [hli], a
@@ -626,9 +626,9 @@ BattleAnimCmd_ResetObp0:
 	ret
 
 BattleAnimCmd_ClearObjs:
-; BUG: This function only clears the first 6⅔ objects
+; BUG: BattleAnimCmd only clears the first 6⅔ objects (see docs/bugs_and_glitches.md)
 	ld hl, wActiveAnimObjects
-	ld a, $a0 ; should be NUM_ANIM_OBJECTS * BATTLEANIMSTRUCT_LENGTH
+	ld a, $a0
 .loop
 	ld [hl], 0
 	inc hl
@@ -648,7 +648,7 @@ BattleAnimCmd_5GFX:
 	xor a
 	ld [wBattleAnimGFXTempTileID], a
 .loop
-	vc_hook FPA_042801_Begin
+	vc_hook Reduce_move_anim_flashing_PRESENT
 	ld a, [wBattleAnimGFXTempTileID]
 	cp (vTiles1 - vTiles0) / LEN_2BPP_TILE - BATTLEANIM_BASE_TILE
 	ret nc
@@ -1352,10 +1352,10 @@ BattleAnim_UpdateOAM_All:
 	jr nz, .loop
 	ld a, [wBattleAnimOAMPointerLo]
 	ld l, a
-	ld h, HIGH(wVirtualOAM)
+	ld h, HIGH(wShadowOAM)
 .loop2
 	ld a, l
-	cp LOW(wVirtualOAMEnd)
+	cp LOW(wShadowOAMEnd)
 	jr nc, .done
 	xor a
 	ld [hli], a
