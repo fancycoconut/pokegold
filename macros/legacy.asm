@@ -2,13 +2,13 @@
 ; Allows porting scripts with as few edits as possible.
 ; Legacy support not in this file can be found by looking for the keyword: "LEGACY"
 
-; macros/rst.asm
+; macros/farcall.asm
 DEF callba EQUS "farcall"
 DEF callab EQUS "callfar"
 
 ; macros/gfx.asm
 MACRO dsprite
-	dbsprite \2, \4, \1, \3, \5, \6
+	dbsprite \3, \1, \4, \2, \5, \6
 ENDM
 
 ; macros/data.asm
@@ -247,6 +247,9 @@ ENDM
 DEF PERSONTYPE_SCRIPT   EQUS "OBJECTTYPE_SCRIPT"
 DEF PERSONTYPE_ITEMBALL EQUS "OBJECTTYPE_ITEMBALL"
 DEF PERSONTYPE_TRAINER  EQUS "OBJECTTYPE_TRAINER"
+
+DEF SCENE_DEFAULT  EQU 0
+DEF SCENE_FINISHED EQU 1
 
 ; macros/scripts/movement.asm
 

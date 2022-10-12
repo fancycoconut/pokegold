@@ -4,19 +4,19 @@
 
 MrPokemonsHouse_MapScripts:
 	def_scene_scripts
-	scene_script .MeetMrPokemon ; SCENE_DEFAULT
-	scene_script .DummyScene ; SCENE_FINISHED
+	scene_script MrPokemonsHouseMeetMrPokemonScene, SCENE_MRPOKEMONSHOUSE_MEET_MR_POKEMON
+	scene_script MrPokemonsHouseNoopScene,          SCENE_MRPOKEMONSHOUSE_NOOP
 
 	def_callbacks
 
-.MeetMrPokemon:
-	sdefer .MrPokemonEvent
+MrPokemonsHouseMeetMrPokemonScene:
+	sdefer MrPokemonsHouseMrPokemonEventScript
 	end
 
-.DummyScene:
+MrPokemonsHouseNoopScene:
 	end
 
-.MrPokemonEvent:
+MrPokemonsHouseMrPokemonEventScript:
 	showemote EMOTE_SHOCK, MRPOKEMONSHOUSE_GENTLEMAN, 15
 	turnobject MRPOKEMONSHOUSE_GENTLEMAN, DOWN
 	opentext
@@ -120,7 +120,7 @@ MrPokemonsHouse_OakScript:
 	waitbutton
 	closetext
 	setevent EVENT_RIVAL_NEW_BARK_TOWN
-	setscene SCENE_FINISHED
+	setscene SCENE_MRPOKEMONSHOUSE_NOOP
 	setmapscene CHERRYGROVE_CITY, SCENE_CHERRYGROVECITY_MEET_RIVAL
 	setmapscene ELMS_LAB, SCENE_ELMSLAB_MEET_OFFICER
 	specialphonecall SPECIALCALL_ROBBED

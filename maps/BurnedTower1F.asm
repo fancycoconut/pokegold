@@ -3,52 +3,52 @@
 	const BURNEDTOWER1F_FIREBREATHER_NED
 	const BURNEDTOWER1F_ROCK1
 	const BURNEDTOWER1F_ROCK2
-	const BURNEDTOWER1F_SILVER
+	const BURNEDTOWER1F_RIVAL
 	const BURNEDTOWER1F_FIREBREATHER_DICK_ASHES
 	const BURNEDTOWER1F_POKE_BALL1
 	const BURNEDTOWER1F_POKE_BALL2
 
 BurnedTower1F_MapScripts:
 	def_scene_scripts
-	scene_script .RivalScene ; SCENE_DEFAULT
-	scene_script .DummyScene1 ; SCENE_BURNEDTOWER1F_RIVAL_BATTLE
-	scene_script .DummyScene2 ; SCENE_BURNEDTOWER1F_NOTHING
+	scene_script BurnedTower1FRivalBattleScene, SCENE_BURNEDTOWER1F_RIVAL_BATTLE
+	scene_script BurnedTower1FNoop1Scene,       SCENE_BURNEDTOWER1F_FIREBREATHER_DICK
+	scene_script BurnedTower1FNoop2Scene,       SCENE_BURNEDTOWER1F_NOOP
 
 	def_callbacks
 
-.RivalScene:
-	sdefer .Rival
+BurnedTower1FRivalBattleScene:
+	sdefer BurnedTower1FRivalBattleScript
 	end
 
-.DummyScene1:
+BurnedTower1FNoop1Scene:
 	end
 
-.DummyScene2:
+BurnedTower1FNoop2Scene:
 	end
 
-.Rival:
+BurnedTower1FRivalBattleScript:
 	turnobject PLAYER, UP
 	showemote EMOTE_SHOCK, PLAYER, 15
 	special FadeOutMusic
 	pause 15
-	turnobject BURNEDTOWER1F_SILVER, RIGHT
+	turnobject BURNEDTOWER1F_RIVAL, RIGHT
 	pause 10
-	turnobject BURNEDTOWER1F_SILVER, LEFT
+	turnobject BURNEDTOWER1F_RIVAL, LEFT
 	pause 15
-	turnobject BURNEDTOWER1F_SILVER, DOWN
+	turnobject BURNEDTOWER1F_RIVAL, DOWN
 	pause 15
-	applymovement BURNEDTOWER1F_SILVER, BurnedTowerMovement_SilverWalksToPlayer
+	applymovement BURNEDTOWER1F_RIVAL, BurnedTowerMovement_RivalWalksToPlayer
 	playmusic MUSIC_RIVAL_ENCOUNTER
 	opentext
-	writetext BurnedTowerSilver_BeforeText
+	writetext BurnedTowerRival_BeforeText
 	waitbutton
 	closetext
 	checkevent EVENT_GOT_TOTODILE_FROM_ELM
 	iftrue .totodile
 	checkevent EVENT_GOT_CHIKORITA_FROM_ELM
 	iftrue .chikorita
-	winlosstext BurnedTowerSilver_WinText, BurnedTowerSilver_LossText
-	setlasttalked BURNEDTOWER1F_SILVER
+	winlosstext BurnedTowerRival_WinText, BurnedTowerRival_LossText
+	setlasttalked BURNEDTOWER1F_RIVAL
 	loadtrainer RIVAL1, RIVAL1_3_TOTODILE
 	startbattle
 	dontrestartmapmusic
@@ -56,8 +56,8 @@ BurnedTower1F_MapScripts:
 	sjump .returnfrombattle
 
 .totodile
-	winlosstext BurnedTowerSilver_WinText, BurnedTowerSilver_LossText
-	setlasttalked BURNEDTOWER1F_SILVER
+	winlosstext BurnedTowerRival_WinText, BurnedTowerRival_LossText
+	setlasttalked BURNEDTOWER1F_RIVAL
 	loadtrainer RIVAL1, RIVAL1_3_CHIKORITA
 	startbattle
 	dontrestartmapmusic
@@ -65,8 +65,8 @@ BurnedTower1F_MapScripts:
 	sjump .returnfrombattle
 
 .chikorita
-	winlosstext BurnedTowerSilver_WinText, BurnedTowerSilver_LossText
-	setlasttalked BURNEDTOWER1F_SILVER
+	winlosstext BurnedTowerRival_WinText, BurnedTowerRival_LossText
+	setlasttalked BURNEDTOWER1F_RIVAL
 	loadtrainer RIVAL1, RIVAL1_3_CYNDAQUIL
 	startbattle
 	dontrestartmapmusic
@@ -76,15 +76,15 @@ BurnedTower1F_MapScripts:
 .returnfrombattle
 	playmusic MUSIC_RIVAL_AFTER
 	opentext
-	writetext BurnedTowerSilver_AfterText1
+	writetext BurnedTowerRival_AfterText1
 	waitbutton
 	closetext
 	turnobject PLAYER, UP
 	turnobject PLAYER, RIGHT
-	applymovement BURNEDTOWER1F_SILVER, BurnedTowerMovement_SilverLeaves
+	applymovement BURNEDTOWER1F_RIVAL, BurnedTowerMovement_RivalLeaves
 	playsound SFX_EXIT_BUILDING
-	disappear BURNEDTOWER1F_SILVER
-	setscene SCENE_BURNEDTOWER1F_RIVAL_BATTLE
+	disappear BURNEDTOWER1F_RIVAL
+	setscene SCENE_BURNEDTOWER1F_FIREBREATHER_DICK
 	waitsfx
 	playmapmusic
 	end
@@ -107,7 +107,7 @@ FirebreatherDickFight:
 	appear BURNEDTOWER1F_FIREBREATHER_DICK_ASHES
 	reloadmapafterbattle
 	setevent EVENT_BEAT_FIREBREATHER_DICK
-	setscene SCENE_BURNEDTOWER1F_NOTHING
+	setscene SCENE_BURNEDTOWER1F_NOOP
 	clearevent EVENT_BURNED_TOWER_FIREBREATHER_DICK_NORMAL
 	setevent EVENT_BURNED_TOWER_FIREBREATHER_DICK_ASHES
 	end
@@ -146,12 +146,12 @@ BurnedTower1FBurnHeal:
 BurnedTower1FXSpeed:
 	itemball X_SPEED, 1
 
-BurnedTowerMovement_SilverWalksToPlayer:
+BurnedTowerMovement_RivalWalksToPlayer:
 	step DOWN
 	step DOWN
 	step_end
 
-BurnedTowerMovement_SilverLeaves:
+BurnedTowerMovement_RivalLeaves:
 	step RIGHT
 	step DOWN
 	step_end
@@ -160,7 +160,7 @@ FirebreatherDickMovement:
 	step UP
 	step_end
 
-BurnedTowerSilver_BeforeText:
+BurnedTowerRival_BeforeText:
 	text "<……> <……> <……>"
 
 	para "…Oh, it's you."
@@ -196,7 +196,7 @@ BurnedTowerSilver_BeforeText:
 	cont "showing up."
 	done
 
-BurnedTowerSilver_WinText:
+BurnedTowerRival_WinText:
 	text "…Humph!"
 
 	para "This is why I hate"
@@ -206,7 +206,7 @@ BurnedTowerSilver_WinText:
 	line "challenge in it."
 	done
 
-BurnedTowerSilver_AfterText1:
+BurnedTowerRival_AfterText1:
 	text "…Aw, whatever."
 
 	para "You would never be"
@@ -216,7 +216,7 @@ BurnedTowerSilver_AfterText1:
 	line "anyway."
 	done
 
-BurnedTowerSilver_LossText:
+BurnedTowerRival_LossText:
 	text "…Humph!"
 
 	para "This is why I hate"
@@ -296,7 +296,7 @@ BurnedTower1F_MapEvents:
 	warp_event  7, 15, BURNED_TOWER_B1F, 6
 
 	def_coord_events
-	coord_event 8,  1, SCENE_BURNEDTOWER1F_RIVAL_BATTLE, FirebreatherDickFight
+	coord_event 8,  1, SCENE_BURNEDTOWER1F_FIREBREATHER_DICK, FirebreatherDickFight
 
 	def_bg_events
 	bg_event  8,  7, BGEVENT_ITEM, BurnedTower1FHiddenEther
@@ -306,7 +306,7 @@ BurnedTower1F_MapEvents:
 	object_event 16, 8, SPRITE_FISHER, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_RED, OBJECTTYPE_TRAINER, 3, TrainerFirebreatherNed, -1
 	object_event 4, 3, SPRITE_ROCK, SPRITEMOVEDATA_SMASHABLE_ROCK, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, BurnedTower1FRock, -1
 	object_event 16, 13, SPRITE_ROCK, SPRITEMOVEDATA_SMASHABLE_ROCK, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, BurnedTower1FRock, -1
-	object_event 9, 12, SPRITE_SILVER, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, 0, OBJECTTYPE_TRAINER, 3, ObjectEvent, EVENT_RIVAL_BURNED_TOWER
+	object_event 9, 12, SPRITE_RIVAL, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, 0, OBJECTTYPE_TRAINER, 3, ObjectEvent, EVENT_RIVAL_BURNED_TOWER
 	object_event 8, 2, SPRITE_FISHER, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, PAL_NPC_SILVER, OBJECTTYPE_SCRIPT, 0, FirebreatherDickPostBattle, EVENT_BURNED_TOWER_FIREBREATHER_DICK_ASHES
 	object_event 15, 2, SPRITE_POKE_BALL, SPRITEMOVEDATA_STILL, 0, 0, -1, -1, 0, OBJECTTYPE_ITEMBALL, 0, BurnedTower1FBurnHeal, EVENT_BURNED_TOWER_1F_X_SPEED
 	object_event 7, 5, SPRITE_POKE_BALL, SPRITEMOVEDATA_STILL, 0, 0, -1, -1, 0, OBJECTTYPE_ITEMBALL, 0, BurnedTower1FXSpeed, EVENT_BURNED_TOWER_1F_BURN_HEAL

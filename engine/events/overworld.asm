@@ -336,6 +336,7 @@ SurfFunction:
 	dw .AlreadySurfing
 
 .TrySurf:
+; BUG: You can Surf on top of NPCs (see docs/bugs_and_glitches.md)
 	ld de, ENGINE_FOGBADGE
 	call CheckBadge
 	jr c, .nofogbadge
@@ -536,9 +537,9 @@ FlyFunction:
 	ret
 
 .Jumptable:
- 	dw .TryFly
- 	dw .DoFly
- 	dw .FailFly
+	dw .TryFly
+	dw .DoFly
+	dw .FailFly
 
 .TryFly:
 	ld de, ENGINE_STORMBADGE
@@ -668,7 +669,7 @@ Script_UsedWaterfall:
 .CheckContinueWaterfall:
 	xor a
 	ld [wScriptVar], a
-	ld a, [wPlayerStandingTile]
+	ld a, [wPlayerTile]
 	call CheckWaterfallTile
 	ret z
 	ld a, $1
@@ -1418,6 +1419,7 @@ FishFunction:
 	dw .FishNoFish
 
 .TryFish:
+; BUG: You can fish on top of NPCs (see docs/bugs_and_glitches.md)
 	ld a, [wPlayerState]
 	cp PLAYER_SURF
 	jr z, .fail
@@ -1671,7 +1673,7 @@ BikeFunction:
 	jr .nope
 
 .ok
-	call GetPlayerStandingTile
+	call GetPlayerTile
 	and $f ; lo nybble only
 	jr nz, .nope ; not FLOOR_TILE
 	xor a

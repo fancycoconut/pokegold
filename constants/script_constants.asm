@@ -108,6 +108,10 @@ DEF COORD_EVENT_SIZE  EQU  8 ; coord_event
 DEF BG_EVENT_SIZE     EQU  5 ; bg_event
 DEF OBJECT_EVENT_SIZE EQU 13 ; object_event
 
+; A coord_event for scene -1 will always activate,
+; regardless of the map's scene variable value.
+DEF SCENE_ALWAYS EQU -1
+
 ; bg_event types
 ; BGEventJumptable indexes (see engine/overworld/events.asm)
 	const_def
@@ -135,13 +139,14 @@ DEF NUM_BGEVENTS EQU const_value
 DEF NUM_OBJECT_TYPES EQU const_value
 
 ; command queue members
-DEF CMDQUEUE_TYPE  EQU 0
-DEF CMDQUEUE_ADDR  EQU 1
-DEF CMDQUEUE_02    EQU 2
-DEF CMDQUEUE_03    EQU 3
-DEF CMDQUEUE_04    EQU 4
-DEF CMDQUEUE_05    EQU 5
-DEF CMDQUEUE_ENTRY_SIZE EQU 6
+rsreset
+DEF CMDQUEUE_TYPE            rb
+DEF CMDQUEUE_ADDR            rb
+DEF CMDQUEUE_02              rb
+DEF CMDQUEUE_03              rb
+DEF CMDQUEUE_04              rb
+DEF CMDQUEUE_JUMPTABLE_INDEX rb
+DEF CMDQUEUE_ENTRY_SIZE EQU _RS
 DEF CMDQUEUE_CAPACITY EQU 4
 
 ; HandleQueuedCommand.Jumptable indexes (see engine/overworld/events.asm)
