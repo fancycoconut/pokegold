@@ -184,10 +184,10 @@ CopyMapObjectToObjectStruct:
 	call GetSpritePalette
 	ld [wTempObjectCopyPalette], a
 
-	ld hl, MAPOBJECT_COLOR
+	ld hl, MAPOBJECT_PALETTE
 	add hl, bc
 	ld a, [hl]
-	and $f0
+	and MAPOBJECT_PALETTE_MASK
 	jr z, .skip_color_override
 	swap a
 	and PALETTE_MASK
@@ -199,7 +199,7 @@ CopyMapObjectToObjectStruct:
 	ld a, [hl]
 	ld [wTempObjectCopyMovement], a
 
-	ld hl, MAPOBJECT_RANGE
+	ld hl, MAPOBJECT_SIGHT_RANGE
 	add hl, bc
 	ld a, [hl]
 	ld [wTempObjectCopyRange], a
@@ -515,7 +515,7 @@ TrainerWalkToPlayer::
 	call InitMovementBuffer
 	ld a, movement_step_sleep
 	call AppendToMovementBuffer
-	ld a, [wWalkingIntoNPC]
+	ld a, [wSeenTrainerDistance]
 	dec a
 	jr z, .TerminateStep
 	ldh a, [hLastTalked]
