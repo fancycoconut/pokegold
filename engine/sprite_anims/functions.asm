@@ -1,4 +1,4 @@
-DoAnimFrame:
+DoSpriteAnimFrame:
 	ld hl, SPRITEANIMSTRUCT_ANIM_SEQ_ID
 	add hl, bc
 	ld e, [hl]
@@ -12,8 +12,8 @@ DoAnimFrame:
 	jp hl
 
 .Jumptable:
-; entries correspond to SPRITE_ANIM_SEQ_* constants (see constants/sprite_anim_constants.asm)
-	table_width 2, DoAnimFrame.Jumptable
+; entries correspond to SPRITE_ANIM_FUNC_* constants (see constants/sprite_anim_constants.asm)
+	table_width 2, DoSpriteAnimFrame.Jumptable
 	dw AnimSeq_Null
 	dw AnimSeq_PartyMon
 	dw AnimSeq_PartyMonSwitch
@@ -56,7 +56,7 @@ DoAnimFrame:
 	dw AnimSeq_FlyLeaf
 	dw AnimSeq_FlyTo
 	dw AnimSeq_GSIntroHoOhLugia
-	assert_table_length NUM_SPRITE_ANIM_SEQS
+	assert_table_length NUM_SPRITE_ANIM_FUNCS
 
 AnimSeq_Null:
 	ret
@@ -1089,7 +1089,7 @@ AnimSeq_SlotsChanseyEgg:
 	ld hl, SPRITEANIMSTRUCT_XCOORD
 	add hl, bc
 	ld a, [hl]
-	cp 15 * 8
+	cp 15 * TILE_WIDTH
 	jr c, .move_right
 	call DeinitializeSprite
 	ld a, $4
@@ -1390,7 +1390,7 @@ AnimSeq_FlyLeaf:
 	ld hl, SPRITEANIMSTRUCT_XCOORD
 	add hl, bc
 	ld a, [hl]
-	cp -9 * 8
+	cp -9 * TILE_WIDTH
 	jr nc, .delete_leaf
 	inc [hl]
 	inc [hl]
@@ -1419,7 +1419,7 @@ AnimSeq_FlyTo:
 	ld hl, SPRITEANIMSTRUCT_YCOORD
 	add hl, bc
 	ld a, [hl]
-	cp 10 * 8 + 4
+	cp 10 * TILE_WIDTH + 4
 	ret z
 
 	ld hl, SPRITEANIMSTRUCT_YCOORD

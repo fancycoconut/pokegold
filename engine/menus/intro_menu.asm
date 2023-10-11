@@ -835,10 +835,10 @@ Intro_PlaceChrisSprite:
 .sprites
 	db 4
 	; y pxl, x pxl, tile offset
-	db  9 * 8 + 4,  9 * 8, 0
-	db  9 * 8 + 4, 10 * 8, 1
-	db 10 * 8 + 4,  9 * 8, 2
-	db 10 * 8 + 4, 10 * 8, 3
+	db  9 * TILE_WIDTH + 4,  9 * TILE_WIDTH, 0
+	db  9 * TILE_WIDTH + 4, 10 * TILE_WIDTH, 1
+	db 10 * TILE_WIDTH + 4,  9 * TILE_WIDTH, 2
+	db 10 * TILE_WIDTH + 4, 10 * TILE_WIDTH, 3
 
 
 	const_def
@@ -1102,7 +1102,7 @@ IF DEF(_GOLD)
 ELIF DEF(_SILVER)
 	depixel 15, 11, 4, 0
 ENDC
-	ld a, SPRITE_ANIM_INDEX_GS_TITLE_TRAIL
+	ld a, SPRITE_ANIM_OBJ_GS_TITLE_TRAIL
 	call InitSpriteAnimStruct
 	ret
 
