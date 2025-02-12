@@ -1,4 +1,7 @@
-_SwapTextboxPalettes::
+_LoadOverworldAttrmapPals::
+; Load wAttrmap palette numbers based on the tileset palettes of current map.
+; This function is only used for the initial loading of the map; incremental
+; loads while moving happen through ScrollBGMapPalettes.
 	hlcoord 0, 0
 	decoord 0, 0, wAttrmap
 	ld b, SCREEN_HEIGHT
@@ -17,7 +20,7 @@ _SwapTextboxPalettes::
 	ld h, a
 	ld a, [hl]
 	and $f
-	bit 3, a
+	bit OAM_TILE_BANK, a
 	jr z, .next
 	jr .by_map_group
 
@@ -31,7 +34,7 @@ _SwapTextboxPalettes::
 	ld a, [hl]
 	swap a
 	and $f
-	bit 3, a
+	bit OAM_TILE_BANK, a
 	jr z, .next
 
 .by_map_group
@@ -73,7 +76,7 @@ _ScrollBGMapPalettes::
 	ld h, a
 	ld a, [hl]
 	and $f
-	bit 3, a
+	bit OAM_TILE_BANK, a
 	jr z, .next
 	jr .by_map_group
 
@@ -87,7 +90,7 @@ _ScrollBGMapPalettes::
 	ld a, [hl]
 	swap a
 	and $f
-	bit 3, a
+	bit OAM_TILE_BANK, a
 	jr z, .next
 
 .by_map_group

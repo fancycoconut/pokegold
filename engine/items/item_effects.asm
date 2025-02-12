@@ -13,7 +13,7 @@ _DoItemEffect::
 
 ItemEffects:
 ; entries correspond to item ids (see constants/item_constants.asm)
-	table_width 2, ItemEffects
+	table_width 2
 	dw PokeBallEffect      ; MASTER_BALL
 	dw PokeBallEffect      ; ULTRA_BALL
 	dw NoEffect            ; BRIGHTPOWDER
@@ -1714,9 +1714,9 @@ ChooseMonToUseItemOn:
 	farcall InitPartyMenuWithCancel
 	farcall InitPartyMenuGFX
 	farcall WritePartyMenuTilemap
-	farcall PrintPartyMenuText
+	farcall PlacePartyMenuText
 	call WaitBGMap
-	call SetPalettes
+	call SetDefaultBGPAndOBP
 	call DelayFrame
 	farcall PartyMenuSelect
 	ret
@@ -1733,7 +1733,7 @@ ItemActionText:
 	farcall WritePartyMenuTilemap
 	farcall PrintPartyMenuActionText
 	call WaitBGMap
-	call SetPalettes
+	call SetDefaultBGPAndOBP
 	call DelayFrame
 	pop bc
 	pop de

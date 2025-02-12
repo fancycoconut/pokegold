@@ -30,12 +30,11 @@ DEF NUM_ITEM_TYPES EQU const_value - 1
 	const ITEMMENU_CLOSE   ; 6
 
 ; item actions
-DEF CANT_SELECT_F EQU 6
-DEF CANT_TOSS_F   EQU 7
+	const_def 6
+	shift_const CANT_SELECT ; 6
+	shift_const CANT_TOSS   ; 7
 
-DEF NO_LIMITS   EQU 0
-DEF CANT_SELECT EQU 1 << CANT_SELECT_F
-DEF CANT_TOSS   EQU 1 << CANT_TOSS_F
+DEF NO_LIMITS EQU 0
 
 ; pack pockets
 	const_def
@@ -57,14 +56,6 @@ DEF MAIL_LINE_LENGTH   EQU $10
 DEF MAIL_MSG_LENGTH    EQU $20
 DEF MAILBOX_CAPACITY   EQU 10
 DEF MAIL_STRUCT_LENGTH EQU $2f ; mailmsg struct
-
-; mail languages
-	const_def
-	const MAIL_LANG_ENGLISH
-	const MAIL_LANG_FRENCH
-	const MAIL_LANG_GERMAN
-	const MAIL_LANG_ITALIAN
-	const MAIL_LANG_SPANISH
 
 ; held item effects
 	const_def

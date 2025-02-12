@@ -15,7 +15,7 @@ _TimeOfDayPals::
 
 ; forced pals?
 	ld hl, wTimeOfDayPalFlags
-	bit 7, [hl]
+	bit FORCED_PALSET_F, [hl]
 	jr nz, .dontchange
 
 ; do we need to bother updating?
@@ -62,14 +62,14 @@ _UpdateTimePals::
 	call DmgToCgbTimePals
 	ret
 
-FadeInPalettes::
+FadeInFromWhite::
 	ld c, $12
 	call GetTimePalFade
 	ld b, $4
 	call ConvertTimePalsDecHL
 	ret
 
-FadeOutPalettes::
+FadeOutToWhite::
 	call FillWhiteBGColor
 	ld c, $9
 	call GetTimePalFade
@@ -77,14 +77,14 @@ FadeOutPalettes::
 	call ConvertTimePalsIncHL
 	ret
 
-FadeInQuickly:
+FadeInFromBlack:
 	ld c, $0
 	call GetTimePalFade
 	ld b, $4
 	call ConvertTimePalsIncHL
 	ret
 
-FadeBlackQuickly:
+FadeOutToBlack:
 	ld c, $9
 	call GetTimePalFade
 	ld b, $4
@@ -97,14 +97,14 @@ FillWhiteBGColor:
 	ld e, a
 	ld a, [hli]
 	ld d, a
-	ld hl, wBGPals1 + 1 palettes
+	ld hl, wBGPals1 palette 1 color 0
 	ld c, 6
 .loop
 	ld a, e
 	ld [hli], a
 	ld a, d
 	ld [hli], a
-rept 6
+rept 3 colors
 	inc hl
 endr
 	dec c

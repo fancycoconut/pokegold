@@ -229,21 +229,21 @@ ENDM
 MACRO givemoney
 	db givemoney_command
 	db \1 ; account
-	dt \2 ; money
+	bigdt \2 ; money
 ENDM
 
 	const takemoney_command ; $23
 MACRO takemoney
 	db takemoney_command
 	db \1 ; account
-	dt \2 ; money
+	bigdt \2 ; money
 ENDM
 
 	const checkmoney_command ; $24
 MACRO checkmoney
 	db checkmoney_command
 	db \1 ; account
-	dt \2 ; money
+	bigdt \2 ; money
 ENDM
 
 	const givecoins_command ; $25
@@ -476,12 +476,12 @@ MACRO opentext
 	db opentext_command
 ENDM
 
-	const refreshscreen_command ; $48
-MACRO refreshscreen
+	const reanchormap_command ; $48
+MACRO reanchormap
 	if _NARG == 0
-		refreshscreen 0
+		reanchormap 0
 	else
-		db refreshscreen_command
+		db reanchormap_command
 		db \1 ; dummy
 	endc
 ENDM
@@ -783,9 +783,9 @@ MACRO reloadmap
 	db reloadmap_command
 ENDM
 
-	const reloadmappart_command ; $7b
-MACRO reloadmappart
-	db reloadmappart_command
+	const refreshmap_command ; $7b
+MACRO refreshmap
+	db refreshmap_command
 ENDM
 
 	const writecmdqueue_command ; $7c

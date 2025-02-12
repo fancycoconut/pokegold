@@ -260,7 +260,7 @@ EggStats_ScrollToLoadMon:
 
 StatsScreen_LoadPageJumptable:
 ; entries correspond to *_PAGE constants
-	table_width 2, StatsScreen_LoadPageJumptable
+	table_width 2
 	dw LoadPinkPage
 	dw LoadGreenPage
 	dw LoadBluePage
@@ -721,7 +721,7 @@ OTString:
 
 StatsScreen_PlaceFrontpic:
 	push bc
-	call SetPalettes
+	call SetDefaultBGPAndOBP
 	ld hl, wTempMonDVs
 	call GetUnownLetter
 	hlcoord 0, 0
@@ -782,7 +782,7 @@ EggStatsScreen:
 	call WaitBGMap
 	ld a, 1
 	ldh [hBGMapMode], a
-	call SetPalettes ; pals
+	call SetDefaultBGPAndOBP
 	hlcoord 0, 0
 	call PrepMonFrontpic
 	ld a, [wTempMonHappiness]

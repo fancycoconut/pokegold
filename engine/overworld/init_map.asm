@@ -22,15 +22,15 @@ ReanchorBGMap_NoOAMUpdate::
 	xor a
 	ldh [hLCDCPointer], a
 	ldh [hBGMapMode], a
-	ld hl, wEnteredMapFromContinue
-	set 7, [hl]
-	res 2, [hl]
+	ld hl, wUnusedReanchorBGMapFlags
+	set UNUSED_REANCHOR_BG_MAP_7, [hl]
+	res UNUSED_REANCHOR_BG_MAP_2, [hl]
 	ld a, $90
 	ldh [hWY], a
-	call OverworldTextModeSwitch
+	call LoadOverworldTilemapAndAttrmapPals
 	ld a, HIGH(vBGMap1)
 	call .LoadBGMapAddrIntoHRAM
-	call _OpenAndCloseMenu_HDMATransferTilemapAndAttrmap
+	call HDMATransferTilemapAndAttrmap_Menu
 	xor a
 	ldh [hBGMapMode], a
 	ldh [hWY], a

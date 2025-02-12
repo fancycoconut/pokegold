@@ -44,8 +44,8 @@ WaitScript:
 WaitScriptMovement:
 	call StopScript
 
-	ld hl, wVramState
-	bit 7, [hl]
+	ld hl, wStateFlags
+	bit SCRIPTED_MOVEMENT_STATE_F, [hl]
 	ret nz
 
 	farcall UnfreezeAllObjects
@@ -63,7 +63,7 @@ RunScriptCommand:
 
 ScriptCommandTable:
 ; entries correspond to *_command constants (see macros/scripts/events.asm)
-	table_width 2, ScriptCommandTable
+	table_width 2
 	dw Script_scall                      ; 00
 	dw Script_farscall                   ; 01
 	dw Script_memcall                    ; 02
@@ -136,7 +136,7 @@ ScriptCommandTable:
 	dw Script_itemnotify                 ; 45
 	dw Script_pocketisfull               ; 46
 	dw Script_opentext                   ; 47
-	dw Script_refreshscreen              ; 48
+	dw Script_reanchormap                ; 48
 	dw Script_closetext                  ; 49
 	dw Script_writeunusedbyte            ; 4a
 	dw Script_farwritetext               ; 4b
@@ -187,7 +187,7 @@ ScriptCommandTable:
 	dw Script_changemapblocks            ; 78
 	dw Script_changeblock                ; 79
 	dw Script_reloadmap                  ; 7a
-	dw Script_reloadmappart              ; 7b
+	dw Script_refreshmap                 ; 7b
 	dw Script_writecmdqueue              ; 7c
 	dw Script_delcmdqueue                ; 7d
 	dw Script_playmusic                  ; 7e
@@ -1090,7 +1090,7 @@ Script_reloadmapafterbattle:
 	jp ScriptJump
 
 .notblackedout
-	bit 0, d
+	bit BATTLESCRIPT_WILD_F, d
 	jr z, .was_wild
 	farcall MomTriesToBuySomething
 	jr .done
@@ -1101,7 +1101,7 @@ Script_reloadmapafterbattle:
 	jr z, .done
 	ld b, BANK(Script_SpecialBillCall)
 	ld de, Script_SpecialBillCall
-	farcall LoadScriptBDE
+	farcall LoadMemScript
 .done
 	jp Script_reloadmap
 
@@ -1299,7 +1299,7 @@ Script_sdefer:
 	call GetScriptByte
 	ld [wDeferredScriptAddr + 1], a
 	ld hl, wScriptFlags
-	set 3, [hl]
+	set RUN_DEFERRED_SCRIPT, [hl]
 	ret
 
 Script_checkscene:
@@ -2041,10 +2041,10 @@ Script_changeblock:
 	call BufferScreen
 	ret
 
-Script_reloadmappart::
+Script_refreshmap::
 	xor a
 	ldh [hBGMapMode], a
-	call OverworldTextModeSwitch
+	call LoadOverworldTilemapAndAttrmapPals
 	call GetMovementPermissions
 	call ApplyTilemap
 	call UpdateSprites
@@ -2076,8 +2076,8 @@ Script_opentext:
 	call OpenText
 	ret
 
-Script_refreshscreen:
-	call RefreshScreen
+Script_reanchormap:
+	call ReanchorMap
 	call GetScriptByte
 	ret
 
@@ -2150,7 +2150,7 @@ Script_end:
 	ld a, SCRIPT_OFF
 	ld [wScriptMode], a
 	ld hl, wScriptFlags
-	res 0, [hl]
+	res UNUSED_SCRIPT_FLAG_0, [hl]
 	call StopScript
 	ret
 
@@ -2159,7 +2159,7 @@ Script_endcallback:
 	jr c, .dummy
 .dummy
 	ld hl, wScriptFlags
-	res 0, [hl]
+	res UNUSED_SCRIPT_FLAG_0, [hl]
 	call StopScript
 	ret
 
@@ -2200,16 +2200,16 @@ Script_endall:
 	ld a, SCRIPT_OFF
 	ld [wScriptMode], a
 	ld hl, wScriptFlags
-	res 0, [hl]
+	res UNUSED_SCRIPT_FLAG_0, [hl]
 	call StopScript
 	ret
 
 Script_halloffame:
 	ld hl, wGameTimerPaused
-	res GAME_TIMER_PAUSED_F, [hl]
+	res GAME_TIMER_COUNTING_F, [hl]
 	farcall HallOfFame
 	ld hl, wGameTimerPaused
-	set GAME_TIMER_PAUSED_F, [hl]
+	set GAME_TIMER_COUNTING_F, [hl]
 	jr ReturnFromCredits
 
 Script_credits:

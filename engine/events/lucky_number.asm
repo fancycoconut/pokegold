@@ -150,7 +150,7 @@ CheckForLuckyNumberWinners:
 .done
 	pop hl
 	push hl
-	ld de, MON_SPECIES - MON_ID
+	ld de, MON_SPECIES - MON_OT_ID
 	add hl, de
 	ld a, [hl]
 	pop hl
@@ -193,7 +193,7 @@ CheckForLuckyNumberWinners:
 	ret
 
 .BoxBankAddresses:
-	table_width 3, CheckForLuckyNumberWinners.BoxBankAddresses
+	table_width 3
 for n, 1, NUM_BOXES + 1
 	dba sBox{d:n}
 endr
