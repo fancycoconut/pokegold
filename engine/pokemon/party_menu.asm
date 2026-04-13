@@ -48,8 +48,8 @@ WritePartyMenuTilemap:
 	xor a
 	ldh [hBGMapMode], a
 	hlcoord 0, 0
-	ld bc, SCREEN_WIDTH * SCREEN_HEIGHT
-	ld a, " "
+	ld bc, SCREEN_AREA
+	ld a, ' '
 	call ByteFill ; blank the tilemap
 	call GetPartyMenuQualityIndexes
 .loop
@@ -203,7 +203,7 @@ PlacePartyMenuHPDigits:
 	lb bc, 2, 3
 	call PrintNum
 	pop de
-	ld a, "/"
+	ld a, '/'
 	ld [hli], a
 	inc de
 	inc de
@@ -243,7 +243,7 @@ PlacePartyMonLevel:
 	ld a, [de]
 	cp 100 ; This is distinct from MAX_LEVEL.
 	jr nc, .ThreeDigits
-	ld a, "<LV>"
+	ld a, '<LV>'
 	ld [hli], a
 	lb bc, PRINTNUM_LEFTALIGN | 1, 2
 	; jr .okay
@@ -555,7 +555,7 @@ InitPartyMenuWithCancel:
 
 .done
 	ld [wMenuCursorY], a
-	ld a, A_BUTTON | B_BUTTON
+	ld a, PAD_A | PAD_B
 	ld [wMenuJoypadFilter], a
 	ret
 
@@ -576,7 +576,7 @@ InitPartyMenuNoCancel:
 	ld a, 1
 .done
 	ld [wMenuCursorY], a
-	ld a, A_BUTTON | B_BUTTON
+	ld a, PAD_A | PAD_B
 	ld [wMenuJoypadFilter], a
 	ret
 

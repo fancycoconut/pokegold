@@ -106,7 +106,7 @@ Credits::
 
 Credits_HandleAButton:
 	ldh a, [hJoypadDown]
-	and A_BUTTON
+	and PAD_A
 	ret z
 	ld a, [wJumptableIndex]
 	bit JUMPTABLE_EXIT_F, a
@@ -114,7 +114,7 @@ Credits_HandleAButton:
 
 Credits_HandleBButton:
 	ldh a, [hJoypadDown]
-	and B_BUTTON
+	and PAD_B
 	ret z
 	ld a, [wJumptableIndex]
 	bit ALLOW_SKIPPING_CREDITS_F, a
@@ -242,7 +242,7 @@ ParseCredits:
 	ldh [hBGMapMode], a
 	hlcoord 0, 5
 	ld bc, SCREEN_WIDTH * 8
-	ld a, " "
+	ld a, ' '
 	call ByteFill
 
 ; Then read the script.
@@ -395,7 +395,7 @@ ConstructCreditsTilemap:
 
 	ld a, $28
 	hlcoord 0, 0
-	ld bc, SCREEN_HEIGHT * SCREEN_WIDTH
+	ld bc, SCREEN_AREA
 	call ByteFill
 
 	ld a, $7f

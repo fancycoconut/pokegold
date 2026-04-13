@@ -98,7 +98,7 @@ CheckForLuckyNumberWinners:
 	ld a, c
 
 	; BUG: The Lucky Number Show does not find winning ID numbers in inactive boxes 10-14 (see docs/bugs_and_glitches.md)
-	cp NUM_BOXES_JAPANESE
+	cp NUM_BOXES_JP
 	jr c, .BoxesLoop
 
 	call CloseSRAM
@@ -212,6 +212,6 @@ PrintTodaysLuckyNumber:
 	ld de, wLuckyIDNumber
 	lb bc, PRINTNUM_LEADINGZEROS | 2, 5
 	call PrintNum
-	ld a, "@"
+	ld a, '@'
 	ld [wStringBuffer3 + 5], a
 	ret

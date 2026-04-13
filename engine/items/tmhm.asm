@@ -204,7 +204,7 @@ TMHM_PocketLoop:
 	ld [w2DMenuFlags2], a
 	ld a, $20
 	ld [w2DMenuCursorOffsets], a
-	ld a, A_BUTTON | B_BUTTON | D_UP | D_DOWN | D_LEFT | D_RIGHT
+	ld a, PAD_A | PAD_B | PAD_CTRL_PAD
 	ld [wMenuJoypadFilter], a
 	ld a, [wTMHMPocketCursor]
 	inc a
@@ -231,9 +231,9 @@ TMHM_JoypadLoop:
 	jp nz, TMHM_ChooseTMorHM
 	bit B_BUTTON_F, a
 	jp nz, TMHM_ExitPack
-	bit D_RIGHT_F, a
+	bit B_PAD_RIGHT, a
 	jp nz, TMHM_ExitPocket
-	bit D_LEFT_F, a
+	bit B_PAD_LEFT, a
 	jp nz, TMHM_ExitPocket
 TMHM_ShowTMMoveDescription:
 	call TMHM_CheckHoveringOverCancel
@@ -288,7 +288,7 @@ TMHM_CheckHoveringOverCancel:
 TMHM_ExitPack:
 	call TMHM_PlaySFX_ReadText2
 _TMHM_ExitPack:
-	ld a, B_BUTTON
+	ld a, PAD_B
 	ld [wMenuJoypad], a
 	and a
 	ret
@@ -299,7 +299,7 @@ TMHM_ExitPocket:
 
 TMHM_ScrollPocket:
 	ld a, b
-	bit D_DOWN_F, a
+	bit B_PAD_DOWN, a
 	jr nz, .down
 	ld hl, wTMHMPocketScrollPosition
 	ld a, [hl]
@@ -334,7 +334,7 @@ TMHM_DisplayPocketItems:
 
 	hlcoord 5, 2
 	lb bc, 10, 15
-	ld a, " "
+	ld a, ' '
 	call ClearBox
 	call TMHM_GetCurrentPocketPosition
 	ld d, $5
@@ -366,7 +366,7 @@ TMHM_DisplayPocketItems:
 	push af
 	sub NUM_TMS
 	ld [wTempTMHM], a
-	ld [hl], "H"
+	ld [hl], 'H'
 	inc hl
 	ld de, wTempTMHM
 	lb bc, PRINTNUM_LEFTALIGN | 1, 2
@@ -391,9 +391,9 @@ TMHM_DisplayPocketItems:
 	jr nc, .hm2
 	ld bc, SCREEN_WIDTH + 9
 	add hl, bc
-	ld [hl], "×"
+	ld [hl], '×'
 	inc hl
-	ld a, "0" ; why are we doing this?
+	ld a, '0' ; why are we doing this?
 	pop bc
 	push bc
 	ld a, b

@@ -145,9 +145,9 @@ MainMenuJoypadLoop:
 	call MainMenu_PrintCurrentTimeAndDay
 	call GetScrollingMenuJoypad
 	ld a, [wMenuJoypad]
-	cp B_BUTTON
+	cp PAD_B
 	jr z, .b_button
-	cp A_BUTTON
+	cp PAD_A
 	jr z, .a_button
 	jr .loop
 
@@ -211,7 +211,7 @@ MainMenu_PrintCurrentTimeAndDay:
 	ldh a, [hHours]
 	ld c, a
 	farcall PrintHour
-	ld [hl], ":"
+	ld [hl], ':'
 	inc hl
 	ld de, hMinutes
 	lb bc, PRINTNUM_LEADINGZEROS | 1, 2

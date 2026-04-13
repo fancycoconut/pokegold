@@ -306,6 +306,7 @@ PokeBallEffect:
 	srl b
 	rr c
 
+	; BUG: Catch rate formula breaks for Pokémon with max HP > 341 (see docs/bugs_and_glitches.md)
 	ld a, c
 	and a
 	jr nz, .okay_1
@@ -407,7 +408,7 @@ PokeBallEffect:
 	xor a
 	ldh [hBattleTurn], a
 	ld [wThrownBallWobbleCount], a
-	ld [wNumHits], a
+	ld [wBattleAfterAnim], a
 	predef PlayBattleAnim
 
 	ld a, [wWildMon]
@@ -773,7 +774,7 @@ HeavyBallMultiplier:
 	ld a, d
 	call GetFarByte
 	inc hl
-	cp "@"
+	cp '@'
 	jr nz, .SkipText
 
 	ld a, d
@@ -1749,7 +1750,7 @@ ItemActionTextWaitButton:
 	ldh [hBGMapMode], a
 	hlcoord 0, 0
 	ld bc, wTilemapEnd - wTilemap
-	ld a, " "
+	ld a, ' '
 	call ByteFill
 	ld a, [wPartyMenuActionText]
 	call ItemActionText
@@ -2585,7 +2586,7 @@ UseBallInTrainerBattle:
 	xor a
 	ld [wBattleAnimParam], a
 	ldh [hBattleTurn], a
-	ld [wNumHits], a
+	ld [wBattleAfterAnim], a
 	predef PlayBattleAnim
 	ld hl, BallBlockedText
 	call PrintText

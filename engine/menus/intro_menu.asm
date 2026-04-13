@@ -158,13 +158,13 @@ SetDefaultBoxNames:
 	cp 10
 	jr c, .less
 	sub 10
-	ld [hl], "1"
+	ld [hl], '1'
 	inc hl
 
 .less
-	add "0"
+	add '0'
 	ld [hli], a
-	ld [hl], "@"
+	ld [hl], '@'
 	pop hl
 	ld de, 9
 	add hl, de
@@ -489,7 +489,7 @@ Continue_DisplayGameTime:
 	ld de, wGameTimeHours
 	lb bc, 2, 3
 	call PrintNum
-	ld [hl], "<COLON>"
+	ld [hl], '<COLON>'
 	inc hl
 	ld de, wGameTimeMinutes
 	lb bc, PRINTNUM_LEADINGZEROS | 1, 2
@@ -867,7 +867,7 @@ StartTitleScreen:
 	call ClearBGPalettes
 
 	ld hl, rLCDC
-	res rLCDC_SPRITE_SIZE, [hl] ; 8x8
+	res B_LCDC_OBJ_SIZE, [hl] ; 8x8
 	call ClearTilemap
 	xor a
 	ldh [hLCDCPointer], a
@@ -988,19 +988,19 @@ TitleScreenMain:
 	call GetJoypad
 	ld hl, hJoyDown
 	ld a, [hl]
-	and D_UP + B_BUTTON + SELECT
-	cp  D_UP + B_BUTTON + SELECT
+	and PAD_UP + PAD_B + PAD_SELECT
+	cp  PAD_UP + PAD_B + PAD_SELECT
 	jr z, .delete_save_data
 
 ; Clock can be reset by pressing Down + B + Select.
 	ld a, [hl]
-	and D_DOWN + B_BUTTON + SELECT
-	cp  D_DOWN + B_BUTTON + SELECT
+	and PAD_DOWN + PAD_B + PAD_SELECT
+	cp  PAD_DOWN + PAD_B + PAD_SELECT
 	jr z, .reset_clock
 
 ; Press Start or A to start the game.
 	ld a, [hl]
-	and START | A_BUTTON
+	and PAD_START | PAD_A
 	jr nz, .incave
 	ret
 

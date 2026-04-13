@@ -171,7 +171,7 @@ SwitchPartyMons:
 	ld a, [wSwitchMon]
 	dec a
 	call AddNTimes
-	ld [hl], "▷"
+	ld [hl], '▷'
 	call WaitBGMap
 	call SetDefaultBGPAndOBP
 	call DelayFrame
@@ -853,7 +853,7 @@ DeleteMoveScreen2DMenuData:
 	db _2DMENU_ENABLE_SPRITE_ANIMS ; flags 1
 	db 0 ; flags 2
 	dn 2, 0 ; cursor offset
-	db D_UP | D_DOWN | A_BUTTON | B_BUTTON ; accepted buttons
+	db PAD_UP | PAD_DOWN | PAD_A | PAD_B ; accepted buttons
 
 ManagePokemonMoves:
 	ld a, [wCurPartySpecies]
@@ -892,9 +892,9 @@ MoveScreenLoop:
 	jp nz, .b_button
 	bit A_BUTTON_F, a
 	jp nz, .a_button
-	bit D_RIGHT_F, a
+	bit B_PAD_RIGHT, a
 	jp nz, .d_right
-	bit D_LEFT_F, a
+	bit B_PAD_LEFT, a
 	jp nz, .d_left
 
 .skip_joy
@@ -906,7 +906,7 @@ MoveScreenLoop:
 	jp .joy_loop
 
 .moving_move
-	ld a, " "
+	ld a, ' '
 	hlcoord 1, 11
 	ld bc, 5
 	call ByteFill
@@ -1083,7 +1083,7 @@ MoveScreen2DMenuData:
 	db _2DMENU_ENABLE_SPRITE_ANIMS ; flags 1
 	db 0 ; flags 2
 	dn 2, 0 ; cursor offsets
-	db D_UP | D_DOWN | D_LEFT | D_RIGHT | A_BUTTON | B_BUTTON ; accepted buttons
+	db PAD_CTRL_PAD | PAD_A | PAD_B ; accepted buttons
 
 String_MoveWhere:
 	db "Where?@"
@@ -1260,7 +1260,7 @@ PlaceMoveScreenLeftArrow:
 
 .legal
 	hlcoord 16, 0
-	ld [hl], "◀"
+	ld [hl], '◀'
 	ret
 
 PlaceMoveScreenRightArrow:
@@ -1291,5 +1291,5 @@ PlaceMoveScreenRightArrow:
 
 .legal
 	hlcoord 18, 0
-	ld [hl], "▶"
+	ld [hl], '▶'
 	ret

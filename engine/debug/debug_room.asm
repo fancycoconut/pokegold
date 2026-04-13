@@ -22,8 +22,8 @@ DEF DEBUGROOMMENU_NUM_PAGES EQU const_value
 
 _DebugRoom:
 	ldh a, [hJoyDown]
-	and SELECT | START
-	cp SELECT | START
+	and PAD_SELECT | PAD_START
+	cp PAD_SELECT | PAD_START
 	ret nz
 	ldh a, [hDebugRoomMenuPage]
 	push af
@@ -32,7 +32,7 @@ _DebugRoom:
 .loop
 	ld hl, wTilemap
 	ld bc, wTilemapEnd - wTilemap
-	ld a, " "
+	ld a, ' '
 	call ByteFill
 	call DebugRoom_PrintStackBottomTop
 	call DebugRoom_PrintWindowStackBottomTop
@@ -45,10 +45,10 @@ _DebugRoom:
 .wait
 	call GetScrollingMenuJoypad
 	ld a, [wMenuJoypad]
-	and A_BUTTON | B_BUTTON
+	and PAD_A | PAD_B
 	jr z, .wait
 	call CloseWindow
-	cp B_BUTTON
+	cp PAD_B
 	jr z, .done
 	ld a, [wMenuSelection]
 	ld hl, .Jumptable
@@ -410,7 +410,7 @@ DebugRoom_EditPagedValues:
 	call DebugRoom_InitializePagedValues
 	xor a
 	call DebugRoom_PrintPage
-	ld a, "▶"
+	ld a, '▶'
 	call DebugRoom_ShowHideCursor
 	xor a
 	ldh [hJoyLast], a
@@ -433,17 +433,17 @@ DebugRoom_EditPagedValues:
 	rra ; A_BUTTON_F?
 	jr c, DebugRoom_PagedValuePressedA
 	rra ; skip B_BUTTON_F
-	rra ; SELECT_F?
+	rra ; B_PAD_SELECT?
 	jr c, DebugRoom_PagedValuePressedSelect
-	rra ; START_F?
+	rra ; B_PAD_START?
 	jr c, DebugRoom_PagedValuePressedStart
-	rra ; D_RIGHT_F?
+	rra ; B_PAD_RIGHT?
 	jp c, DebugRoom_IncrementPagedValue
-	rra ; D_LEFT_F?
+	rra ; B_PAD_LEFT?
 	jp c, DebugRoom_DecrementPagedValue
-	rra ; D_UP_F?
+	rra ; B_PAD_UP?
 	jp c, DebugRoom_PrevPagedValue
-	rra ; D_DOWN_F?
+	rra ; B_PAD_DOWN?
 	jp c, DebugRoom_NextPagedValue
 	pop hl
 .continue
@@ -536,7 +536,7 @@ DebugRoom_NextPage:
 	dec a
 	ld [wDebugRoomCurValue], a
 .skip
-	ld a, "▶"
+	ld a, '▶'
 	call DebugRoom_ShowHideCursor
 	ret
 
@@ -558,12 +558,12 @@ DebugRoom_PrevPage:
 	dec a
 	ld [wDebugRoomCurValue], a
 .skip
-	ld a, "▶"
+	ld a, '▶'
 	call DebugRoom_ShowHideCursor
 	ret
 
 DebugRoom_NextPagedValue:
-	ld a, " "
+	ld a, ' '
 	call DebugRoom_ShowHideCursor
 	ld a, [wDebugRoomCurPage]
 	call DebugRoom_GetNthPagePointer
@@ -577,12 +577,12 @@ DebugRoom_NextPagedValue:
 
 DebugRoom_UpdateValueCursor:
 	ld [wDebugRoomCurValue], a
-	ld a, "▶"
+	ld a, '▶'
 	call DebugRoom_ShowHideCursor
 	ret
 
 DebugRoom_PrevPagedValue:
-	ld a, " "
+	ld a, ' '
 	call DebugRoom_ShowHideCursor
 	ld a, [wDebugRoomCurValue]
 	or a ; pre-decremented value > 0?
@@ -706,7 +706,7 @@ DebugRoom_InitializePagedValues:
 DebugRoom_PrintPage:
 	push af
 	hlcoord 10, 17
-	add "1"
+	add '1'
 	ld [hl], a
 	hlcoord 1, 1
 	lb bc, SCREEN_HEIGHT - 2, SCREEN_WIDTH - 2
@@ -797,7 +797,7 @@ DebugRoom_PrintPagedValue:
 .hex
 	ld c, 1
 	call PrintHexNumber
-	ld [hl], "H"
+	ld [hl], 'H'
 	inc hl
 .printed
 	ld bc, 6
@@ -818,7 +818,7 @@ DebugRoom_JoyWaitABSelect:
 .loop
 	call GetJoypad
 	ldh a, [hJoyPressed]
-	and A_BUTTON | B_BUTTON | SELECT
+	and PAD_A | PAD_B | PAD_SELECT
 	jr z, .loop
 	ret
 
@@ -1222,12 +1222,12 @@ DebugRoomMenu_RTCEdit_UpdateClock:
 	ld de, wDebugRoomRTCCurHour
 	lb bc, PRINTNUM_LEADINGZEROS | 1, 2
 	call PrintNum
-	ld [hl], ":"
+	ld [hl], ':'
 	inc hl
 	ld de, wDebugRoomRTCCurMin
 	lb bc, PRINTNUM_LEADINGZEROS | 1, 2
 	call PrintNum
-	ld [hl], ":"
+	ld [hl], ':'
 	inc hl
 	ld de, wDebugRoomRTCCurSec
 	lb bc, PRINTNUM_LEADINGZEROS | 1, 2
@@ -1238,18 +1238,18 @@ DebugRoom_DayHTimeString:
 	db "DAY     H<LF>TIME@"
 
 DebugRoom_GetClock:
-	ld a, SRAM_ENABLE
-	ld [MBC3SRamEnable], a
+	ld a, RAMG_SRAM_ENABLE
+	ld [rRAMG], a
 	xor a
-	ld [MBC3LatchClock], a
+	ld [rRTCLATCH], a
 	inc a
-	ld [MBC3LatchClock], a
-	ld b, RTC_DH - RTC_S + 1
-	ld c, RTC_S
+	ld [rRTCLATCH], a
+	ld b, RAMB_RTC_DH - RAMB_RTC_S + 1
+	ld c, RAMB_RTC_S
 .loop
 	ld a, c
-	ld [MBC3SRamBank], a
-	ld a, [MBC3RTC]
+	ld [rRAMB], a
+	ld a, [rRTCREG]
 	ld [hli], a
 	inc c
 	dec b
@@ -1258,15 +1258,15 @@ DebugRoom_GetClock:
 	ret
 
 DebugRoom_SetClock:
-	ld a, SRAM_ENABLE
-	ld [MBC3SRamEnable], a
-	ld b, RTC_DH - RTC_S + 1
-	ld c, RTC_S
+	ld a, RAMG_SRAM_ENABLE
+	ld [rRAMG], a
+	ld b, RAMB_RTC_DH - RAMB_RTC_S + 1
+	ld c, RAMB_RTC_S
 .loop
 	ld a, c
-	ld [MBC3SRamBank], a
+	ld [rRAMB], a
 	ld a, [hli]
-	ld [MBC3RTC], a
+	ld [rRTCREG], a
 	inc c
 	dec b
 	jr nz, .loop

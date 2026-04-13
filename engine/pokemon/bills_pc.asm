@@ -72,10 +72,10 @@ _DepositPKMN:
 .HandleJoypad:
 	ld hl, hJoyPressed
 	ld a, [hl]
-	and B_BUTTON
+	and PAD_B
 	jr nz, .b_button
 	ld a, [hl]
-	and A_BUTTON
+	and PAD_A
 	jr nz, .a_button
 	call Withdraw_UpDown
 	and a
@@ -315,10 +315,10 @@ _WithdrawPKMN:
 .Joypad:
 	ld hl, hJoyPressed
 	ld a, [hl]
-	and B_BUTTON
+	and PAD_B
 	jr nz, .b_button
 	ld a, [hl]
-	and A_BUTTON
+	and PAD_A
 	jr nz, .a_button
 	call Withdraw_UpDown
 	and a
@@ -556,10 +556,10 @@ _MovePKMNWithoutMail:
 .Joypad:
 	ld hl, hJoyPressed
 	ld a, [hl]
-	and B_BUTTON
+	and PAD_B
 	jr nz, .b_button
 	ld a, [hl]
-	and A_BUTTON
+	and PAD_A
 	jr nz, .a_button
 	call MoveMonWithoutMail_DPad
 	jr c, .d_pad
@@ -705,10 +705,10 @@ _MovePKMNWithoutMail:
 .Joypad2:
 	ld hl, hJoyPressed
 	ld a, [hl]
-	and B_BUTTON
+	and PAD_B
 	jr nz, .b_button_2
 	ld a, [hl]
-	and A_BUTTON
+	and PAD_A
 	jr nz, .a_button_2
 	call MoveMonWithoutMail_DPad_2
 	jr c, .dpad_2
@@ -795,10 +795,10 @@ _StatsScreenDPad:
 	jr z, .empty
 	ld e, a
 	ld a, [hl]
-	and D_UP
+	and PAD_UP
 	jr nz, BillsPC_PressUp
 	ld a, [hl]
-	and D_DOWN
+	and PAD_DOWN
 	jr nz, BillsPC_PressDown
 .empty
 	jp BillsPC_JoypadDidNothing
@@ -812,10 +812,10 @@ Withdraw_UpDown:
 	and a
 	jr z, .empty
 	ld a, [hl]
-	and D_UP
+	and PAD_UP
 	jr nz, BillsPC_PressUp
 	ld a, [hl]
-	and D_DOWN
+	and PAD_DOWN
 	jr nz, BillsPC_PressDown
 .empty
 	jp BillsPC_JoypadDidNothing
@@ -829,18 +829,18 @@ MoveMonWithoutMail_DPad:
 	and a
 	jr z, .check_left_right
 	ld a, [hl]
-	and D_UP
+	and PAD_UP
 	jr nz, BillsPC_PressUp
 	ld a, [hl]
-	and D_DOWN
+	and PAD_DOWN
 	jr nz, BillsPC_PressDown
 
 .check_left_right
 	ld a, [hl]
-	and D_LEFT
+	and PAD_LEFT
 	jr nz, BillsPC_PressLeft
 	ld a, [hl]
-	and D_RIGHT
+	and PAD_RIGHT
 	jr nz, BillsPC_PressRight
 	jr BillsPC_JoypadDidNothing
 
@@ -854,18 +854,18 @@ MoveMonWithoutMail_DPad_2:
 	jr z, .check_left_right
 
 	ld a, [hl]
-	and D_UP
+	and PAD_UP
 	jr nz, BillsPC_PressUp
 	ld a, [hl]
-	and D_DOWN
+	and PAD_DOWN
 	jr nz, BillsPC_PressDown
 
 .check_left_right
 	ld a, [hl]
-	and D_LEFT
+	and PAD_LEFT
 	jr nz, BillsPC_PressLeft
 	ld a, [hl]
-	and D_RIGHT
+	and PAD_RIGHT
 	jr nz, BillsPC_PressRight
 	jr BillsPC_JoypadDidNothing
 
@@ -1068,9 +1068,9 @@ PCMonInfo:
 	ld [wMonType], a
 	farcall GetGender
 	jr c, .skip_gender
-	ld a, "♂"
+	ld a, '♂'
 	jr nz, .printgender
-	ld a, "♀"
+	ld a, '♀'
 .printgender
 	hlcoord 5, 12
 	ld [hl], a
@@ -1100,10 +1100,10 @@ BillsPC_LoadMonStats:
 	add [hl]
 	ld e, a
 	ld d, 0
-	ld hl, wBillsPCPokemonList + 1 ; box number
+	ld hl, wBillsPCPokemonList + BOXLIST_BOXNUM
+rept BOXLIST_SIZE
 	add hl, de
-	add hl, de
-	add hl, de
+endr
 	ld a, [hl]
 	and a
 	jr z, .party
@@ -1207,17 +1207,17 @@ BillsPC_RefreshTextboxes:
 	call Textbox
 
 	hlcoord 8, 2
-	ld [hl], "└"
+	ld [hl], '└'
 	hlcoord 19, 2
-	ld [hl], "┘"
+	ld [hl], '┘'
 
 	ld a, [wBillsPC_ScrollPosition]
 	ld e, a
 	ld d, 0
-	ld hl, wBillsPCPokemonList
+	ld hl, wBillsPCPokemonList + BOXLIST_SPECIES
+rept BOXLIST_SIZE
 	add hl, de
-	add hl, de
-	add hl, de
+endr
 	ld e, l
 	ld d, h
 	hlcoord 9, 4
@@ -1231,9 +1231,9 @@ BillsPC_RefreshTextboxes:
 	ld de, 2 * SCREEN_WIDTH
 	add hl, de
 	pop de
+rept BOXLIST_SIZE
 	inc de
-	inc de
-	inc de
+endr
 	pop af
 	dec a
 	jr nz, .loop
@@ -1362,13 +1362,13 @@ MACRO copy_box_data
 	jr z, .done\@
 	and a
 	jr z, .done\@
-	ld [de], a ; species
+	ld [de], a ; BOXLIST_SPECIES
 	inc de
 	ld a, [wBillsPC_LoadedBox]
-	ld [de], a ; box number
+	ld [de], a ; BOXLIST_BOXNUM
 	inc de
 	ld a, [wBillsPCTempListIndex]
-	ld [de], a ; list index
+	ld [de], a ; BOXLIST_INDEX
 	inc a
 	ld [wBillsPCTempListIndex], a
 	inc de
@@ -1392,7 +1392,7 @@ ENDM
 CopyBoxmonSpecies:
 	xor a
 	ld hl, wBillsPCPokemonList
-	ld bc, 3 * 30
+	ld bc, BOXLIST_SIZE * MONS_PER_BOX_JP
 	call ByteFill
 	ld de, wBillsPCPokemonList
 	xor a
@@ -1429,10 +1429,10 @@ BillsPC_GetSelectedPokemonSpecies:
 	add [hl]
 	ld e, a
 	ld d, 0
-	ld hl, wBillsPCPokemonList
+	ld hl, wBillsPCPokemonList + BOXLIST_SPECIES
+rept BOXLIST_SIZE
 	add hl, de
-	add hl, de
-	add hl, de
+endr
 	ld a, [hl]
 	ret
 
@@ -1457,7 +1457,7 @@ BillsPC_UpdateSelectionCursor:
 	inc hl
 	ld [de], a ; y
 	inc de
-rept SPRITEOAMSTRUCT_LENGTH - 1
+rept OBJ_SIZE - 1
 	ld a, [hli]
 	ld [de], a
 	inc de
@@ -1501,7 +1501,7 @@ BillsPC_UpdateInsertCursor:
 	inc hl
 	ld [de], a ; y
 	inc de
-rept SPRITEOAMSTRUCT_LENGTH - 1
+rept OBJ_SIZE - 1
 	ld a, [hli]
 	ld [de], a
 	inc de
@@ -1644,11 +1644,11 @@ StatsScreenDPad:
 	call JoyTextDelay
 	ld hl, hJoyPressed
 	ld a, [hl]
-	and A_BUTTON | B_BUTTON | D_RIGHT | D_LEFT
+	and PAD_A | PAD_B | PAD_RIGHT | PAD_LEFT
 	ld [wMenuJoypad], a
 	jr nz, .pressed_a_b_right_left
 	ld a, [hl]
-	and D_DOWN | D_UP
+	and PAD_DOWN | PAD_UP
 	ld [wMenuJoypad], a
 	jr nz, .pressed_down_up
 	call DelayFrame
@@ -1777,7 +1777,7 @@ DepositPokemon:
 	ld h, b
 	ld de, wStringBuffer1
 	call PlaceString
-	ld a, "!"
+	ld a, '!'
 	ld [bc], a
 	ld c, 50
 	call DelayFrames
@@ -1832,7 +1832,7 @@ TryWithdrawPokemon:
 	ld h, b
 	ld de, wStringBuffer1
 	call PlaceString
-	ld a, "!"
+	ld a, '!'
 	ld [bc], a
 	ld c, 50
 	call DelayFrames
@@ -1891,7 +1891,7 @@ ReleasePKMN_ByePKMN:
 	call PlaceString
 	ld l, c
 	ld h, b
-	ld [hl], "!"
+	ld [hl], '!'
 	ld c, 50
 	call DelayFrames
 	ret
@@ -2216,7 +2216,7 @@ _ChangeBox:
 	call Textbox
 	call ScrollingMenu
 	ld a, [wMenuJoypad]
-	cp B_BUTTON
+	cp PAD_B
 	jr z, .done
 	call BillsPC_PlaceWhatsUpString
 	call BillsPC_ChangeBoxSubmenu
@@ -2229,8 +2229,8 @@ BillsPC_ClearTilemap:
 	xor a
 	ldh [hBGMapMode], a
 	hlcoord 0, 0
-	ld bc, SCREEN_WIDTH * SCREEN_HEIGHT
-	ld a, " "
+	ld bc, SCREEN_AREA
+	ld a, ' '
 	call ByteFill
 	ret
 

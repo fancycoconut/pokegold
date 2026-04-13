@@ -107,7 +107,7 @@ LoadMartPointer:
 	xor a ; STANDARDMART_HOWMAYIHELPYOU
 	ld [wMartJumptableIndex], a
 	ld [wBargainShopFlags], a
-	ld [wFacingDirection], a
+	ld [wBargainShopFlags + 1], a
 	ret
 
 ; StandardMart.MartFunctions indexes
@@ -260,12 +260,12 @@ GetMartPrice:
 .CharToNybble:
 	ld a, [de]
 	inc de
-	cp " "
+	cp ' '
 	jr nz, .not_space
-	ld a, "0"
+	ld a, '0'
 
 .not_space
-	sub "0"
+	sub '0'
 	ret
 
 ReadMart:
@@ -420,9 +420,9 @@ BuyMenuLoop:
 	ld [wMenuCursorPositionBackup], a
 	call SpeechTextbox
 	ld a, [wMenuJoypad]
-	cp B_BUTTON
+	cp PAD_B
 	jr z, .set_carry
-	cp A_BUTTON
+	cp PAD_A
 	jr z, .useless_pointer
 
 .useless_pointer
